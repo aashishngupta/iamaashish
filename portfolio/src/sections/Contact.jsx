@@ -23,7 +23,7 @@ export default function Contact() {
           transition={fadeUp.transition}
           style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(28px, 5vw, 52px)',
+            fontSize: 'clamp(22px, 2.4vw, 36px)',
             fontWeight: 400,
             letterSpacing: '-0.02em',
             lineHeight: 1.15,

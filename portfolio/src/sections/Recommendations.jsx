@@ -192,12 +192,9 @@ export default function Recommendations() {
           <SectionLabel>Recommendations</SectionLabel>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginTop: 12 }}>
             <div>
-              <h2 style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(32px, 3.8vw, 52px)',
+              <h2 className="section-heading" style={{
                 fontWeight: 800,
                 letterSpacing: '-0.03em',
-                color: 'var(--color-text-primary)',
                 lineHeight: 1.1,
                 transition: 'var(--transition-colors)',
               }}>

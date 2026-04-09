@@ -67,7 +67,7 @@ export default function About() {
         >
           <h2
             className="section-heading"
-            style={{ marginBottom: 32, fontSize: 'clamp(32px, 3.8vw, 52px)' }}
+            style={{ marginBottom: 32 }}
           >
             Engineer turned founder,
             <br />
