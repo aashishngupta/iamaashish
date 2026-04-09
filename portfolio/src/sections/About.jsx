@@ -104,32 +104,21 @@ export default function About() {
 </p>
 
 <p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
-  From there, the curve accelerated.
-  I started working with CXOs, identifying gaps, and solving real business problems while adapting to market signals.
-  Over time, I moved from building features to owning outcomes.
-  I've built AI-driven systems used by millions, deployed across Fortune 200 companies.
-  The journey hasn't been linear.
-  I've shipped things that didn't work, built features no one used, and underestimated distribution.
-  That changed how I operate.
+  From there, the curve accelerated.{' '}
+  {!expanded && (
+    <button
+      onClick={() => setExpanded(true)}
+      style={{
+        display: 'inline', background: 'none', border: 'none', padding: 0,
+        cursor: 'pointer', fontSize: 'inherit', lineHeight: 'inherit',
+        fontWeight: 700, color: 'var(--color-accent)', fontFamily: 'inherit',
+        transition: 'var(--transition-colors)',
+      }}
+    >
+      Read more ↓
+    </button>
+  )}
 </p>
-
-{!expanded && (
-  <p style={{ marginBottom: 4, color: 'var(--color-text-tertiary)', fontSize: 15, transition: 'var(--transition-colors)' }}>&#8230;</p>
-)}
-
-{/* Expand / collapse button */}
-<button
-  onClick={() => setExpanded(v => !v)}
-  style={{
-    display: 'inline-flex', alignItems: 'center', gap: 5,
-    fontSize: 13, fontWeight: 600, color: 'var(--color-accent)',
-    background: 'none', border: 'none', padding: '0 0 18px',
-    cursor: 'pointer', letterSpacing: '-0.01em',
-    transition: 'var(--transition-colors)',
-  }}
->
-  {expanded ? 'Show less ↑' : 'Read more ↓'}
-</button>
 
 {/* Collapsible rest of story */}
 <AnimatePresence initial={false}>
@@ -142,6 +131,15 @@ export default function About() {
       transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
       style={{ overflow: 'hidden' }}
     >
+      <p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
+        I started working with CXOs, identifying gaps, and solving real business problems while adapting to market signals.
+        Over time, I moved from building features to owning outcomes.
+        I've built AI-driven systems used by millions, deployed across Fortune 200 companies.
+        The journey hasn't been linear.
+        I've shipped things that didn't work, built features no one used, and underestimated distribution.
+        That changed how I operate.
+      </p>
+
       <p style={{ marginBottom: 8, transition: 'var(--transition-colors)' }}>
         I focus on problems, not ideas.
         I prioritize outcomes over output.
@@ -164,9 +162,21 @@ export default function About() {
         No vanity metrics. No artificial positioning.
       </p>
 
-      <p style={{ marginBottom: 32, transition: 'var(--transition-colors)' }}>
+      <p style={{ marginBottom: 24, transition: 'var(--transition-colors)' }}>
         If you're looking to build, scale, or rethink your product, or even just want to exchange ideas, feel free to reach out.
       </p>
+
+      <button
+        onClick={() => setExpanded(false)}
+        style={{
+          display: 'inline-flex', alignItems: 'center', gap: 5,
+          fontSize: 13, fontWeight: 600, color: 'var(--color-accent)',
+          background: 'none', border: 'none', padding: '0 0 18px',
+          cursor: 'pointer', transition: 'var(--transition-colors)',
+        }}
+      >
+        Show less ↑
+      </button>
     </motion.div>
   )}
 </AnimatePresence>
