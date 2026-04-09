@@ -240,8 +240,8 @@ export default function Hero() {
                 and building teams that outlast me.
               </motion.h1>
 
-              {/* Award badges row */}
-              <motion.div {...fadeUp(0.2)} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: 36 }} className="hero-award-row">
+              {/* Award badges row — single line */}
+              <motion.div {...fadeUp(0.2)} style={{ display: 'flex', flexWrap: 'nowrap', gap: 8, marginBottom: 36, overflow: 'hidden' }} className="hero-award-row">
                 {[
                   { icon: '🏆', title: 'Forbes 30U30 Asia', sub: 'Enterprise Technology' },
                   { icon: '⭐', title: 'Best Use of AI in Automation', sub: 'Global AI Summit · AICRA & MeitY' },
@@ -250,20 +250,21 @@ export default function Hero() {
                   <span key={i} className="hero-award-badge" style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: 12,
-                    padding: '10px 20px 10px 14px',
+                    gap: 8,
+                    padding: '6px 12px 6px 8px',
                     borderRadius: 'var(--border-radius-pill)',
                     background: 'rgba(255,255,255,0.82)',
                     backdropFilter: 'blur(14px)',
                     WebkitBackdropFilter: 'blur(14px)',
                     border: '1px solid rgba(124,58,237,0.18)',
                     boxShadow: '0 4px 20px rgba(124,58,237,0.10), 0 1px 4px rgba(0,0,0,0.06)',
+                    flexShrink: 0,
                     transition: 'var(--transition-colors)',
                   }}>
-                    <span className="award-icon" style={{ fontSize: 30, lineHeight: 1 }}>{b.icon}</span>
+                    <span className="award-icon" style={{ fontSize: 20, lineHeight: 1 }}>{b.icon}</span>
                     <span>
-                      <span className="award-title" style={{ fontSize: 13.5, fontWeight: 800, color: 'var(--color-text-primary)', display: 'block', lineHeight: 1.2, letterSpacing: '-0.01em', transition: 'var(--transition-colors)' }}>{b.title}</span>
-                      <span className="award-sub" style={{ fontSize: 11.5, fontWeight: 500, color: 'var(--color-text-secondary)', display: 'block', lineHeight: 1.35, marginTop: 2, transition: 'var(--transition-colors)' }}>{b.sub}</span>
+                      <span className="award-title" style={{ fontSize: 11.5, fontWeight: 800, color: 'var(--color-text-primary)', display: 'block', lineHeight: 1.2, letterSpacing: '-0.01em', whiteSpace: 'nowrap', transition: 'var(--transition-colors)' }}>{b.title}</span>
+                      <span className="award-sub" style={{ fontSize: 9.5, fontWeight: 500, color: 'var(--color-text-secondary)', display: 'block', lineHeight: 1.35, marginTop: 1, whiteSpace: 'nowrap', transition: 'var(--transition-colors)' }}>{b.sub}</span>
                     </span>
                   </span>
                 ))}
@@ -366,7 +367,8 @@ export default function Hero() {
             {/* ── RIGHT: Photo ── */}
             <motion.div
               {...fadeIn(0.3)}
-              style={{ position: 'relative' }}
+              style={{ position: 'relative', marginTop: -48 }}
+              className="hero-photo-col"
             >
               {/* Multi-layer glow halo */}
               <div style={{
@@ -441,16 +443,14 @@ export default function Hero() {
         @media (max-width: 860px) {
           .hero-grid { grid-template-columns: 1fr !important; }
           .hero-grid > div:last-child { max-width: 360px; margin: 0 auto; }
+          .hero-photo-col { margin-top: 0 !important; }
         }
         @media (max-width: 768px) {
-          .hero-award-badge { padding: 8px 14px 8px 10px !important; }
-          .hero-award-badge .award-icon { font-size: 22px !important; }
+          .hero-award-row { flex-wrap: wrap !important; overflow: visible !important; }
+          .hero-award-badge { flex-shrink: 1 !important; }
           .hero-stat-strip { gap: 20px !important; margin-top: 40px !important; }
-          .hero-credential-row { gap: 6px !important; }
         }
         @media (max-width: 480px) {
-          .hero-award-badge .award-title { font-size: 12px !important; }
-          .hero-award-badge .award-sub { font-size: 10px !important; }
           .hero-stat-strip { gap: 16px !important; }
         }
         [data-theme="dark"] .hero-greeting-pill {

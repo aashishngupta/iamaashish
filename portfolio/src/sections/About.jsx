@@ -75,17 +75,17 @@ export default function About() {
           </h2>
 
          <p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
-  I didn’t start as a product manager. I started by building.
+  I didn't start as a product manager. I started by building.
   Before frameworks or roadmaps, I was writing code, breaking things, and understanding how systems behave in the real world.
   That instinct stayed. Even today, I think in constraints, trade-offs, and first principles.
-  I come from a small town, Indri in Haryana. Exposure was limited, but ambition wasn’t.
+  I come from a small town, Indri in Haryana. Exposure was limited, but ambition wasn't.
   At 9, I wanted to become the CEO of a software company. Over time, that became direction.
   That journey took me to PEC Chandigarh and into entrepreneurship early.
   In 2015, we built India's first AI-led product, Yana.AI.
 </p>
 
 <p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
-  It wasn’t perfectly positioned, but it was strong.
+  It wasn't perfectly positioned, but it was strong.
   Strong enough to attract multiple acquisition offers, open doors to global investors, and create opportunities with large companies.
   There was no AI playbook back then.
   I learned by digging into research, cold reaching out to experts, and building from first principles.
@@ -107,37 +107,69 @@ export default function About() {
   From there, the curve accelerated.
   I started working with CXOs, identifying gaps, and solving real business problems while adapting to market signals.
   Over time, I moved from building features to owning outcomes.
-  I’ve built AI-driven systems used by millions, deployed across Fortune 200 companies.
-  The journey hasn’t been linear.
-  I’ve shipped things that didn’t work, built features no one used, and underestimated distribution.
+  I've built AI-driven systems used by millions, deployed across Fortune 200 companies.
+  The journey hasn't been linear.
+  I've shipped things that didn't work, built features no one used, and underestimated distribution.
   That changed how I operate.
 </p>
 
-<p style={{ marginBottom: 8, transition: 'var(--transition-colors)' }}>
-  I focus on problems, not ideas.
-  I prioritize outcomes over output.
-  I choose clarity over complexity.
-</p>
+{!expanded && (
+  <p style={{ marginBottom: 4, color: 'var(--color-text-tertiary)', fontSize: 15, transition: 'var(--transition-colors)' }}>&#8230;</p>
+)}
 
-<p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
-  In 2020, being featured in Forbes 30 Under 30 Asia was a strong milestone.
-  I once planned a master’s from an Ivy League university, but building on the ground changed that perspective.
-  For now, building remains the classroom.
-  Working deeply in AI, one thing became clear.
-  AI without grounding is just noise.
-  I focus on building products that move real metrics, not just narratives,
-  stay close to users, and challenge assumptions early. If there’s one thing this journey has reinforced, it’s this.
-  Clarity beats intelligence. Execution beats ideas. Consistency beats intensity.
-</p>
+{/* Expand / collapse button */}
+<button
+  onClick={() => setExpanded(v => !v)}
+  style={{
+    display: 'inline-flex', alignItems: 'center', gap: 5,
+    fontSize: 13, fontWeight: 600, color: 'var(--color-accent)',
+    background: 'none', border: 'none', padding: '0 0 18px',
+    cursor: 'pointer', letterSpacing: '-0.01em',
+    transition: 'var(--transition-colors)',
+  }}
+>
+  {expanded ? 'Show less ↑' : 'Read more ↓'}
+</button>
 
-<p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
-  Integrity is non-negotiable.
-  No vanity metrics. No artificial positioning.
-</p>
+{/* Collapsible rest of story */}
+<AnimatePresence initial={false}>
+  {expanded && (
+    <motion.div
+      key="about-expanded"
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: 'auto', opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+      style={{ overflow: 'hidden' }}
+    >
+      <p style={{ marginBottom: 8, transition: 'var(--transition-colors)' }}>
+        I focus on problems, not ideas.
+        I prioritize outcomes over output.
+        I choose clarity over complexity.
+      </p>
 
-<p style={{ marginBottom: 32, transition: 'var(--transition-colors)' }}>
-  If you’re looking to build, scale, or rethink your product, or even just want to exchange ideas, feel free to reach out.
-</p>
+      <p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
+        In 2020, being featured in Forbes 30 Under 30 Asia was a strong milestone.
+        I once planned a master's from an Ivy League university, but building on the ground changed that perspective.
+        For now, building remains the classroom.
+        Working deeply in AI, one thing became clear.
+        AI without grounding is just noise.
+        I focus on building products that move real metrics, not just narratives,
+        stay close to users, and challenge assumptions early. If there's one thing this journey has reinforced, it's this.
+        Clarity beats intelligence. Execution beats ideas. Consistency beats intensity.
+      </p>
+
+      <p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
+        Integrity is non-negotiable.
+        No vanity metrics. No artificial positioning.
+      </p>
+
+      <p style={{ marginBottom: 32, transition: 'var(--transition-colors)' }}>
+        If you're looking to build, scale, or rethink your product, or even just want to exchange ideas, feel free to reach out.
+      </p>
+    </motion.div>
+  )}
+</AnimatePresence>
 
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             {socials.map(s => (
