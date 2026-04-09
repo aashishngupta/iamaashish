@@ -377,9 +377,10 @@ const COMPANIES = [
           { label: 'Reliance Jio', cls: 'tag-gray' },
         ],
         artifacts: [
-          { type: 'video', label: 'Platform demo', color: '#e6f1fb', iconColor: 'var(--color-text-info)' },
-          { type: 'image', label: 'Builder UI screenshots', color: 'var(--color-background-tertiary)' },
-          { type: 'pdf', label: 'Pricing deck', color: '#faece7' },
+          { type: 'youtube', url: 'https://www.youtube.com/watch?v=HPWD376Rqws', label: 'Platform Demo', color: '#e6f1fb' },
+          { type: 'youtube', url: 'https://www.youtube.com/watch?v=tWXHMPq-DP8', label: 'Product Walkthrough', color: '#e6f1fb' },
+          { type: 'link', url: 'https://reverieinc.com/customer-success-stories/jio-set-top-box/', label: 'Jio Set-top Box', color: '#faece7', icon: '📰' },
+          { type: 'link', url: 'https://www.expresscomputer.in/news/reverie-bets-big-on-multilingual-speech-interface-market-for-in-car-voice-assistants/107098/', label: 'In-car Voice AI', color: 'var(--color-background-tertiary)', icon: '🔗' },
         ],
         businessImpact: [],
         keyFeatures: [
@@ -445,7 +446,9 @@ const COMPANIES = [
           { label: 'B2B Marketplace', cls: 'tag-teal' },
           { label: 'PropTech', cls: 'tag-amber' },
         ],
-        artifacts: [],
+        artifacts: [
+          { type: 'link', url: 'https://techcrunch.com/2023/04/10/officebanao-funding-lightspeed/', label: 'TechCrunch · Lightspeed', color: '#faece7', icon: '📰' },
+        ],
         businessImpact: [],
         keyFeatures: [
           'Full product portfolio — 4 epics from ideation to launch',
@@ -497,7 +500,9 @@ const COMPANIES = [
           { label: 'IoT', cls: 'tag-blue' },
           { label: 'Computer Vision', cls: 'tag-purple' },
         ],
-        artifacts: [],
+        artifacts: [
+          { type: 'link', url: 'https://www.einpresswire.com/article/535267126/ingen-dynamics-announces-successful-worldwide-deployment-of-sentinel-prime-installations-based-on-the-origami-platform', label: 'Sentinel Deployment', color: 'var(--color-background-tertiary)', icon: '📰' },
+        ],
         businessImpact: [],
         keyFeatures: [
           'Sentinel home surveillance — market research and competitive analysis',
@@ -524,7 +529,10 @@ const COMPANIES = [
           { label: 'Healthcare', cls: 'tag-teal' },
           { label: 'Computer Vision', cls: 'tag-blue' },
         ],
-        artifacts: [],
+        artifacts: [
+          { type: 'link', url: 'https://fastcompany.co.za/tech/2023-08-10-gem-increases-investment-commitment-for-ingen-dynamics-to-150-million-accelerating-the-ai-and-robotics-evolution/', label: 'Fast Company · $150M', color: 'var(--color-background-tertiary)', icon: '📰' },
+          { type: 'youtube', url: 'https://www.youtube.com/watch?v=oOn5lVxTGjk', label: 'Aido Demo', color: '#e6f1fb' },
+        ],
         businessImpact: [],
         keyFeatures: [
           'Healthcare and elderly care AI modules',
@@ -642,11 +650,12 @@ const COMPANIES = [
           { label: 'Low-code', cls: 'tag-teal' },
           { label: 'White-label', cls: 'tag-coral' },
           { label: 'ONGC · Micromax backed', cls: 'tag-amber' },
-          
+
         ],
         artifacts: [
           { type: 'image', label: 'Platform screenshots', color: 'var(--color-background-tertiary)' },
           { type: 'video', label: 'Demo video', color: '#e6f1fb', iconColor: 'var(--color-text-info)' },
+          { type: 'link', url: 'https://startup.ongc.co.in/home', label: 'ONGC Startup', color: '#e6f1fb', icon: '🔗' },
         ],
         businessImpact: [],
         keyFeatures: [
@@ -716,7 +725,7 @@ const COMPANIES = [
     website: '#',
     role: 'Co-Founder, Chief Product & Technology Officer',
     description: "A consumer internet product company building and launching mobile and aggregator super apps across ecommerce and concierge services, scaling to 20M+ downloads across 6+ countries. As the B2C vertical of Red Ginger Technologies, backed by Micromax, ONGC, and prominent HNIs, it is driven by the ambition to become the Bytedance of India.",
-    roleNarrative:'As Co-founder and Chief Product & Technology Officer, my role was to own the end-to-end journey of building and scaling the company’s product ecosystem, driving product vision, technology architecture, and growth strategy. I led everything from identifying opportunities and defining what to build, to executing across product, engineering, and growth, ensuring scalable systems, rapid experimentation, and sustainable monetization.',
+    roleNarrative: "As Co-founder and Chief Product & Technology Officer, my role was to own the end-to-end journey of building and scaling the company's product ecosystem, driving product vision, technology architecture, and growth strategy. I led everything from identifying opportunities and defining what to build, to executing across product, engineering, and growth, ensuring scalable systems, rapid experimentation, and sustainable monetization.",
     caseStudies: [],
     ratings: [],
     products: [
@@ -742,7 +751,7 @@ const COMPANIES = [
         ],
         caseStudies: [],
         ratings: [],
-        problem: "While experimenting with GTM for inOne, we launched category-specific apps and observed that food had significantly higher frequency of use. We also saw that ~86% of users were price-sensitive and made decisions based on deals and comparisons, yet existing platforms were dish or restaurant-led, forcing users to switch across apps. At the same time, brands like KFC and McDonald’s faced aggregator monopolies, limiting access to user data, retargeting, and control over customer relationships, revealing a clear gap for a unified, high-frequency platform.",
+        problem: "While experimenting with GTM for inOne, we launched category-specific apps and observed that food had significantly higher frequency of use. We also saw that ~86% of users were price-sensitive and made decisions based on deals and comparisons, yet existing platforms were dish or restaurant-led, forcing users to switch across apps. At the same time, brands like KFC and McDonald's faced aggregator monopolies, limiting access to user data, retargeting, and control over customer relationships, revealing a clear gap for a unified, high-frequency platform.",
         decision: 'We restructured the journey from coupon discovery at the home screen → decision-making → ordering into a unified, deal-first flow aligned with real user behavior. At the same time, we enabled direct integrations for brands to regain control over user relationships, allowing users to complete bookings natively within the platform. This approach scaled to 14M+ downloads across 6 countries within 2 years.',
         outcomes: [
           { num: '50+', label: 'vendor integrations' },
@@ -763,6 +772,7 @@ const COMPANIES = [
         artifacts: [
           { type: 'image', label: 'FoodBox UI', color: 'var(--color-background-tertiary)' },
           { type: 'image', label: 'inOne screenshots', color: 'var(--color-background-tertiary)' },
+          { type: 'youtube', url: 'https://www.youtube.com/watch?v=THdypgOUpU4', label: 'inOne Demo', color: '#e6f1fb' },
         ],
         businessImpact: [],
         keyFeatures: [
@@ -786,7 +796,7 @@ const COMPANIES = [
         id: 'onelabs-yana',
         name: 'Yana - A Virtual Assistant',
         businessTags: ['B2C', 'Consumer App'],
-        headline: 'a vernacular AI assistant designed as India’s answer to Siri and Alexa, going beyond conversational and in-built mobile actions to enable real-world transactions like groceries, cabs, and services through voice and native integrations, powered by in-house ML-based intent recognition and classification engines.',
+        headline: "a vernacular AI assistant designed as India's answer to Siri and Alexa, going beyond conversational and in-built mobile actions to enable real-world transactions like groceries, cabs, and services through voice and native integrations, powered by in-house ML-based intent recognition and classification engines.",
         tags: [
           { label: 'Personalisation', cls: 'tag-purple' },
           { label: 'Ad Tech', cls: 'tag-purple' },
@@ -794,7 +804,7 @@ const COMPANIES = [
         ],
         artifacts: [
           { type: 'image', label: 'App screenshots', color: 'var(--color-background-tertiary)' },
-          { type: 'video', label: 'App demo', color: '#e6f1fb', iconColor: 'var(--color-text-info)' },
+          { type: 'youtube', url: 'https://www.youtube.com/watch?v=ZSh16vP5rd0', label: 'Yana Demo', color: '#e6f1fb' },
         ],
         businessImpact: [],
         keyFeatures: [
@@ -1106,9 +1116,89 @@ function ProductSection({ label, children }) {
 
 // ── MEDIA THUMB ───────────────────────────────────────────────────────────────
 
+function getYouTubeId(url) {
+  if (!url) return null;
+  const match = url.match(/[?&]v=([^&#]+)/);
+  return match ? match[1] : null;
+}
+
 function MediaThumb({ item, company, onClick }) {
   const isVideo = item.type === 'video';
   const isPdf = item.type === 'pdf';
+  const isYoutube = item.type === 'youtube';
+  const isLink = item.type === 'link';
+  const ytId = isYoutube ? getYouTubeId(item.url) : null;
+
+  // External links open directly in new tab — no lightbox
+  if (isLink) {
+    return (
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={e => e.stopPropagation()}
+        style={{
+          width: 96, height: 60,
+          borderRadius: 'var(--border-radius-md)',
+          border: '0.5px solid var(--color-border-tertiary)',
+          background: item.color || 'var(--color-background-tertiary)',
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center',
+          gap: 3, cursor: 'pointer', position: 'relative',
+          overflow: 'hidden', flexShrink: 0,
+          textDecoration: 'none',
+          transition: 'var(--transition-colors)',
+        }}
+      >
+        <span style={{ fontSize: 16 }}>{item.icon || '🔗'}</span>
+        <span style={{
+          fontSize: 8, fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase',
+          color: 'var(--color-text-tertiary)', textAlign: 'center', padding: '0 4px',
+          lineHeight: 1.3,
+        }}>
+          {item.label}
+        </span>
+        <span style={{ fontSize: 8, color: 'var(--color-accent)', position: 'absolute', top: 4, right: 5 }}>↗</span>
+      </a>
+    );
+  }
+
+  // YouTube thumbnails open lightbox with embed
+  if (isYoutube) {
+    return (
+      <button
+        onClick={() => onClick({ ...item, company })}
+        style={{
+          width: 96, height: 60,
+          borderRadius: 'var(--border-radius-md)',
+          border: '0.5px solid var(--color-border-tertiary)',
+          background: ytId ? `url(https://img.youtube.com/vi/${ytId}/mqdefault.jpg) center/cover` : '#e6f1fb',
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center',
+          gap: 4, cursor: 'pointer', position: 'relative',
+          overflow: 'hidden', flexShrink: 0,
+          transition: 'var(--transition-colors)',
+        }}
+      >
+        <div style={{
+          position: 'absolute', top: '50%', left: '50%',
+          transform: 'translate(-50%,-50%)',
+          width: 24, height: 24, borderRadius: '50%',
+          background: 'rgba(255,0,0,0.85)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          <div style={{ width: 0, height: 0, borderStyle: 'solid', borderWidth: '5px 0 5px 10px', borderColor: 'transparent transparent transparent white', marginLeft: 2 }} />
+        </div>
+        <span style={{
+          fontSize: 8, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
+          color: '#fff', position: 'absolute', bottom: 4, left: 0, right: 0, textAlign: 'center',
+          textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+        }}>
+          {item.label}
+        </span>
+      </button>
+    );
+  }
 
   return (
     <button
@@ -1629,18 +1719,18 @@ export default function Work() {
                   transition={{ duration: 0.3, ease: easeStd }}
                   style={{ position: 'relative', marginBottom: 28 }}
                 >
-                  {/* Colored line segment to next company dot center */}
+                  {/* Colored line — current company's color, runs from bottom of this dot to top of next dot */}
                   {i < visible.length - 1 && (
                     <div
                       className="timeline-colored-line"
                       style={{
                         position: 'absolute',
                         left: -34,
-                        top: 14,
+                        top: 24,      /* bottom of the 20px dot (4 top + 20 height) */
                         width: 8,
-                        bottom: -42,
-                        background: visible[i + 1].brandColor || 'var(--color-border-tertiary)',
-                        opacity: 0.5,
+                        bottom: -32,  /* top of next dot (28px gap + 4px dot-top offset) */
+                        background: company.brandColor || 'var(--color-border-tertiary)',
+                        opacity: 0.55,
                         borderRadius: 4,
                         pointerEvents: 'none',
                         zIndex: 1,
@@ -1648,13 +1738,13 @@ export default function Work() {
                     />
                   )}
 
-                  {/* Timeline dot + year */}
-                  <div className="timeline-dot-wrapper" style={{ position: 'absolute', left: -50, top: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+                  {/* Timeline dot + year — above colored line */}
+                  <div className="timeline-dot-wrapper" style={{ position: 'absolute', left: -50, top: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, zIndex: 2 }}>
                     <div style={{
                       width: 20, height: 20, borderRadius: '50%',
                       border: '2px solid var(--color-background-primary)',
-                      background: company.active ? '#34c759' : 'var(--color-text-primary)',
-                      boxShadow: company.active ? '0 0 0 3px rgba(52,199,89,0.2)' : 'none',
+                      background: company.active ? '#34c759' : company.brandColor || 'var(--color-text-primary)',
+                      boxShadow: company.active ? '0 0 0 3px rgba(52,199,89,0.2)' : `0 0 0 3px ${company.brandColor ? company.brandColor + '33' : 'transparent'}`,
                       flexShrink: 0, transition: 'var(--transition-colors)',
                     }} />
                     <span style={{
