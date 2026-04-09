@@ -1370,7 +1370,7 @@ function CompanyCard({ company, onMediaClick }) {
         </div>
 
         {/* ══ RIGHT COLUMN — Case Studies + Business Impact (all cards) ══ */}
-        <div style={{ padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: 18, borderLeft: '0.5px solid var(--color-border-tertiary)', transition: 'var(--transition-colors)' }}>
+        <div className="company-right-col" style={{ padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: 18, borderLeft: '0.5px solid var(--color-border-tertiary)', transition: 'var(--transition-colors)' }}>
 
           {/* ── Case Studies carousel (all cards that have them) ── */}
           {company.caseStudies?.length > 0 && (() => {
@@ -1514,7 +1514,10 @@ function CompanyCard({ company, onMediaClick }) {
 
       <style>{`
         .company-grid { transition: var(--transition-colors); }
-        @media (max-width: 700px) { .company-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 700px) {
+          .company-grid { grid-template-columns: 1fr !important; }
+          .company-right-col { border-left: none !important; border-top: 0.5px solid var(--color-border-tertiary) !important; }
+        }
         .cs-scroll { scrollbar-width: none; }
         .cs-scroll::-webkit-scrollbar { display: none; }
         .rec-scroll { scrollbar-width: none; }
@@ -1574,6 +1577,7 @@ export default function Work() {
 
         {/* Filter pills */}
         <motion.div
+          className="work-filter-row"
           style={{ display: 'flex', gap: 8, marginBottom: 40, flexWrap: 'wrap' }}
           initial={fadeUp.initial}
           animate={inView ? fadeUp.animate : fadeUp.initial}
@@ -1604,16 +1608,18 @@ export default function Work() {
         </motion.div>
 
         {/* Timeline */}
-        <div style={{ position: 'relative', paddingLeft: 40 }}>
+        <div style={{ position: 'relative', paddingLeft: 40 }} className="timeline-outer">
+          {/* Background line — faint fallback for top/bottom ends */}
           <div style={{
             position: 'absolute', left: 6, top: 8, bottom: 8,
             width: 8, background: 'var(--color-border-tertiary)',
+            opacity: 0.25,
             transition: 'var(--transition-colors)',
           }} />
 
           <motion.div layout style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             <AnimatePresence mode="popLayout">
-              {visible.map(company => (
+              {visible.map((company, i) => (
                 <motion.div
                   key={company.id}
                   layout
@@ -1623,8 +1629,27 @@ export default function Work() {
                   transition={{ duration: 0.3, ease: easeStd }}
                   style={{ position: 'relative', marginBottom: 28 }}
                 >
+                  {/* Colored line segment to next company dot center */}
+                  {i < visible.length - 1 && (
+                    <div
+                      className="timeline-colored-line"
+                      style={{
+                        position: 'absolute',
+                        left: -34,
+                        top: 14,
+                        width: 8,
+                        bottom: -42,
+                        background: visible[i + 1].brandColor || 'var(--color-border-tertiary)',
+                        opacity: 0.5,
+                        borderRadius: 4,
+                        pointerEvents: 'none',
+                        zIndex: 1,
+                      }}
+                    />
+                  )}
+
                   {/* Timeline dot + year */}
-                  <div style={{ position: 'absolute', left: -50, top: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+                  <div className="timeline-dot-wrapper" style={{ position: 'absolute', left: -50, top: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
                     <div style={{
                       width: 20, height: 20, borderRadius: '50%',
                       border: '2px solid var(--color-background-primary)',
@@ -1657,6 +1682,16 @@ export default function Work() {
           .pd-grid { grid-template-columns: 1fr !important; }
           .outcome-row { grid-template-columns: repeat(2, 1fr) !important; }
           .impact-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .timeline-outer { padding-left: 32px !important; }
+          .timeline-dot-wrapper { left: -38px !important; }
+          .timeline-colored-line { left: -26px !important; }
+          .work-filter-row { gap: 6px !important; }
+          .work-filter-row button { padding: 6px 12px !important; font-size: 12px !important; }
+        }
+        @media (max-width: 480px) {
+          .timeline-outer { padding-left: 28px !important; }
+          .timeline-dot-wrapper { left: -34px !important; }
+          .timeline-colored-line { left: -22px !important; }
         }
       `}</style>
     </section>
