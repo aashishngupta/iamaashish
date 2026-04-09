@@ -1758,7 +1758,7 @@ export default function Work() {
                   )}
 
                   {/* Timeline dot + year — above colored line */}
-                  <div className="timeline-dot-wrapper" style={{ position: 'absolute', left: -40, top: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, zIndex: 2 }}>
+                  <div className="timeline-dot-wrapper" style={{ position: 'absolute', left: -50, top: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, zIndex: 2 }}>
                     <div style={{
                       width: 20, height: 20, borderRadius: '50%',
                       border: '2px solid var(--color-background-primary)',
@@ -1792,14 +1792,14 @@ export default function Work() {
           .outcome-row { grid-template-columns: repeat(2, 1fr) !important; }
           .impact-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .timeline-outer { padding-left: 32px !important; }
-          .timeline-dot-wrapper { left: -32px !important; }
+          .timeline-dot-wrapper { left: -38px !important; }
           .timeline-colored-line { left: -26px !important; }
           .work-filter-row { gap: 6px !important; }
           .work-filter-row button { padding: 6px 12px !important; font-size: 12px !important; }
         }
         @media (max-width: 480px) {
           .timeline-outer { padding-left: 28px !important; }
-          .timeline-dot-wrapper { left: -28px !important; }
+          .timeline-dot-wrapper { left: -34px !important; }
           .timeline-colored-line { left: -22px !important; }
         }
       `}</style>
