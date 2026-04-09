@@ -1263,7 +1263,7 @@ function MediaThumb({ item, company, onClick }) {
 // ── COMPANY CARD ──────────────────────────────────────────────────────────────
 
 function CompanyCard({ company, onMediaClick }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(company.active);
   const [csIdx, setCsIdx] = useState(0);
   const [narrativeExpanded, setNarrativeExpanded] = useState(false);
   const empColors = EMPLOYMENT_COLORS[company.employmentType] || EMPLOYMENT_COLORS['Full-time'];
@@ -1329,6 +1329,9 @@ function CompanyCard({ company, onMediaClick }) {
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
                 <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--color-text-secondary)', transition: 'var(--transition-colors)' }}>
                   {company.role}
+                </span>
+                <span className="year-mobile" style={{ fontSize: 11, fontWeight: 700, color: 'var(--color-text-tertiary)', transition: 'var(--transition-colors)' }}>
+                  {company.year}
                 </span>
                 <span style={{
                   fontSize: 11, fontWeight: 600,
@@ -1717,7 +1720,7 @@ export default function Work() {
         </motion.div>
 
         {/* Timeline */}
-        <div style={{ position: 'relative', paddingLeft: 40 }} className="timeline-outer">
+        <div style={{ position: 'relative', paddingLeft: 64 }} className="timeline-outer">
           {/* Background line — faint fallback for top/bottom ends */}
           <div style={{
             position: 'absolute', left: 6, top: 8, bottom: 8,
@@ -1738,16 +1741,16 @@ export default function Work() {
                   transition={{ duration: 0.3, ease: easeStd }}
                   style={{ position: 'relative', marginBottom: 28 }}
                 >
-                  {/* Colored line — current company's color, runs from bottom of this dot to top of next dot */}
+                  {/* Colored line — current company's color */}
                   {i < visible.length - 1 && (
                     <div
                       className="timeline-colored-line"
                       style={{
                         position: 'absolute',
-                        left: -34,
-                        top: 24,      /* bottom of the 20px dot (4 top + 20 height) */
+                        left: -58,    /* 6 - paddingLeft(64) = -58, same x as bg line */
+                        top: 24,
                         width: 8,
-                        bottom: -32,  /* top of next dot (28px gap + 4px dot-top offset) */
+                        bottom: -32,
                         background: company.brandColor || 'var(--color-border-tertiary)',
                         opacity: 0.55,
                         borderRadius: 4,
@@ -1757,22 +1760,35 @@ export default function Work() {
                     />
                   )}
 
-                  {/* Timeline dot + year — above colored line */}
-                  <div className="timeline-dot-wrapper" style={{ position: 'absolute', left: -50, top: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, zIndex: 2 }}>
+                  {/* Year label — vertical, left of line */}
+                  <div
+                    className="timeline-year-label"
+                    style={{
+                      position: 'absolute',
+                      left: -76,    /* right edge lands at ~x=4 from outer, 2px gap before line */
+                      top: 4,
+                      writingMode: 'vertical-lr',
+                      fontSize: 12,
+                      fontWeight: 700,
+                      color: 'var(--color-text-tertiary)',
+                      whiteSpace: 'nowrap',
+                      letterSpacing: '0.05em',
+                      zIndex: 2,
+                      transition: 'var(--transition-colors)',
+                    }}
+                  >
+                    {company.year}
+                  </div>
+
+                  {/* Dot — exactly centered on line: left=-paddingLeft, dot 20px, center=paddingLeft+left+10=10 */}
+                  <div className="timeline-dot-wrapper" style={{ position: 'absolute', left: -64, top: 4, zIndex: 2 }}>
                     <div style={{
                       width: 20, height: 20, borderRadius: '50%',
                       border: '2px solid var(--color-background-primary)',
                       background: company.active ? '#34c759' : company.brandColor || 'var(--color-text-primary)',
                       boxShadow: company.active ? '0 0 0 3px rgba(52,199,89,0.2)' : `0 0 0 3px ${company.brandColor ? company.brandColor + '33' : 'transparent'}`,
-                      flexShrink: 0, transition: 'var(--transition-colors)',
-                    }} />
-                    <span style={{
-                      fontSize: 10, color: 'var(--color-text-tertiary)',
-                      whiteSpace: 'nowrap', fontWeight: 500, marginTop: 3,
                       transition: 'var(--transition-colors)',
-                    }}>
-                      {company.year}
-                    </span>
+                    }} />
                   </div>
 
                   <CompanyCard company={company} onMediaClick={setLightboxItem} />
@@ -1786,21 +1802,24 @@ export default function Work() {
       <Lightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
 
       <style>{`
+        .year-mobile { display: none; }
         @media (max-width: 768px) {
           .feat-grid { grid-template-columns: 1fr !important; }
           .pd-grid { grid-template-columns: 1fr !important; }
           .outcome-row { grid-template-columns: repeat(2, 1fr) !important; }
           .impact-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .timeline-outer { padding-left: 32px !important; }
-          .timeline-dot-wrapper { left: -38px !important; }
-          .timeline-colored-line { left: -26px !important; }
+          .timeline-outer { padding-left: 40px !important; }
+          .timeline-dot-wrapper { left: -40px !important; }
+          .timeline-colored-line { left: -34px !important; }
+          .timeline-year-label { display: none !important; }
+          .year-mobile { display: inline !important; }
           .work-filter-row { gap: 6px !important; }
           .work-filter-row button { padding: 6px 12px !important; font-size: 12px !important; }
         }
         @media (max-width: 480px) {
-          .timeline-outer { padding-left: 28px !important; }
-          .timeline-dot-wrapper { left: -34px !important; }
-          .timeline-colored-line { left: -22px !important; }
+          .timeline-outer { padding-left: 32px !important; }
+          .timeline-dot-wrapper { left: -32px !important; }
+          .timeline-colored-line { left: -26px !important; }
         }
       `}</style>
     </section>
