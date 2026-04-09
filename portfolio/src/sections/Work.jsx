@@ -864,6 +864,24 @@ const COMPANIES = [
     products: [
     ],
   },
+  {
+    id: 'pec',
+    categories: ['fulltime'],
+    year: '2009–13',
+    active: false,
+    employmentType: 'Education',
+    name: 'PEC University of Technology, Chandigarh',
+    logo: null,
+    brandColor: '#0d47a1',
+    website: 'https://pec.ac.in',
+    role: 'B.E. Information Technology',
+    description: 'Bachelors of Engineering in Information Technology from PEC Chandigarh (2009–2013). Where the journey began — built the foundation in systems, algorithms, and software engineering.',
+    roleNarrative: null,
+    caseStudies: [],
+    ratings: [],
+    businessImpact: [],
+    products: [],
+  },
 ];
 
 // ── FILTER CONFIG ─────────────────────────────────────────────────────────────
@@ -883,6 +901,7 @@ const EMPLOYMENT_COLORS = {
   'Part-time': { bg: 'rgba(255,149,0,0.08)', color: '#b36200', border: 'rgba(255,149,0,0.2)' },
   'Passion Project': { bg: 'rgba(52,199,89,0.08)', color: '#1a7f37', border: 'rgba(52,199,89,0.2)' },
   'Consulting': { bg: 'rgba(142,142,147,0.1)', color: 'var(--color-text-tertiary)', border: 'var(--color-border-tertiary)' },
+  'Education': { bg: 'rgba(13,71,161,0.08)', color: '#1565c0', border: 'rgba(13,71,161,0.2)' },
 };
 
 // ── PRODUCT CARD ──────────────────────────────────────────────────────────────
@@ -1244,7 +1263,7 @@ function MediaThumb({ item, company, onClick }) {
 // ── COMPANY CARD ──────────────────────────────────────────────────────────────
 
 function CompanyCard({ company, onMediaClick }) {
-  const [open, setOpen] = useState(company.active);
+  const [open, setOpen] = useState(true);
   const [csIdx, setCsIdx] = useState(0);
   const [narrativeExpanded, setNarrativeExpanded] = useState(false);
   const empColors = EMPLOYMENT_COLORS[company.employmentType] || EMPLOYMENT_COLORS['Full-time'];
@@ -1571,7 +1590,7 @@ function CompanyCard({ company, onMediaClick }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: easeStd }}
+            transition={{ duration: 0 }}
             style={{ overflow: 'hidden' }}
           >
             <div style={{
@@ -1621,7 +1640,7 @@ function CompanyCard({ company, onMediaClick }) {
 
 export default function Work() {
   const [ref, inView] = useInView();
-  const [activeFilters, setActiveFilters] = useState(['fulltime', 'enterprise', 'consumer', 'building', 'consulting']);
+  const [activeFilters, setActiveFilters] = useState(['fulltime']);
   const [lightboxItem, setLightboxItem] = useState(null);
 
   function toggleFilter(key) {
@@ -1739,7 +1758,7 @@ export default function Work() {
                   )}
 
                   {/* Timeline dot + year — above colored line */}
-                  <div className="timeline-dot-wrapper" style={{ position: 'absolute', left: -50, top: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, zIndex: 2 }}>
+                  <div className="timeline-dot-wrapper" style={{ position: 'absolute', left: -40, top: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, zIndex: 2 }}>
                     <div style={{
                       width: 20, height: 20, borderRadius: '50%',
                       border: '2px solid var(--color-background-primary)',
@@ -1773,14 +1792,14 @@ export default function Work() {
           .outcome-row { grid-template-columns: repeat(2, 1fr) !important; }
           .impact-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .timeline-outer { padding-left: 32px !important; }
-          .timeline-dot-wrapper { left: -38px !important; }
+          .timeline-dot-wrapper { left: -32px !important; }
           .timeline-colored-line { left: -26px !important; }
           .work-filter-row { gap: 6px !important; }
           .work-filter-row button { padding: 6px 12px !important; font-size: 12px !important; }
         }
         @media (max-width: 480px) {
           .timeline-outer { padding-left: 28px !important; }
-          .timeline-dot-wrapper { left: -34px !important; }
+          .timeline-dot-wrapper { left: -28px !important; }
           .timeline-colored-line { left: -22px !important; }
         }
       `}</style>
