@@ -214,9 +214,9 @@ export default function Hero() {
               {/* H1 */}
               <motion.h1
                 {...fadeUp(0.15)}
+                className="hero-h1"
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(46px, 5.8vw, 80px)',
                   fontWeight: 800,
                   letterSpacing: '-0.038em',
                   lineHeight: 1.04,
@@ -431,6 +431,13 @@ export default function Hero() {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
         }
+        /* Hero h1 — fixed sizes per breakpoint, no viewport scaling */
+        .hero-h1 { font-size: 44px; }
+        @media (max-width: 1280px) { .hero-h1 { font-size: 40px; } }
+        @media (max-width: 1024px) { .hero-h1 { font-size: 36px; } }
+        @media (max-width: 860px) { .hero-h1 { font-size: 32px; } }
+        @media (max-width: 480px) { .hero-h1 { font-size: 28px; } }
+
         @media (max-width: 860px) {
           .hero-grid { grid-template-columns: 1fr !important; }
           .hero-grid > div:last-child { max-width: 360px; margin: 0 auto; }
