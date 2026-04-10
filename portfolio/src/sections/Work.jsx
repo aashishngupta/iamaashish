@@ -1045,7 +1045,7 @@ function ProductCard({ product, companyName, onMediaClick, brandColor, productIn
                   { key: 'problem',   label: 'Problem',         has: !!product.problem },
                   { key: 'decision',  label: 'Decision',        has: !!product.decision },
                   { key: 'features',  label: 'Key Features',    has: product.keyFeatures?.length > 0 },
-                  { key: 'impact',    label: 'Business Impact', has: product.businessImpact?.length > 0 },
+                  { key: 'impact',    label: 'Business Impact', has: (product.businessImpact?.length > 0) || (product.outcomes?.length > 0) },
                   { key: 'learnings', label: 'My Learnings',    has: !!product.learnings },
                 ].filter(t => t.has);
 
@@ -1105,38 +1105,32 @@ function ProductCard({ product, companyName, onMediaClick, brandColor, productIn
                           })}
                         </div>
                       )}
-                      {currentTab === 'impact' && (
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }} className="impact-grid">
-                          {product.businessImpact.map((m, i) => {
-                            const isUp = m.direction !== 'down';
-                            return (
-                              <div key={i} style={{ background: `${bc}08`, border: `0.5px solid ${bc}25`, borderRadius: 'var(--border-radius-md)', padding: '10px 12px', transition: 'var(--transition-colors)' }}>
-                                <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 3 }}>
-                                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 700, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', lineHeight: 1, transition: 'var(--transition-colors)' }}>{m.num}</div>
-                                  <span style={{ fontSize: 12, fontWeight: 700, color: isUp ? '#34c759' : '#ff3b30', lineHeight: 1 }}>{isUp ? '↑' : '↓'}</span>
+                      {currentTab === 'impact' && (() => {
+                        const impactItems = product.businessImpact?.length > 0
+                          ? product.businessImpact
+                          : (product.outcomes || []).map(o => ({ num: o.num, label: o.label, direction: 'up' }));
+                        return (
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }} className="impact-grid">
+                            {impactItems.map((m, i) => {
+                              const isUp = m.direction !== 'down';
+                              return (
+                                <div key={i} style={{ background: `${bc}08`, border: `0.5px solid ${bc}25`, borderRadius: 'var(--border-radius-md)', padding: '10px 12px' }}>
+                                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 3 }}>
+                                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 700, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', lineHeight: 1 }}>{m.num}</div>
+                                    {m.direction !== undefined && <span style={{ fontSize: 12, fontWeight: 700, color: isUp ? '#34c759' : '#ff3b30', lineHeight: 1 }}>{isUp ? '↑' : '↓'}</span>}
+                                  </div>
+                                  <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', lineHeight: 1.4 }}>{m.label}</div>
                                 </div>
-                                <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', lineHeight: 1.4, transition: 'var(--transition-colors)' }}>{m.label}</div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
+                              );
+                            })}
+                          </div>
+                        );
+                      })()}
                     </div>
                   </>
                 );
               })()}
 
-              {/* OUTCOMES strip */}
-              {product.outcomes?.length > 0 && (
-                <div style={{ display: 'grid', gridTemplateColumns: `repeat(${product.outcomes.length}, 1fr)`, gap: 2, padding: '0 16px 14px', borderTop: `0.5px solid ${bc}25` }} className="outcome-row">
-                  {product.outcomes.map((o, i) => (
-                    <div key={i} style={{ background: 'var(--color-background-tertiary)', padding: '9px 8px', textAlign: 'center', borderRadius: i === 0 ? '6px 0 0 6px' : i === product.outcomes.length - 1 ? '0 6px 6px 0' : 0, marginTop: 14, transition: 'var(--transition-colors)' }}>
-                      <div style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)' }}>{o.num}</div>
-                      <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)', marginTop: 2, lineHeight: 1.3, transition: 'var(--transition-colors)' }}>{o.label}</div>
-                    </div>
-                  ))}
-                </div>
-              )}
 
             </div>
           </motion.div>
@@ -1503,6 +1497,29 @@ function CompanyCard({ company, onMediaClick }) {
 
         {/* ══ RIGHT COLUMN — Case Studies + Business Impact (all cards) ══ */}
         {hasRightCol && <div className="company-right-col" style={{ padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: 18, borderLeft: `0.5px solid ${bc}50`, transition: 'var(--transition-colors)', minWidth: 0, overflow: 'hidden', alignSelf: 'start' }}>
+
+          {/* ── Company Business Impact ── */}
+          {allImpact.length > 0 && (
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
+                Business Impact
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
+                {allImpact.map((m, i) => {
+                  const isUp = m.direction !== 'down';
+                  return (
+                    <div key={i} style={{ padding: '9px 10px 8px', borderRadius: 'var(--border-radius-md)', background: `${bc}08`, border: `0.5px solid ${bc}28` }}>
+                      <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, marginBottom: 2 }}>
+                        <span style={{ fontSize: 9, fontWeight: 800, color: isUp ? '#1a9e42' : '#d93025' }}>{isUp ? '↑' : '↓'}</span>
+                        <span style={{ fontSize: 15, fontWeight: 800, fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)', letterSpacing: '-0.03em', lineHeight: 1 }}>{m.num}</span>
+                      </div>
+                      <div style={{ fontSize: 11, lineHeight: 1.3, color: 'var(--color-text-secondary)' }}>{m.label}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {/* ── Case Studies carousel (all cards that have them) ── */}
           {company.caseStudies?.length > 0 && (() => {
