@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import ContactModal from '../components/ContactModal';
 
 const GREETING = "Hi, I'm Aashish Gupta. Welcome to my corner of the internet 👋";
 
@@ -45,6 +46,7 @@ export default function Hero() {
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
   const { displayed, done } = useTypewriter(GREETING, 36, 400);
+  const [contactOpen, setContactOpen] = useState(false);
 
   return (
     <section
@@ -219,10 +221,11 @@ export default function Hero() {
                 >
                   See my work →
                 </button>
-                <a className="btn btn-outline" href="mailto:92.aashish@gmail.com"
-                  style={{ boxShadow: '0 2px 10px rgba(80,60,130,0.08)' }}>
+                <button className="btn btn-outline"
+                  style={{ boxShadow: '0 2px 10px rgba(80,60,130,0.08)' }}
+                  onClick={() => setContactOpen(true)}>
                   Get in touch
-                </a>
+                </button>
               </motion.div>
 
               {/* Stat strip */}
@@ -351,6 +354,8 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
+
+      <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
 
       {/* Scroll indicator */}
       <div style={{ position: 'absolute', bottom: 40, left: '50%', transform: 'translateX(-50%)' }}>

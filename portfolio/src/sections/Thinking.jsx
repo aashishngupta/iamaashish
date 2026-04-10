@@ -57,15 +57,15 @@ function useMediumArticles(username) {
   useEffect(() => {
     if (!username) { setLoading(false); return; }
     const rssUrl = `https://medium.com/feed/@${username}`;
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=6`;
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
     fetch(apiUrl)
       .then(r => r.json())
       .then(data => {
         if (data.status === 'ok' && data.items?.length) {
-          setArticles(data.items.map(item => {
+          setArticles(data.items.slice(0, 6).map(item => {
             // Extract first <img> from content as cover if thumbnail missing
-            const imgMatch = item.content?.match(/<img[^>]+src=["']([^"']+)["']/);
-            const cover = item.thumbnail || (imgMatch ? imgMatch[1] : null);
+            const imgMatch = (item.description || item.content || '').match(/<img[^>]+src=["']([^"']+)["']/);
+            const cover = (item.thumbnail && item.thumbnail !== '') ? item.thumbnail : (imgMatch ? imgMatch[1] : null);
             const excerpt = item.description
               ? item.description.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().slice(0, 140) + '…'
               : '';

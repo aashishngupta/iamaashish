@@ -212,14 +212,6 @@ const COMPANIES = [
       },
       {
         source: 'SoftwareReviews',
-        logo: '/software-reviews-logo.jpeg',
-        badge: 'Champion',
-        label: 'in Enterprise Search Data Quadrant Report: 2024, 2025, 2026',
-        href: 'https://www.searchunify.com/press-release/searchunify-named-champion-in-softwarereviews-enterprise-search-data-quadrant-for-the-third-consecutive-year/',
-        sourceColor: '#2d7d3a',
-      },
-      {
-        source: 'SoftwareReviews',
         badge: 'Gold Medalist',
         label: 'in Enterprise Search Data Quadrant Report: 2024, 2025',
         href: 'https://www.searchunify.com/press-release/searchunify-named-a-gold-medalist-in-2025-enterprise-search-data-quadrant-report-by-info-tech-research-groups-softwarereviews/',
