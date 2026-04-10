@@ -15,14 +15,14 @@ const COMPANIES = [
     categories: ['enterprise', 'building', 'fulltime'],
     year: '2025–',
     active: true,
-    employmentType: 'Passion Project',
+    employmentType: 'Part-time',
     name: 'pmGPT',
     logo: null,
     brandColor: '#7c3aed',
     website: 'https://pmgpt.ai',
-    role: 'Founder',
+    role: 'Passion Project',
     description: 'An AI-native operating system for product teams, orchestrating the entire lifecycle from research and PRDs to sprint execution through agentic workflows. It leverages integrations, RAG, and MCPs to turn fragmented tools and data into a unified, intelligent execution layer.',
-    roleNarrative: 'My role here is building this end to end as a passion project, initially to explore vibe coding with Claude Code on real product problems I was facing as a product leader. What started as an experiment has evolved into a well-structured system, where I independently own everything from product design and agent definition to system architecture and hands-on development.',
+    roleNarrative: 'My role here is building this end to end as a passion project, initially to explore vibe coding with Claude Code on real product problems I was facing as a product leader. What started as an experiment has evolved into a well-structured system, where I independently own everything from product design and agent definition to system architecture and hands-on development. I\'ve made deliberate architectural decisions — including the six-agent structure, three-tier LLM routing, and a privacy-first governance layer — to ensure the system is enterprise-ready from day one, not just functional. Building across the full stack has sharpened my instincts for where AI-native product design diverges fundamentally from traditional software thinking, particularly around context management, agentic state persistence, and user trust in autonomous systems.',
     caseStudies: [],
     ratings: [],
     products: [
@@ -54,6 +54,8 @@ const COMPANIES = [
         ratings: [],
         problem: '~2M PM practitioners spend 60%+ of their time on coordination and documentation rather than strategic product thinking.',
         decision: 'Six-agent architecture with three-tier LLM routing, a governance/anonymization layer, RAG with RBAC, and a connector plugin system. Privacy-first from day one — designed for enterprise procurement.',
+        learnings: 'Vibe coding with Claude Code is genuinely productive for complex system architecture. Maintaining context across long agentic sessions is the real engineering challenge. AI-native product design requires rethinking every user interaction from first principles — existing UX patterns do not map cleanly.',
+        lastStatus: 'Active · Building and iterating solo. Seeking early design partners and pilot customers.',
         outcomes: [
           { num: '~2M', label: 'target PM practitioners' },
           { num: '6', label: 'specialist agents' },
@@ -76,7 +78,7 @@ const COMPANIES = [
     website: 'https://phot.ai',
     role: 'Product Consultant',
     description: 'A GenAI-powered creative automation platform that enables brands to generate, test, and scale high-performing marketing and catalog creatives through intelligent workflows, combining product data, market signals, and AI-driven design.',
-    roleNarrative: 'My role here was to drive product thinking and execution across the platform, shaping it from a creative tool into a performance-driven system. I worked on translating real customer and market problems into scalable workflows, while also actively contributing to sales through demos, client conversations, and positioning the product to drive adoption and business outcomes.',
+    roleNarrative: 'My role here was to drive product thinking and execution across the platform, shaping it from a creative tool into a performance-driven system. I worked on translating real customer and market problems into scalable workflows, while also actively contributing to sales through demos, client conversations, and positioning the product to drive adoption and business outcomes. A key contribution was reframing the product narrative — shifting the conversation from creative quality to measurable performance outcomes like ROAS and CPA, which proved decisive in enterprise deals. I also helped define the roadmap for AngleLab and ListingLab, working directly with customers to validate use cases and move the platform toward a full performance marketing intelligence layer.',
     caseStudies: [{
         title: 'GreenGainz',
         logo: '/automation-anywhere.jpg',
@@ -125,6 +127,8 @@ const COMPANIES = [
         ratings: [],
         problem: 'Creators and D2C brands needed affordable, fast, high-quality AI-powered visual content tools without requiring design expertise or large production budgets.',
         decision: 'Built and scaled a GenAI-powered SaaS platform with 30+ AI tools covering instant content creation and product visual generation, purpose-built for creators and D2C brands.',
+        learnings: 'Positioning a creative AI tool as a performance marketing engine — not just a design tool — dramatically changes the buyer conversation. ROI metrics like ROAS and CPA beat aesthetic quality claims in every sales conversation. The D2C segment moves fast; iteration speed matters more than feature depth early on.',
+        lastStatus: 'Consulting engagement ended · Product continues to scale at Phot.AI with a growing customer base.',
         outcomes: [
           { num: '~4x', label: 'increase in ROAS' },
           { num: '80%', label: 'faster GTM' },
@@ -154,7 +158,7 @@ const COMPANIES = [
     ],
     role: 'Senior Product Manger (Interim Head of Product)',
     description: 'Gartner-recognized AI platform powering agentic workflows, autonomous agents, co-pilots, enterprise search for support and sales automation across Fortune 200 enterprises.',
-    roleNarrative: 'My role at SearchUnify was officially Senior Product Manager, but in practice I operated as the product lead for the company\'s AI transformation, reporting directly to the CTO. I was responsible for driving the journey from enterprise search to 360° customer support automation and further into the Agentic AI Suite, while also shaping how agentic capabilities could extend into other business functions. My scope covered product strategy, conceptualization, execution, cross-functional alignment, customer and sales conversations, leadership communication, and team management — effectively functioning at a Head of Product level for the AI portfolio.',
+    roleNarrative: 'My role at SearchUnify was officially Senior Product Manager, but in practice I operated as the product lead for the company\'s AI transformation, reporting directly to the CTO. I was responsible for driving the journey from enterprise search to 360° customer support automation and further into the Agentic AI Suite, while also shaping how agentic capabilities could extend into other business functions. My scope covered product strategy, conceptualization, execution, cross-functional alignment, customer and sales conversations, leadership communication, and team management — effectively functioning at a Head of Product level for the AI portfolio. I partnered closely with the executive team on analyst relations, contributing to Forrester, IDC, and G2 evaluations, and helped shape the go-to-market positioning that underpinned the company\'s 32% ARR growth and five consecutive years of G2 Leadership recognition.',
     caseStudies: [
       {
         title: 'Automation Anywhere',
@@ -262,6 +266,8 @@ const COMPANIES = [
         ],
         problem: 'SearchUnify needed to move beyond search into full agentic workflow automation to compete in an accelerating enterprise AI market.',
         decision: 'No-code Agent Builder with modular workflow orchestration, LLM routing layer, MCP connector libraries, in-house multimodal RAG — shipped with an 8-PM team over 18 months.',
+        learnings: 'Enterprise AI adoption is more about change management than technology capability. No-code interfaces unlock adoption but require extensive onboarding and guardrails to prevent misuse. Agentic workflows need clear fallback strategies and human-in-the-loop checkpoints to maintain trust at scale.',
+        lastStatus: 'Active · In production across Fortune 200 enterprises. Feature development continues under the current team.',
         outcomes: [],
       },
       {
@@ -293,6 +299,8 @@ const COMPANIES = [
         ],
         problem: 'Traditional rule-based bots were rigid, hard to scale, and failed to deliver personalized, context-aware experiences, limiting self-service effectiveness and increasing dependency on human agents.',
         decision: 'Moved to build SUVA as a multimodal, LLM-powered, context-driven AI assistant capable of understanding user intent, personalizing responses, and executing agentic actions to automate end-to-end support journeys.',
+        learnings: 'LLM-powered assistants fail silently in production — hallucinations in enterprise contexts destroy trust fast. Temperature control and contextual guardrails became as important as the core capability. Measuring self-service success required new metrics beyond deflection rate.',
+        lastStatus: 'Active · Deployed and scaling across enterprise clients globally as a flagship self-service product.',
         outcomes: [
           { num: '85%', label: 'reduction in support Operational cost' },
           { num: '55%', label: 'reduction in IT Ticket Volume' },
@@ -331,6 +339,8 @@ const COMPANIES = [
         ],
         problem: 'Support agents struggled with fragmented context across systems and spent significant time handling complex cases, leading to slower resolutions, inconsistent responses, and higher dependency on experienced agents.',
         decision: 'AI-powered co-pilot that unifies context, assists in resolving complex cases with intelligent recommendations, and auto-generates responses to enable faster and more accurate resolutions.',
+        learnings: 'Co-pilot tools are harder to sell than autonomous agents because the ROI is less immediately visible. Quantifying speed improvements for support agents — moving from anecdotal to measurable outcomes — was the core adoption challenge.',
+        lastStatus: 'Active · Deployed across enterprise support teams, embedded within the broader Agentic Suite.',
         outcomes: [
           { num: '92%', label: 'descrease in FRT' },
           { num: '77%', label: 'increase in total closed case volume' },
@@ -352,7 +362,7 @@ const COMPANIES = [
     website: 'https://reverieinc.com',
     role: 'Senior Product Manager (Interim Head of Voice Products)',
     description: "An AI-first language technology platform offering speech-to-text, text-to-speech, translation, and conversational AI solutions to build multilingual, voice-enabled applications at scale across Indic languages.",
-    roleNarrative: 'My role at Reverie was officially Senior Product Manager, but I operated and held the market designation of Head of Voice Products, reporting to the CTO. I was brought in to productize in-house AI technologies, leading the journey from market research and problem discovery to defining the vision, product strategy, and a 2-year roadmap, and executing the platform from scratch. I was entrusted with managing a 5-member product team along with a 39-member cross-functional team across engineering, data science, and design, focused on building a no-code/low-code multilingual voice AI platform. I also partnered closely with sales, customer success, and marketing to drive adoption and market positioning.',
+    roleNarrative: 'My role at Reverie was officially Senior Product Manager, but I operated and held the market designation of Head of Voice Products, reporting to the CTO. I was brought in to productize in-house AI technologies, leading the journey from market research and problem discovery to defining the vision, product strategy, and a 2-year roadmap, and executing the platform from scratch. I was entrusted with managing a 5-member product team along with a 39-member cross-functional team across engineering, data science, and design, focused on building a no-code/low-code multilingual voice AI platform. I also partnered closely with sales, customer success, and marketing to drive adoption and market positioning. One of the hardest challenges was navigating the technical constraints of Indic language AI — where data scarcity, phonetic variation, and dialect complexity required building in-house data pipelines and fine-tuning strategies that no off-the-shelf solution addressed. Winning Reliance Jio as the flagship customer, driving 10M+ DAU, and contributing to the eventual acquisition validated the platform\'s market fit and the depth of the moat we had built.',
     caseStudies: [
       { title: 'Reliance Jio', result: '10M+ DAU on voice-enabled customer support flows in Hindi, Tamil, and 8 other Indic languages.', href: 'https://reverieinc.com' },
     ],
@@ -405,6 +415,8 @@ const COMPANIES = [
         ratings: [],
         problem: "Enterprises and governments struggled to build scalable multilingual voice AI solutions for Indic languages due to fragmented tools and high engineering effort. Additionally, as a business, it was difficult to monetize standalone technologies since delivering end-to-end solutions required reliance on external vendors, leading to slower execution and significant revenue sharing.",
         decision: 'Decided to productize in-house language AI technologies into a unified, no-code/low-code SaaS platform that delivers end-to-end multilingual, voice-first conversational AI solutions, eliminating vendor dependency and enabling better control over customer experience and revenue.',
+        learnings: 'Building a platform vs. a service requires a completely different GTM motion. No-code works only when the problem space is well-defined — Indic language complexity meant domain-specific guardrails were essential even for no-code users. Eliminating vendor dependency unlocked both margins and delivery speed.',
+        lastStatus: 'Active · Reverie acquired by Reliance Jio. Cuberoot continues as a flagship voice AI product within the Jio ecosystem.',
         outcomes: [
           { num: '77%', label: 'increase in customer reach' },
           { num: '80%', label: 'leads qualified within minutes' },
@@ -421,14 +433,14 @@ const COMPANIES = [
     categories: ['enterprise', 'fulltime'],
     year: '2022',
     active: false,
-    employmentType: 'Full-time',
+    employmentType: 'Consulting',
     name: 'OfficeBanao (Backed by Lightspeed VC)',
    logo: '/officebanao-logo.png',
     brandColor: '#1565c0',
     website: '#',
     role: 'Founding Member',
     description: 'A tech-enabled SaaS platform that streamlines the end-to-end office creation lifecycle, from design and procurement to execution, bringing transparency, efficiency, and scalability to a traditionally fragmented interiors ecosystem.',
-    roleNarrative:'My role here started as a founding member and Product Head, working closely with CXOs as the second hire to build the product portfolio from the ground up. I led everything from defining vision, strategy, and roadmap to setting up the team, tools, and execution frameworks, driving end-to-end product development. This journey took the product from inception to early maturity, including onboarding successful customers and contributing to the initial fundraise. I later transitioned into a part-time consulting role to take the product to completion while moving to Reverie to deepen my focus on AI.',
+    roleNarrative: 'My role here started as a founding member and Product Head, working closely with CXOs as the second hire to build the product portfolio from the ground up. I led everything from defining vision, strategy, and roadmap to setting up the team, tools, and execution frameworks, driving end-to-end product development. This journey took the product from inception to early maturity, including onboarding successful customers and contributing to the initial fundraise. I later transitioned into a part-time consulting role to take the product to completion while moving to Reverie to deepen my focus on AI. Early on, I had to navigate the operational complexity of a marketplace business — coordinating between enterprise clients and a fragmented vendor ecosystem — which gave me a deep understanding of how supply-side quality becomes the primary product variable in marketplace models, and how operationally intensive businesses need tight product-ops feedback loops from day one.',
     caseStudies: [],
     ratings: [],
     businessImpact: [
@@ -461,6 +473,8 @@ const COMPANIES = [
         ratings: [],
         problem: 'Enterprises had no single platform for end-to-end office design, procurement, and renovation — leading to fragmented vendor management and high coordination overhead.',
         decision: 'Built a 4-epic product portfolio from ideation to launch, defining roadmap, strategy, and go-to-market execution that achieved $2.2M in first-year sales and secured $6M+ in Lightspeed Ventures funding.',
+        learnings: 'B2B marketplace products live or die by supply-side quality. Signing up vendors is easy — ensuring consistent delivery quality is the hard part. Operationally intensive businesses need tight product-ops feedback loops from day one, not after scale.',
+        lastStatus: 'Active · Secured $6M+ Lightspeed funding post my transition. Product continues to operate with a growing vendor network.',
         outcomes: [
           { num: '$2.2M', label: 'first-year sales' },
           { num: '$6M+', label: 'Lightspeed funding' },
@@ -482,7 +496,7 @@ const COMPANIES = [
     website: '#',
     role: 'Interim Head of Product',
     description: 'An AI robotics and IoT startup focused on building intelligent systems for home automation and healthcare, leveraging machine learning, robotics, and computer vision, backed by 1,500+ Indiegogo backers and US investors.',
-    roleNarrative:'My role here was to contribute through weekend engagements, working closely with the founder to guide product direction across AI robotics and IoT use cases. I mentored and reviewed PMs, helped unblock critical challenges, and supported both product and engineering teams in aligning on vision, execution, and real-world deployments, while gaining hands-on exposure to robotics systems.',
+    roleNarrative: 'My role here was to contribute through weekend engagements, working closely with the founder to guide product direction across AI robotics and IoT use cases. I mentored and reviewed PMs, helped unblock critical challenges, and supported both product and engineering teams in aligning on vision, execution, and real-world deployments, while gaining hands-on exposure to robotics systems. A key contribution was the Sentinel surveillance product — I drove the market research and competitive analysis that shaped its initial positioning, defined technical product specs for the IoT device layer, and coordinated cross-functional execution across hardware and software teams. I also guided the AI module strategy for Aido across healthcare and elderly care, helping prioritize use cases where behavioral adoption barriers were lower than technical complexity — a discipline that proved invaluable in subsequent AI product work.',
     caseStudies: [],
     ratings: [],
     businessImpact: [
@@ -515,6 +529,8 @@ const COMPANIES = [
         ratings: [],
         problem: 'Smart home products lacked cohesive product strategy and user-centric design, resulting in poor adoption and below-target sales performance.',
         decision: 'Strategized product innovations achieving a 3.6x sales increase. Introduced Sentinel for home surveillance through market research and competitive analysis, documented user stories and specifications, and coordinated cross-functional project execution.',
+        learnings: 'Hardware-software product strategy is fundamentally different — the feedback loop is longer, iteration timelines are constrained by supply chains, and failure costs are much higher than software. Product specs must accommodate hardware limitations upfront, not as afterthoughts.',
+        lastStatus: 'Active · Deployed globally. inGen Dynamics secured $150M GEM investment post engagement. Sentinel product line continues.',
         outcomes: [
           { num: '3.6x', label: 'sales increase' },
         ],
@@ -546,6 +562,8 @@ const COMPANIES = [
         ratings: [],
         problem: 'AI robotics products for home and healthcare needed focused product strategy and well-defined AI module architecture to drive adoption and market positioning.',
         decision: 'Guided AI modules for Aido across healthcare, elderly care, home surveillance, and kids\' care. Defined optimal IoT architecture, collaborated with hardware team, and monitored metrics for performance optimization — driving a 1.6x sales uplift.',
+        learnings: 'AI robotics at the intersection of home and healthcare requires deep user empathy — the gap between technically possible and user-comfortable is massive. Adoption barriers were behavioral, not technical. Clear use-case prioritization mattered more than breadth of features.',
+        lastStatus: 'Active · inGen Dynamics secured $150M GEM investment. Aido continues development with an expanded healthcare focus.',
         outcomes: [
           { num: '1.6x', label: 'sales uplift' },
         ],
@@ -559,13 +577,13 @@ const COMPANIES = [
     year: '2017–22',
     active: false,
     employmentType: 'Full-time',
-    brandColor: '#f57c00',
+    brandColor: '#0B0D27',
     name: 'Discovr.AI (Backed by ONGC, Micromax & Banking HNIs)',
     logo: '/discovr-ai-logo.jpeg',
     website: '#',
     role: 'Co-Founder, Chief Product Officer',
     description: 'A no-code AI platform that empowers enterprises to build and scale intelligent systems across computer vision, conversational AI, OCR, and predictive use cases using pre-built ML models and fine-tuned algorithms, enabling real-time insights, automated decision-making, and faster time to value. It operates as the B2B vertical of Red Ginger Technologies, backed by Micromax, ONGC, and prominent HNIs.',
-    roleNarrative:'As Co-founder and Chief Product Officer, my role was centered on product thinking and development, defining GTM, ICPs, and prioritization while building AI systems grounded in real-world use cases. We partnered with leading enterprises and government bodies including Reliance Jio, Tata Steel, ONGC, Indian Army, Cairn vedanata, Texas instruments, NITI Aayog, Telangana Government and more, running multiple POCs, MVPs, and live deployments to acquire data, validate problems, and refine ML models. Over ~3 years, this iterative approach helped us evolve from project-led execution to a mature, scalable SaaS platform.',
+    roleNarrative: 'As Co-founder and Chief Product Officer, my role was centered on product thinking and development, defining GTM, ICPs, and prioritization while building AI systems grounded in real-world use cases. We partnered with leading enterprises and government bodies including Reliance Jio, Tata Steel, ONGC, Indian Army, Cairn Vedanta, Texas Instruments, NITI Aayog, Telangana Government and more, running multiple POCs, MVPs, and live deployments to acquire data, validate problems, and refine ML models. Over ~3 years, this iterative approach helped us evolve from project-led execution to a mature, scalable SaaS platform. One of the hardest challenges was building enterprise trust in AI — particularly for government and defence clients where on-prem deployment, air-gapped environments, and explainability were hard requirements, not optional features. Managing investor relationships with Micromax and ONGC while simultaneously shipping product and closing deployments gave me a deep understanding of how to balance strategic stakeholder management with execution velocity.',
     caseStudies: [
       { title: 'ONGC', result: 'Automated pipeline defect detection — reduced manual inspection cost by 40%.', href: '#' },
       { title: 'Indian Army', result: 'Air-gapped on-prem deployment for perimeter surveillance at two installations.', href: '#' },
@@ -601,6 +619,8 @@ const COMPANIES = [
         ratings: [],
         problem: 'Large enterprises needed Computer Vision capabilities but had no ML talent in-house. Custom CV projects took 6–18 months and cost ₹50L+.',
         decision: 'Built a low-code CV platform with annotation tools, one-click training, and on-prem deployment. White-labeled for consulting firms who bundled it into client engagements.',
+        learnings: 'Enterprise CV buyers needed extensive POC hand-holding. White-labeling through consulting firms (PwC, EY, Tech Mahindra) was the right distribution strategy — trust by proxy. Direct enterprise sales cycles ran 12-18 months; indirect was 3-6. CV models trained in lab conditions consistently underperform in field due to lighting, angle, and occlusion variance.',
+        lastStatus: 'Evolved · Integrated into the full Discovr.AI SaaS platform. Multiple enterprise and government deployments remain active.',
         outcomes: [
           { num: '30+', label: 'enterprise clients' },
           { num: '65%', label: 'renewal rate' },
@@ -634,6 +654,8 @@ const COMPANIES = [
         ratings: [],
         problem: 'Enterprises had large text datasets and needed ML insights but no data science teams. Off-the-shelf NLP APIs had no customization and failed on domain-specific language.',
         decision: 'Extended the Discovr platform to NLP with a no-code training interface. Built pre-trained templates for the 5 most common enterprise NLP tasks and a Predict API for BI tool integration.',
+        learnings: 'Domain-specific language — legal, finance, engineering — breaks generic NLP models at production scale. Pre-training on industry corpora was non-negotiable for accuracy above 80%. Government clients required on-prem deployment as a hard constraint, not a nice-to-have.',
+        lastStatus: 'Evolved · Integrated into Discovr.AI platform. Government and enterprise NLP deployments continue to run.',
         outcomes: [
           { num: '60%', label: 'faster doc processing' },
           { num: '50K+', label: 'submissions/month automated' },
@@ -721,11 +743,11 @@ const COMPANIES = [
     employmentType: 'Full-time',
     name: 'OneLabs by Red Ginger',
     logo: '/onelabs-logo.jpeg',
-    brandColor: '#e53935',
+    brandColor: '#F3672B',
     website: '#',
     role: 'Co-Founder, Chief Product & Technology Officer',
     description: "A consumer internet product company building and launching mobile and aggregator super apps across ecommerce and concierge services, scaling to 20M+ downloads across 6+ countries. As the B2C vertical of Red Ginger Technologies, backed by Micromax, ONGC, and prominent HNIs, it is driven by the ambition to become the Bytedance of India.",
-    roleNarrative: "As Co-founder and Chief Product & Technology Officer, my role was to own the end-to-end journey of building and scaling the company's product ecosystem, driving product vision, technology architecture, and growth strategy. I led everything from identifying opportunities and defining what to build, to executing across product, engineering, and growth, ensuring scalable systems, rapid experimentation, and sustainable monetization.",
+    roleNarrative: "As Co-founder and Chief Product & Technology Officer, my role was to own the end-to-end journey of building and scaling the company's product ecosystem, driving product vision, technology architecture, and growth strategy. I led everything from identifying opportunities and defining what to build, to executing across product, engineering, and growth, ensuring scalable systems, rapid experimentation, and sustainable monetization. The defining phase was the series of pivots from Yana to inOne to FoodBox — each driven by real user behavior data rather than top-down strategy, and each sharpening our instincts for what distribution fit actually means. Scaling FoodBox to 14M+ downloads across 6 countries taught me that telecom bundling as a channel mattered as much as product-market fit, and managing a full portfolio while maintaining investor confidence with Micromax and ONGC-backed funding sharpened my discipline around prioritization, resource allocation, and knowing when to double down versus when to sunset.",
     caseStudies: [],
     ratings: [],
     products: [
@@ -753,6 +775,8 @@ const COMPANIES = [
         ratings: [],
         problem: "While experimenting with GTM for inOne, we launched category-specific apps and observed that food had significantly higher frequency of use. We also saw that ~86% of users were price-sensitive and made decisions based on deals and comparisons, yet existing platforms were dish or restaurant-led, forcing users to switch across apps. At the same time, brands like KFC and McDonald's faced aggregator monopolies, limiting access to user data, retargeting, and control over customer relationships, revealing a clear gap for a unified, high-frequency platform.",
         decision: 'We restructured the journey from coupon discovery at the home screen → decision-making → ordering into a unified, deal-first flow aligned with real user behavior. At the same time, we enabled direct integrations for brands to regain control over user relationships, allowing users to complete bookings natively within the platform. This approach scaled to 14M+ downloads across 6 countries within 2 years.',
+        learnings: 'Deal-first discovery beat restaurant-first discovery because users optimized for price, not brand loyalty. Telecom bundling reduced CAC by 60% — distribution channel fit matters as much as product-market fit. First-mover advantage in Tier-2/3 cities was a bigger moat than we initially estimated.',
+        lastStatus: 'Sunset · Scaled to 14M+ downloads across 6 countries. Resources pivoted to B2B AI (Discovr.AI) to pursue a larger enterprise opportunity.',
         outcomes: [
           { num: '50+', label: 'vendor integrations' },
           { num: '22%', label: 'organic cross-install rate' },
@@ -785,6 +809,8 @@ const COMPANIES = [
         ratings: [],
         problem: "As we evolved from Yana, we observed that Indian users still relied heavily on tap-based interactions, leading to fragmented journeys where users switched across multiple apps for comparison and transactions, along with mobile space constraints. At the same time, businesses struggled with building and managing apps and relied heavily on app stores for distribution, creating a clear gap for a unified platform.",
         decision: 'We built a backend-driven super app with native integrations to unify user journeys, along with a platform layer that converts websites into app-like experiences for easy distribution. The system enabled dynamic, hyper-personalized experiences, reduced app size to ~7MB, and scaled to support 50+ services without requiring multiple app downloads.',
+        learnings: 'Super apps require ecosystem lock-in that single-feature apps do not. The 7MB app size constraint forced architectural elegance that proved to be a competitive moat in low-bandwidth markets. Backend-driven UI was ahead of its time but created server dependency that needed more resilience investment.',
+        lastStatus: 'Sunset · 20M+ lifetime downloads across 6 countries. Core architectural patterns directly influenced the Discovr.AI platform design.',
         outcomes: [
           { num: '50+', label: 'vendor integrations' },
           { num: '22%', label: 'organic cross-install rate' },
@@ -817,6 +843,8 @@ const COMPANIES = [
         ratings: [],
         problem: "Voice assistants like Siri and Alexa saw low real-world adoption because they focused on commands, not outcomes. With increasing internet penetration and the rise of digital services in India, there was a clear gap and a strong opportunity to shape new user behavior through a vernacular assistant that could execute tasks and book services on the go, not just respond.",
         decision: 'We decided to move beyond conversational assistants and build a system that could execute real-world tasks. Initial validation was done through manual operations over WhatsApp with structured SOPs, but as demand grew, scalability became a challenge. This pushed us to automate the experience using in-house ML models for intent recognition and native integrations for end-to-end task execution.',
+        learnings: 'Manual WhatsApp-based validation before automation was the right call — it gave us real intent data before over-engineering. The 2G compatibility constraint shaped every architecture decision and turned out to be a competitive moat in rural markets. Voice-first India was a real thesis, just 5 years early.',
+        lastStatus: 'Evolved · Sunset as a standalone product. Core voice and intent architecture evolved into inOne and directly informed Cuberoot voice AI design at Reverie.',
         outcomes: [
           { num: '1M+', label: 'users' },
         ],
@@ -835,7 +863,7 @@ const COMPANIES = [
     website: '#',
     role: 'Senior Software Consultant',
     description: 'Fintech-focused global IT offshore firm building risk management and portfolio analytics tools for leading financial institutions including PIMCO.',
-    roleNarrative: 'My role here was a mix of consulting, DevOps, and hands-on development, working on risk management systems for global financial clients. I built and supported data pipelines ingesting and processing data from institutions like JP Morgan and Barclays, ensuring timely, output-driven workflows for portfolio managers at PIMCO across US and Asia market cycles.',
+    roleNarrative: 'My role here was a mix of consulting, DevOps, and hands-on development, working on risk management systems for global financial clients. I built and supported data pipelines ingesting and processing data from institutions like JP Morgan and Barclays, ensuring timely, output-driven workflows for portfolio managers at PIMCO across US and Asia market cycles. This role gave me deep exposure to financial data infrastructure — including the precision requirements of real-time risk systems, data integrity protocols in high-stakes environments, and the engineering discipline required when the margin for error is effectively zero. It was here that I first understood how systems thinking and rigorous validation separate reliable infrastructure from fragile point solutions — a principle I\'ve carried into every product and engineering decision since.',
     caseStudies: [
       ],
     ratings: [],
@@ -857,7 +885,7 @@ const COMPANIES = [
     website: '#',
     role: 'Software Development Engineer',
     description: 'A unified social media monitoring and sentiment analysis platform that aggregates conversations across 60+ sources, enabling brands like Pepsi Global, Mumbai Police to track, analyze, and manage engagement from a single interface.',
-    roleNarrative: 'My role here was as a Software Development Engineer, where I started working under guidance and quickly ramped up to owning key parts of the product. Within 6 months, I was leading 3 modules, building new source connectors, managing server access, implementing custom features, resolving critical bugs, and working directly with clients to deliver solutions.',
+    roleNarrative: 'My role here was as a Software Development Engineer, where I started working under guidance and quickly ramped up to owning key parts of the product. Within 6 months, I was leading 3 modules, building new source connectors, managing server access, implementing custom features, resolving critical bugs, and working directly with clients to deliver solutions. Working with enterprise clients like Pepsi Global and Mumbai Police exposed me early to the realities of B2B product delivery — where client-specific requirements, SLA pressure, and real-time data reliability are first-class concerns. This experience also introduced me to the challenges of aggregating social signals at scale, including data normalization across heterogeneous sources, sentiment accuracy under domain-specific language, and the product complexity of building intuitive dashboards over deeply noisy data.',
     caseStudies: [],
     ratings: [],
     businessImpact: [],
@@ -906,13 +934,15 @@ const EMPLOYMENT_COLORS = {
 
 // ── PRODUCT CARD ──────────────────────────────────────────────────────────────
 
-function ProductCard({ product, companyName, onMediaClick }) {
+function ProductCard({ product, companyName, onMediaClick, brandColor, productIndex }) {
   const [open, setOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('problem');
+  const bc = brandColor || '#7c3aed';
 
   return (
     <div style={{
       background: 'var(--color-background-primary)',
-      border: '0.5px solid var(--color-border-tertiary)',
+      border: `0.5px solid ${bc}30`,
       borderRadius: 'var(--border-radius-lg)',
       overflow: 'hidden',
       transition: 'var(--transition-colors)',
@@ -938,10 +968,13 @@ function ProductCard({ product, companyName, onMediaClick }) {
         <div style={{ flex: 1 }}>
           {/* Product name + business tags inline */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 5 }}>
+            {productIndex && (
+              <span style={{ fontSize: 12, fontWeight: 700, color: bc, fontFamily: 'var(--font-display)', opacity: 0.7, flexShrink: 0 }}>{productIndex}.</span>
+            )}
             {product.website ? (
               <a href={product.website} target="_blank" rel="noopener noreferrer"
                 onClick={e => e.stopPropagation()}
-                style={{ fontSize: 16, fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', textDecoration: 'none', borderBottom: '2px solid var(--color-accent)', paddingBottom: 1, transition: 'var(--transition-colors)' }}>
+                style={{ fontSize: 16, fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', textDecoration: 'none', transition: 'var(--transition-colors)' }}>
                 {product.name}
               </a>
             ) : (
@@ -995,120 +1028,111 @@ function ProductCard({ product, companyName, onMediaClick }) {
             transition={{ duration: 0.32, ease: easeStd }}
             style={{ overflow: 'hidden' }}
           >
-            <div style={{
-              borderTop: '0.5px solid var(--color-border-tertiary)',
-              //background: 'var(--color-background-secondary)',
-              transition: 'var(--transition-colors)',
-            }}>
+            <div style={{ borderTop: `0.5px solid ${bc}30` }}>
 
-              {/* PROBLEM + DECISION — first */}
-              <ProductSection label={null}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="pd-grid">
-                  <div>
-                    <div className="section-label" style={{ marginBottom: 6 }}>The Problem</div>
-                    <p style={{ fontSize: 13, lineHeight: 1.65, transition: 'var(--transition-colors)' }}>
-                      {product.problem}
-                    </p>
-                  </div>
-                  <div>
-                    <div className="section-label" style={{ marginBottom: 6 }}>The Decision</div>
-                    <p style={{ fontSize: 13, lineHeight: 1.65, transition: 'var(--transition-colors)' }}>
-                      {product.decision}
-                    </p>
-                  </div>
-                </div>
-              </ProductSection>
-
-              {/* ARTIFACTS */}
+              {/* ARTIFACTS — always above tabs */}
               {product.artifacts.length > 0 && (
-                <ProductSection label="Artifacts">
-                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                    {product.artifacts.map((a, i) => (
-                      <MediaThumb key={i} item={a} company={companyName} onClick={onMediaClick} />
-                    ))}
-                  </div>
-                </ProductSection>
+                <div style={{ padding: '12px 16px', borderBottom: `0.5px solid ${bc}25`, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  {product.artifacts.map((a, i) => (
+                    <MediaThumb key={i} item={a} company={companyName} onClick={onMediaClick} />
+                  ))}
+                </div>
               )}
 
-              {/* KEY FEATURES — title only (before " — ") + green check */}
-              {product.keyFeatures.length > 0 && (
-                <ProductSection label="Key Features">
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px 24px' }} className="feat-grid">
-                    {product.keyFeatures.map((f, i) => {
-                      const title = f.includes(' — ') ? f.split(' — ')[0] : f;
-                      return (
-                        <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
-                          <span style={{ color: '#34c759', fontSize: 13, flexShrink: 0, marginTop: 1, fontWeight: 600 }}>✓</span>
-                          <span style={{ fontSize: 13, lineHeight: 1.55, transition: 'var(--transition-colors)' }}>{title}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </ProductSection>
-              )}
+              {/* TAB BAR */}
+              {(() => {
+                const tabs = [
+                  { key: 'problem',   label: 'Problem',         has: !!product.problem },
+                  { key: 'decision',  label: 'Decision',        has: !!product.decision },
+                  { key: 'features',  label: 'Key Features',    has: product.keyFeatures?.length > 0 },
+                  { key: 'impact',    label: 'Business Impact', has: product.businessImpact?.length > 0 },
+                  { key: 'learnings', label: 'My Learnings',    has: !!product.learnings },
+                ].filter(t => t.has);
 
-              {/* BUSINESS IMPACT — with directional arrows */}
-              {product.businessImpact && product.businessImpact.length > 0 && (
-                <ProductSection label="Business Impact">
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }} className="impact-grid">
-                    {product.businessImpact.map((m, i) => {
-                      const isUp = m.direction !== 'down';
-                      return (
-                        <div key={i} style={{
-                          background: 'var(--color-background-primary)',
-                          border: '0.5px solid var(--color-border-tertiary)',
-                          borderRadius: 'var(--border-radius-md)',
-                          padding: '12px 14px',
-                          transition: 'var(--transition-colors)',
-                        }}>
-                          <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 4 }}>
-                            <div style={{
-                              fontFamily: 'var(--font-display)',
-                              fontSize: 22,
-                              fontWeight: 700,
-                              color: 'var(--color-text-primary)',
-                              letterSpacing: '-0.02em',
-                              lineHeight: 1,
-                              transition: 'var(--transition-colors)',
-                            }}>
-                              {m.num}
-                            </div>
-                            <span style={{
-                              fontSize: 13,
-                              fontWeight: 700,
-                              color: isUp ? '#34c759' : '#ff3b30',
-                              lineHeight: 1,
-                            }}>
-                              {isUp ? '↑' : '↓'}
-                            </span>
-                          </div>
-                          <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', lineHeight: 1.4, transition: 'var(--transition-colors)' }}>
-                            {m.label}
-                          </div>
+                if (tabs.length === 0) return null;
+
+                const currentTab = tabs.find(t => t.key === activeTab) ? activeTab : tabs[0].key;
+
+                return (
+                  <>
+                    {/* Tab strip */}
+                    <div style={{ display: 'flex', borderBottom: `0.5px solid ${bc}25`, overflowX: 'auto' }} className="cs-scroll">
+                      {tabs.map(t => {
+                        const isActive = currentTab === t.key;
+                        return (
+                          <button
+                            key={t.key}
+                            onClick={e => { e.stopPropagation(); setActiveTab(t.key); }}
+                            style={{
+                              padding: '9px 16px',
+                              fontSize: 12, fontWeight: isActive ? 700 : 500,
+                              color: isActive ? bc : 'var(--color-text-tertiary)',
+                              background: isActive ? `${bc}08` : 'none',
+                              border: 'none', cursor: 'pointer',
+                              borderBottom: isActive ? `2px solid ${bc}` : '2px solid transparent',
+                              marginBottom: -1,
+                              whiteSpace: 'nowrap',
+                              transition: 'color 150ms ease, border-color 150ms ease, background 150ms ease',
+                            }}
+                          >
+                            {t.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Tab panel */}
+                    <div style={{ padding: '14px 16px', minHeight: 72 }}>
+                      {currentTab === 'problem' && (
+                        <p style={{ fontSize: 13, lineHeight: 1.65, transition: 'var(--transition-colors)' }}>{product.problem}</p>
+                      )}
+                      {currentTab === 'decision' && (
+                        <p style={{ fontSize: 13, lineHeight: 1.65, transition: 'var(--transition-colors)' }}>{product.decision}</p>
+                      )}
+                      {currentTab === 'learnings' && (
+                        <p style={{ fontSize: 13, lineHeight: 1.65, transition: 'var(--transition-colors)' }}>{product.learnings}</p>
+                      )}
+                      {currentTab === 'features' && (
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px 24px' }} className="feat-grid">
+                          {product.keyFeatures.map((f, i) => {
+                            const title = f.includes(' — ') ? f.split(' — ')[0] : f;
+                            return (
+                              <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                                <span style={{ color: bc, fontSize: 13, flexShrink: 0, marginTop: 1, fontWeight: 600 }}>✓</span>
+                                <span style={{ fontSize: 13, lineHeight: 1.55, transition: 'var(--transition-colors)' }}>{title}</span>
+                              </div>
+                            );
+                          })}
                         </div>
-                      );
-                    })}
-                  </div>
-                </ProductSection>
-              )}
+                      )}
+                      {currentTab === 'impact' && (
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }} className="impact-grid">
+                          {product.businessImpact.map((m, i) => {
+                            const isUp = m.direction !== 'down';
+                            return (
+                              <div key={i} style={{ background: `${bc}08`, border: `0.5px solid ${bc}25`, borderRadius: 'var(--border-radius-md)', padding: '10px 12px', transition: 'var(--transition-colors)' }}>
+                                <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 3 }}>
+                                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 700, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', lineHeight: 1, transition: 'var(--transition-colors)' }}>{m.num}</div>
+                                  <span style={{ fontSize: 12, fontWeight: 700, color: isUp ? '#34c759' : '#ff3b30', lineHeight: 1 }}>{isUp ? '↑' : '↓'}</span>
+                                </div>
+                                <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', lineHeight: 1.4, transition: 'var(--transition-colors)' }}>{m.label}</div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  </>
+                );
+              })()}
 
               {/* OUTCOMES strip */}
-              {product.outcomes.length > 0 && (
-                <div style={{ display: 'grid', gridTemplateColumns: `repeat(${product.outcomes.length}, 1fr)`, gap: 2, padding: '0 16px 16px' }} className="outcome-row">
+              {product.outcomes?.length > 0 && (
+                <div style={{ display: 'grid', gridTemplateColumns: `repeat(${product.outcomes.length}, 1fr)`, gap: 2, padding: '0 16px 14px', borderTop: `0.5px solid ${bc}25` }} className="outcome-row">
                   {product.outcomes.map((o, i) => (
-                    <div key={i} style={{
-                      background: 'var(--color-background-primary)',
-                      padding: '10px 8px',
-                      textAlign: 'center',
-                      borderRadius: i === 0 ? '6px 0 0 6px' : i === product.outcomes.length - 1 ? '0 6px 6px 0' : 0,
-                      transition: 'var(--transition-colors)',
-                    }}>
-                      <div style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 700, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)' }}>
-                        {o.num}
-                      </div>
-                      <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)', marginTop: 2, lineHeight: 1.3, transition: 'var(--transition-colors)' }}>
-                        {o.label}
-                      </div>
+                    <div key={i} style={{ background: 'var(--color-background-tertiary)', padding: '9px 8px', textAlign: 'center', borderRadius: i === 0 ? '6px 0 0 6px' : i === product.outcomes.length - 1 ? '0 6px 6px 0' : 0, marginTop: 14, transition: 'var(--transition-colors)' }}>
+                      <div style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)' }}>{o.num}</div>
+                      <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)', marginTop: 2, lineHeight: 1.3, transition: 'var(--transition-colors)' }}>{o.label}</div>
                     </div>
                   ))}
                 </div>
@@ -1122,16 +1146,6 @@ function ProductCard({ product, companyName, onMediaClick }) {
   );
 }
 
-// ── PRODUCT SECTION WRAPPER ───────────────────────────────────────────────────
-
-function ProductSection({ label, children }) {
-  return (
-    <div style={{ padding: '14px 16px', borderBottom: '0.5px solid var(--color-border-tertiary)', transition: 'var(--transition-colors)' }}>
-      {label && <div className="section-label" style={{ marginBottom: 10 }}>{label}</div>}
-      {children}
-    </div>
-  );
-}
 
 // ── MEDIA THUMB ───────────────────────────────────────────────────────────────
 
@@ -1266,10 +1280,13 @@ function CompanyCard({ company, onMediaClick }) {
   const [open, setOpen] = useState(company.active);
   const [csIdx, setCsIdx] = useState(0);
   const [narrativeExpanded, setNarrativeExpanded] = useState(false);
+  const [descExpanded, setDescExpanded] = useState(false);
   const empColors = EMPLOYMENT_COLORS[company.employmentType] || EMPLOYMENT_COLORS['Full-time'];
-  const allImpact = company.businessImpact?.length
-    ? company.businessImpact
-    : company.products.flatMap(p => p.businessImpact || []);
+  const allImpact = company.businessImpact?.length ? company.businessImpact : [];
+  const hasRightCol = (company.caseStudies?.length > 0) || (allImpact.length > 0);
+
+  // Brand color with opacity for border/shadow — convert hex to rgba
+  const bc = company.brandColor || '#7c3aed';
 
   return (
     <div style={{
@@ -1277,14 +1294,16 @@ function CompanyCard({ company, onMediaClick }) {
       borderRadius: 'var(--border-radius-lg)',
       overflow: 'hidden',
       transition: 'var(--transition-colors)',
+      border: `0.5px solid ${bc}2e`,
+      boxShadow: `0 2px 14px ${bc}12, 0 1px 4px rgba(0,0,0,0.04)`,
     }}>
 
       {/* ── CARD BODY: 2-column grid ── */}
-      <div style={{ display: 'grid', gridTemplateColumns: company.featuredLayout ? '1fr 290px' : '1fr 260px' }} className="company-grid">
+      <div style={{ display: 'grid', gridTemplateColumns: hasRightCol ? (company.featuredLayout ? '1fr 290px' : '1fr 260px') : '1fr' }} className="company-grid">
 
         {/* ══ LEFT COLUMN ══ */}
         <div
-          style={{ padding: '20px 22px', borderRight: '0.5px solid var(--color-border-tertiary)', cursor: 'pointer', transition: 'var(--transition-colors)' }}
+          style={{ padding: '20px 22px', borderRight: hasRightCol ? '0.5px solid var(--color-border-tertiary)' : 'none', cursor: 'pointer', transition: 'var(--transition-colors)' }}
           onClick={() => setOpen(o => !o)}
         >
           {/* Section 1: Logo + header row + description */}
@@ -1317,7 +1336,9 @@ function CompanyCard({ company, onMediaClick }) {
                 {company.website && company.website !== '#' ? (
                   <a href={company.website} target="_blank" rel="noopener noreferrer"
                     onClick={e => e.stopPropagation()}
-                    style={{ fontSize: 20, fontWeight: 800, fontFamily: 'var(--font-display)', color: company.brandColor || 'var(--color-text-primary)', letterSpacing: '-0.02em', textDecoration: 'none', borderBottom: `2px solid ${company.brandColor || 'var(--color-accent)'}`, paddingBottom: 1, transition: 'color 300ms ease, border-color 300ms ease' }}>
+                    style={{ fontSize: 20, fontWeight: 800, fontFamily: 'var(--font-display)', color: company.brandColor || 'var(--color-text-primary)', letterSpacing: '-0.02em', textDecoration: 'none', transition: 'color 300ms ease, opacity 300ms ease' }}
+                    onMouseEnter={e => e.currentTarget.style.opacity = '0.78'}
+                    onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
                     {company.name}
                   </a>
                 ) : (
@@ -1331,7 +1352,7 @@ function CompanyCard({ company, onMediaClick }) {
                   {company.role}
                 </span>
                 <span className="year-mobile" style={{ fontSize: 11, fontWeight: 700, color: 'var(--color-text-tertiary)', transition: 'var(--transition-colors)' }}>
-                  {company.year}
+                  {company.active ? company.year.replace(/–\s*$/, '') + ' – Present' : company.year}
                 </span>
                 <span style={{
                   fontSize: 11, fontWeight: 600,
@@ -1347,36 +1368,46 @@ function CompanyCard({ company, onMediaClick }) {
               </div>
 
               {/* Company description */}
-              <p style={{ fontSize: 15, fontFamily: 'var(--font-sans)', color: 'var(--color-text-primary)', lineHeight: 1.7, fontWeight: 400, transition: 'var(--transition-colors)' }}>
-                {company.description}
-              </p>
+              <div style={{ position: 'relative' }}>
+                <p style={{
+                  fontSize: 15, fontFamily: 'var(--font-sans)', color: 'var(--color-text-primary)', lineHeight: 1.7, fontWeight: 400, transition: 'var(--transition-colors)',
+                  ...(!descExpanded ? { display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', paddingRight: 74 } : {}),
+                }}>
+                  {company.description}
+                </p>
+                {!descExpanded ? (
+                  <button onClick={e => { e.stopPropagation(); setDescExpanded(true); }} style={{ position: 'absolute', bottom: 2, right: 0, fontSize: 11, fontWeight: 600, color: 'var(--color-accent)', background: 'linear-gradient(to right, transparent, var(--color-background-primary) 35%)', border: 'none', paddingLeft: 18, paddingRight: 0, paddingTop: 2, paddingBottom: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>
+                    Read more ↓
+                  </button>
+                ) : (
+                  <button onClick={e => { e.stopPropagation(); setDescExpanded(false); }} style={{ marginTop: 4, display: 'block', fontSize: 11, fontWeight: 600, color: 'var(--color-accent)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>
+                    Show less ↑
+                  </button>
+                )}
+              </div>
             </div>
           </div>
 
-          {/* Divider */}
-          <div style={{ height: '0.5px', background: 'var(--color-border-tertiary)', margin: '14px 0', transition: 'var(--transition-colors)' }} />
-
-          {/* Role narrative — with ellipsis + More for featured layout */}
+          {/* Role narrative — 3-line clamp with inline Read more for all companies */}
           {company.roleNarrative && (
-            <div>
+          <div style={{ height: '0.5px', background: `${bc}40`, margin: '14px 0' }} />
+          )}
+          {company.roleNarrative && (
+            <div style={{ position: 'relative' }}>
               <p style={{
                 fontSize: 15, fontFamily: 'var(--font-sans)', color: 'var(--color-text-primary)', lineHeight: 1.75, fontStyle: 'italic',
                 transition: 'var(--transition-colors)',
-                ...(company.featuredLayout && !narrativeExpanded ? {
-                  display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden',
-                } : {}),
+                ...(!narrativeExpanded ? { display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', paddingRight: 74 } : {}),
               }}>
                 {company.roleNarrative}
               </p>
-              {company.featuredLayout && (
-                <button
-                  onClick={e => { e.stopPropagation(); setNarrativeExpanded(v => !v); }}
-                  style={{
-                    marginTop: 6, fontSize: 11, fontWeight: 600, color: 'var(--color-accent)',
-                    background: 'none', border: 'none', padding: 0, cursor: 'pointer', transition: 'var(--transition-colors)',
-                  }}
-                >
-                  {narrativeExpanded ? 'Show less ↑' : 'Read more ↓'}
+              {!narrativeExpanded ? (
+                <button onClick={e => { e.stopPropagation(); setNarrativeExpanded(true); }} style={{ position: 'absolute', bottom: 2, right: 0, fontSize: 11, fontWeight: 600, color: 'var(--color-accent)', background: 'linear-gradient(to right, transparent, var(--color-background-primary) 35%)', border: 'none', paddingLeft: 18, paddingRight: 0, paddingTop: 2, paddingBottom: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>
+                  Read more ↓
+                </button>
+              ) : (
+                <button onClick={e => { e.stopPropagation(); setNarrativeExpanded(false); }} style={{ marginTop: 6, display: 'block', fontSize: 11, fontWeight: 600, color: 'var(--color-accent)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>
+                  Show less ↑
                 </button>
               )}
             </div>
@@ -1385,7 +1416,7 @@ function CompanyCard({ company, onMediaClick }) {
           {/* NON-FEATURED LAYOUT: Products in left column */}
           {!company.featuredLayout && company.products?.length > 0 && (
             <>
-              <div style={{ height: '0.5px', background: 'var(--color-border-tertiary)', margin: '14px 0', transition: 'var(--transition-colors)' }} />
+              <div style={{ height: '0.5px', background: `${bc}40`, margin: '14px 0' }} />
               <div>
                 <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 10, transition: 'var(--transition-colors)' }}>
                   Products
@@ -1411,7 +1442,7 @@ function CompanyCard({ company, onMediaClick }) {
           {/* FEATURED LAYOUT: Products + Recognitions in left column */}
           {company.featuredLayout && (
             <>
-              <div style={{ height: '0.5px', background: 'var(--color-border-tertiary)', margin: '14px 0', transition: 'var(--transition-colors)' }} />
+              <div style={{ height: '0.5px', background: `${bc}40`, margin: '14px 0' }} />
 
               {/* Products */}
               <div>
@@ -1434,44 +1465,33 @@ function CompanyCard({ company, onMediaClick }) {
                 </div>
               </div>
 
-              {/* Recognitions — horizontal cards like SearchUnify website */}
+              {/* Recognitions — compact pills: logo/source + badge + arrow */}
               {company.ratings?.length > 0 && (
                 <div style={{ marginTop: 8 }}>
                   <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8, transition: 'var(--transition-colors)' }}>
                     Recognitions
                   </div>
-                  <div style={{ display: 'flex', gap: 8, overflowX: 'auto', paddingBottom: 4 }} className="rec-scroll">
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                     {company.ratings.map((r, i) => (
                       <a key={i} href={r.href} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}
                         style={{
-                          flexShrink: 0,
-                          width: 148,
-                          display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-                          padding: '12px 12px 10px',
-                          borderRadius: 'var(--border-radius-md)',
+                          display: 'inline-flex', alignItems: 'center', gap: 7,
+                          padding: '5px 10px 5px 8px',
+                          borderRadius: 'var(--border-radius-pill)',
                           background: 'var(--color-background-primary)',
                           border: '0.5px solid var(--color-border-tertiary)',
-                          boxShadow: 'var(--shadow-xs)',
                           textDecoration: 'none',
-                          gap: 10,
-                          transition: 'box-shadow 150ms ease, transform 150ms ease, var(--transition-colors)',
+                          transition: 'box-shadow 150ms ease, var(--transition-colors)',
                         }}
-                        onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-sm)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                        onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-xs)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                        onMouseEnter={e => e.currentTarget.style.boxShadow = 'var(--shadow-sm)'}
+                        onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}
                       >
-                        {/* Top: badge + label */}
-                        <div>
-                          <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '0.02em', textTransform: 'uppercase', marginBottom: 4, lineHeight: 1.2, transition: 'var(--transition-colors)' }}>{r.badge}</div>
-                          <div style={{ fontSize: 11, color: 'var(--color-text-secondary)', lineHeight: 1.45, transition: 'var(--transition-colors)' }}>{r.label}</div>
-                        </div>
-                        {/* Bottom: logo */}
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                          {r.logo
-                            ? <img src={r.logo} alt={r.source} onError={e => { e.currentTarget.style.display = 'none'; }} style={{ height: 22, maxWidth: 90, objectFit: 'contain', objectPosition: 'left center', display: 'block' }} />
-                            : <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: r.sourceColor || 'var(--color-accent)' }}>{r.source}</span>
-                          }
-                          <span style={{ fontSize: 10, color: 'var(--color-text-tertiary)' }}>↗</span>
-                        </div>
+                        {r.logo
+                          ? <img src={r.logo} alt={r.source} onError={e => { e.currentTarget.style.display = 'none'; }} style={{ height: 16, maxWidth: 56, objectFit: 'contain', objectPosition: 'left center', display: 'block', flexShrink: 0 }} />
+                          : <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.06em', textTransform: 'uppercase', color: r.sourceColor || 'var(--color-accent)', flexShrink: 0 }}>{r.source}</span>
+                        }
+                        <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)', whiteSpace: 'nowrap' }}>{r.badge}</span>
+                        <span style={{ fontSize: 10, color: 'var(--color-text-tertiary)' }}>↗</span>
                       </a>
                     ))}
                   </div>
@@ -1482,7 +1502,7 @@ function CompanyCard({ company, onMediaClick }) {
         </div>
 
         {/* ══ RIGHT COLUMN — Case Studies + Business Impact (all cards) ══ */}
-        <div className="company-right-col" style={{ padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: 18, borderLeft: '0.5px solid var(--color-border-tertiary)', transition: 'var(--transition-colors)' }}>
+        {hasRightCol && <div className="company-right-col" style={{ padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: 18, borderLeft: '0.5px solid var(--color-border-tertiary)', transition: 'var(--transition-colors)', minWidth: 0, overflow: 'hidden', alignSelf: 'start' }}>
 
           {/* ── Case Studies carousel (all cards that have them) ── */}
           {company.caseStudies?.length > 0 && (() => {
@@ -1493,7 +1513,7 @@ function CompanyCard({ company, onMediaClick }) {
                 <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8, transition: 'var(--transition-colors)' }}>
                   Case Studies
                 </div>
-                <div style={{ background: 'var(--color-background-secondary)', borderRadius: 'var(--border-radius-md)', padding: '12px 14px', transition: 'var(--transition-colors)' }}>
+                <div style={{ background: 'var(--color-background-secondary)', borderRadius: 'var(--border-radius-md)', padding: '12px 14px', transition: 'var(--transition-colors)', overflow: 'hidden', minWidth: 0 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
                     {cs.logo
                       ? <img src={cs.logo} alt="" title={cs.title} onError={e => { e.currentTarget.style.display = 'none'; }} style={{ height: 20, maxWidth: 130, objectFit: 'contain', objectPosition: 'left center', display: 'block' }} />
@@ -1508,7 +1528,7 @@ function CompanyCard({ company, onMediaClick }) {
                       </div>
                     )}
                   </div>
-                  <p style={{ fontSize: 13, lineHeight: 1.55, marginBottom: 10, transition: 'var(--transition-colors)' }}>{cs.result}</p>
+                  <p style={{ fontSize: 13, lineHeight: 1.55, marginBottom: 10, transition: 'var(--transition-colors)', display: '-webkit-box', WebkitLineClamp: 4, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{cs.result}</p>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', gap: 4 }}>
                       {company.caseStudies.map((_, i) => (
@@ -1556,11 +1576,12 @@ function CompanyCard({ company, onMediaClick }) {
             </div>
           )}
 
-        </div>
+        </div>}
+
       </div>
 
-      {/* ── EXPAND TOGGLE — full-width footer bar ── */}
-      <div
+      {/* ── EXPAND TOGGLE — only if products exist ── */}
+      {company.products.length > 0 && <div
         onClick={() => setOpen(o => !o)}
         style={{
           borderTop: '0.5px solid var(--color-border-tertiary)',
@@ -1583,7 +1604,7 @@ function CompanyCard({ company, onMediaClick }) {
         >
           ↓
         </motion.span>
-      </div>
+      </div>}
 
       {/* ── EXPANDED: product cards + ratings ── */}
       <AnimatePresence initial={false}>
@@ -1610,11 +1631,13 @@ function CompanyCard({ company, onMediaClick }) {
                   Products · {company.products.length} shipped
                 </div>
               )}
-              {company.products.map(p => (
+              {company.products.map((p, idx) => (
                 <ProductCard
                   key={p.id}
                   product={p}
+                  productIndex={idx + 1}
                   companyName={company.name}
+                  brandColor={bc}
                   onMediaClick={onMediaClick}
                 />
               ))}
@@ -1765,19 +1788,20 @@ export default function Work() {
                     className="timeline-year-label"
                     style={{
                       position: 'absolute',
-                      left: -76,    /* right edge lands at ~x=4 from outer, 2px gap before line */
+                      left: -95,    /* right edge lands at ~x=4 from outer, 2px gap before line */
                       top: 4,
                       writingMode: 'vertical-lr',
-                      fontSize: 12,
+                      fontSize: 16,
                       fontWeight: 700,
                       color: 'var(--color-text-tertiary)',
                       whiteSpace: 'nowrap',
                       letterSpacing: '0.05em',
                       zIndex: 2,
                       transition: 'var(--transition-colors)',
+                      transform: 'rotate(180deg)'
                     }}
                   >
-                    {company.year}
+                    {company.active ? company.year.replace(/–\s*$/, '') + ' – Present' : company.year}
                   </div>
 
                   {/* Dot — exactly centered on line: left=-paddingLeft, dot 20px, center=paddingLeft+left+10=10 */}

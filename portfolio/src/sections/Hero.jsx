@@ -43,7 +43,6 @@ const fadeIn = (delay = 0) => ({
 export default function Hero() {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
   const { displayed, done } = useTypewriter(GREETING, 36, 400);
 
@@ -61,57 +60,7 @@ export default function Hero() {
         transition: 'var(--transition-colors)',
       }}
     >
-      {/* ── Apple-style mesh gradient background ── */}
-      <motion.div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', y: bgY }}>
-        {/* Primary violet orb */}
-        <div style={{
-          position: 'absolute',
-          top: '-10%',
-          left: '20%',
-          width: 820,
-          height: 820,
-          borderRadius: '50%',
-          background: 'radial-gradient(ellipse at center, rgba(124,58,237,0.11) 0%, rgba(124,58,237,0.04) 45%, transparent 70%)',
-          filter: 'blur(2px)',
-        }} />
-        {/* Secondary blue-violet orb */}
-        <div style={{
-          position: 'absolute',
-          top: '30%',
-          right: '-5%',
-          width: 600,
-          height: 600,
-          borderRadius: '50%',
-          background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.09) 0%, transparent 65%)',
-        }} />
-        {/* Warm rose accent — bottom left */}
-        <div style={{
-          position: 'absolute',
-          bottom: '-5%',
-          left: '-5%',
-          width: 500,
-          height: 500,
-          borderRadius: '50%',
-          background: 'radial-gradient(ellipse at center, rgba(168,85,247,0.07) 0%, transparent 65%)',
-        }} />
-        {/* Subtle grid / noise overlay */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `
-            linear-gradient(rgba(124,58,237,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(124,58,237,0.03) 1px, transparent 1px)
-          `,
-          backgroundSize: '64px 64px',
-        }} />
-        {/* Top gradient fade */}
-        <div style={{
-          position: 'absolute',
-          top: 0, left: 0, right: 0,
-          height: 180,
-          background: 'linear-gradient(to bottom, var(--color-background-secondary), transparent)',
-        }} />
-      </motion.div>
+      {/* ── Subtle background — no gradient orbs ── */}
 
       <div className="container" style={{ paddingTop: 110, paddingBottom: 110, position: 'relative', width: '100%' }}>
         <motion.div style={{ y: textY }}>
@@ -240,35 +189,6 @@ export default function Hero() {
                 and building teams that outlast me.
               </motion.h1>
 
-              {/* Award badges row — single line */}
-              <motion.div {...fadeUp(0.2)} style={{ display: 'flex', flexWrap: 'nowrap', gap: 8, marginBottom: 36, overflow: 'hidden' }} className="hero-award-row">
-                {[
-                  { icon: '🏆', title: 'Forbes 30U30 Asia', sub: 'Enterprise Technology' },
-                  { icon: '⭐', title: 'Best Use of AI in Automation', sub: 'Global AI Summit · AICRA & MeitY' },
-                  { icon: '🥇', title: 'Global Mobility Hackathon Winner', sub: 'Niti Aayog' },
-                ].map((b, i) => (
-                  <span key={i} className="hero-award-badge" style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    padding: '6px 12px 6px 8px',
-                    borderRadius: 'var(--border-radius-pill)',
-                    background: 'rgba(255,255,255,0.82)',
-                    backdropFilter: 'blur(14px)',
-                    WebkitBackdropFilter: 'blur(14px)',
-                    border: '1px solid rgba(124,58,237,0.18)',
-                    boxShadow: '0 4px 20px rgba(124,58,237,0.10), 0 1px 4px rgba(0,0,0,0.06)',
-                    flexShrink: 0,
-                    transition: 'var(--transition-colors)',
-                  }}>
-                    <span className="award-icon" style={{ fontSize: 20, lineHeight: 1 }}>{b.icon}</span>
-                    <span>
-                      <span className="award-title" style={{ fontSize: 11.5, fontWeight: 800, color: 'var(--color-text-primary)', display: 'block', lineHeight: 1.2, letterSpacing: '-0.01em', whiteSpace: 'nowrap', transition: 'var(--transition-colors)' }}>{b.title}</span>
-                      <span className="award-sub" style={{ fontSize: 9.5, fontWeight: 500, color: 'var(--color-text-secondary)', display: 'block', lineHeight: 1.35, marginTop: 1, whiteSpace: 'nowrap', transition: 'var(--transition-colors)' }}>{b.sub}</span>
-                    </span>
-                  </span>
-                ))}
-              </motion.div>
 
               {/* Subtext */}
               <motion.p
@@ -370,27 +290,11 @@ export default function Hero() {
               style={{ position: 'relative', marginTop: -48 }}
               className="hero-photo-col"
             >
-              {/* Multi-layer glow halo */}
-              <div style={{
-                position: 'absolute',
-                inset: -32,
-                borderRadius: 40,
-                background: 'radial-gradient(ellipse at 40% 50%, rgba(124,58,237,0.13) 0%, rgba(99,102,241,0.06) 45%, transparent 70%)',
-                pointerEvents: 'none',
-              }} />
-              <div style={{
-                position: 'absolute',
-                inset: -8,
-                borderRadius: 28,
-                background: 'linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(168,85,247,0.04) 100%)',
-                pointerEvents: 'none',
-              }} />
-
               <div style={{
                 position: 'relative',
                 borderRadius: 24,
                 overflow: 'hidden',
-                boxShadow: '0 32px 80px rgba(80,60,130,0.18), 0 8px 24px rgba(0,0,0,0.10), inset 0 0 0 1px rgba(124,58,237,0.12)',
+                boxShadow: '0 24px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.08)',
                 aspectRatio: '3 / 4',
               }}>
                 <img
@@ -412,6 +316,35 @@ export default function Hero() {
                   background: 'linear-gradient(to top, rgba(13,13,20,0.38) 0%, transparent 100%)',
                   pointerEvents: 'none',
                 }} />
+              </div>
+
+              {/* Award sticky notes — top right, vertical stack, straight */}
+              <div style={{ position: 'absolute', top: 16, right: -12, display: 'flex', flexDirection: 'column', gap: 7, zIndex: 10 }} className="hero-sticky-notes">
+                {[
+                  { icon: '🏆', title: 'Forbes 30U30 Asia', sub: 'Enterprise Technology' },
+                  { icon: '⭐', title: 'Best Use of AI in Automation', sub: 'AICRA & MeitY' },
+                  { icon: '🥇', title: 'Global Mobility Winner', sub: 'Niti Aayog' },
+                ].map((b, i) => (
+                  <motion.div
+                    key={i}
+                    {...fadeIn(0.45 + i * 0.1)}
+                    style={{
+                      display: 'inline-flex', alignItems: 'center', gap: 8,
+                      padding: '7px 12px 7px 10px',
+                      borderRadius: 10,
+                      background: '#ffffff',
+                      border: '0.5px solid rgba(0,0,0,0.10)',
+                      boxShadow: '0 2px 12px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06)',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0 }}>{b.icon}</span>
+                    <span style={{ display: 'flex', flexDirection: 'column' }}>
+                      <span style={{ fontSize: 11, fontWeight: 800, color: '#1d1d1f', lineHeight: 1.2, letterSpacing: '-0.01em' }}>{b.title}</span>
+                      <span style={{ fontSize: 9, fontWeight: 500, color: '#6e6e73', lineHeight: 1.3, marginTop: 1 }}>{b.sub}</span>
+                    </span>
+                  </motion.div>
+                ))}
               </div>
 
             </motion.div>
@@ -446,9 +379,9 @@ export default function Hero() {
           .hero-photo-col { margin-top: 0 !important; }
         }
         @media (max-width: 768px) {
-          .hero-award-row { flex-wrap: wrap !important; overflow: visible !important; }
-          .hero-award-badge { flex-shrink: 1 !important; }
           .hero-stat-strip { gap: 20px !important; margin-top: 40px !important; }
+          .hero-sticky-notes { right: 4px !important; top: 10px !important; }
+          .hero-sticky-notes > div { font-size: 10px !important; }
         }
         @media (max-width: 480px) {
           .hero-stat-strip { gap: 16px !important; }

@@ -5,8 +5,8 @@
 :root {
   /* Backgrounds — Apple.com palette */
   --color-background-primary: #ffffff;
-  --color-background-secondary: #f5f5f7;
-  --color-background-tertiary: #e8e8ed;
+  --color-background-secondary: #ffffff;
+  --color-background-tertiary: #f0f0f5;
   --color-background-info: #f0ebff;
 
   /* Text — Apple palette */
@@ -127,7 +127,7 @@ section:not(#hero) h3 {
    LAYOUT UTILITIES
    ============================================================ */
 
-.section-pad { padding: 96px 0; }
+.section-pad { padding: 64px 0; }
 
 .container {
   max-width: 1200px;
@@ -136,7 +136,7 @@ section:not(#hero) h3 {
 }
 
 @media (max-width: 768px) {
-  .section-pad { padding: 64px 0; }
+  .section-pad { padding: 44px 0; }
   .container { padding: 0 20px; }
 }
 

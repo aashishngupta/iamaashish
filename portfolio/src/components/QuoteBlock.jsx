@@ -30,7 +30,7 @@ export default function QuoteBlock({ quote, attribution, secondQuote }) {
           <p style={{
             fontFamily: 'var(--font-serif)',
             fontStyle: 'italic',
-            fontSize: 'clamp(22px, 3vw, 34px)',
+            fontSize: 'clamp(20px, 2.2vw, 28px)',
             color: 'var(--color-text-primary)',
             letterSpacing: '-0.01em',
             lineHeight: 1.4,
