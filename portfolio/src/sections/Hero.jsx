@@ -168,7 +168,7 @@ export default function Hero() {
                   fontFamily: 'var(--font-display)',
                   fontWeight: 800,
                   letterSpacing: '-0.038em',
-                  lineHeight: 1.04,
+                  lineHeight: 1.10,
                   color: 'var(--color-text-primary)',
                   marginBottom: 28,
                   transition: 'var(--transition-colors)',
@@ -319,7 +319,7 @@ export default function Hero() {
               </div>
 
               {/* Award sticky notes — top right, vertical stack, straight */}
-              <div style={{ position: 'absolute', top: 16, right: -12, display: 'flex', flexDirection: 'column', gap: 7, zIndex: 10 }} className="hero-sticky-notes">
+              <div style={{ position: 'absolute', top: 16, right: 3, display: 'flex', flexDirection: 'column', gap: 7, zIndex: 10 }} className="hero-sticky-notes">
                 {[
                   { icon: '🏆', title: 'Forbes 30U30 Asia', sub: 'Enterprise Technology' },
                   { icon: '⭐', title: 'Best Use of AI in Automation', sub: 'AICRA & MeitY' },

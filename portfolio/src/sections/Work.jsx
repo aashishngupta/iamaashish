@@ -17,7 +17,7 @@ const COMPANIES = [
     active: true,
     employmentType: 'Part-time',
     name: 'pmGPT',
-    logo: null,
+    logo: '/pmgpt-logo.png',
     brandColor: '#7c3aed',
     website: 'https://pmgpt.ai',
     role: 'Passion Project',
@@ -899,8 +899,8 @@ const COMPANIES = [
     active: false,
     employmentType: 'Education',
     name: 'PEC University of Technology, Chandigarh',
-    logo: null,
-    brandColor: '#0d47a1',
+    logo: '/pec-logo.png',
+    brandColor: '#F4C939',
     website: 'https://pec.ac.in',
     role: 'B.E. Information Technology',
     description: 'Bachelors of Engineering in Information Technology from PEC Chandigarh (2009–2013). Where the journey began — built the foundation in systems, algorithms, and software engineering.',
@@ -1303,7 +1303,7 @@ function CompanyCard({ company, onMediaClick }) {
 
         {/* ══ LEFT COLUMN ══ */}
         <div
-          style={{ padding: '20px 22px', borderRight: hasRightCol ? '0.5px solid var(--color-border-tertiary)' : 'none', cursor: 'pointer', transition: 'var(--transition-colors)' }}
+          style={{ padding: '20px 22px', borderRight: hasRightCol ? `0.5px solid ${bc}50` : 'none', cursor: 'pointer', transition: 'var(--transition-colors)' }}
           onClick={() => setOpen(o => !o)}
         >
           {/* Section 1: Logo + header row + description */}
@@ -1502,7 +1502,7 @@ function CompanyCard({ company, onMediaClick }) {
         </div>
 
         {/* ══ RIGHT COLUMN — Case Studies + Business Impact (all cards) ══ */}
-        {hasRightCol && <div className="company-right-col" style={{ padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: 18, borderLeft: '0.5px solid var(--color-border-tertiary)', transition: 'var(--transition-colors)', minWidth: 0, overflow: 'hidden', alignSelf: 'start' }}>
+        {hasRightCol && <div className="company-right-col" style={{ padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: 18, borderLeft: `0.5px solid ${bc}50`, transition: 'var(--transition-colors)', minWidth: 0, overflow: 'hidden', alignSelf: 'start' }}>
 
           {/* ── Case Studies carousel (all cards that have them) ── */}
           {company.caseStudies?.length > 0 && (() => {
@@ -1513,7 +1513,7 @@ function CompanyCard({ company, onMediaClick }) {
                 <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8, transition: 'var(--transition-colors)' }}>
                   Case Studies
                 </div>
-                <div style={{ background: 'var(--color-background-secondary)', borderRadius: 'var(--border-radius-md)', padding: '12px 14px', transition: 'var(--transition-colors)', overflow: 'hidden', minWidth: 0 }}>
+                <div style={{ background: 'var(--color-background-secondary)', borderRadius: 'var(--border-radius-md)', padding: '12px 14px', border: `0.5px solid ${bc}40`, transition: 'var(--transition-colors)', overflow: 'hidden', minWidth: 0 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
                     {cs.logo
                       ? <img src={cs.logo} alt="" title={cs.title} onError={e => { e.currentTarget.style.display = 'none'; }} style={{ height: 20, maxWidth: 130, objectFit: 'contain', objectPosition: 'left center', display: 'block' }} />
@@ -1533,7 +1533,7 @@ function CompanyCard({ company, onMediaClick }) {
                     <div style={{ display: 'flex', gap: 4 }}>
                       {company.caseStudies.map((_, i) => (
                         <span key={i} onClick={e => { e.stopPropagation(); setCsIdx(i); }}
-                          style={{ width: csIdx === i ? 14 : 5, height: 5, borderRadius: 3, background: csIdx === i ? 'var(--color-accent)' : 'var(--color-border-tertiary)', cursor: 'pointer', transition: 'all 250ms ease' }} />
+                          style={{ width: csIdx === i ? 14 : 5, height: 5, borderRadius: 3, background: csIdx === i ? bc : 'var(--color-border-tertiary)', cursor: 'pointer', transition: 'all 250ms ease' }} />
                       ))}
                     </div>
                     {cs.href && cs.href !== '#' && (
@@ -1548,33 +1548,6 @@ function CompanyCard({ company, onMediaClick }) {
             );
           })()}
 
-          {/* ── Business Impact (all cards that have it) ── */}
-          {allImpact.length > 0 && (
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8, transition: 'var(--transition-colors)' }}>
-                Business Impact
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
-                {allImpact.map((m, i) => {
-                  const isUp = m.direction !== 'down';
-                  return (
-                    <div key={i} style={{
-                      padding: '9px 10px 8px', borderRadius: 'var(--border-radius-md)',
-                      background: isUp ? 'rgba(52,199,89,0.07)' : 'rgba(255,59,48,0.07)',
-                      border: `0.5px solid ${isUp ? 'rgba(52,199,89,0.2)' : 'rgba(255,59,48,0.2)'}`,
-                      transition: 'var(--transition-colors)',
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, marginBottom: 2 }}>
-                        <span style={{ fontSize: 9, fontWeight: 800, color: isUp ? '#1a9e42' : '#d93025' }}>{isUp ? '↑' : '↓'}</span>
-                        <span style={{ fontSize: 15, fontWeight: 800, fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)', letterSpacing: '-0.03em', lineHeight: 1, transition: 'var(--transition-colors)' }}>{m.num}</span>
-                      </div>
-                      <div style={{ fontSize: 11, lineHeight: 1.3, color: 'var(--color-text-secondary)', transition: 'var(--transition-colors)' }}>{m.label}</div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
 
         </div>}
 
@@ -1618,13 +1591,12 @@ function CompanyCard({ company, onMediaClick }) {
             style={{ overflow: 'hidden' }}
           >
             <div style={{
-              borderTop: '0.5px solid var(--color-border-tertiary)',
-              background: 'var(--color-background-secondary)',
+              borderTop: `0.5px solid ${bc}30`,
+              background: '#f4f4f7',
               padding: '16px',
               display: 'flex',
               flexDirection: 'column',
               gap: 10,
-              transition: 'var(--transition-colors)',
             }}>
               {company.products.length > 1 && (
                 <div className="section-label" style={{ marginBottom: 4 }}>
