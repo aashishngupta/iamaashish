@@ -10,6 +10,8 @@ import Thinking from './sections/Thinking';
 import BeyondWork from './sections/BeyondWork';
 import Achievements from './sections/Achievements';
 import Recommendations from './sections/Recommendations';
+import Expertise from './sections/Expertise';
+import FeaturedBook from './components/FeaturedBook';
 import Now from './sections/Now';
 import Contact from './sections/Contact';
 
@@ -27,6 +29,9 @@ export default function App() {
         {/* 3. About */}
         <About />
 
+        {/* 3b. Featured Book */}
+        <FeaturedBook />
+
         {/* 4. Quote */}
         <QuoteBlock
           quote="PMs won't be replaced by AI. But PMs who can't think like engineers will be."
@@ -42,7 +47,10 @@ export default function App() {
           attribution="— Aashish Kumar Gupta"
         />
 
-        {/* 6b. Recommendations */}
+        {/* 6b. Expertise + Tools */}
+        <Expertise />
+
+        {/* 6c. Recommendations */}
         <Recommendations />
 
         {/* 7. Thinking */}

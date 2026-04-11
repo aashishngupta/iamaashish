@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionLabel from '../components/SectionLabel';
+import SwipeDots from '../components/SwipeDots';
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/aashishkumargupta/';
 
@@ -174,6 +175,7 @@ const CARDS_PER_PAGE = 3;
 
 export default function Recommendations() {
   const [page, setPage] = useState(0);
+  const recScrollRef = useRef(null);
   const totalPages = Math.ceil(RECS.length / CARDS_PER_PAGE);
   const visible = RECS.slice(page * CARDS_PER_PAGE, page * CARDS_PER_PAGE + CARDS_PER_PAGE);
 
@@ -228,9 +230,11 @@ export default function Recommendations() {
         </div>
 
         {/* Cards grid */}
+        <SwipeDots scrollRef={recScrollRef} count={visible.length} />
         <AnimatePresence mode="wait">
           <motion.div
             key={page}
+            ref={recScrollRef}
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -24 }}
@@ -240,7 +244,7 @@ export default function Recommendations() {
               gridTemplateColumns: 'repeat(3, 1fr)',
               gap: 20,
             }}
-            className="rec-grid"
+            className="rec-grid mobile-hscroll"
           >
             {visible.map((rec, i) => (
               <RecCard key={rec.name} rec={rec} idx={page * CARDS_PER_PAGE + i} />

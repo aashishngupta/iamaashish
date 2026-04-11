@@ -100,7 +100,7 @@ export default function Hero() {
                     width: 28,
                     height: 28,
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
+                    background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -131,32 +131,28 @@ export default function Hero() {
                 {[
                   'Digital Transformation',
                   'AI Product Leader',
-                  'xFounder',
+                  'Entrepreneur',
                   'Angel Investor',
                 ].map((item, i) => {
-                  const label = typeof item === 'string' ? item : item.label;
-                  const isXFounder = typeof item === 'object' && item.small;
                   return (
                     <span key={i} style={{
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: 6,
-                      padding: '5px 12px',
+                      padding: '6px 14px',
                       borderRadius: 'var(--border-radius-pill)',
                       background: 'var(--color-background-info)',
-                      border: '0.5px solid rgba(124,58,237,0.22)',
+                      border: '0.5px solid rgba(29,78,216,0.22)',
                       boxShadow: '0 1px 6px rgba(124,58,237,0.08)',
-                      fontSize: 10.5,
+                      fontSize: 12,
                       fontWeight: 700,
-                      letterSpacing: '0.07em',
+                      letterSpacing: '0.05em',
                       textTransform: 'uppercase',
                       color: 'var(--color-accent)',
                       transition: 'var(--transition-colors)',
                     }}>
                       <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--color-accent)', display: 'inline-block', flexShrink: 0 }} />
-                      {isXFounder ? (
-                        <><span style={{ fontSize: 8, textTransform: 'lowercase', letterSpacing: 0 }}>x</span>Founder</>
-                      ) : label}
+                      {item}
                     </span>
                   );
                 })}
@@ -170,7 +166,7 @@ export default function Hero() {
                   fontFamily: 'var(--font-display)',
                   fontWeight: 800,
                   letterSpacing: '-0.038em',
-                  lineHeight: 1.10,
+                  lineHeight: 1.22,
                   color: 'var(--color-text-primary)',
                   marginBottom: 28,
                   transition: 'var(--transition-colors)',
@@ -178,7 +174,7 @@ export default function Hero() {
               >
                 I transform businesses by building{' '}
                 <span style={{
-                  background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #6366f1 100%)',
+                  background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #2563eb 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -191,6 +187,30 @@ export default function Hero() {
                 and building teams that outlast me.
               </motion.h1>
 
+              {/* Award badges — horizontal row under h1 */}
+              <motion.div {...fadeUp(0.20)} style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 28 }}>
+                {[
+                  { icon: '🏆', title: 'Forbes 30U30 Asia', sub: 'Enterprise Technology' },
+                  { icon: '⭐', title: 'Best Use of AI in Automation', sub: 'AICRA & MeitY' },
+                  { icon: '🥇', title: 'Global Mobility Winner', sub: 'Niti Aayog' },
+                ].map((b, i) => (
+                  <span key={i} style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 7,
+                    padding: '6px 12px 6px 8px',
+                    borderRadius: 10,
+                    background: '#ffffff',
+                    border: '0.5px solid rgba(0,0,0,0.10)',
+                    boxShadow: '0 2px 10px rgba(0,0,0,0.08)',
+                    whiteSpace: 'nowrap',
+                  }}>
+                    <span style={{ fontSize: 24, lineHeight: 1 }}>{b.icon}</span>
+                    <span style={{ display: 'flex', flexDirection: 'column' }}>
+                      <span style={{ fontSize: 13, fontWeight: 800, color: '#1d1d1f', lineHeight: 1.7, letterSpacing: '-0.01em' }}>{b.title}</span>
+                      <span style={{ fontSize: 10.5, fontWeight: 500, color: '#6e6e73', lineHeight: 1.7 }}>{b.sub}</span>
+                    </span>
+                  </span>
+                ))}
+              </motion.div>
 
               {/* Subtext */}
               <motion.p
@@ -319,35 +339,6 @@ export default function Hero() {
                   background: 'linear-gradient(to top, rgba(13,13,20,0.38) 0%, transparent 100%)',
                   pointerEvents: 'none',
                 }} />
-              </div>
-
-              {/* Award sticky notes — top right, vertical stack, straight */}
-              <div style={{ position: 'absolute', top: 16, right: 3, display: 'flex', flexDirection: 'column', gap: 7, zIndex: 10 }} className="hero-sticky-notes">
-                {[
-                  { icon: '🏆', title: 'Forbes 30U30 Asia', sub: 'Enterprise Technology' },
-                  { icon: '⭐', title: 'Best Use of AI in Automation', sub: 'AICRA & MeitY' },
-                  { icon: '🥇', title: 'Global Mobility Winner', sub: 'Niti Aayog' },
-                ].map((b, i) => (
-                  <motion.div
-                    key={i}
-                    {...fadeIn(0.45 + i * 0.1)}
-                    style={{
-                      display: 'inline-flex', alignItems: 'center', gap: 8,
-                      padding: '7px 12px 7px 10px',
-                      borderRadius: 10,
-                      background: '#ffffff',
-                      border: '0.5px solid rgba(0,0,0,0.10)',
-                      boxShadow: '0 2px 12px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06)',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0 }}>{b.icon}</span>
-                    <span style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span style={{ fontSize: 11, fontWeight: 800, color: '#1d1d1f', lineHeight: 1.2, letterSpacing: '-0.01em' }}>{b.title}</span>
-                      <span style={{ fontSize: 9, fontWeight: 500, color: '#6e6e73', lineHeight: 1.3, marginTop: 1 }}>{b.sub}</span>
-                    </span>
-                  </motion.div>
-                ))}
               </div>
 
             </motion.div>

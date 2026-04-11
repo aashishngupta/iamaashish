@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import SectionLabel from '../components/SectionLabel';
+import SwipeDots from '../components/SwipeDots';
 
 const fadeUp = { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] } };
 
@@ -201,6 +202,7 @@ function SkeletonCard() {
 export default function Writing() {
   const [ref, inView] = useInView();
   const { articles, loading } = useMediumArticles(MEDIUM_USERNAME);
+  const writingScrollRef = useRef(null);
 
   const showMedium = loading || articles.length > 0;
   const showPinned = !loading && articles.length === 0;
@@ -244,29 +246,35 @@ export default function Writing() {
 
         {/* Medium articles — live */}
         {showMedium && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="writing-grid">
-            {loading
-              ? [0,1,2,3,4,5].map(i => <SkeletonCard key={i} />)
-              : articles.map((a, i) => (
-                  <BlogCard
-                    key={i}
-                    {...a}
-                    type="Medium"
-                    delay={i * 0.07}
-                    inView={inView}
-                  />
-                ))
-            }
-          </div>
+          <>
+            <SwipeDots scrollRef={writingScrollRef} count={loading ? 6 : articles.length} />
+            <div ref={writingScrollRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="writing-grid mobile-hscroll">
+              {loading
+                ? [0,1,2,3,4,5].map(i => <SkeletonCard key={i} />)
+                : articles.map((a, i) => (
+                    <BlogCard
+                      key={i}
+                      {...a}
+                      type="Medium"
+                      delay={i * 0.07}
+                      inView={inView}
+                    />
+                  ))
+              }
+            </div>
+          </>
         )}
 
         {/* Pinned fallback — shown only if Medium returns nothing */}
         {showPinned && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="writing-grid">
-            {PINNED.map((p, i) => (
-              <BlogCard key={i} {...p} delay={i * 0.08} inView={inView} />
-            ))}
-          </div>
+          <>
+            <SwipeDots scrollRef={writingScrollRef} count={PINNED.length} />
+            <div ref={writingScrollRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="writing-grid mobile-hscroll">
+              {PINNED.map((p, i) => (
+                <BlogCard key={i} {...p} delay={i * 0.08} inView={inView} />
+              ))}
+            </div>
+          </>
         )}
 
         {/* Instagram strip — always shown below */}

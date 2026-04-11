@@ -94,31 +94,52 @@ export default function About() {
   There was no playbook. Just decisions, mistakes, and constant learning.
 </p>
 
-<p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
-  That phase taught me what actually matters.
-  Building is messy. Markets are unpredictable.
-  Real insight comes from research and user feedback.
-  Building and selling must happen together.
-  And resilience matters more than initial brilliance.
-  Emotion can start things, but conviction, sharp thinking, and adaptability take you forward.
-</p>
+{/* Mobile: show Read more right here, hide everything below until expanded */}
+{!expanded && (
+  <button
+    onClick={() => setExpanded(true)}
+    className="about-readmore-mobile"
+    style={{
+      display: 'none', background: 'none', border: 'none', padding: 0,
+      marginBottom: 18,
+      cursor: 'pointer', fontSize: 17, lineHeight: 1.7,
+      fontWeight: 700, color: 'var(--color-accent)', fontFamily: 'inherit',
+      transition: 'var(--transition-colors)',
+    }}
+  >
+    Read more ↓
+  </button>
+)}
 
-<p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
-  From there, the curve accelerated.{' '}
-  {!expanded && (
-    <button
-      onClick={() => setExpanded(true)}
-      style={{
-        display: 'inline', background: 'none', border: 'none', padding: 0,
-        cursor: 'pointer', fontSize: 'inherit', lineHeight: 'inherit',
-        fontWeight: 700, color: 'var(--color-accent)', fontFamily: 'inherit',
-        transition: 'var(--transition-colors)',
-      }}
-    >
-      Read more ↓
-    </button>
-  )}
-</p>
+{/* Desktop always shows these; mobile only shows when expanded */}
+<div className={expanded ? '' : 'about-collapse-mobile'}>
+  <p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
+    That phase taught me what actually matters.
+    Building is messy. Markets are unpredictable.
+    Real insight comes from research and user feedback.
+    Building and selling must happen together.
+    And resilience matters more than initial brilliance.
+    Emotion can start things, but conviction, sharp thinking, and adaptability take you forward.
+  </p>
+
+  <p style={{ marginBottom: 18, transition: 'var(--transition-colors)' }}>
+    From there, the curve accelerated.{' '}
+    {!expanded && (
+      <button
+        onClick={() => setExpanded(true)}
+        className="about-readmore-desktop"
+        style={{
+          display: 'inline', background: 'none', border: 'none', padding: 0,
+          cursor: 'pointer', fontSize: 'inherit', lineHeight: 'inherit',
+          fontWeight: 700, color: 'var(--color-accent)', fontFamily: 'inherit',
+          transition: 'var(--transition-colors)',
+        }}
+      >
+        Read more ↓
+      </button>
+    )}
+  </p>
+</div>
 
 {/* Collapsible rest of story */}
 <AnimatePresence initial={false}>

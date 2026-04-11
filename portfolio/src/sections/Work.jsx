@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import SectionLabel from '../components/SectionLabel';
 import Lightbox from '../components/Lightbox';
+import SwipeDots from '../components/SwipeDots';
 
 const easeStd = [0.25, 0.1, 0.25, 1];
 const fadeUp = { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.7, ease: easeStd } };
@@ -12,7 +13,7 @@ const fadeUp = { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, 
 const COMPANIES = [
   {
     id: 'pmgpt',
-    categories: ['enterprise', 'building', 'fulltime'],
+    categories: ['enterprise', 'building'],
     year: '2025–',
     active: true,
     employmentType: 'Part-time',
@@ -22,7 +23,7 @@ const COMPANIES = [
     website: 'https://pmgpt.ai',
     role: 'Passion Project',
     description: 'An AI-native operating system for product teams, orchestrating the entire lifecycle from research and PRDs to sprint execution through agentic workflows. It leverages integrations, RAG, and MCPs to turn fragmented tools and data into a unified, intelligent execution layer.',
-    roleNarrative: 'My role here is building this end to end as a passion project, initially to explore vibe coding with Claude Code on real product problems I was facing as a product leader. What started as an experiment has evolved into a well-structured system, where I independently own everything from product design and agent definition to system architecture and hands-on development. I\'ve made deliberate architectural decisions — including the six-agent structure, three-tier LLM routing, and a privacy-first governance layer — to ensure the system is enterprise-ready from day one, not just functional. Building across the full stack has sharpened my instincts for where AI-native product design diverges fundamentally from traditional software thinking, particularly around context management, agentic state persistence, and user trust in autonomous systems.',
+    roleNarrative: 'I\'m building this end to end as a passion project, initially to explore vibe coding with Claude Code on real product problems I was facing as a product leader. What started as an experiment evolved into a well-structured system where I independently own everything from product design and agent definition to system architecture and hands-on development. The architectural choices I\'ve made, including the six-agent structure, three-tier LLM routing, and a privacy-first governance layer, were deliberate decisions to ensure the system is enterprise-ready from day one and not just functional. Building across the full stack has sharpened my instincts for where AI-native product design diverges from traditional software thinking, particularly around context management, agentic state persistence, and user trust in autonomous systems.',
     caseStudies: [],
     ratings: [],
     products: [
@@ -67,6 +68,25 @@ const COMPANIES = [
   },
 
   {
+    id: 'retailabs',
+    categories: ['building'],
+    year: '2025–',
+    active: true,
+    employmentType: 'Part-time',
+    name: 'Retailabs.AI',
+    logo: null,
+    brandColor: '#0ea5e9',
+    website: '#',
+    role: 'Co-Founder / Building',
+    description: 'Details coming soon.',
+    roleNarrative: null,
+    caseStudies: [],
+    ratings: [],
+    businessImpact: [],
+    products: [],
+  },
+
+  {
     id: 'photai',
     categories: ['enterprise', 'consumer', 'consulting'],
     year: '2025–26',
@@ -78,7 +98,7 @@ const COMPANIES = [
     website: 'https://phot.ai',
     role: 'Product Consultant',
     description: 'A GenAI-powered creative automation platform that enables brands to generate, test, and scale high-performing marketing and catalog creatives through intelligent workflows, combining product data, market signals, and AI-driven design.',
-    roleNarrative: 'My role here was to drive product thinking and execution across the platform, shaping it from a creative tool into a performance-driven system. I worked on translating real customer and market problems into scalable workflows, while also actively contributing to sales through demos, client conversations, and positioning the product to drive adoption and business outcomes. A key contribution was reframing the product narrative — shifting the conversation from creative quality to measurable performance outcomes like ROAS and CPA, which proved decisive in enterprise deals. I also helped define the roadmap for AngleLab and ListingLab, working directly with customers to validate use cases and move the platform toward a full performance marketing intelligence layer.',
+    roleNarrative: 'My role was to drive product thinking and execution across the platform, shaping it from a creative tool into a performance-driven system. I worked on translating real customer and market problems into scalable workflows, while actively contributing to sales through demos, client conversations, and positioning the product to drive adoption and business outcomes. A key contribution was reframing the product narrative by shifting the conversation from creative quality to measurable performance outcomes like ROAS and CPA, which proved decisive in enterprise deals. I also helped define the roadmap for AngleLab and ListingLab, working directly with customers to validate use cases and move the platform toward a full performance marketing intelligence layer.',
     caseStudies: [{
         title: 'GreenGainz',
         logo: '/automation-anywhere.jpg',
@@ -158,7 +178,7 @@ const COMPANIES = [
     ],
     role: 'Senior Product Manger (Interim Head of Product)',
     description: 'Gartner-recognized AI platform powering agentic workflows, autonomous agents, co-pilots, enterprise search for support and sales automation across Fortune 200 enterprises.',
-    roleNarrative: 'My role at SearchUnify was officially Senior Product Manager, but in practice I operated as the product lead for the company\'s AI transformation, reporting directly to the CTO. I was responsible for driving the journey from enterprise search to 360° customer support automation and further into the Agentic AI Suite, while also shaping how agentic capabilities could extend into other business functions. My scope covered product strategy, conceptualization, execution, cross-functional alignment, customer and sales conversations, leadership communication, and team management — effectively functioning at a Head of Product level for the AI portfolio. I partnered closely with the executive team on analyst relations, contributing to Forrester, IDC, and G2 evaluations, and helped shape the go-to-market positioning that underpinned the company\'s 32% ARR growth and five consecutive years of G2 Leadership recognition.',
+    roleNarrative: 'Although my official title at SearchUnify was Senior Product Manager, in practice I operated as the product lead for the company\'s AI transformation, reporting directly to the CTO. I drove the journey from enterprise search to 360° customer support automation and into the Agentic AI Suite, while shaping how agentic capabilities could extend into other business functions. My scope covered product strategy, conceptualization, execution, cross-functional alignment, customer and sales conversations, leadership communication, and team management, effectively functioning at a Head of Product level for the AI portfolio. I partnered closely with the executive team on analyst relations, contributing to Forrester, IDC, and G2 evaluations, and helped shape the go-to-market positioning that underpinned the company\'s 32% ARR growth and five consecutive years of G2 Leadership recognition.',
     caseStudies: [
       {
         title: 'Automation Anywhere',
@@ -354,7 +374,7 @@ const COMPANIES = [
     website: 'https://reverieinc.com',
     role: 'Senior Product Manager (Interim Head of Voice Products)',
     description: "An AI-first language technology platform offering speech-to-text, text-to-speech, translation, and conversational AI solutions to build multilingual, voice-enabled applications at scale across Indic languages.",
-    roleNarrative: 'My role at Reverie was officially Senior Product Manager, but I operated and held the market designation of Head of Voice Products, reporting to the CTO. I was brought in to productize in-house AI technologies, leading the journey from market research and problem discovery to defining the vision, product strategy, and a 2-year roadmap, and executing the platform from scratch. I was entrusted with managing a 5-member product team along with a 39-member cross-functional team across engineering, data science, and design, focused on building a no-code/low-code multilingual voice AI platform. I also partnered closely with sales, customer success, and marketing to drive adoption and market positioning. One of the hardest challenges was navigating the technical constraints of Indic language AI — where data scarcity, phonetic variation, and dialect complexity required building in-house data pipelines and fine-tuning strategies that no off-the-shelf solution addressed. Winning Reliance Jio as the flagship customer, driving 10M+ DAU, and contributing to the eventual acquisition validated the platform\'s market fit and the depth of the moat we had built.',
+    roleNarrative: 'Although my official title at Reverie was Senior Product Manager, I operated under the market designation of Head of Voice Products, reporting to the CTO. I was brought in to productize in-house AI technologies, leading the journey from market research and problem discovery to defining the vision, product strategy, and a two-year roadmap, then executing the platform from scratch. I managed a five-member product team and a 39-member cross-functional team across engineering, data science, and design, focused on building a no-code/low-code multilingual voice AI platform. I also partnered closely with sales, customer success, and marketing to drive adoption and positioning. The hardest challenge was navigating the technical constraints of Indic language AI, where data scarcity, phonetic variation, and dialect complexity required building in-house data pipelines and fine-tuning strategies that no off-the-shelf solution could address. Winning Reliance Jio as the flagship customer, driving 10M+ DAU, and contributing to the eventual acquisition validated the platform\'s market fit and the depth of the moat we had built.',
     caseStudies: [
       { title: 'Reliance Jio', result: '10M+ DAU on voice-enabled customer support flows in Hindi, Tamil, and 8 other Indic languages.', href: 'https://reverieinc.com' },
     ],
@@ -432,7 +452,7 @@ const COMPANIES = [
     website: '#',
     role: 'Founding Member',
     description: 'A tech-enabled SaaS platform that streamlines the end-to-end office creation lifecycle, from design and procurement to execution, bringing transparency, efficiency, and scalability to a traditionally fragmented interiors ecosystem.',
-    roleNarrative: 'My role here started as a founding member and Product Head, working closely with CXOs as the second hire to build the product portfolio from the ground up. I led everything from defining vision, strategy, and roadmap to setting up the team, tools, and execution frameworks, driving end-to-end product development. This journey took the product from inception to early maturity, including onboarding successful customers and contributing to the initial fundraise. I later transitioned into a part-time consulting role to take the product to completion while moving to Reverie to deepen my focus on AI. Early on, I had to navigate the operational complexity of a marketplace business — coordinating between enterprise clients and a fragmented vendor ecosystem — which gave me a deep understanding of how supply-side quality becomes the primary product variable in marketplace models, and how operationally intensive businesses need tight product-ops feedback loops from day one.',
+    roleNarrative: 'I joined OfficeBanao as a founding member and Product Head, working closely with CXOs as the second hire to build the product portfolio from the ground up. I led everything from defining vision, strategy, and roadmap to setting up the team, tools, and execution frameworks, driving end-to-end product development. This journey took the product from inception to early maturity, onboarding the first successful customers and contributing to the initial fundraise. I later transitioned into a part-time consulting role to take the product to completion while moving to Reverie to deepen my focus on AI. Early on, navigating the operational complexity of a marketplace business and coordinating between enterprise clients and a fragmented vendor ecosystem gave me a deep understanding of how supply-side quality becomes the primary product variable in marketplace models, and how operationally intensive businesses need tight product-ops feedback loops from day one.',
     caseStudies: [],
     ratings: [],
     businessImpact: [
@@ -488,7 +508,7 @@ const COMPANIES = [
     website: '#',
     role: 'Interim Head of Product',
     description: 'An AI robotics and IoT startup focused on building intelligent systems for home automation and healthcare, leveraging machine learning, robotics, and computer vision, backed by 1,500+ Indiegogo backers and US investors.',
-    roleNarrative: 'My role here was to contribute through weekend engagements, working closely with the founder to guide product direction across AI robotics and IoT use cases. I mentored and reviewed PMs, helped unblock critical challenges, and supported both product and engineering teams in aligning on vision, execution, and real-world deployments, while gaining hands-on exposure to robotics systems. A key contribution was the Sentinel surveillance product — I drove the market research and competitive analysis that shaped its initial positioning, defined technical product specs for the IoT device layer, and coordinated cross-functional execution across hardware and software teams. I also guided the AI module strategy for Aido across healthcare and elderly care, helping prioritize use cases where behavioral adoption barriers were lower than technical complexity — a discipline that proved invaluable in subsequent AI product work.',
+    roleNarrative: 'I contributed through weekend engagements, working closely with the founder to guide product direction across AI robotics and IoT use cases. I mentored and reviewed PMs, helped unblock critical challenges, and supported product and engineering teams in aligning on vision, execution, and real-world deployments, while gaining hands-on exposure to robotics systems. A key contribution was the Sentinel surveillance product, where I drove the market research and competitive analysis that shaped its initial positioning, defined technical product specs for the IoT device layer, and coordinated cross-functional execution across hardware and software teams. I also guided the AI module strategy for Aido across healthcare and elderly care, helping prioritize use cases where behavioral adoption barriers were lower than technical complexity, a discipline that proved invaluable in subsequent AI product work.',
     caseStudies: [],
     ratings: [],
     businessImpact: [
@@ -575,7 +595,7 @@ const COMPANIES = [
     website: '#',
     role: 'Co-Founder, Chief Product Officer',
     description: 'A no-code AI platform that empowers enterprises to build and scale intelligent systems across computer vision, conversational AI, OCR, and predictive use cases using pre-built ML models and fine-tuned algorithms, enabling real-time insights, automated decision-making, and faster time to value. It operates as the B2B vertical of Red Ginger Technologies, backed by Micromax, ONGC, and prominent HNIs.',
-    roleNarrative: 'As Co-founder and Chief Product Officer, my role was centered on product thinking and development, defining GTM, ICPs, and prioritization while building AI systems grounded in real-world use cases. We partnered with leading enterprises and government bodies including Reliance Jio, Tata Steel, ONGC, Indian Army, Cairn Vedanta, Texas Instruments, NITI Aayog, Telangana Government and more, running multiple POCs, MVPs, and live deployments to acquire data, validate problems, and refine ML models. Over ~3 years, this iterative approach helped us evolve from project-led execution to a mature, scalable SaaS platform. One of the hardest challenges was building enterprise trust in AI — particularly for government and defence clients where on-prem deployment, air-gapped environments, and explainability were hard requirements, not optional features. Managing investor relationships with Micromax and ONGC while simultaneously shipping product and closing deployments gave me a deep understanding of how to balance strategic stakeholder management with execution velocity.',
+    roleNarrative: 'As Co-founder and Chief Product Officer, my role centered on product thinking and development, defining GTM, ICPs, and prioritization while building AI systems grounded in real-world use cases. We partnered with leading enterprises and government bodies including Reliance Jio, Tata Steel, ONGC, the Indian Army, Cairn Vedanta, Texas Instruments, NITI Aayog, and the Telangana Government, running multiple POCs, MVPs, and live deployments to acquire data, validate problems, and refine ML models. Over three years, this iterative approach helped us evolve from project-led execution to a mature, scalable SaaS platform. Building enterprise trust in AI was one of the hardest challenges, particularly with government and defence clients where on-prem deployment, air-gapped environments, and explainability were hard requirements and not optional features. Managing investor relationships with Micromax and ONGC while simultaneously shipping product and closing deployments gave me a deep understanding of how to balance strategic stakeholder management with execution velocity.',
     caseStudies: [
       { title: 'ONGC', result: 'Automated pipeline defect detection — reduced manual inspection cost by 40%.', href: '#' },
       { title: 'Indian Army', result: 'Air-gapped on-prem deployment for perimeter surveillance at two installations.', href: '#' },
@@ -739,7 +759,7 @@ const COMPANIES = [
     website: '#',
     role: 'Co-Founder, Chief Product & Technology Officer',
     description: "A consumer internet product company building and launching mobile and aggregator super apps across ecommerce and concierge services, scaling to 20M+ downloads across 6+ countries. As the B2C vertical of Red Ginger Technologies, backed by Micromax, ONGC, and prominent HNIs, it is driven by the ambition to become the Bytedance of India.",
-    roleNarrative: "As Co-founder and Chief Product & Technology Officer, my role was to own the end-to-end journey of building and scaling the company's product ecosystem, driving product vision, technology architecture, and growth strategy. I led everything from identifying opportunities and defining what to build, to executing across product, engineering, and growth, ensuring scalable systems, rapid experimentation, and sustainable monetization. The defining phase was the series of pivots from Yana to inOne to FoodBox — each driven by real user behavior data rather than top-down strategy, and each sharpening our instincts for what distribution fit actually means. Scaling FoodBox to 14M+ downloads across 6 countries taught me that telecom bundling as a channel mattered as much as product-market fit, and managing a full portfolio while maintaining investor confidence with Micromax and ONGC-backed funding sharpened my discipline around prioritization, resource allocation, and knowing when to double down versus when to sunset.",
+    roleNarrative: "As Co-founder and Chief Product and Technology Officer, I owned the end-to-end journey of building and scaling the company's product ecosystem, driving product vision, technology architecture, and growth strategy. I led everything from identifying opportunities and defining what to build to executing across product, engineering, and growth, ensuring scalable systems, rapid experimentation, and sustainable monetization. The defining phase was the series of pivots from Yana to inOne to FoodBox, each driven by real user behavior data rather than top-down strategy, and each sharpening our instincts for what distribution fit actually means. Scaling FoodBox to 14M+ downloads across six countries taught me that telecom bundling as a channel mattered as much as product-market fit. Managing a full portfolio while maintaining investor confidence with Micromax and ONGC-backed funding sharpened my discipline around prioritization, resource allocation, and knowing when to double down versus when to sunset.",
     caseStudies: [],
     ratings: [],
     products: [
@@ -855,7 +875,7 @@ const COMPANIES = [
     website: '#',
     role: 'Senior Software Consultant',
     description: 'Fintech-focused global IT offshore firm building risk management and portfolio analytics tools for leading financial institutions including PIMCO.',
-    roleNarrative: 'My role here was a mix of consulting, DevOps, and hands-on development, working on risk management systems for global financial clients. I built and supported data pipelines ingesting and processing data from institutions like JP Morgan and Barclays, ensuring timely, output-driven workflows for portfolio managers at PIMCO across US and Asia market cycles. This role gave me deep exposure to financial data infrastructure — including the precision requirements of real-time risk systems, data integrity protocols in high-stakes environments, and the engineering discipline required when the margin for error is effectively zero. It was here that I first understood how systems thinking and rigorous validation separate reliable infrastructure from fragile point solutions — a principle I\'ve carried into every product and engineering decision since.',
+    roleNarrative: 'My role was a mix of consulting, DevOps, and hands-on development, working on risk management systems for global financial clients. I built and supported data pipelines ingesting and processing data from institutions like JP Morgan and Barclays, ensuring timely, output-driven workflows for portfolio managers at PIMCO across US and Asia market cycles. This role gave me deep exposure to financial data infrastructure, including the precision requirements of real-time risk systems, data integrity protocols in high-stakes environments, and the engineering discipline required when the margin for error is effectively zero. It was here that I first understood how systems thinking and rigorous validation separate reliable infrastructure from fragile point solutions, a principle I\'ve carried into every product and engineering decision since.',
     caseStudies: [
       ],
     ratings: [],
@@ -877,7 +897,7 @@ const COMPANIES = [
     website: '#',
     role: 'Software Development Engineer',
     description: 'A unified social media monitoring and sentiment analysis platform that aggregates conversations across 60+ sources, enabling brands like Pepsi Global, Mumbai Police to track, analyze, and manage engagement from a single interface.',
-    roleNarrative: 'My role here was as a Software Development Engineer, where I started working under guidance and quickly ramped up to owning key parts of the product. Within 6 months, I was leading 3 modules, building new source connectors, managing server access, implementing custom features, resolving critical bugs, and working directly with clients to deliver solutions. Working with enterprise clients like Pepsi Global and Mumbai Police exposed me early to the realities of B2B product delivery — where client-specific requirements, SLA pressure, and real-time data reliability are first-class concerns. This experience also introduced me to the challenges of aggregating social signals at scale, including data normalization across heterogeneous sources, sentiment accuracy under domain-specific language, and the product complexity of building intuitive dashboards over deeply noisy data.',
+    roleNarrative: 'I started as a Software Development Engineer, working under guidance and quickly ramping up to owning key parts of the product. Within six months, I was leading three modules, building new source connectors, managing server access, implementing custom features, resolving critical bugs, and working directly with clients to deliver solutions. Working with enterprise clients like Pepsi Global and Mumbai Police exposed me early to the realities of B2B product delivery, where client-specific requirements, SLA pressure, and real-time data reliability are first-class concerns. This experience also introduced me to the challenges of aggregating social signals at scale, including data normalization across heterogeneous sources, sentiment accuracy under domain-specific language, and the product complexity of building intuitive dashboards over deeply noisy data.',
     caseStudies: [],
     ratings: [],
     businessImpact: [],
@@ -902,6 +922,82 @@ const COMPANIES = [
     businessImpact: [],
     products: [],
   },
+
+  // ── D2C ───────────────────────────────────────────────────────────────────
+  {
+    id: 'khuraq',
+    categories: ['d2c', 'consumer'],
+    year: 'TBD',
+    active: false,
+    employmentType: 'Passion Project',
+    name: 'Khuraq',
+    logo: null,
+    brandColor: '#e11d48',
+    website: '#',
+    role: 'Founder',
+    description: 'Details coming soon.',
+    roleNarrative: null,
+    caseStudies: [],
+    ratings: [],
+    businessImpact: [],
+    products: [],
+  },
+
+  // ── SHELVED IDEAS ─────────────────────────────────────────────────────────
+  {
+    id: 'zippy',
+    categories: ['shelved', 'consumer'],
+    year: 'TBD',
+    active: false,
+    employmentType: 'Passion Project',
+    name: 'Zippy',
+    logo: null,
+    brandColor: '#f59e0b',
+    website: '#',
+    role: 'Founder / Idea Stage',
+    description: 'Details coming soon.',
+    roleNarrative: null,
+    caseStudies: [],
+    ratings: [],
+    businessImpact: [],
+    products: [],
+  },
+  {
+    id: 'petme',
+    categories: ['shelved', 'consumer'],
+    year: 'TBD',
+    active: false,
+    employmentType: 'Passion Project',
+    name: 'PetMe',
+    logo: null,
+    brandColor: '#10b981',
+    website: '#',
+    role: 'Founder / Idea Stage',
+    description: 'Details coming soon.',
+    roleNarrative: null,
+    caseStudies: [],
+    ratings: [],
+    businessImpact: [],
+    products: [],
+  },
+  {
+    id: 'socio',
+    categories: ['shelved', 'consumer'],
+    year: 'TBD',
+    active: false,
+    employmentType: 'Passion Project',
+    name: 'Socio',
+    logo: null,
+    brandColor: '#3b82f6',
+    website: '#',
+    role: 'Founder / Idea Stage',
+    description: 'Details coming soon.',
+    roleNarrative: null,
+    caseStudies: [],
+    ratings: [],
+    businessImpact: [],
+    products: [],
+  },
 ];
 
 // ── FILTER CONFIG ─────────────────────────────────────────────────────────────
@@ -910,8 +1006,10 @@ const FILTERS = [
   { key: 'fulltime', label: 'Full-time' },
   { key: 'enterprise', label: 'Enterprise' },
   { key: 'consumer', label: 'Consumer' },
+  { key: 'd2c', label: 'D2C' },
   { key: 'building', label: 'Building Now' },
   { key: 'consulting', label: 'Consulting & Part-time' },
+  { key: 'shelved', label: 'Shelved Ideas' },
 ];
 
 // ── EMPLOYMENT TYPE BADGE COLORS ──────────────────────────────────────────────
@@ -1263,10 +1361,15 @@ function MediaThumb({ item, company, onClick }) {
 // ── COMPANY CARD ──────────────────────────────────────────────────────────────
 
 function CompanyCard({ company, onMediaClick }) {
-  const [open, setOpen] = useState(company.active);
+  const [open, setOpen] = useState(false);
   const [csIdx, setCsIdx] = useState(0);
   const [narrativeExpanded, setNarrativeExpanded] = useState(false);
   const [descExpanded, setDescExpanded] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileRecsOpen, setMobileRecsOpen] = useState(false);
+  const [mobileImpactOpen, setMobileImpactOpen] = useState(false);
+  const [mobileCasesOpen, setMobileCasesOpen] = useState(false);
   const empColors = EMPLOYMENT_COLORS[company.employmentType] || EMPLOYMENT_COLORS['Full-time'];
   const allImpact = company.businessImpact?.length ? company.businessImpact : [];
   const hasRightCol = (company.caseStudies?.length > 0) || (allImpact.length > 0);
@@ -1285,10 +1388,11 @@ function CompanyCard({ company, onMediaClick }) {
     }}>
 
       {/* ── CARD BODY: 2-column grid ── */}
-      <div style={{ display: 'grid', gridTemplateColumns: hasRightCol ? (company.featuredLayout ? '1fr 290px' : '1fr 260px') : '1fr' }} className="company-grid">
+      <div style={{ display: 'grid', gridTemplateColumns: hasRightCol ? '1fr 260px' : '1fr' }} className="company-grid">
 
         {/* ══ LEFT COLUMN ══ */}
         <div
+          className="company-left-col"
           style={{ padding: '20px 22px', borderRight: hasRightCol ? `0.5px solid ${bc}50` : 'none', cursor: 'pointer', transition: 'var(--transition-colors)' }}
           onClick={() => setOpen(o => !o)}
         >
@@ -1318,7 +1422,7 @@ function CompanyCard({ company, onMediaClick }) {
             {/* Right of logo */}
             <div style={{ flex: 1, minWidth: 0 }}>
               {/* Header row: Company name · Designation · Employment type */}
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap', marginBottom: 4 }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap', marginBottom: 0 }}>
                 {company.website && company.website !== '#' ? (
                   <a href={company.website} target="_blank" rel="noopener noreferrer"
                     onClick={e => e.stopPropagation()}
@@ -1333,8 +1437,8 @@ function CompanyCard({ company, onMediaClick }) {
                   </span>
                 )}
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
-                <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--color-text-secondary)', transition: 'var(--transition-colors)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 4 }}>
+                <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-text-secondary)', transition: 'var(--transition-colors)' }}>
                   {company.role}
                 </span>
                 <span className="year-mobile" style={{ fontSize: 11, fontWeight: 700, color: 'var(--color-text-tertiary)', transition: 'var(--transition-colors)' }}>
@@ -1353,22 +1457,38 @@ function CompanyCard({ company, onMediaClick }) {
                 </span>
               </div>
 
-              {/* Company description */}
-              <div style={{ position: 'relative' }}>
-                <p style={{
-                  fontSize: 15, fontFamily: 'var(--font-sans)', color: 'var(--color-text-primary)', lineHeight: 1.7, fontWeight: 400, transition: 'var(--transition-colors)',
-                  ...(!descExpanded ? { display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', paddingRight: 74 } : {}),
-                }}>
-                  {company.description}
-                </p>
-                {!descExpanded ? (
-                  <button onClick={e => { e.stopPropagation(); setDescExpanded(true); }} style={{ position: 'absolute', bottom: 2, right: 0, fontSize: 11, fontWeight: 600, color: 'var(--color-accent)', background: 'linear-gradient(to right, transparent, var(--color-background-primary) 35%)', border: 'none', paddingLeft: 18, paddingRight: 0, paddingTop: 2, paddingBottom: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>
-                    Read more ↓
-                  </button>
-                ) : (
-                  <button onClick={e => { e.stopPropagation(); setDescExpanded(false); }} style={{ marginTop: 4, display: 'block', fontSize: 11, fontWeight: 600, color: 'var(--color-accent)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>
-                    Show less ↑
-                  </button>
+              {/* Company description — desktop inline truncate / mobile collapsible */}
+              <div className="desc-desktop">
+                {(() => {
+                  const LIMIT = 160;
+                  const text = company.description;
+                  const needsTrunc = text.length > LIMIT;
+                  return (
+                    <p style={{ fontSize: 15, fontFamily: 'var(--font-sans)', color: 'var(--color-text-primary)', lineHeight: 1.7, fontWeight: 400, transition: 'var(--transition-colors)' }}>
+                      {!descExpanded && needsTrunc ? text.slice(0, LIMIT) + '… ' : text + ' '}
+                      {!descExpanded && needsTrunc && (
+                        <button onClick={e => { e.stopPropagation(); setDescExpanded(true); }} style={{ fontSize: 11, fontWeight: 600, color: 'var(--color-accent)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>Read more ↓</button>
+                      )}
+                      {descExpanded && needsTrunc && (
+                        <button onClick={e => { e.stopPropagation(); setDescExpanded(false); }} style={{ fontSize: 11, fontWeight: 600, color: 'var(--color-accent)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>Show less ↑</button>
+                      )}
+                    </p>
+                  );
+                })()}
+              </div>
+              {/* Mobile: About Company toggle */}
+              <div className="desc-mobile">
+                <button
+                  onClick={e => { e.stopPropagation(); setMobileAboutOpen(v => !v); }}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: `${bc}07`, border: `0.5px solid ${bc}22`, borderRadius: 8, padding: '7px 10px', cursor: 'pointer', marginTop: 6 }}
+                >
+                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>About Company</span>
+                  <span style={{ fontSize: 14, color: 'var(--color-text-tertiary)', fontWeight: 600 }}>{mobileAboutOpen ? '−' : '+'}</span>
+                </button>
+                {mobileAboutOpen && (
+                  <p style={{ fontSize: 13, lineHeight: 1.6, color: 'var(--color-text-secondary)', padding: '8px 2px 4px', transition: 'var(--transition-colors)' }}>
+                    {company.description}
+                  </p>
                 )}
               </div>
             </div>
@@ -1378,49 +1498,56 @@ function CompanyCard({ company, onMediaClick }) {
           {company.roleNarrative && (
           <div style={{ height: '0.5px', background: `${bc}40`, margin: '14px 0' }} />
           )}
-          {company.roleNarrative && (
-            <div style={{ position: 'relative' }}>
-              <p style={{
-                fontSize: 15, fontFamily: 'var(--font-sans)', color: 'var(--color-text-primary)', lineHeight: 1.75, fontStyle: 'italic',
-                transition: 'var(--transition-colors)',
-                ...(!narrativeExpanded ? { display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', paddingRight: 74 } : {}),
-              }}>
-                {company.roleNarrative}
+          {company.roleNarrative && (() => {
+            const LIMIT = 240;
+            const text = company.roleNarrative;
+            const needsTrunc = text.length > LIMIT;
+            return (
+              <p style={{ fontSize: 15, fontFamily: 'var(--font-sans)', color: 'var(--color-text-primary)', lineHeight: 1.75, fontStyle: 'italic', transition: 'var(--transition-colors)' }}>
+                {!narrativeExpanded && needsTrunc ? text.slice(0, LIMIT) + '… ' : text + ' '}
+                {!narrativeExpanded && needsTrunc && (
+                  <button onClick={e => { e.stopPropagation(); setNarrativeExpanded(true); }} style={{ fontSize: 11, fontWeight: 600, fontStyle: 'normal', color: 'var(--color-accent)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>
+                    Read more ↓
+                  </button>
+                )}
+                {narrativeExpanded && needsTrunc && (
+                  <button onClick={e => { e.stopPropagation(); setNarrativeExpanded(false); }} style={{ fontSize: 11, fontWeight: 600, fontStyle: 'normal', color: 'var(--color-accent)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>
+                    Show less ↑
+                  </button>
+                )}
               </p>
-              {!narrativeExpanded ? (
-                <button onClick={e => { e.stopPropagation(); setNarrativeExpanded(true); }} style={{ position: 'absolute', bottom: 2, right: 0, fontSize: 11, fontWeight: 600, color: 'var(--color-accent)', background: 'linear-gradient(to right, transparent, var(--color-background-primary) 35%)', border: 'none', paddingLeft: 18, paddingRight: 0, paddingTop: 2, paddingBottom: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>
-                  Read more ↓
-                </button>
-              ) : (
-                <button onClick={e => { e.stopPropagation(); setNarrativeExpanded(false); }} style={{ marginTop: 6, display: 'block', fontSize: 11, fontWeight: 600, color: 'var(--color-accent)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', transition: 'var(--transition-colors)' }}>
-                  Show less ↑
-                </button>
-              )}
-            </div>
-          )}
+            );
+          })()}
 
           {/* NON-FEATURED LAYOUT: Products in left column */}
           {!company.featuredLayout && company.products?.length > 0 && (
             <>
               <div style={{ height: '0.5px', background: `${bc}40`, margin: '14px 0' }} />
-              <div>
-                <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 10, transition: 'var(--transition-colors)' }}>
-                  Products
-                </div>
+              {/* Desktop */}
+              <div className="desc-desktop">
+                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 10, transition: 'var(--transition-colors)' }}>Products</div>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {company.products.map((p, i) => (
-                    <div key={i} style={{
-                      display: 'inline-flex', alignItems: 'center', gap: 6,
-                      padding: '5px 12px', borderRadius: 'var(--border-radius-pill)',
-                      background: 'var(--color-background-secondary)',
-                      border: '0.5px solid var(--color-border-tertiary)',
-                      transition: 'var(--transition-colors)',
-                    }}>
+                    <div key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 12px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-secondary)', border: '0.5px solid var(--color-border-tertiary)', transition: 'var(--transition-colors)' }}>
                       <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--color-accent)', opacity: 0.7, flexShrink: 0 }} />
                       <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)' }}>{p.name}</span>
                     </div>
                   ))}
                 </div>
+              </div>
+              {/* Mobile toggle */}
+              <div className="desc-mobile">
+                <button onClick={e => { e.stopPropagation(); setMobileProductsOpen(v => !v); }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: `${bc}07`, border: `0.5px solid ${bc}22`, borderRadius: 8, padding: '7px 10px', cursor: 'pointer' }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>Products · {company.products.length}</span>
+                  <span style={{ fontSize: 14, color: 'var(--color-text-tertiary)', fontWeight: 600 }}>{mobileProductsOpen ? '−' : '+'}</span>
+                </button>
+                {mobileProductsOpen && (
+                  <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '8px 2px 4px' }}>
+                    {company.products.map((p, i) => (
+                      <span key={i} style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-secondary)', border: '0.5px solid var(--color-border-tertiary)', color: 'var(--color-text-primary)' }}>{p.name}</span>
+                    ))}
+                  </div>
+                )}
               </div>
             </>
           )}
@@ -1429,61 +1556,119 @@ function CompanyCard({ company, onMediaClick }) {
           {company.featuredLayout && (
             <>
               <div style={{ height: '0.5px', background: `${bc}40`, margin: '14px 0' }} />
-
-              {/* Products */}
-              <div>
-                <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 10, transition: 'var(--transition-colors)' }}>
-                  Products
-                </div>
+              {/* Desktop products */}
+              <div className="desc-desktop">
+                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 10, transition: 'var(--transition-colors)' }}>Products</div>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {company.products.map((p, i) => (
-                    <div key={i} style={{
-                      display: 'inline-flex', alignItems: 'center', gap: 6,
-                      padding: '5px 12px', borderRadius: 'var(--border-radius-pill)',
-                      background: 'var(--color-background-secondary)',
-                      border: '0.5px solid var(--color-border-tertiary)',
-                      transition: 'var(--transition-colors)',
-                    }}>
+                    <div key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 12px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-secondary)', border: '0.5px solid var(--color-border-tertiary)', transition: 'var(--transition-colors)' }}>
                       <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--color-accent)', opacity: 0.7, flexShrink: 0 }} />
                       <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)' }}>{p.name}</span>
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Recognitions — compact pills: logo/source + badge + arrow */}
-              {company.ratings?.length > 0 && (
-                <div style={{ marginTop: 8 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8, transition: 'var(--transition-colors)' }}>
-                    Recognitions
+                {company.ratings?.length > 0 && (
+                  <div style={{ marginTop: 8 }}>
+                    <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8, transition: 'var(--transition-colors)' }}>Recognitions</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                      {company.ratings.map((r, i) => (
+                        <a key={i} href={r.href} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '5px 10px 5px 8px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-primary)', border: '0.5px solid var(--color-border-tertiary)', textDecoration: 'none', transition: 'box-shadow 150ms ease, var(--transition-colors)' }} onMouseEnter={e => e.currentTarget.style.boxShadow = 'var(--shadow-sm)'} onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}>
+                          {r.logo ? <img src={r.logo} alt={r.source} onError={e => { e.currentTarget.style.display = 'none'; }} style={{ height: 16, maxWidth: 56, objectFit: 'contain', objectPosition: 'left center', display: 'block', flexShrink: 0 }} /> : <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.06em', textTransform: 'uppercase', color: r.sourceColor || 'var(--color-accent)', flexShrink: 0 }}>{r.source}</span>}
+                          <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)', whiteSpace: 'nowrap' }}>{r.badge}</span>
+                          <span style={{ fontSize: 10, color: 'var(--color-text-tertiary)' }}>↗</span>
+                        </a>
+                      ))}
+                    </div>
                   </div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                    {company.ratings.map((r, i) => (
-                      <a key={i} href={r.href} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}
-                        style={{
-                          display: 'inline-flex', alignItems: 'center', gap: 7,
-                          padding: '5px 10px 5px 8px',
-                          borderRadius: 'var(--border-radius-pill)',
-                          background: 'var(--color-background-primary)',
-                          border: '0.5px solid var(--color-border-tertiary)',
-                          textDecoration: 'none',
-                          transition: 'box-shadow 150ms ease, var(--transition-colors)',
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.boxShadow = 'var(--shadow-sm)'}
-                        onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}
-                      >
-                        {r.logo
-                          ? <img src={r.logo} alt={r.source} onError={e => { e.currentTarget.style.display = 'none'; }} style={{ height: 16, maxWidth: 56, objectFit: 'contain', objectPosition: 'left center', display: 'block', flexShrink: 0 }} />
-                          : <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.06em', textTransform: 'uppercase', color: r.sourceColor || 'var(--color-accent)', flexShrink: 0 }}>{r.source}</span>
-                        }
-                        <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)', whiteSpace: 'nowrap' }}>{r.badge}</span>
-                        <span style={{ fontSize: 10, color: 'var(--color-text-tertiary)' }}>↗</span>
-                      </a>
+                )}
+              </div>
+              {/* Mobile: Products toggle */}
+              <div className="desc-mobile">
+                <button onClick={e => { e.stopPropagation(); setMobileProductsOpen(v => !v); }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: `${bc}07`, border: `0.5px solid ${bc}22`, borderRadius: 8, padding: '7px 10px', cursor: 'pointer' }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>Products · {company.products.length}</span>
+                  <span style={{ fontSize: 14, color: 'var(--color-text-tertiary)', fontWeight: 600 }}>{mobileProductsOpen ? '−' : '+'}</span>
+                </button>
+                {mobileProductsOpen && (
+                  <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '8px 2px 4px' }}>
+                    {company.products.map((p, i) => (
+                      <span key={i} style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-secondary)', border: '0.5px solid var(--color-border-tertiary)', color: 'var(--color-text-primary)' }}>{p.name}</span>
                     ))}
                   </div>
+                )}
+                {company.ratings?.length > 0 && (
+                  <>
+                    <button onClick={e => { e.stopPropagation(); setMobileRecsOpen(v => !v); }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: `${bc}07`, border: `0.5px solid ${bc}22`, borderRadius: 8, padding: '7px 10px', cursor: 'pointer', marginTop: 6 }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>Recognitions · {company.ratings.length}</span>
+                      <span style={{ fontSize: 14, color: 'var(--color-text-tertiary)', fontWeight: 600 }}>{mobileRecsOpen ? '−' : '+'}</span>
+                    </button>
+                    {mobileRecsOpen && (
+                      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '8px 2px 4px' }}>
+                        {company.ratings.map((r, i) => (
+                          <span key={i} style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-secondary)', border: '0.5px solid var(--color-border-tertiary)', color: 'var(--color-text-primary)' }}>{r.badge}</span>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            </>
+          )}
+
+          {/* Mobile: Business Impact + Case Studies toggles (right col hidden on mobile) */}
+          {hasRightCol && (
+            <div className="desc-mobile" onClick={e => e.stopPropagation()}>
+              {allImpact.length > 0 && (
+                <div style={{ marginTop: 6 }}>
+                  <button
+                    onClick={e => { e.stopPropagation(); setMobileImpactOpen(v => !v); }}
+                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: `${bc}07`, border: `0.5px solid ${bc}22`, borderRadius: 8, padding: '7px 10px', cursor: 'pointer' }}
+                  >
+                    <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>Business Impact · {allImpact.length}</span>
+                    <span style={{ fontSize: 14, color: 'var(--color-text-tertiary)', fontWeight: 600 }}>{mobileImpactOpen ? '−' : '+'}</span>
+                  </button>
+                  {mobileImpactOpen && (
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6, padding: '8px 2px 4px' }}>
+                      {allImpact.map((m, i) => {
+                        const isUp = m.direction !== 'down';
+                        return (
+                          <div key={i} style={{ padding: '9px 10px 8px', borderRadius: 'var(--border-radius-md)', background: `${bc}08`, border: `0.5px solid ${bc}28` }}>
+                            <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, marginBottom: 2 }}>
+                              <span style={{ fontSize: 9, fontWeight: 800, color: isUp ? '#1a9e42' : '#d93025' }}>{isUp ? '↑' : '↓'}</span>
+                              <span style={{ fontSize: 15, fontWeight: 800, fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)', letterSpacing: '-0.03em', lineHeight: 1 }}>{m.num}</span>
+                            </div>
+                            <div style={{ fontSize: 11, lineHeight: 1.3, color: 'var(--color-text-secondary)' }}>{m.label}</div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               )}
-            </>
+              {company.caseStudies?.length > 0 && (
+                <div style={{ marginTop: 6 }}>
+                  <button
+                    onClick={e => { e.stopPropagation(); setMobileCasesOpen(v => !v); }}
+                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: `${bc}07`, border: `0.5px solid ${bc}22`, borderRadius: 8, padding: '7px 10px', cursor: 'pointer' }}
+                  >
+                    <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>Case Studies · {company.caseStudies.length}</span>
+                    <span style={{ fontSize: 14, color: 'var(--color-text-tertiary)', fontWeight: 600 }}>{mobileCasesOpen ? '−' : '+'}</span>
+                  </button>
+                  {mobileCasesOpen && (
+                    <div style={{ padding: '8px 2px 4px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      {company.caseStudies.map((cs, i) => (
+                        <div key={i} style={{ background: 'var(--color-background-secondary)', borderRadius: 'var(--border-radius-md)', padding: '10px 12px', border: `0.5px solid ${bc}40` }}>
+                          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: 5 }}>{cs.title}</div>
+                          <p style={{ fontSize: 12, lineHeight: 1.55, color: 'var(--color-text-secondary)', marginBottom: cs.href && cs.href !== '#' ? 6 : 0 }}>{cs.result}</p>
+                          {cs.href && cs.href !== '#' && (
+                            <a href={cs.href} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} style={{ fontSize: 10, fontWeight: 600, color: 'var(--color-accent)', textDecoration: 'none' }}>Read →</a>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           )}
         </div>
 
@@ -1493,7 +1678,7 @@ function CompanyCard({ company, onMediaClick }) {
           {/* ── Company Business Impact ── */}
           {allImpact.length > 0 && (
             <div>
-              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
                 Business Impact
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
@@ -1519,7 +1704,7 @@ function CompanyCard({ company, onMediaClick }) {
             const total = company.caseStudies.length;
             return (
               <div>
-                <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8, transition: 'var(--transition-colors)' }}>
+                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8, transition: 'var(--transition-colors)' }}>
                   Case Studies
                 </div>
                 <div style={{ background: 'var(--color-background-secondary)', borderRadius: 'var(--border-radius-md)', padding: '12px 14px', border: `0.5px solid ${bc}40`, transition: 'var(--transition-colors)', overflow: 'hidden', minWidth: 0 }}>
@@ -1601,7 +1786,7 @@ function CompanyCard({ company, onMediaClick }) {
           >
             <div style={{
               borderTop: `0.5px solid ${bc}30`,
-              background: '#f4f4f7',
+              background: `linear-gradient(180deg, ${bc}0d 0%, ${bc}06 100%)`,
               padding: '16px',
               display: 'flex',
               flexDirection: 'column',
@@ -1649,6 +1834,8 @@ export default function Work() {
   const [ref, inView] = useInView();
   const [activeFilters, setActiveFilters] = useState(['fulltime']);
   const [lightboxItem, setLightboxItem] = useState(null);
+  const [showAllFulltime, setShowAllFulltime] = useState(false);
+  const workScrollRef = useRef(null);
 
   function toggleFilter(key) {
     setActiveFilters(prev => {
@@ -1658,11 +1845,19 @@ export default function Work() {
       }
       return [...prev, key];
     });
+    setShowAllFulltime(false);
   }
 
-  const visible = COMPANIES.filter(c =>
+  const allVisible = COMPANIES.filter(c =>
     c.categories.some(cat => activeFilters.includes(cat))
   );
+
+  // When only fulltime is active on desktop, show just the latest unless expanded
+  // On mobile this is ignored — all are shown in horizontal scroll
+  const isOnlyFulltime = activeFilters.length === 1 && activeFilters[0] === 'fulltime';
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const visible = (isOnlyFulltime && !showAllFulltime && !isMobile) ? allVisible.slice(0, 1) : allVisible;
+  const hiddenCount = (isOnlyFulltime && !showAllFulltime && !isMobile) ? allVisible.length - 1 : 0;
 
   return (
     <section
@@ -1673,31 +1868,17 @@ export default function Work() {
     >
       <div className="container">
         <SectionLabel>Work · Products</SectionLabel>
-        <motion.h2
-          className="section-heading"
-          style={{ marginBottom: 8 }}
-          initial={fadeUp.initial}
-          animate={inView ? fadeUp.animate : fadeUp.initial}
-          transition={fadeUp.transition}
-        >
+        <h2 className="section-heading" style={{ marginBottom: 8 }}>
           Products I've built. <em>Results they've delivered.</em>
-        </motion.h2>
-        <motion.p
-          style={{ fontSize: 13, color: 'var(--color-text-tertiary)', marginBottom: 32, transition: 'var(--transition-colors)' }}
-          initial={fadeUp.initial}
-          animate={inView ? fadeUp.animate : fadeUp.initial}
-          transition={{ ...fadeUp.transition, delay: 0.1 }}
-        >
+        </h2>
+        <p style={{ fontSize: 13, color: 'var(--color-text-tertiary)', marginBottom: 32, transition: 'var(--transition-colors)' }}>
           Expand a company to see the products · expand a product for full details
-        </motion.p>
+        </p>
 
         {/* Filter pills */}
-        <motion.div
+        <div
           className="work-filter-row"
           style={{ display: 'flex', gap: 8, marginBottom: 40, flexWrap: 'wrap' }}
-          initial={fadeUp.initial}
-          animate={inView ? fadeUp.animate : fadeUp.initial}
-          transition={{ ...fadeUp.transition, delay: 0.15 }}
         >
           {FILTERS.map(f => {
             const on = activeFilters.includes(f.key);
@@ -1721,7 +1902,7 @@ export default function Work() {
               </button>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Timeline */}
         <div style={{ position: 'relative', paddingLeft: 64 }} className="timeline-outer">
@@ -1733,7 +1914,8 @@ export default function Work() {
             transition: 'var(--transition-colors)',
           }} />
 
-          <motion.div layout style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+          <SwipeDots scrollRef={workScrollRef} count={visible.length} />
+          <motion.div layout ref={workScrollRef} className="work-cards-list" style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             <AnimatePresence mode="popLayout">
               {visible.map((company, i) => (
                 <motion.div
@@ -1805,6 +1987,32 @@ export default function Work() {
       </div>
 
       <Lightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
+
+      {/* View / collapse previous experiences */}
+      {isOnlyFulltime && hiddenCount > 0 && (
+        <div className="container view-prev-exp" style={{ paddingTop: 0, paddingBottom: 0 }}>
+          <button
+            onClick={() => setShowAllFulltime(v => !v)}
+            style={{
+              marginLeft: 64,
+              padding: '10px 22px',
+              borderRadius: 'var(--border-radius-pill)',
+              border: '1.5px solid var(--color-border-tertiary)',
+              background: 'transparent',
+              fontSize: 13, fontWeight: 600,
+              color: 'var(--color-text-secondary)',
+              cursor: 'pointer',
+              transition: 'all 200ms ease',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--color-accent)'; e.currentTarget.style.color = 'var(--color-accent)'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border-tertiary)'; e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
+          >
+            {showAllFulltime
+              ? 'Collapse previous experiences ↑'
+              : `View ${hiddenCount} previous experience${hiddenCount > 1 ? 's' : ''} ↓`}
+          </button>
+        </div>
+      )}
 
       <style>{`
         .year-mobile { display: none; }
