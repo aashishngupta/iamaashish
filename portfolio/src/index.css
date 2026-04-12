@@ -127,7 +127,7 @@ section:not(#hero) h3 {
    LAYOUT UTILITIES
    ============================================================ */
 
-.section-pad { padding: 64px 0; }
+.section-pad { padding: 34px 0; }
 
 .container {
   max-width: 1200px;
@@ -136,7 +136,7 @@ section:not(#hero) h3 {
 }
 
 @media (max-width: 768px) {
-  .section-pad { padding: 44px 0; }
+  .section-pad { padding: 28px 0; }
   .container { padding: 0 20px; }
 }
 
@@ -257,6 +257,8 @@ section:not(#hero) h3 {
   /* Skills & tools: compact card width so they don't stretch full viewport */
   .skills-grid.mobile-hscroll > * { width: 270px !important; max-width: 270px !important; }
   .bento-grid.mobile-hscroll > * { width: 230px !important; max-width: 230px !important; }
+  /* Writing cards: show partial next card for scroll affordance */
+  .writing-grid.mobile-hscroll > * { width: 260px !important; max-width: 260px !important; }
 
   /* Swipe hint fade on right edge */
   .mobile-hscroll-wrap { position: relative; }

@@ -127,7 +127,7 @@ export default function Hero() {
               </motion.div>
 
               {/* Credentials badges */}
-              <motion.div {...fadeUp(0.08)} style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 32 }}>
+              <motion.div {...fadeUp(0.08)} style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 32 }}>
                 {[
                   'Digital Transformation',
                   'AI Product Leader',
@@ -139,14 +139,14 @@ export default function Hero() {
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: 6,
-                      padding: '6px 14px',
+                      padding: '5px 10px',
                       borderRadius: 'var(--border-radius-pill)',
                       background: 'var(--color-background-info)',
                       border: '0.5px solid rgba(29,78,216,0.22)',
                       boxShadow: '0 1px 6px rgba(124,58,237,0.08)',
-                      fontSize: 12,
+                      fontSize: 10,
                       fontWeight: 700,
-                      letterSpacing: '0.05em',
+                      letterSpacing: '0.04em',
                       textTransform: 'uppercase',
                       color: 'var(--color-accent)',
                       transition: 'var(--transition-colors)',
@@ -382,13 +382,12 @@ export default function Hero() {
                 aspectRatio: '3 / 4',
               }}>
                 <img
-                  src="/aashish.jpg"
+                  src="/aashish-tedx.png"
                   alt="Aashish Kumar Gupta"
                   style={{
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    objectPosition: 'center top',
                     display: 'block',
                   }}
                 />
@@ -409,16 +408,7 @@ export default function Hero() {
 
       <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
 
-      {/* Scroll indicator */}
-      <div style={{ position: 'absolute', bottom: 40, left: '50%', transform: 'translateX(-50%)' }}>
-        <motion.div
-          animate={{ y: [0, 10, 0], opacity: [0.2, 0.65, 0.2] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ width: 1, height: 52, background: 'linear-gradient(to bottom, transparent, var(--color-accent), transparent)', margin: '0 auto' }}
-        />
-      </div>
-
-      <style>{`
+<style>{`
         @keyframes cursorBlink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
@@ -442,7 +432,7 @@ export default function Hero() {
             border-radius: 50% !important;
             aspect-ratio: 1 / 1 !important;
           }
-          .hero-photo-col > div img { object-position: center 8% !important; }
+          .hero-photo-col > div img { }
           /* Slightly tighten vertical padding */
           .hero-content-pad { padding-top: 88px !important; padding-bottom: 72px !important; }
         }

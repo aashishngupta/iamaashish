@@ -45,7 +45,7 @@ export default function Nav({ theme, onToggleTheme }) {
             <img
               src={logoSrc}
               alt="Aashish Kumar Gupta"
-              style={{ height: 70, width: 'auto', display: 'block', transition: 'opacity 200ms ease', marginLeft: '-6px' }}
+              style={{ height: 40, width: 'auto', display: 'block', transition: 'opacity 200ms ease', marginLeft: '8px' }}
             />
           </button>
 

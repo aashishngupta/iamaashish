@@ -110,7 +110,14 @@ function Avatar({ name, photo, idx }) {
   );
 }
 
+const WORD_LIMIT = 65;
+
 function RecCard({ rec, idx }) {
+  const [expanded, setExpanded] = useState(false);
+  const words = rec.text.split(' ');
+  const isLong = words.length > WORD_LIMIT;
+  const displayText = !isLong || expanded ? rec.text : words.slice(0, WORD_LIMIT).join(' ') + '…';
+
   return (
     <div style={{
       background: 'var(--color-background-primary)',
@@ -127,8 +134,26 @@ function RecCard({ rec, idx }) {
       {/* Text */}
       <div style={{ flex: 1 }}>
         <p style={{ lineHeight: 1.75, transition: 'var(--transition-colors)' }}>
-          {rec.text}
+          {displayText}
         </p>
+        {isLong && (
+          <button
+            onClick={() => setExpanded(e => !e)}
+            style={{
+              marginTop: 6,
+              fontSize: 12,
+              fontWeight: 600,
+              color: 'var(--color-accent)',
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              cursor: 'pointer',
+              transition: 'opacity 150ms ease',
+            }}
+          >
+            {expanded ? 'Read less ↑' : 'Read more ↓'}
+          </button>
+        )}
       </div>
 
       {/* Divider */}
@@ -192,7 +217,7 @@ export default function Recommendations() {
       id="recommendations"
       style={{
         background: 'var(--color-background-secondary)',
-        padding: '96px 0',
+        padding: '20px 0',
         transition: 'var(--transition-colors)',
       }}
     >

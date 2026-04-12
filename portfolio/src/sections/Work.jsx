@@ -6,17 +6,16 @@ import Lightbox from '../components/Lightbox';
 import SwipeDots from '../components/SwipeDots';
 
 const easeStd = [0.25, 0.1, 0.25, 1];
-const fadeUp = { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.7, ease: easeStd } };
 
 // ── DATA ──────────────────────────────────────────────────────────────────────
 
 const COMPANIES = [
   {
     id: 'pmgpt',
-    categories: ['enterprise', 'building'],
+    categories: ['enterprise', 'building', 'founder'],
     year: '2025–',
     active: true,
-    employmentType: 'Part-time',
+    employmentType: 'Consulting',
     name: 'pmGPT',
     logo: '/pmgpt-logo.png',
     brandColor: '#7c3aed',
@@ -33,15 +32,12 @@ const COMPANIES = [
         businessTags: ['B2B', 'SaaS'],
         headline: 'Six-agent architecture with three-tier LLM routing — privacy-first from day one.',
         tags: [
-          { label: 'Building Now', cls: 'tag-green' },
-          { label: 'Claude · GPT-4o · Gemini', cls: 'tag-amber' },
-          { label: 'React · Vite · n8n', cls: 'tag-teal' },
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'Agentic AI', cls: 'ptag-ai' },
         ],
-        artifacts: [
-          { type: 'video', label: 'Demo video', color: '#e6f1fb', iconColor: 'var(--color-text-info)' },
-          { type: 'image', label: 'Architecture diagram', color: 'var(--color-background-tertiary)' },
-          { type: 'pdf', label: 'Pitch deck', color: '#faece7' },
-        ],
+        artifacts: [],
         businessImpact: [],
         keyFeatures: [
           'Six specialist agents — Research, PRD, Roadmap, Stakeholder Comms, Retrospective, Discovery',
@@ -69,21 +65,67 @@ const COMPANIES = [
 
   {
     id: 'retailabs',
-    categories: ['building'],
+    categories: ['building', 'founder'],
     year: '2025–',
     active: true,
-    employmentType: 'Part-time',
+    employmentType: 'Consulting',
     name: 'Retailabs.AI',
-    logo: null,
+    logo: '/retailabs-logo.avif',
     brandColor: '#0ea5e9',
     website: '#',
-    role: 'Co-Founder / Building',
-    description: 'Details coming soon.',
-    roleNarrative: null,
+    role: 'Co-Founder & CPO',
+    description: 'An AI-native retail intelligence platform enabling enterprises to automate decision-making across merchandising, pricing, campaigns, and store operations using agent-based systems. Converts raw retail signals into insights, decisions, and autonomous execution — replacing passive dashboards with action.',
+    roleNarrative: 'Built Retailabs from ground zero as a hands-on product and AI operator. Own end-to-end platform architecture, product strategy, and enterprise problem discovery with FMCG and retail clients. Designed and developed AI agents across retail workflows, wrote agent logic and decision systems, and drove 0 to MVP to early PMF through rapid iteration loops. Pure 0 to 1 builder with direct ownership of product, technology, and business outcomes.',
     caseStudies: [],
     ratings: [],
-    businessImpact: [],
-    products: [],
+    impactLabel: 'Expected Impact',
+    businessImpact: [
+      { num: '5–15%', label: 'Trade ROI uplift', level: 'up' },
+      { num: '10–25%', label: 'campaign conversion', level: 'up' },
+      { num: '2–5%', label: 'revenue uplift', level: 'up' },
+      { num: '10–20%', label: 'stockout reduction', level: 'down' },
+      { num: '2–4%', label: 'store traffic increase', level: 'up' },
+      { num: '+50–150bps', label: 'margin lift', level: 'up' },
+    ],
+    products: [
+      {
+        id: 'retailabs-platform',
+        name: 'Retailabs Platform',
+        businessTags: ['B2B', 'SaaS'],
+        headline: 'Agent-based retail decisioning platform — converts signals → insights → decisions → execution across merchandising, pricing, campaigns, and store operations.',
+        tags: [
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'Agentic AI', cls: 'ptag-ai' },
+        ],
+        artifacts: [
+          { type: 'youtube', url: 'https://www.youtube.com/watch?v=zockFHOF9ug&t=91s', label: 'Platform Demo', color: '#e6f1fb' },
+        ],
+        businessImpact: [],
+        keyFeatures: [
+          'Unified data layer across POS, ERP, and supply chain systems',
+          'Agent-based architecture — Demand, Pricing, Campaigns, and Merchandising agents',
+          'LLM-powered reasoning + ML predictions for real-time decisions',
+          'Decision automation workflows — not just recommendations, but execution',
+          'Natural language interface for business users across retail teams',
+          'Real-time execution and feedback loops for continuous improvement',
+          'Modular deployment — fast enterprise POCs with incremental rollout',
+        ],
+        caseStudies: [],
+        ratings: [],
+        problem: 'Retail enterprises face fragmented data across POS, ERP, and supply chain; reactive and manual decision-making; poor visibility into demand, pricing, and execution gaps; heavy analyst dependency slowing execution; and no system to convert signals into actions. Result: revenue leakage, operational inefficiencies, and missed growth opportunities.',
+        decision: 'Built an AI-first, agent-driven decisioning platform that converts signals → insights → decisions → execution. Focuses on automation over dashboards, uses LLMs + ML + real-time enterprise data, and enables fast enterprise POCs and modular deployments — meeting retail enterprises where they are without a rip-and-replace.',
+        learnings: 'Enterprises adopt faster when you move from insights to execution — dashboards create passive consumers, agents create active outcomes. Data normalization is harder than AI modeling in retail; the quality of the signal layer determines everything downstream. POCs are the fastest path to enterprise trust and PMF. Retail decisions need localized, real-time intelligence — global models underperform without store-level context.',
+        lastStatus: 'Active · 0→MVP stage. Running enterprise POCs with FMCG and retail clients. Seeking design partners for co-development.',
+        outcomes: [
+          { num: '10–25%', label: 'campaign conversion uplift' },
+          { num: '10–20%', label: 'stockout reduction' },
+          { num: '5–15%', label: 'trade ROI improvement' },
+          { num: '+50–150bps', label: 'margin lift' },
+        ],
+      },
+    ],
   },
 
   {
@@ -101,19 +143,16 @@ const COMPANIES = [
     roleNarrative: 'My role was to drive product thinking and execution across the platform, shaping it from a creative tool into a performance-driven system. I worked on translating real customer and market problems into scalable workflows, while actively contributing to sales through demos, client conversations, and positioning the product to drive adoption and business outcomes. A key contribution was reframing the product narrative by shifting the conversation from creative quality to measurable performance outcomes like ROAS and CPA, which proved decisive in enterprise deals. I also helped define the roadmap for AngleLab and ListingLab, working directly with customers to validate use cases and move the platform toward a full performance marketing intelligence layer.',
     caseStudies: [{
         title: 'GreenGainz',
-        logo: '/automation-anywhere.jpg',
         result: 'Reduced CPA by 47% and achieved ~3.5x ROAS for GreenGainz by using AI-driven creative testing to identify and scale proof-based ad angles, focusing on comparisons, testimonials, and real user outcomes over brand-led storytelling.',
         href: 'https://www.phot.ai/case-studies/anglelab/greengainz',
       },
       {
         title: 'Home Crayons',
-        logo: '/accela.png',
         result: 'Helped HomeCrayons achieve 4.41x ROAS by using AI-driven creative testing to identify and scale emotion-first ad angles, shifting focus from product features to customer-centric storytelling and improving conversions.',
         href: 'https://www.phot.ai/case-studies/anglelab/homecrayons',
       },
       {
         title: 'Chumbak',
-        logo: '/accela.png',
         result: 'Helped Chumbak launch 50 SKUs on Walmart within a week by transforming a single image into fully compliant, enriched listings, resulting in 80% faster GTM and 45% higher conversion rates, while eliminating design dependency and compliance issues.',
         href: 'https://www.phot.ai/case-studies/listinglab/chumbak',
       }],
@@ -130,9 +169,10 @@ const COMPANIES = [
         businessTags: ['B2B', 'B2C', 'SaaS'],
         headline: '30+ AI tools for instant content creation and high-quality product visuals — built for creators and D2C brands.',
         tags: [
-          { label: 'Gen AI', cls: 'tag-green' },
-          { label: 'D2C', cls: 'tag-amber' },
-          { label: 'Creator Tools', cls: 'tag-purple' },
+          { label: '1→N', cls: 'ptag-journey' },
+          { label: 'B2B · B2C', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'Gen AI', cls: 'ptag-ai' },
         ],
         artifacts: [],
         businessImpact: [],
@@ -245,16 +285,12 @@ const COMPANIES = [
         businessTags: ['B2B', 'PaaS', 'Enterprise'],
         headline: 'Agentic Suite is an agentic AI platform that combines LLMs, workflows, and enterprise integrations to build and scale autonomous, goal-driven agents.',
         tags: [
-          { label: 'Agentic AI', cls: 'tag-blue' },
-          { label: 'LLM', cls: 'tag-blue' },
-          { label: 'RAG', cls: 'tag-gray' },
-          { label: 'Gen AI', cls: 'tag-green' },
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B', cls: 'ptag-market' },
+          { label: 'PaaS', cls: 'ptag-type' },
+          { label: 'Agentic AI', cls: 'ptag-ai' },
         ],
-        artifacts: [
-          { type: 'video', label: 'Product demo', color: '#e6f1fb', iconColor: 'var(--color-text-info)' },
-          { type: 'image', label: 'Agent workflow UI', color: 'var(--color-background-tertiary)' },
-          { type: 'pdf', label: 'Forrester report', color: '#faece7' },
-        ],
+        artifacts: [],
         keyFeatures: [
           'SearchUnify FRAG™ Engine',
           'First-Touch Self-Service',
@@ -288,16 +324,12 @@ const COMPANIES = [
         businessTags: ['B2B', 'SaaS', 'Enterprise'],
         headline: 'SUVA is an enterprise AI assistant that delivers hyper-personalized, context-aware self-service experiences across channels.',
         tags: [
-          { label: 'Enterprise', cls: 'tag-blue' },
-          { label: 'AI Agent', cls: 'tag-teal' },
-          { label: 'LLM', cls: 'tag-blue' },
-          { label: 'CRMs', cls: 'tag-teal' },
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'Agentic AI', cls: 'ptag-ai' },
         ],
-        artifacts: [
-          { type: 'image', label: 'Builder canvas UI', color: 'var(--color-background-tertiary)' },
-          { type: 'video', label: 'Build demo', color: '#e6f1fb', iconColor: 'var(--color-text-info)' },
-          { type: 'pdf', label: 'Product one-pager', color: '#faece7' },
-        ],
+        artifacts: [],
         businessImpact: [],
         keyFeatures: [
           'Multi-turn Conversations',
@@ -326,16 +358,13 @@ const COMPANIES = [
         name: 'Agent Helper',
         businessTags: ['B2B', 'SaaS'],
         headline: "Agent Helper is an AI-powered support co-pilot that provides real-time context, automated responses, and intelligent recommendations to help agents resolve cases faster.",
-       tags: [
-          { label: 'Enterprise', cls: 'tag-blue' },
-          { label: 'AI Co-Pilot', cls: 'tag-teal' },
-          { label: 'LLM', cls: 'tag-blue' },
-          { label: 'CRMs', cls: 'tag-teal' },
+        tags: [
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'Gen AI', cls: 'ptag-ai' },
         ],
-        artifacts: [
-          { type: 'image', label: 'RAG pipeline diagram', color: 'var(--color-background-tertiary)' },
-          { type: 'pdf', label: 'Technical whitepaper', color: '#faece7' },
-        ],
+        artifacts: [],
         businessImpact: [],
         keyFeatures: [
           'Sentiment Analysis',
@@ -393,10 +422,10 @@ const COMPANIES = [
         businessTags: ['B2B', 'SaaS'],
         headline: 'Cuberoot is an AI-powered voice agent platform that enables enterprises to build, deploy, and scale human-like, multilingual voice interactions across lead generation, collections, customer support and more across 22+ indic languages',
         tags: [
-          { label: 'No-code', cls: 'tag-teal' },
-          { label: 'Voice AI', cls: 'tag-purple' },
-          { label: 'Indic Languages', cls: 'tag-amber' },
-          { label: 'Reliance Jio', cls: 'tag-gray' },
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'AI/ML', cls: 'ptag-ai' },
         ],
         artifacts: [
           { type: 'youtube', url: 'https://www.youtube.com/watch?v=HPWD376Rqws', label: 'Platform Demo', color: '#e6f1fb' },
@@ -442,7 +471,7 @@ const COMPANIES = [
 
   {
     id: 'officebanao',
-    categories: ['enterprise', 'fulltime'],
+    categories: ['enterprise', 'consulting'],
     year: '2022',
     active: false,
     employmentType: 'Consulting',
@@ -454,43 +483,139 @@ const COMPANIES = [
     description: 'A tech-enabled SaaS platform that streamlines the end-to-end office creation lifecycle, from design and procurement to execution, bringing transparency, efficiency, and scalability to a traditionally fragmented interiors ecosystem.',
     roleNarrative: 'I joined OfficeBanao as a founding member and Product Head, working closely with CXOs as the second hire to build the product portfolio from the ground up. I led everything from defining vision, strategy, and roadmap to setting up the team, tools, and execution frameworks, driving end-to-end product development. This journey took the product from inception to early maturity, onboarding the first successful customers and contributing to the initial fundraise. I later transitioned into a part-time consulting role to take the product to completion while moving to Reverie to deepen my focus on AI. Early on, navigating the operational complexity of a marketplace business and coordinating between enterprise clients and a fragmented vendor ecosystem gave me a deep understanding of how supply-side quality becomes the primary product variable in marketplace models, and how operationally intensive businesses need tight product-ops feedback loops from day one.',
     caseStudies: [],
-    ratings: [],
+    ratings: [
+      { source: 'TechCrunch', logo: 'https://techcrunch.com/favicon.ico', badge: 'OfficeBanao raises $6M+ from Lightspeed VC', href: 'https://techcrunch.com/2023/04/10/officebanao-funding-lightspeed/', sourceColor: '#34a853' },
+    ],
     businessImpact: [
       { num: '$2.2M', label: 'first-year sales', direction: 'up' },
       { num: '$6M+', label: 'Lightspeed funding secured', direction: 'up' },
+      { num: '200+', label: 'Sq. ft. covered', direction: 'up' },
+      { num: '20L+', label: 'Sq. ft. managed', direction: 'up' },
+      { num: '40+', label: 'Cities pan India', direction: 'up' },
     ],
     products: [
       {
-        id: 'officebanao-platform',
-        name: 'OfficeBanao Platform',
-        businessTags: ['B2B', 'Marketplace'],
-        headline: 'End-to-end office design, procurement, and renovation platform — 4 epics shipped from 0 to $2.2M in first-year sales.',
+        id: 'ob-procurement-crm',
+        name: 'OB Procurement CRM',
+        businessTags: ['B2B', 'SaaS'],
+        headline: 'AI-based procurement platform for office interior projects that replaces WhatsApp threads and spreadsheets with intelligent material sourcing, automated RFQs, and real-time order visibility.',
         tags: [
-          { label: 'Lightspeed VC', cls: 'tag-blue' },
-          { label: 'B2B Marketplace', cls: 'tag-teal' },
-          { label: 'PropTech', cls: 'tag-amber' },
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'AI/ML', cls: 'ptag-ai' },
         ],
         artifacts: [
-          { type: 'link', url: 'https://techcrunch.com/2023/04/10/officebanao-funding-lightspeed/', label: 'TechCrunch · Lightspeed', color: '#faece7', icon: '📰' },
+          { type: 'youtube', url: 'https://www.youtube.com/watch?v=OqiFVECkBG4&t=1s', label: 'Product Demo', color: '#e6f1fb' },
         ],
         businessImpact: [],
         keyFeatures: [
-          'Full product portfolio — 4 epics from ideation to launch',
-          'End-to-end office design and renovation workflows',
-          'Vendor and procurement marketplace',
-          'Product roadmap and strategy from 0 to 1',
-          'Go-to-market strategy driving $2.2M first-year sales',
+          'AI-assisted BOM generation from project scope and design specifications',
+          'Automated RFQ dispatch and vendor quote comparison',
+          'Supply risk flagging that identifies shortage risks 3 to 4 weeks ahead',
+          'Material substitution recommendations when primary suppliers are unavailable',
+          'End-to-end order tracking with delivery milestone alerts and delay escalations',
         ],
         caseStudies: [],
         ratings: [],
-        problem: 'Enterprises had no single platform for end-to-end office design, procurement, and renovation — leading to fragmented vendor management and high coordination overhead.',
-        decision: 'Built a 4-epic product portfolio from ideation to launch, defining roadmap, strategy, and go-to-market execution that achieved $2.2M in first-year sales and secured $6M+ in Lightspeed Ventures funding.',
-        learnings: 'B2B marketplace products live or die by supply-side quality. Signing up vendors is easy — ensuring consistent delivery quality is the hard part. Operationally intensive businesses need tight product-ops feedback loops from day one, not after scale.',
-        lastStatus: 'Active · Secured $6M+ Lightspeed funding post my transition. Product continues to operate with a growing vendor network.',
+        problem: 'Interior project procurement was entirely reactive. Project managers manually estimated BOMs, sourced materials through personal vendor contacts, and tracked orders over WhatsApp. With material prices swinging 15 to 20% year on year and supply chains frequently disrupted, late decisions and last-minute substitutions cascaded into project delays and budget overruns.',
+        decision: 'Built an AI-driven CRM that automated BOM creation from project specs, predicted supply risks early, and centralized all vendor communication and order tracking in one place. Shifting procurement from reactive to predictive gave teams the lead time to lock in pricing before commodity spikes and close sourcing gaps weeks before they hit the site.',
+        learnings: 'In operationally intensive businesses, AI delivers its highest value when it works ahead of execution rather than during it. The teams who benefited most were not the ones with the deepest vendor relationships but the ones who had the fewest, because the CRM gave them instant access to a structured supply network they could not have built on their own.',
+        lastStatus: 'Launched and operational. Contributed to a 29% reduction in procurement delays across projects.',
         outcomes: [
-          { num: '$2.2M', label: 'first-year sales' },
-          { num: '$6M+', label: 'Lightspeed funding' },
-          { num: '4 epics', label: 'shipped from 0' },
+          { num: '29%', label: 'reduction in procurement delays' },
+          { num: '11%+', label: 'uplift in project conversion rate' },
+        ],
+      },
+      {
+        id: 'ob-project-planning',
+        name: 'OB Project Planning',
+        businessTags: ['B2B', 'SaaS'],
+        headline: 'AI-based project planning tool that generates accurate cost estimates, auto-schedules material procurement, and surfaces budget and timeline risks before a single rupee is spent on site.',
+        tags: [
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'AI/ML', cls: 'ptag-ai' },
+        ],
+        artifacts: [],
+        businessImpact: [],
+        keyFeatures: [
+          'AI cost estimation calibrated to project scope, location, and material grade',
+          'Automated material scheduling aligned with trade-by-trade execution milestones',
+          'Dependency mapping across contractors, suppliers, and site access windows',
+          'Budget variance tracking with reforecasting as scope or prices change',
+          'Scenario simulation for trade-offs between cost, timeline, and material specification',
+        ],
+        caseStudies: [],
+        ratings: [],
+        problem: 'Office interior project managers estimated costs and timelines from experience and gut instinct, with no tooling to model dependencies between procurement, labor, and site access. Labor costs inflating 10 to 15% annually and persistent material price volatility compounded that guesswork into systematic overruns. The industry averaged 15 to 25% budget variance with no reliable early warning system.',
+        decision: 'Built a machine learning planning layer that used historical project data to generate calibrated cost and timeline estimates, auto-schedule material orders relative to execution milestones, and simulate risk scenarios before groundbreaking. The core insight was that the most valuable moment to intervene is pre-execution. Catching a procurement dependency gap in planning costs nothing. Catching it on site costs weeks.',
+        learnings: 'Accuracy matters more than sophistication in tools people actually adopt. Teams trusted this product because the estimates were measurably better than their own, not because the AI was impressive. The biggest unlock was material scheduling. Starting procurement 3 to 4 weeks earlier than traditional timelines produced on-time delivery improvements that no amount of on-site coordination could have achieved.',
+        lastStatus: 'Launched and operational. Contributed to a 19% reduction in project delivery time.',
+        outcomes: [
+          { num: '19%', label: 'reduction in delivery time' },
+          { num: '±8%', label: 'budget variance vs industry average of ±20%' },
+        ],
+      },
+      {
+        id: 'ob-qa-app',
+        name: 'OB QA App',
+        businessTags: ['B2B', 'Mobile'],
+        headline: 'Mobile-first quality assurance app for on-ground site teams that replaces informal checklists with standardized SOPs, milestone sign-offs, and real-time KPI visibility across all active projects.',
+        tags: [
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B', cls: 'ptag-market' },
+          { label: 'Consumer App', cls: 'ptag-type' },
+        ],
+        artifacts: [],
+        businessImpact: [],
+        keyFeatures: [
+          'Phase-wise SOPs and digital checklists for each stage of fit-out execution',
+          'Photo and video evidence capture with geolocation stamps for milestone sign-off',
+          'Real-time KPI dashboard for project managers across all active sites',
+          'Defect flagging and escalation workflows with assigned accountability',
+          'CSAT collection at handover with feedback loops into process improvement',
+        ],
+        caseStudies: [],
+        ratings: [],
+        problem: 'Quality on interior fit-out sites was invisible until it was too late. Site supervisors relied on paper checklists or informal processes, defects were discovered post-installation, and project managers had no real-time window into execution status across multiple sites. Accountability for rework was unclear, vendor disputes were common, and there was no structured feedback loop from delivery quality back into project planning.',
+        decision: 'Built a mobile-first QA app that digitized execution tracking with structured SOPs, mandatory photo documentation at each milestone, and a live KPI dashboard for project managers. Making quality measurable in real time shifted teams from reactive rework to proactive defect prevention and gave clients a transparent view of execution progress that became a genuine differentiator in the sales process.',
+        learnings: 'Execution quality is a data problem before it is a people problem. Site teams already knew what good work looked like. What they lacked was a structured process to surface deviations early and an accountability loop to act on them. The fastest adoption came from field supervisors rather than managers, because the app reduced their own documentation burden while giving them cover against disputed rework claims.',
+        lastStatus: 'Launched and operational. Contributed to CSAT improvement of 24% and delivery time reduction of 19%.',
+        outcomes: [
+          { num: 'CSAT +24%', label: 'improvement in customer satisfaction' },
+          { num: '19%', label: 'faster delivery with fewer rework cycles' },
+        ],
+      },
+      {
+        id: 'ob-store',
+        name: 'OB Store',
+        businessTags: ['B2B', 'eCommerce'],
+        headline: 'B2B eCommerce marketplace for office fit-out materials that brings catalog transparency, standardized pricing, and bulk procurement to a historically fragmented and opaque supplier ecosystem.',
+        tags: [
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B', cls: 'ptag-market' },
+          { label: 'Marketplace', cls: 'ptag-type' },
+        ],
+        artifacts: [],
+        businessImpact: [],
+        keyFeatures: [
+          'Curated multi-vendor catalogue with standardized SKUs and transparent pricing',
+          'Bulk procurement discounts surfaced at point of selection',
+          'Enterprise approval workflows and budget controls built into checkout',
+          'Real-time inventory and lead-time visibility across supplier network',
+          'Integrated with OB Procurement CRM for end-to-end order tracking',
+        ],
+        caseStudies: [],
+        ratings: [],
+        problem: "India's office interior supply chain is highly fragmented and unorganised. Buyers negotiate separately with dozens of suppliers, pricing is opaque, lead times are inconsistent, and there is no centralized channel to compare quality or access bulk discounts. This adds weeks to project timelines and introduces cost unpredictability that undermines every upstream plan.",
+        decision: 'Built OB Store as the commerce entry point of the platform with a vetted supplier catalogue, standardized SKUs, transparent pricing, and enterprise procurement workflows. By aggregating supply into a single channel, project teams eliminated the quote-and-negotiate cycle and gained the cost predictability needed to plan projects accurately from day one.',
+        learnings: 'Aggregating supply is significantly harder than building the storefront. The real product work was supplier onboarding, catalog standardization, and quality vetting rather than the eCommerce layer itself. Teams in Tier II and III cities adopted fastest because they had the fewest existing supplier relationships and gained the most from having centralized access to a vetted network.',
+        lastStatus: 'Launched and operational as part of the OfficeBanao platform across 40+ cities.',
+        outcomes: [
+          { num: '$2.1M', label: 'business volume in first 6 months' },
+          { num: '40+', label: 'cities with active vendor coverage' },
         ],
       },
     ],
@@ -501,7 +626,7 @@ const COMPANIES = [
     categories: ['enterprise', 'consumer', 'consulting', 'parttime'],
     year: '2022',
     active: false,
-    employmentType: 'Part-time',
+    employmentType: 'Consulting',
     name: 'inGen Dynamics Inc.',
     logo: '/ingen-dynamics-logo.jpeg',
     brandColor: '#00838f',
@@ -522,9 +647,10 @@ const COMPANIES = [
         businessTags: ['B2C', 'IoT', 'Smart Home'],
         headline: 'Automated smart home with IoT automation — surveillance, security, and home intelligence for modern living.',
         tags: [
-          { label: 'Smart Home', cls: 'tag-teal' },
-          { label: 'IoT', cls: 'tag-blue' },
-          { label: 'Computer Vision', cls: 'tag-purple' },
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2C', cls: 'ptag-market' },
+          { label: 'IoT', cls: 'ptag-type' },
+          { label: 'AI/ML', cls: 'ptag-ai' },
         ],
         artifacts: [
           { type: 'link', url: 'https://www.einpresswire.com/article/535267126/ingen-dynamics-announces-successful-worldwide-deployment-of-sentinel-prime-installations-based-on-the-origami-platform', label: 'Sentinel Deployment', color: 'var(--color-background-tertiary)', icon: '📰' },
@@ -550,12 +676,12 @@ const COMPANIES = [
       {
         id: 'ingen-aido',
         name: 'Aido Robot',
-        businessTags: ['B2C', 'Robotics', 'AI'],
+        businessTags: ['B2B', 'B2C', 'Robotics', 'AI'],
         headline: 'An AI robotics and IoT startup focused on building intelligent systems for home automation and healthcare, leveraging machine learning, robotics, and computer vision, backed by 1,500+ Indiegogo backers and US investors.',
         tags: [
-          { label: 'AI Robotics', cls: 'tag-purple' },
-          { label: 'Healthcare', cls: 'tag-teal' },
-          { label: 'Computer Vision', cls: 'tag-blue' },
+          { label: '1→N', cls: 'ptag-journey' },
+          { label: 'B2B · B2C', cls: 'ptag-market' },
+          { label: 'AI/ML', cls: 'ptag-ai' },
         ],
         artifacts: [
           { type: 'link', url: 'https://fastcompany.co.za/tech/2023-08-10-gem-increases-investment-commitment-for-ingen-dynamics-to-150-million-accelerating-the-ai-and-robotics-evolution/', label: 'Fast Company · $150M', color: 'var(--color-background-tertiary)', icon: '📰' },
@@ -583,9 +709,72 @@ const COMPANIES = [
     ],
   },
 
+  // ── SHELVED IDEAS ─────────────────────────────────────────────────────────
+  {
+    id: 'zippy',
+    categories: ['shelved', 'consumer', 'founder'],
+    year: '2022',
+    active: false,
+    employmentType: 'Self-Initiated',
+    name: 'Zippy',
+    logo: '/zippy.png',
+    brandColor: '#f59e0b',
+    website: '#',
+    role: 'Co-Founder and CEO',
+    description: 'A hyperlocal quick-commerce platform designed to enable 60-minute delivery with real-time price discovery and live bargaining, connecting offline retailers to online demand through an AI-powered O2O marketplace. Built around a core thesis of bridging the massive gap between offline supply and online demand in India.',
+    roleNarrative: 'Led Zippy as founder-CEO from concept to product development readiness in roughly 3 months. Defined the vision, business model, and product strategy from scratch. Led deep market research across offline retail and quick commerce gaps, designed end-to-end product flows, user journeys, and platform architecture, and built the core thesis around hyperlocal discovery, live bargaining, and instant delivery. Structured both supply-side seller onboarding and demand-side user experience, planned the city-level rollout with a hub-based ops model, and worked on early product development direction and system design. Pure 0 to 1 thinking across product, business, and market architecture.',
+    caseStudies: [],
+    ratings: [],
+    impactLabel: 'Expected Impact',
+    businessImpact: [
+      { num: '~94K', label: 'projected orders per month in Year 1', direction: 'up' },
+      { num: '$3.2M', label: 'GMV projected in Year 1', direction: 'up' },
+      { num: '960+', label: 'sellers planned for early phase onboarding', direction: 'up' },
+      { num: '27%', label: 'offline price advantage over online', direction: 'up' },
+    ],
+    products: [
+      {
+        id: 'zippy-platform',
+        name: 'Zippy App',
+        businessTags: ['B2C', 'Marketplace'],
+        headline: 'Hyperlocal O2O commerce platform with 60-minute delivery, a live bargaining engine, and AI-powered inventory cataloging built to unlock the offline-to-online shift in Indian retail.',
+        tags: [
+          { label: 'B2C', cls: 'ptag-market' },
+          { label: 'Marketplace', cls: 'ptag-type' },
+          { label: 'AI/ML', cls: 'ptag-ai' },
+        ],
+        artifacts: [
+          { type: 'link', url: 'https://drive.google.com/file/d/1ygwuLeAkgcs90d8kCQG3c0-j74uYtZxC/view?usp=sharing', label: 'Product Pitch Deck', color: '#faece7', icon: '📄' },
+        ],
+        businessImpact: [],
+        keyFeatures: [
+          'Auto-bargain and live bidding engine for gamified real-time price discovery',
+          'EyeQ AI-based cataloging to digitize offline inventory at scale',
+          '60-minute fulfillment system with real-time order tracking',
+          'Hyperlocal hub model designed for cost-efficient last-mile delivery',
+          'Assisted shopping via buyer-seller interaction and conversational commerce',
+          'Voice-assisted commerce layer for low-tech seller and buyer segments',
+          'Pan-India catalog vision targeting 1M+ offline stores',
+        ],
+        caseStudies: [],
+        ratings: [],
+        problem: "India's e-retail penetration sat at only 4.6% while over $100B in offline commerce remained undiscovered digitally. Customers waited 1 to 4 days for delivery despite the same products sitting in stores within 5 kilometres, often at prices 27% cheaper than online. Offline sellers had no viable path to digital demand, no tools to digitize inventory, and no ability to offer competitive pricing online. The result was a structural disconnect between abundant local supply and growing online demand that no existing platform was designed to close.",
+        decision: 'Built Zippy around three interlocking ideas. First, 60-minute hyperlocal delivery using a hub-based operations model to unlock the speed advantage of nearby offline stock. Second, a live bargaining and bidding engine that gave consumers real price discovery and sellers a differentiated way to compete beyond static listings. Third, EyeQ, an AI-powered cataloging system that could digitize offline inventory at scale without manual effort, solving the supply-side onboarding problem that had blocked every previous O2O attempt in India.',
+        learnings: 'Timing matters as much as the idea itself. Market velocity can outpace execution readiness and capital availability simultaneously. Operations-heavy businesses like quick commerce require deep capital commitment and full-time founding bandwidth from day one. The strongest ideas do not fail on merit. They either evolve with the right partners or get outpaced by capital-backed incumbents who arrived earlier. Founder alignment and full-time commitment are non-negotiable in 0 to 1 bets with high execution intensity.',
+        lastStatus: 'Shelved at product development stage in 2022.',
+        outcomes: [
+          { num: '100x', label: 'faster delivery vs traditional ecommerce' },
+          { num: '80%', label: 'lower delivery and warehousing cost model' },
+          { num: '10-25%', label: 'built-in margin arbitrage from offline price gap' },
+        ],
+        whyShelved: 'Zippy was paused at the product development stage after a deliberate strategic assessment rather than a failed execution. The model required deep operational infrastructure including logistics, fulfillment hubs, and supply chain muscle that demanded significant capital before any unit economics could be validated. Co-founder bandwidth constraints meant not all founding members were positioned to commit full-time to a high-intensity build. Simultaneously, the quick-commerce market accelerated sharply with Zepto, Blinkit, and Swiggy Instamart scaling aggressively with institutional capital, narrowing the window for a bootstrapped entrant to establish an unfair advantage. The strategic call was to pause rather than burn limited capital in a hyper-competitive, execution-heavy market without strong backing. Zippy had genuine potential and I believe it would have been a meaningful business had we been in a different place in our lives, found co-founders who were fully aligned and ready to go all in, or secured the right partners to shoulder the operational weight. The idea was never the constraint. The timing, the team configuration, and the mental bandwidth were.',
+      },
+    ],
+  },
+
   {
     id: 'discovr',
-    categories: ['enterprise', 'fulltime'],
+    categories: ['enterprise', 'fulltime', 'founder'],
     year: '2017–22',
     active: false,
     employmentType: 'Full-time',
@@ -594,162 +783,186 @@ const COMPANIES = [
     logo: '/discovr-ai-logo.jpeg',
     website: '#',
     role: 'Co-Founder, Chief Product Officer',
-    description: 'A no-code AI platform that empowers enterprises to build and scale intelligent systems across computer vision, conversational AI, OCR, and predictive use cases using pre-built ML models and fine-tuned algorithms, enabling real-time insights, automated decision-making, and faster time to value. It operates as the B2B vertical of Red Ginger Technologies, backed by Micromax, ONGC, and prominent HNIs.',
-    roleNarrative: 'As Co-founder and Chief Product Officer, my role centered on product thinking and development, defining GTM, ICPs, and prioritization while building AI systems grounded in real-world use cases. We partnered with leading enterprises and government bodies including Reliance Jio, Tata Steel, ONGC, the Indian Army, Cairn Vedanta, Texas Instruments, NITI Aayog, and the Telangana Government, running multiple POCs, MVPs, and live deployments to acquire data, validate problems, and refine ML models. Over three years, this iterative approach helped us evolve from project-led execution to a mature, scalable SaaS platform. Building enterprise trust in AI was one of the hardest challenges, particularly with government and defence clients where on-prem deployment, air-gapped environments, and explainability were hard requirements and not optional features. Managing investor relationships with Micromax and ONGC while simultaneously shipping product and closing deployments gave me a deep understanding of how to balance strategic stakeholder management with execution velocity.',
+    description: 'A full-stack AI/ML platform built by productizing internal computer vision, document intelligence, predictive analytics, and decision support capabilities into reusable enterprise grade engines. Started with 0 to 1 deployments across government and enterprise clients and evolved into a scalable SaaS platform that reduced AI solution development time from months to weeks. Operates as the B2B vertical of Red Ginger Technologies, backed by Micromax, ONGC, and prominent HNIs.',
+    roleNarrative: 'As Co-founder and Chief Product Officer, I led the full product and AI journey from early deployment-led learning to platform productization. The core thesis was to convert internal AI capabilities across computer vision, document intelligence, and predictive analytics into reusable modular engines that any enterprise could deploy without an in-house ML team. We partnered with leading enterprises and government bodies including Reliance Jio, Tata Steel, ONGC, the Indian Army, Cairn Vedanta, Texas Instruments, NITI Aayog, and the Telangana Government, running POCs, MVPs, and live deployments to acquire data, validate problems, and refine models. Building enterprise trust in AI was one of the hardest challenges, particularly with defence and government clients where on-prem deployment, air-gapped environments, and explainability were hard requirements and not optional features. Managing investor relationships with Micromax and ONGC while simultaneously shipping product and closing deployments sharpened my discipline around prioritization and knowing when to double down versus when to evolve the platform.',
     caseStudies: [
-      { title: 'ONGC', result: 'Automated pipeline defect detection — reduced manual inspection cost by 40%.', href: '#' },
-      { title: 'Indian Army', result: 'Air-gapped on-prem deployment for perimeter surveillance at two installations.', href: '#' },
-      { title: 'Tata Steel', result: 'Automated document classification for 5M+ procurement documents; 60% faster processing.', href: '#' },
-      { title: 'Telangana Government', result: 'Citizen grievance classification system processing 50K+ submissions/month.', href: '#' },
+      { title: 'ONGC', result: 'Automated pipeline defect detection with predictive maintenance, reducing manual inspection cost by 40%.', href: '#' },
+      { title: 'Indian Army', result: 'Air-gapped on-prem surveillance deployment for perimeter security at two installations.', href: '#' },
+      { title: 'Tata Steel', result: 'Automated document classification for 5M+ procurement documents with 60% faster processing.', href: '#' },
+      { title: 'Telangana Government', result: 'Citizen grievance classification system processing 50K+ submissions per month.', href: '#' },
     ],
     ratings: [],
+    businessImpact: [
+      { num: '$10M+', label: 'efficiency gains delivered across industrial deployments', level: 'up' },
+      { num: '30+', label: 'enterprise and government clients across industries', level: 'up' },
+      { num: '5M+', label: 'documents processed for enterprise intelligence clients', level: 'up' },
+      { num: 'Months to Weeks', label: 'AI solution development time reduced via platform productization', level: 'up' },
+    ],
     products: [
       {
-        id: 'discovr-cv',
-        name: 'Netra',
+        id: 'discovr-netra',
+        name: 'Netra — Computer Vision Engine',
         businessTags: ['B2B', 'B2G'],
-        headline: 'Low-code CV model builder — object detection, OCR, quality inspection — deployed in manufacturing, oil & gas, and defence.',
+        headline: 'Computer vision engine powering real-time surveillance, anomaly detection, and visual intelligence across industries. Deployed across government, defence, manufacturing, and oil and gas.',
         tags: [
-          { label: 'Low-code', cls: 'tag-teal' },
-          { label: 'White-label', cls: 'tag-coral' },
-          { label: 'ONGC · Micromax backed', cls: 'tag-amber' },
-          
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B · B2G', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'AI/ML', cls: 'ptag-ai' },
         ],
-        artifacts: [
-          { type: 'image', label: 'Platform screenshots', color: 'var(--color-background-tertiary)' },
-          { type: 'video', label: 'Demo video', color: '#e6f1fb', iconColor: 'var(--color-text-info)' },
+        artifacts: [],
+        businessImpact: [
+          { num: 'Multi-state', label: 'government scale surveillance systems enabled', level: 'up' },
+          { num: '40%', label: 'manual monitoring cost reduction for industrial clients', level: 'down' },
+          { num: 'Hong Kong', label: 'semiconductor defect detection deployed for manufacturing client', level: 'up' },
+          { num: '2 Installations', label: 'Indian Army air-gapped on-prem perimeter surveillance', level: 'up' },
         ],
-        businessImpact: [],
         keyFeatures: [
-          'Low-code model training — annotate, train, and deploy CV models in hours',
-          'Pre-built templates — defect detection, OCR, face recognition, object counting',
-          'On-prem deployment — air-gapped defence and government environments',
-          'White-label packaging — for consulting firm resellers (PwC, EY, Tech Mahindra)',
-          'Edge deployment — manufacturing floor cameras',
+          'Criminal profiling and tracking using CCTV feeds for government and police deployments',
+          'Fire and smoke detection for industrial safety and hazard prevention',
+          'Intruder detection via thermal imaging for defence and perimeter security',
+          'Traffic analytics and ANPR systems for smart city deployments',
+          'Semiconductor defect detection on conveyor belts for manufacturing clients',
+          'On-prem and air-gapped deployment for defence and government environments',
         ],
         caseStudies: [],
         ratings: [],
-        problem: 'Large enterprises needed Computer Vision capabilities but had no ML talent in-house. Custom CV projects took 6–18 months and cost ₹50L+.',
-        decision: 'Built a low-code CV platform with annotation tools, one-click training, and on-prem deployment. White-labeled for consulting firms who bundled it into client engagements.',
-        learnings: 'Enterprise CV buyers needed extensive POC hand-holding. White-labeling through consulting firms (PwC, EY, Tech Mahindra) was the right distribution strategy — trust by proxy. Direct enterprise sales cycles ran 12-18 months; indirect was 3-6. CV models trained in lab conditions consistently underperform in field due to lighting, angle, and occlusion variance.',
-        lastStatus: 'Evolved · Integrated into the full Discovr.AI SaaS platform. Multiple enterprise and government deployments remain active.',
+        problem: 'Industries had massive CCTV and sensor data but zero intelligence layer. Monitoring was manual, reactive, and error prone with no scalable way to detect anomalies in real time across distributed camera networks. Custom CV projects took 6 to 18 months and cost ₹50L or more per deployment, making enterprise AI adoption practically infeasible without a platform approach.',
+        decision: 'Built a modular CV engine supporting multiple use cases on the same backbone including criminal profiling, fire and smoke detection, thermal intrusion detection, traffic analytics, and industrial defect detection. Chose a multi-use architecture over single-use to maximize reusability across client deployments and reduce time to production. Edge plus real-time inference was a core design requirement given the latency constraints of surveillance and manufacturing use cases.',
+        learnings: 'CV platforms win when they are multi-use and not single-use. A single backbone with multiple deployment templates reduced new use case development time from months to weeks. Edge and real-time inference is critical for adoption in surveillance and manufacturing contexts. Enterprise trust in CV systems depends entirely on precision and very low false alert rates because a false alarm in defence or industrial safety has real consequences. On-prem deployment was a non-negotiable requirement for defence and government clients and needed to be designed in from day one.',
+        lastStatus: 'Evolved. Integrated into the full Discovr.AI SaaS platform. Multiple enterprise and government deployments remain active.',
         outcomes: [
-          { num: '30+', label: 'enterprise clients' },
-          { num: '65%', label: 'renewal rate' },
-          { num: '5M+', label: 'documents processed' },
-          { num: 'NPS 56+', label: 'flagship accounts' },
+          { num: '30+', label: 'enterprise and govt clients' },
+          { num: '40%', label: 'monitoring cost reduction' },
+          { num: '5+', label: 'use case verticals' },
+          { num: 'Air-gapped', label: 'defence deployments' },
         ],
       },
       {
-        id: 'discovr-nlp',
-        name: 'Moksha',
+        id: 'discovr-caravan',
+        name: 'Caravan — Document Intelligence',
         businessTags: ['B2B', 'B2G'],
-        headline: 'Low-code platform for text classification, sentiment analysis, entity extraction, and churn prediction.',
+        headline: 'End to end document intelligence platform digitizing large volumes of unstructured enterprise documents and building a searchable intelligence layer on top. Deployed across energy, manufacturing, and government sectors.',
         tags: [
-          { label: 'Low-code', cls: 'tag-teal' },
-          { label: 'White-label', cls: 'tag-coral' },
-          { label: 'Predictive ML', cls: 'tag-purple' },
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B · B2G', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'AI/ML', cls: 'ptag-ai' },
         ],
         artifacts: [
-          { type: 'image', label: 'NLP pipeline UI', color: 'var(--color-background-tertiary)' },
-          { type: 'pdf', label: 'Architecture doc', color: '#faece7' },
+          { type: 'link', url: 'https://startup.ongc.co.in/home', label: 'ONGC Startup', color: '#0B0D27', icon: '🔗' },
         ],
-        businessImpact: [],
+        businessImpact: [
+          { num: '5M+', label: 'procurement documents processed for Tata Steel with 60% faster processing', level: 'up' },
+          { num: '60%', label: 'reduction in document processing time across enterprise clients', level: 'down' },
+          { num: 'Cairn Vedanta', label: 'energy sector document intelligence system deployed', level: 'up' },
+          { num: '50K+', label: 'citizen grievance submissions processed monthly for Telangana Government', level: 'up' },
+        ],
         keyFeatures: [
-          'No-code text classifier — train custom intent and entity models on client data',
-          'Pre-built models — sentiment, PII detection, document classification',
-          'Predictive ML templates — churn, demand forecasting, anomaly detection',
-          'REST API + webhook output — easy integration into existing systems',
-          'Explainability layer — feature importance and confidence scores per prediction',
+          'Document digitization at scale using OCR and layout understanding',
+          'Structured data extraction from invoices, contracts, and technical documents',
+          'Semantic search layer enabling full-text and entity-based querying',
+          'Domain-specific NLP tuning for energy, legal, and procurement verticals',
+          'Deployed for Cairn Vedanta and Tata Steel document processing workflows',
+          'API and processing layer enabling SaaS monetization by document volume',
         ],
         caseStudies: [],
         ratings: [],
-        problem: 'Enterprises had large text datasets and needed ML insights but no data science teams. Off-the-shelf NLP APIs had no customization and failed on domain-specific language.',
-        decision: 'Extended the Discovr platform to NLP with a no-code training interface. Built pre-trained templates for the 5 most common enterprise NLP tasks and a Predict API for BI tool integration.',
-        learnings: 'Domain-specific language — legal, finance, engineering — breaks generic NLP models at production scale. Pre-training on industry corpora was non-negotiable for accuracy above 80%. Government clients required on-prem deployment as a hard constraint, not a nice-to-have.',
-        lastStatus: 'Evolved · Integrated into Discovr.AI platform. Government and enterprise NLP deployments continue to run.',
+        problem: 'Enterprises had huge unstructured document repositories with no easy way to search, extract, or analyze information. Manual document workflows were slow, non-scalable, and error prone. OCR tools existed but produced output requiring significant manual cleanup with no intelligence layer on top. Domain-specific vocabulary in energy, legal, and procurement further broke generic solutions.',
+        decision: 'Built an OCR and NLP pipeline combining document digitization, structured data extraction, and a semantic search layer. Designed for real-world use cases including invoice digitization, enterprise document processing for energy sector clients like Cairn Vedanta, and large-scale government document intelligence. Domain-specific model tuning was built into the core architecture to handle language variance across industries. Monetized via API and volume-based processing layers to create a scalable SaaS revenue model.',
+        learnings: 'OCR alone is a feature and search plus usability is the product. Structured output drives actual business value and not raw text extraction. Domain-specific model tuning massively improves outcomes for industries with specialized vocabulary. Enterprises adopt document AI fastest when the output integrates directly into existing workflows rather than creating a new interface. Tata Steel and Cairn Vedanta deployments proved that procurement and energy verticals had the highest willingness to pay for document intelligence at scale.',
+        lastStatus: 'Evolved. Integrated into Discovr.AI platform. Enterprise document processing deployments continue to run.',
         outcomes: [
-          { num: '60%', label: 'faster doc processing' },
-          { num: '50K+', label: 'submissions/month automated' },
-          { num: '12', label: 'NLP model types' },
-          { num: '3 days', label: 'avg time to first model' },
+          { num: '5M+', label: 'documents processed' },
+          { num: '60%', label: 'faster processing' },
+          { num: '50K+', label: 'submissions/month' },
+          { num: 'Energy + Govt', label: 'key verticals' },
         ],
       },
       {
-        id: 'discovr-cv',
-        name: 'Caravan',
+        id: 'discovr-moksha',
+        name: 'Moksha — Predictive Intelligence',
         businessTags: ['B2B', 'B2G'],
-        headline: 'Low-code CV model builder — object detection, OCR, quality inspection — deployed in manufacturing, oil & gas, and defence.',
+        headline: 'AI engine for predictive maintenance and industrial intelligence using time-series and sensor data. Built for manufacturing, oil and gas, and heavy industry deployments.',
         tags: [
-          { label: 'Low-code', cls: 'tag-teal' },
-          { label: 'White-label', cls: 'tag-coral' },
-          { label: 'ONGC · Micromax backed', cls: 'tag-amber' },
-
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B · B2G', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'AI/ML', cls: 'ptag-ai' },
         ],
-        artifacts: [
-          { type: 'image', label: 'Platform screenshots', color: 'var(--color-background-tertiary)' },
-          { type: 'video', label: 'Demo video', color: '#e6f1fb', iconColor: 'var(--color-text-info)' },
-          { type: 'link', url: 'https://startup.ongc.co.in/home', label: 'ONGC Startup', color: '#e6f1fb', icon: '🔗' },
+        artifacts: [],
+        businessImpact: [
+          { num: '$10M+', label: 'efficiency gains delivered across industrial deployments', level: 'up' },
+          { num: '40%', label: 'reduction in manual inspection cost at ONGC via pipeline defect detection', level: 'down' },
+          { num: 'Uptime', label: 'improved operational efficiency across manufacturing clients', level: 'up' },
+          { num: 'Multi-sector', label: 'energy optimization, inventory and scheduling efficiency improved', level: 'up' },
         ],
-        businessImpact: [],
         keyFeatures: [
-          'Low-code model training — annotate, train, and deploy CV models in hours',
-          'Pre-built templates — defect detection, OCR, face recognition, object counting',
-          'On-prem deployment — air-gapped defence and government environments',
-          'White-label packaging — for consulting firm resellers (PwC, EY, Tech Mahindra)',
-          'Edge deployment — manufacturing floor cameras',
+          'Time-series anomaly detection for industrial sensor and equipment data',
+          'Failure prediction models for manufacturing and oil and gas equipment',
+          'Maintenance scheduling recommendations integrated with existing operations systems',
+          'Real-time alerts and dashboards for operations teams',
+          'Deployed for ONGC pipeline defect detection reducing manual inspection cost by 40%',
+          'Domain-specific calibration for manufacturing, energy, and industrial environments',
         ],
         caseStudies: [],
         ratings: [],
-        problem: 'Large enterprises needed Computer Vision capabilities but had no ML talent in-house. Custom CV projects took 6–18 months and cost ₹50L+.',
-        decision: 'Built a low-code CV platform with annotation tools, one-click training, and on-prem deployment. White-labeled for consulting firms who bundled it into client engagements.',
+        problem: 'Industries operated on reactive maintenance cycles meaning equipment failed before being fixed. Sensor data existed across production floors but was underutilized and rarely analyzed in real time. Equipment failures caused major downtime losses and the cost of unplanned maintenance was multiples of planned maintenance. ONGC pipelines alone represented significant risk exposure due to the absence of an intelligent monitoring layer.',
+        decision: 'Built predictive models for failure prediction, anomaly detection in time-series sensor data, and maintenance scheduling recommendations. Layered the engine with real-time dashboards and alerts to give operations teams visibility before failures occurred. Chose to prioritize interpretability alongside accuracy because industrial operations teams needed to understand and trust predictions before acting on them. Domain-specific calibration was built into deployment methodology for each client environment.',
+        learnings: 'Data pipelines matter more than ML models in industrial AI. Clean and reliable sensor data ingestion is the hardest part of the problem and the ML is secondary. Industrial AI requires deep domain calibration to understand what a normal versus anomalous reading means in context. Adoption depends on interpretability and not just accuracy. Operations teams act on predictions only when they understand why the system flagged an issue. ROI storytelling in terms of downtime cost avoided was the most effective way to drive procurement decisions.',
+        lastStatus: 'Evolved. Integrated into Discovr.AI platform. ONGC and manufacturing deployments remain active.',
         outcomes: [
-          { num: '30+', label: 'enterprise clients' },
-          { num: '65%', label: 'renewal rate' },
-          { num: '5M+', label: 'documents processed' },
-          { num: 'NPS 56+', label: 'flagship accounts' },
+          { num: '$10M+', label: 'efficiency gains delivered' },
+          { num: '40%', label: 'inspection cost reduction' },
+          { num: 'ONGC', label: 'pipeline deployment' },
+          { num: 'Real-time', label: 'anomaly detection' },
         ],
       },
-    {
-        id: 'discovr-cv',
-        name: 'Nirvana',
+      {
+        id: 'discovr-nirvana',
+        name: 'Nirvana — Decision Intelligence',
         businessTags: ['B2B', 'B2G'],
-        headline: 'Low-code CV model builder — object detection, OCR, quality inspection — deployed in manufacturing, oil & gas, and defence.',
+        headline: 'Central intelligence layer integrating multiple AI systems to deliver actionable insights and unified decision support across enterprise operations.',
         tags: [
-          { label: 'Low-code', cls: 'tag-teal' },
-          { label: 'White-label', cls: 'tag-coral' },
-          { label: 'ONGC · Micromax backed', cls: 'tag-amber' },
-          
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2B · B2G', cls: 'ptag-market' },
+          { label: 'SaaS', cls: 'ptag-type' },
+          { label: 'AI/ML', cls: 'ptag-ai' },
         ],
-        artifacts: [
-          { type: 'image', label: 'Platform screenshots', color: 'var(--color-background-tertiary)' },
-          { type: 'video', label: 'Demo video', color: '#e6f1fb', iconColor: 'var(--color-text-info)' },
+        artifacts: [],
+        businessImpact: [
+          { num: '$14M+', label: 'efficiency gains delivered across industrial setups', level: 'up' },
+          { num: 'Unified', label: 'intelligence layer across CV, document, and predictive AI outputs', level: 'up' },
+          { num: 'Energy', label: 'optimization improvements across deployed enterprise environments', level: 'up' },
+          { num: 'Inventory', label: 'movement and scheduling efficiency improved for manufacturing clients', level: 'up' },
         ],
-        businessImpact: [],
         keyFeatures: [
-          'Low-code model training — annotate, train, and deploy CV models in hours',
-          'Pre-built templates — defect detection, OCR, face recognition, object counting',
-          'On-prem deployment — air-gapped defence and government environments',
-          'White-label packaging — for consulting firm resellers (PwC, EY, Tech Mahindra)',
-          'Edge deployment — manufacturing floor cameras',
+          'Unified data integration layer connecting CV, document, predictive, and third-party enterprise systems',
+          'Real-time and historical analytics combined into a single decision surface',
+          'Actionable recommendations engine for operations and executive teams',
+          'Enterprise-grade access controls and role-based views',
+          'Horizontal platform design enabling deployment across the full Discovr.AI product suite',
+          'ROI reporting layer translating AI outputs into quantified business impact',
         ],
         caseStudies: [],
         ratings: [],
-        problem: 'Large enterprises needed Computer Vision capabilities but had no ML talent in-house. Custom CV projects took 6–18 months and cost ₹50L+.',
-        decision: 'Built a low-code CV platform with annotation tools, one-click training, and on-prem deployment. White-labeled for consulting firms who bundled it into client engagements.',
+        problem: 'Data was siloed across systems and functions. Insights were delayed, fragmented, and rarely acted upon. Enterprises had invested in multiple point solutions that did not communicate with each other. There was no unified layer to turn data from different sources into a coherent decision support system. Leadership teams were looking at dashboards that described the past but provided no forward-looking recommendations.',
+        decision: 'Built a unified analytics and AI platform integrating multiple data sources, combining real-time and historical insights, and delivering actionable recommendations to operations and leadership teams. Designed Nirvana as a horizontal decision layer that could sit on top of Netra, Caravan, and Moksha outputs as well as third-party enterprise systems. ROI reporting was built into the platform from day one to give procurement teams the quantified justification needed to expand deployments.',
+        learnings: 'Dashboards do not sell and decisions do. Enterprises do not pay for beautiful data visualization. They pay when a specific recommendation demonstrably saved or earned money. Integration across the full data lifecycle is the hardest engineering challenge in enterprise AI. ROI storytelling at the executive level in the language of cost avoided and efficiency gained is the single most effective procurement accelerator. Building Nirvana as the intelligence layer across all four engines gave us a platform story that individual products could not tell on their own.',
+        lastStatus: 'Evolved. Served as the unifying intelligence layer across the full Discovr.AI platform suite.',
         outcomes: [
-          { num: '30+', label: 'enterprise clients' },
-          { num: '65%', label: 'renewal rate' },
-          { num: '5M+', label: 'documents processed' },
-          { num: 'NPS 56+', label: 'flagship accounts' },
+          { num: '$14M+', label: 'efficiency gains' },
+          { num: '4 engines', label: 'unified under one layer' },
+          { num: 'Energy + Mfg', label: 'key verticals' },
+          { num: 'Executive', label: 'decision support' },
         ],
-      }
+      },
     ],
   },
 
   {
     id: 'onelabs',
-    categories: ['consumer', 'fulltime'],
+    categories: ['consumer', 'fulltime', 'founder'],
     year: '2015–21',
     active: false,
     employmentType: 'Full-time',
@@ -761,7 +974,32 @@ const COMPANIES = [
     description: "A consumer internet product company building and launching mobile and aggregator super apps across ecommerce and concierge services, scaling to 20M+ downloads across 6+ countries. As the B2C vertical of Red Ginger Technologies, backed by Micromax, ONGC, and prominent HNIs, it is driven by the ambition to become the Bytedance of India.",
     roleNarrative: "As Co-founder and Chief Product and Technology Officer, I owned the end-to-end journey of building and scaling the company's product ecosystem, driving product vision, technology architecture, and growth strategy. I led everything from identifying opportunities and defining what to build to executing across product, engineering, and growth, ensuring scalable systems, rapid experimentation, and sustainable monetization. The defining phase was the series of pivots from Yana to inOne to FoodBox, each driven by real user behavior data rather than top-down strategy, and each sharpening our instincts for what distribution fit actually means. Scaling FoodBox to 14M+ downloads across six countries taught me that telecom bundling as a channel mattered as much as product-market fit. Managing a full portfolio while maintaining investor confidence with Micromax and ONGC-backed funding sharpened my discipline around prioritization, resource allocation, and knowing when to double down versus when to sunset.",
     caseStudies: [],
-    ratings: [],
+    ratings: [
+      {
+        source: 'YourStory',
+        logo: 'https://images.yourstory.com/cs/images/yourstory_logo.png',
+        badge: 'Micromax invested in inOne',
+        label: 'Micromax invests in AI startup One Labs, creator of super-app inOne',
+        href: 'https://yourstory.com/2018/03/micromax-invests-ai-startup-one-labs-creator-super-app-inone',
+        sourceColor: '#e8612c',
+      },
+      {
+        source: 'Economic Times',
+        logo: 'https://economictimes.indiatimes.com/favicon.ico',
+        badge: 'Angel Round — Yana AI',
+        label: 'AI-powered app GetYana raises undisclosed sum in Angel round',
+        href: 'https://economictimes.indiatimes.com/small-biz/startups/ai-powered-mobile-app-getyana-raises-undisclosed-sum-in-angel-round/articleshow/51503550.cms',
+        sourceColor: '#003580',
+      },
+      {
+        source: 'Inc42',
+        logo: 'https://inc42.com/favicon.ico',
+        badge: 'Seed Funding — Yana AI',
+        label: 'Yana AI raises seed funding',
+        href: 'https://inc42.com/flash-feed/yana-ai-raises-seed-funding/',
+        sourceColor: '#1a1a2e',
+      },
+    ],
     products: [
       {
         id: 'onelabs-foodbox',
@@ -769,13 +1007,11 @@ const COMPANIES = [
         businessTags: ['B2C', 'eCommerce'],
         headline: 'an all-in-one food app designed for price-sensitive users, transforming the journey from dish-driven discovery to coupon-driven choices of the day. It enables users to discover the best deals, decide what to eat, and book orders natively on the platform without needing to download multiple apps.',
         tags: [
-          { label: 'Food · Productivity', cls: 'tag-amber' },
-          { label: '50+ vendors', cls: 'tag-gray' },
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2C', cls: 'ptag-market' },
+          { label: 'Consumer App', cls: 'ptag-type' },
         ],
-        artifacts: [
-          { type: 'image', label: 'FoodBox UI', color: 'var(--color-background-tertiary)' },
-          { type: 'image', label: 'inOne screenshots', color: 'var(--color-background-tertiary)' },
-        ],
+        artifacts: [],
         businessImpact: [],
         keyFeatures: [
           'FoodBox — aggregated menus from 50+ restaurant partners with single checkout',
@@ -802,12 +1038,11 @@ const COMPANIES = [
         businessTags: ['B2C', 'eCommerce'],
         headline: 'Food aggregator and productivity super-app — 50+ vendor integrations.',
         tags: [
-          { label: 'Food · Productivity', cls: 'tag-amber' },
-          { label: '50+ vendors', cls: 'tag-gray' },
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2C', cls: 'ptag-market' },
+          { label: 'Consumer App', cls: 'ptag-type' },
         ],
         artifacts: [
-          { type: 'image', label: 'FoodBox UI', color: 'var(--color-background-tertiary)' },
-          { type: 'image', label: 'inOne screenshots', color: 'var(--color-background-tertiary)' },
           { type: 'youtube', url: 'https://www.youtube.com/watch?v=THdypgOUpU4', label: 'inOne Demo', color: '#e6f1fb' },
         ],
         businessImpact: [],
@@ -836,12 +1071,12 @@ const COMPANIES = [
         businessTags: ['B2C', 'Consumer App'],
         headline: "a vernacular AI assistant designed as India's answer to Siri and Alexa, going beyond conversational and in-built mobile actions to enable real-world transactions like groceries, cabs, and services through voice and native integrations, powered by in-house ML-based intent recognition and classification engines.",
         tags: [
-          { label: 'Personalisation', cls: 'tag-purple' },
-          { label: 'Ad Tech', cls: 'tag-purple' },
-          { label: 'Growth · AARRR', cls: 'tag-teal' },
+          { label: '0→1', cls: 'ptag-journey' },
+          { label: 'B2C', cls: 'ptag-market' },
+          { label: 'Consumer App', cls: 'ptag-type' },
+          { label: 'AI/ML', cls: 'ptag-ai' },
         ],
         artifacts: [
-          { type: 'image', label: 'App screenshots', color: 'var(--color-background-tertiary)' },
           { type: 'youtube', url: 'https://www.youtube.com/watch?v=ZSh16vP5rd0', label: 'Yana Demo', color: '#e6f1fb' },
         ],
         businessImpact: [],
@@ -863,6 +1098,122 @@ const COMPANIES = [
       },
     ],
   },
+  // ── D2C / SELF-INITIATED ──────────────────────────────────────────────────
+  {
+    id: 'khuraq',
+    categories: ['d2c', 'consumer', 'founder'],
+    year: '2021',
+    active: false,
+    employmentType: 'Self-Initiated',
+    name: 'Khuraq Healthcare',
+    logo: '/Khuraq-logo.png',
+    brandColor: '#383838',
+    website: 'https://mykhuraq.com',
+    role: 'Co-Founder & CEO',
+    description: 'A Gurugram-based premium nutraceutical brand built to make daily supplementation more convenient for Indian consumers through modern vegetarian gummy formats. Incorporated in August 2021 with a long term ambition of building one of India\'s most trusted nutraceutical brands and eventually expanding into a broader own label organic and wellness marketplace.',
+    roleNarrative: 'Built and scaled Khuraq as a founder led D2C nutraceutical business from product thesis to early traction. Defined the category thesis, product strategy, and long term brand ambition. Selected the initial product line across ACV, Biotin, and Melatonin gummies. Built the early GTM and performance marketing motion and managed marketplace expansion across Amazon, Flipkart, and Meesho. Ran customer engagement loops through free fitness plans, community nudges, and post purchase retention efforts. Started operations in house and later worked with an agency to improve distribution and scale execution. Conducted deep competitor, unit economics, and repeat behavior analysis before deciding to pause.',
+    caseStudies: [],
+    ratings: [],
+    businessImpact: [
+      { num: '80+', label: 'orders per day at peak demand', level: 'up' },
+      { num: '~5%', label: 'return rate across fulfilled orders', level: 'down' },
+      { num: '3', label: 'marketplace channels across Amazon, Flipkart and Meesho', level: 'up' },
+      { num: 'Investor', label: 'soft interest received before strategic pause', level: 'up' },
+    ],
+    products: [
+      {
+        id: 'khuraq-com',
+        name: 'Khuraq.com',
+        businessTags: ['D2C'],
+        headline: 'Modern vegetarian gummy supplements for everyday Indian wellness. ACV, Biotin, and Melatonin built for habit and convenience.',
+        tags: [
+          { label: 'D2C', cls: 'ptag-type' },
+        ],
+        artifacts: [
+          { type: 'link', url: 'https://www.instagram.com/khuraq.store', label: 'khuraq.store', color: '#383838', icon: '📸' },
+        ],
+        businessImpact: [
+          { num: '~86%', label: 'gross margin on product and packaging alone', level: 'up' },
+          { num: '~50%', label: 'contribution margin before CAC and after logistics and platform fees', level: 'up' },
+          { num: '~34%', label: 'first order contribution margin negative after full CAC allocation', level: 'down' },
+          { num: '15–27%', label: 'repeat rate across SKUs with melatonin at the higher end', level: 'up' },
+        ],
+        keyFeatures: [
+          '100% vegetarian gummy supplements across ACV, Biotin, and Melatonin formats',
+          'Functional use cases covering weight support, hair support, and sleep',
+          'Marketplace presence across Amazon, Flipkart, and Meesho',
+          'D2C brand positioning led by performance marketing',
+          'Free fitness plans and community nudges to deepen post purchase engagement',
+          'Founder led operations scaled with agency support for broader distribution',
+        ],
+        caseStudies: [],
+        ratings: [],
+        problem: 'Indian consumers were increasingly health aware but traditional supplement formats felt medicinal, inconvenient, or unengaging. Gummies offered a more approachable lifestyle friendly format. The deeper problem, which only became visible after operating in the category, was that most consumers liked the idea of wellness more than the discipline of wellness. People bought off ads and aspiration but did not always build habits or restock unless results were visible quickly. Indian mass consumers were more price conscious, routine resistant, and skeptical than top down market reports suggested. The real challenge was not just making supplements easier to take. It was building a repeat led wellness business in a market where aspiration is high but habit strength is structurally weak.',
+        decision: 'We decided to build Khuraq as a modern premium nutraceutical brand anchored in 100% vegetarian gummy formats across easy to consume everyday health categories. The product line was scoped around functional use cases including weight support, hair support, and sleep. Distribution was designed as a D2C plus marketplace combination to capture both brand owned and discovery led demand. The long term ambition was not to become another supplement seller but to build India\'s best nutraceutical company and eventually evolve into a broader trust led marketplace for organic and nutraceutical products with in house labels and stronger consumer ownership over time.',
+        learnings: 'Category size is not the same as business quality. A large and growing market can still produce poor repeat economics if consumer behavior is shallow. Aspiration buys the first order but only noticeable results buy the second. Great creative triggers curiosity but only visible outcomes create retention. Melatonin stood out because it delivered a more immediate consumer experience, which made it a better candidate for habit formation and trust building. India is more behaviorally complex than surface level trend reports suggest. Consumers may express interest in wellness but many do not change routines or restock without a strong functional or emotional trigger. Gummies are a format advantage but not a product moat. They improve compliance and approachability but by themselves they do not solve repeat. A profitable wellness business needs stronger product architecture with hero products, faster trust signals, and better retention mechanics. Sometimes pausing is the smart founder move. We had traction and soft investor interest but chose discipline over momentum theater.',
+        lastStatus: 'Paused. Strategically paused after identifying weak repeat economics, high CAC pressure, and the need for stronger hero SKUs for profitable scale.',
+        whyShelved: 'We paused Khuraq not because the category lacked opportunity but because the initial product line was not strong enough to support durable and profitable scale. Outside melatonin, most gummies did not create noticeable short term changes for users, which made it much harder to build conviction, restocking behavior, and word of mouth momentum. The unit economics told a clear story. Product and packaging cost was approximately ₹82 per unit against a selling price of ₹599 to ₹799, giving a gross margin of roughly 86%. However once logistics cost of ₹70 to ₹120 and platform fees plus ad costs of around ₹150 were added, contribution margin before CAC fell to roughly 50%. After allocating CAC of ₹500 to ₹700 per order, first order contribution margin turned deeply negative at around minus 34%. Repeat rates were 27% for melatonin and 15% for other products, which was not strong enough to recover CAC at the current economics. The category was also capital intensive and even well funded players in adjacent wellness categories were struggling to build strong unit outcomes. Rather than force scale into a model that was not yet working at the unit level, we chose to pause, reassess, and consider a stronger future re-entry with a differentiated portfolio, sharper hero SKUs, and a more premium trust led strategy.',
+        outcomes: [
+          { num: '80+', label: 'orders per day at peak' },
+          { num: '~86%', label: 'gross margin on product' },
+          { num: '~50%', label: 'pre-CAC contribution margin' },
+          { num: '~5%', label: 'return rate' },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 'petme',
+    categories: ['shelved', 'consumer', 'founder'],
+    year: '2023',
+    active: false,
+    employmentType: 'Self-Initiated',
+    name: 'PetMe',
+    logo: '/petme-logo.jpg',
+    brandColor: '#D32575',
+    website: '#',
+    role: 'Founder',
+    description: 'A unified digital ecosystem for pet owners envisioned to combine services, commerce, and community under one platform, simplifying and enhancing the entire pet ownership journey from adoption to daily care and beyond.',
+    roleNarrative: 'Explored PetMe as a consumer-first marketplace and ecosystem play, taking full ownership of market research across urban pet ownership and spending trends, problem discovery across services, adoption, and fragmented user journeys, and the design of a multi-sided marketplace connecting pet owners, service providers, and sellers. Defined the product vision, feature flows, and platform architecture, and mapped early go-to-market through community-led engagement and retention loops. The focus was on identifying and structuring a high-emotion, high-retention consumer category with strong long-term potential.',
+    caseStudies: [],
+    ratings: [],
+    businessImpact: [],
+    products: [
+      {
+        id: 'petme-platform',
+        name: 'PetMe App',
+        businessTags: ['B2C', 'Marketplace'],
+        headline: 'All-in-one pet ecosystem bringing together adoption, verified services, commerce, community, and lifecycle tracking under a single platform for urban pet owners.',
+        tags: [
+          { label: 'B2C', cls: 'ptag-market' },
+          { label: 'Marketplace', cls: 'ptag-type' },
+        ],
+        artifacts: [
+          { type: 'link', url: 'https://www.instagram.com/petme__official', label: '@petme__official', color: '#fce7f3', icon: '📸' },
+        ],
+        businessImpact: [],
+        keyFeatures: [
+          'Pet discovery and adoption platform with structured profiles and history',
+          'Verified and rated service marketplace covering vets, grooming, and boarding',
+          'Commerce layer for food, accessories, and essentials with repeat purchase flows',
+          'Community layer for peer engagement, reviews, and trust-building',
+          'Unified pet owner dashboard with lifecycle tracking and care history',
+          'Subscription and recurring commerce model for high-frequency essentials',
+        ],
+        caseStudies: [],
+        ratings: [],
+        problem: 'The pet ecosystem in India was deeply fragmented with no single discovery layer connecting owners to services, products, and community. Trust in providers like vets, groomers, and boarding facilities was largely word-of-mouth and offline. There was no structured way to manage a pet\'s lifecycle digitally, and the overall experience across adoption, services, and commerce was disconnected, inconsistent, and opaque. The result was an inefficient and trust-deficient ownership journey for a category where emotional stakes are extremely high.',
+        decision: 'Designed PetMe around a single positioning thesis: one platform for everything your pet needs. The architecture brought together four interlocking layers. First, adoption and discovery to solve the unstructured and trust-deficient entry point into pet ownership. Second, a verified service marketplace to replace word-of-mouth with rated, accountable providers. Third, a commerce layer to capture the high-frequency repeat spend that makes pet households economically valuable. Fourth, a community and engagement layer to drive organic retention and build the kind of trust moat that transactional platforms cannot replicate.',
+        learnings: 'Emotional consumer categories demand a level of empathy and conviction from the founder that goes beyond market sizing. Marketplace success in trust-sensitive verticals depends more on supply quality and vetting than on demand acquisition. Community is not a feature in a category like this. It is the primary growth and retention engine. Consumer platforms with high emotional stakes require patient capital and long-term conviction, and the founder\'s personal relationship with the problem space is as important as the opportunity itself.',
+        lastStatus: 'Shelved at concept stage.',
+        outcomes: [],
+        whyShelved: 'The decision to step back from PetMe came from an early and honest self-assessment. I was not a pet owner or a pet lover, and I could not personally relate to the daily emotional realities of the user I was building for. The idea initially came together around a market opportunity and two co-founders who were genuinely connected to the pet space. But when you are working with co-founders who are 30 plus in age, getting the full-time commitment, the conviction, and the raw hustle that a 0 to 1 consumer build demands is a very different challenge. That energy and intensity is not something you can manufacture. The co-founders were drawn to the space but not at a stage in their lives where they could throw everything at it. Without that founding alignment and without the personal founder-problem fit that a high-emotion category like this demands, building would have meant compromising on the very things that make consumer platforms succeed. The market was real and the opportunity remains. But this needed the right team with the right personal connection to the problem, and that combination was not there.',
+      },
+    ],
+  },
+
+  // ── EARLIER CAREER ────────────────────────────────────────────────────────
   {
     id: 'gemini',
     categories: ['enterprise', 'fulltime'],
@@ -876,13 +1227,10 @@ const COMPANIES = [
     role: 'Senior Software Consultant',
     description: 'Fintech-focused global IT offshore firm building risk management and portfolio analytics tools for leading financial institutions including PIMCO.',
     roleNarrative: 'My role was a mix of consulting, DevOps, and hands-on development, working on risk management systems for global financial clients. I built and supported data pipelines ingesting and processing data from institutions like JP Morgan and Barclays, ensuring timely, output-driven workflows for portfolio managers at PIMCO across US and Asia market cycles. This role gave me deep exposure to financial data infrastructure, including the precision requirements of real-time risk systems, data integrity protocols in high-stakes environments, and the engineering discipline required when the margin for error is effectively zero. It was here that I first understood how systems thinking and rigorous validation separate reliable infrastructure from fragile point solutions, a principle I\'ve carried into every product and engineering decision since.',
-    caseStudies: [
-      ],
+    caseStudies: [],
     ratings: [],
     businessImpact: [],
-    products: [
-     
-    ],
+    products: [],
   },
 
   {
@@ -901,8 +1249,7 @@ const COMPANIES = [
     caseStudies: [],
     ratings: [],
     businessImpact: [],
-    products: [
-    ],
+    products: [],
   },
   {
     id: 'pec',
@@ -923,92 +1270,18 @@ const COMPANIES = [
     products: [],
   },
 
-  // ── D2C ───────────────────────────────────────────────────────────────────
-  {
-    id: 'khuraq',
-    categories: ['d2c', 'consumer'],
-    year: 'TBD',
-    active: false,
-    employmentType: 'Passion Project',
-    name: 'Khuraq',
-    logo: null,
-    brandColor: '#e11d48',
-    website: '#',
-    role: 'Founder',
-    description: 'Details coming soon.',
-    roleNarrative: null,
-    caseStudies: [],
-    ratings: [],
-    businessImpact: [],
-    products: [],
-  },
-
-  // ── SHELVED IDEAS ─────────────────────────────────────────────────────────
-  {
-    id: 'zippy',
-    categories: ['shelved', 'consumer'],
-    year: 'TBD',
-    active: false,
-    employmentType: 'Passion Project',
-    name: 'Zippy',
-    logo: null,
-    brandColor: '#f59e0b',
-    website: '#',
-    role: 'Founder / Idea Stage',
-    description: 'Details coming soon.',
-    roleNarrative: null,
-    caseStudies: [],
-    ratings: [],
-    businessImpact: [],
-    products: [],
-  },
-  {
-    id: 'petme',
-    categories: ['shelved', 'consumer'],
-    year: 'TBD',
-    active: false,
-    employmentType: 'Passion Project',
-    name: 'PetMe',
-    logo: null,
-    brandColor: '#10b981',
-    website: '#',
-    role: 'Founder / Idea Stage',
-    description: 'Details coming soon.',
-    roleNarrative: null,
-    caseStudies: [],
-    ratings: [],
-    businessImpact: [],
-    products: [],
-  },
-  {
-    id: 'socio',
-    categories: ['shelved', 'consumer'],
-    year: 'TBD',
-    active: false,
-    employmentType: 'Passion Project',
-    name: 'Socio',
-    logo: null,
-    brandColor: '#3b82f6',
-    website: '#',
-    role: 'Founder / Idea Stage',
-    description: 'Details coming soon.',
-    roleNarrative: null,
-    caseStudies: [],
-    ratings: [],
-    businessImpact: [],
-    products: [],
-  },
 ];
 
 // ── FILTER CONFIG ─────────────────────────────────────────────────────────────
 
 const FILTERS = [
   { key: 'fulltime', label: 'Full-time' },
-  { key: 'enterprise', label: 'Enterprise' },
-  { key: 'consumer', label: 'Consumer' },
+  { key: 'enterprise', label: 'B2B' },
+  { key: 'consumer', label: 'B2C' },
   { key: 'd2c', label: 'D2C' },
-  { key: 'building', label: 'Building Now' },
-  { key: 'consulting', label: 'Consulting & Part-time' },
+  { key: 'building', label: 'Recent' },
+  { key: 'founder', label: 'Founder Stints' },
+  { key: 'consulting', label: 'Consulting' },
   { key: 'shelved', label: 'Shelved Ideas' },
 ];
 
@@ -1016,15 +1289,14 @@ const FILTERS = [
 
 const EMPLOYMENT_COLORS = {
   'Full-time': { bg: 'rgba(0,122,255,0.08)', color: '#0066cc', border: 'rgba(0,102,204,0.2)' },
-  'Part-time': { bg: 'rgba(255,149,0,0.08)', color: '#b36200', border: 'rgba(255,149,0,0.2)' },
-  'Passion Project': { bg: 'rgba(52,199,89,0.08)', color: '#1a7f37', border: 'rgba(52,199,89,0.2)' },
-  'Consulting': { bg: 'rgba(142,142,147,0.1)', color: 'var(--color-text-tertiary)', border: 'var(--color-border-tertiary)' },
+  'Self-Initiated': { bg: 'rgba(52,199,89,0.08)', color: '#1a7f37', border: 'rgba(52,199,89,0.2)' },
+  'Consulting': { bg: 'rgba(255,149,0,0.08)', color: '#b36200', border: 'rgba(255,149,0,0.2)' },
   'Education': { bg: 'rgba(13,71,161,0.08)', color: '#1565c0', border: 'rgba(13,71,161,0.2)' },
 };
 
 // ── PRODUCT CARD ──────────────────────────────────────────────────────────────
 
-function ProductCard({ product, companyName, onMediaClick, brandColor, productIndex }) {
+function ProductCard({ product, companyName, onMediaClick, brandColor, productIndex, impactLabel }) {
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('problem');
   const bc = brandColor || '#7c3aed';
@@ -1072,28 +1344,10 @@ function ProductCard({ product, companyName, onMediaClick, brandColor, productIn
                 {product.name}
               </span>
             )}
-            {product.businessTags && product.businessTags.map((bt, i) => (
-              <span key={i} style={{
-                fontSize: 10, fontWeight: 500,
-                padding: '2px 7px',
-                borderRadius: 'var(--border-radius-pill)',
-                background: 'var(--color-background-tertiary)',
-                border: '0.5px solid var(--color-border-tertiary)',
-                color: 'var(--color-text-tertiary)',
-                transition: 'var(--transition-colors)',
-              }}>
-                {bt}
-              </span>
-            ))}
           </div>
           <p style={{ fontSize: 15, fontFamily: 'var(--font-sans)', color: 'var(--color-text-primary)', lineHeight: 1.55, marginBottom: 10, transition: 'var(--transition-colors)' }}>
             {product.headline}
           </p>
-          {product.tags.length > 0 && (
-            <div className="tags-row" style={{ marginTop: 0 }}>
-              {product.tags.map((t, i) => <span key={i} className={`tag ${t.cls}`}>{t.label}</span>)}
-            </div>
-          )}
         </div>
         <div style={{
           width: 22, height: 22, borderRadius: '50%',
@@ -1132,11 +1386,12 @@ function ProductCard({ product, companyName, onMediaClick, brandColor, productIn
               {/* TAB BAR */}
               {(() => {
                 const tabs = [
-                  { key: 'problem',   label: 'Problem',         has: !!product.problem },
-                  { key: 'decision',  label: 'Decision',        has: !!product.decision },
-                  { key: 'features',  label: 'Key Features',    has: product.keyFeatures?.length > 0 },
-                  { key: 'impact',    label: 'Business Impact', has: (product.businessImpact?.length > 0) || (product.outcomes?.length > 0) },
-                  { key: 'learnings', label: 'My Learnings',    has: !!product.learnings },
+                  { key: 'problem',    label: 'Problem',         has: !!product.problem },
+                  { key: 'decision',   label: 'Decision',        has: !!product.decision },
+                  { key: 'features',   label: 'Key Features',    has: product.keyFeatures?.length > 0 },
+                  { key: 'impact',     label: impactLabel || 'Business Impact', has: (product.businessImpact?.length > 0) || (product.outcomes?.length > 0) },
+                  { key: 'learnings',  label: 'My Learnings',    has: !!product.learnings },
+                  { key: 'shelved',    label: 'Why Paused',      has: !!product.whyShelved },
                 ].filter(t => t.has);
 
                 if (tabs.length === 0) return null;
@@ -1172,15 +1427,18 @@ function ProductCard({ product, companyName, onMediaClick, brandColor, productIn
                     </div>
 
                     {/* Tab panel */}
-                    <div style={{ padding: '14px 16px', minHeight: 72 }}>
+                    <div style={{ padding: '16px 20px', minHeight: 72 }}>
                       {currentTab === 'problem' && (
-                        <p style={{ fontSize: 13, lineHeight: 1.65, transition: 'var(--transition-colors)' }}>{product.problem}</p>
+                        <p style={{ fontSize: 15, lineHeight: 1.75, color: 'var(--color-text-secondary)', transition: 'var(--transition-colors)' }}>{product.problem}</p>
                       )}
                       {currentTab === 'decision' && (
-                        <p style={{ fontSize: 13, lineHeight: 1.65, transition: 'var(--transition-colors)' }}>{product.decision}</p>
+                        <p style={{ fontSize: 15, lineHeight: 1.75, color: 'var(--color-text-secondary)', transition: 'var(--transition-colors)' }}>{product.decision}</p>
                       )}
                       {currentTab === 'learnings' && (
-                        <p style={{ fontSize: 13, lineHeight: 1.65, transition: 'var(--transition-colors)' }}>{product.learnings}</p>
+                        <p style={{ fontSize: 15, lineHeight: 1.75, color: 'var(--color-text-secondary)', transition: 'var(--transition-colors)' }}>{product.learnings}</p>
+                      )}
+                      {currentTab === 'shelved' && (
+                        <p style={{ fontSize: 15, lineHeight: 1.75, color: 'var(--color-text-secondary)', transition: 'var(--transition-colors)' }}>{product.whyShelved}</p>
                       )}
                       {currentTab === 'features' && (
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px 24px' }} className="feat-grid">
@@ -1188,8 +1446,8 @@ function ProductCard({ product, companyName, onMediaClick, brandColor, productIn
                             const title = f.includes(' — ') ? f.split(' — ')[0] : f;
                             return (
                               <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
-                                <span style={{ color: bc, fontSize: 13, flexShrink: 0, marginTop: 1, fontWeight: 600 }}>✓</span>
-                                <span style={{ fontSize: 13, lineHeight: 1.55, transition: 'var(--transition-colors)' }}>{title}</span>
+                                <span style={{ color: bc, fontSize: 15, flexShrink: 0, marginTop: 1, fontWeight: 600 }}>✓</span>
+                                <span style={{ fontSize: 15, lineHeight: 1.55, transition: 'var(--transition-colors)' }}>{title}</span>
                               </div>
                             );
                           })}
@@ -1200,16 +1458,16 @@ function ProductCard({ product, companyName, onMediaClick, brandColor, productIn
                           ? product.businessImpact
                           : (product.outcomes || []).map(o => ({ num: o.num, label: o.label, direction: 'up' }));
                         return (
-                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }} className="impact-grid">
+                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px 24px' }} className="feat-grid">
                             {impactItems.map((m, i) => {
-                              const isUp = m.direction !== 'down';
+                              const isDown = m.direction === 'down';
                               return (
-                                <div key={i} style={{ background: `${bc}08`, border: `0.5px solid ${bc}25`, borderRadius: 'var(--border-radius-md)', padding: '10px 12px' }}>
-                                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 3 }}>
-                                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 700, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', lineHeight: 1 }}>{m.num}</div>
-                                    {m.direction !== undefined && <span style={{ fontSize: 12, fontWeight: 700, color: isUp ? '#34c759' : '#ff3b30', lineHeight: 1 }}>{isUp ? '↑' : '↓'}</span>}
-                                  </div>
-                                  <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', lineHeight: 1.4 }}>{m.label}</div>
+                                <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                                  <span style={{ fontSize: 15, flexShrink: 0, marginTop: 1, fontWeight: 700, color: isDown ? '#ff3b30' : '#34c759' }}>{isDown ? '↓' : '✓'}</span>
+                                  <span style={{ fontSize: 15, lineHeight: 1.55, transition: 'var(--transition-colors)' }}>
+                                    <strong style={{ fontWeight: 700, color: 'var(--color-text-primary)' }}>{m.num}</strong>
+                                    {' '}<span style={{ color: 'var(--color-text-secondary)' }}>{m.label}</span>
+                                  </span>
                                 </div>
                               );
                             })}
@@ -1494,6 +1752,23 @@ function CompanyCard({ company, onMediaClick }) {
             </div>
           </div>
 
+          {/* Product tags — deduplicated from all products, shown after description */}
+          {(() => {
+            const allTags = (company.products || []).flatMap(p => p.tags || []);
+            const seen = new Set();
+            const unique = allTags.filter(t => {
+              if (seen.has(t.label)) return false;
+              seen.add(t.label);
+              return true;
+            });
+            if (!unique.length) return null;
+            return (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 14 }}>
+                {unique.map((t, i) => <span key={i} className={`ptag ${t.cls}`}>{t.label}</span>)}
+              </div>
+            );
+          })()}
+
           {/* Role narrative — 3-line clamp with inline Read more for all companies */}
           {company.roleNarrative && (
           <div style={{ height: '0.5px', background: `${bc}40`, margin: '14px 0' }} />
@@ -1519,34 +1794,71 @@ function CompanyCard({ company, onMediaClick }) {
             );
           })()}
 
-          {/* NON-FEATURED LAYOUT: Products in left column */}
-          {!company.featuredLayout && company.products?.length > 0 && (
+          {/* NON-FEATURED LAYOUT: Products + Recognitions in left column */}
+          {!company.featuredLayout && (company.products?.length > 0 || company.ratings?.length > 0) && (
             <>
               <div style={{ height: '0.5px', background: `${bc}40`, margin: '14px 0' }} />
               {/* Desktop */}
               <div className="desc-desktop">
-                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 10, transition: 'var(--transition-colors)' }}>Products</div>
-                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  {company.products.map((p, i) => (
-                    <div key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 12px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-secondary)', border: '0.5px solid var(--color-border-tertiary)', transition: 'var(--transition-colors)' }}>
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--color-accent)', opacity: 0.7, flexShrink: 0 }} />
-                      <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)' }}>{p.name}</span>
+                {company.products?.length > 0 && (
+                  <>
+                    <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 10, transition: 'var(--transition-colors)' }}>Products</div>
+                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                      {company.products.map((p, i) => (
+                        <div key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 12px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-secondary)', border: '0.5px solid var(--color-border-tertiary)', transition: 'var(--transition-colors)' }}>
+                          <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--color-accent)', opacity: 0.7, flexShrink: 0 }} />
+                          <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)' }}>{p.name}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </>
+                )}
+                {company.ratings?.length > 0 && (
+                  <div style={{ marginTop: company.products?.length > 0 ? 12 : 0 }}>
+                    <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8, transition: 'var(--transition-colors)' }}>Press & Recognition</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                      {company.ratings.map((r, i) => (
+                        <a key={i} href={r.href} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '5px 10px 5px 8px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-primary)', border: '0.5px solid var(--color-border-tertiary)', textDecoration: 'none', transition: 'box-shadow 150ms ease, var(--transition-colors)' }} onMouseEnter={e => e.currentTarget.style.boxShadow = 'var(--shadow-sm)'} onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}>
+                          {r.logo ? <img src={r.logo} alt={r.source} onError={e => { e.currentTarget.style.display = 'none'; }} style={{ height: 16, maxWidth: 56, objectFit: 'contain', objectPosition: 'left center', display: 'block', flexShrink: 0 }} /> : <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.06em', textTransform: 'uppercase', color: r.sourceColor || 'var(--color-accent)', flexShrink: 0 }}>{r.source}</span>}
+                          <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)', whiteSpace: 'nowrap' }}>{r.badge}</span>
+                          <span style={{ fontSize: 10, color: 'var(--color-text-tertiary)' }}>↗</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
               {/* Mobile toggle */}
               <div className="desc-mobile">
-                <button onClick={e => { e.stopPropagation(); setMobileProductsOpen(v => !v); }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: `${bc}07`, border: `0.5px solid ${bc}22`, borderRadius: 8, padding: '7px 10px', cursor: 'pointer' }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>Products · {company.products.length}</span>
-                  <span style={{ fontSize: 14, color: 'var(--color-text-tertiary)', fontWeight: 600 }}>{mobileProductsOpen ? '−' : '+'}</span>
-                </button>
-                {mobileProductsOpen && (
-                  <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '8px 2px 4px' }}>
-                    {company.products.map((p, i) => (
-                      <span key={i} style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-secondary)', border: '0.5px solid var(--color-border-tertiary)', color: 'var(--color-text-primary)' }}>{p.name}</span>
-                    ))}
-                  </div>
+                {company.products?.length > 0 && (
+                  <>
+                    <button onClick={e => { e.stopPropagation(); setMobileProductsOpen(v => !v); }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: `${bc}07`, border: `0.5px solid ${bc}22`, borderRadius: 8, padding: '7px 10px', cursor: 'pointer' }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>Products · {company.products.length}</span>
+                      <span style={{ fontSize: 14, color: 'var(--color-text-tertiary)', fontWeight: 600 }}>{mobileProductsOpen ? '−' : '+'}</span>
+                    </button>
+                    {mobileProductsOpen && (
+                      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '8px 2px 4px' }}>
+                        {company.products.map((p, i) => (
+                          <span key={i} style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-secondary)', border: '0.5px solid var(--color-border-tertiary)', color: 'var(--color-text-primary)' }}>{p.name}</span>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
+                {company.ratings?.length > 0 && (
+                  <>
+                    <button onClick={e => { e.stopPropagation(); setMobileRecsOpen(v => !v); }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: `${bc}07`, border: `0.5px solid ${bc}22`, borderRadius: 8, padding: '7px 10px', cursor: 'pointer', marginTop: 6 }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>Press & Recognition · {company.ratings.length}</span>
+                      <span style={{ fontSize: 14, color: 'var(--color-text-tertiary)', fontWeight: 600 }}>{mobileRecsOpen ? '−' : '+'}</span>
+                    </button>
+                    {mobileRecsOpen && (
+                      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '8px 2px 4px' }}>
+                        {company.ratings.map((r, i) => (
+                          <span key={i} style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 'var(--border-radius-pill)', background: 'var(--color-background-secondary)', border: '0.5px solid var(--color-border-tertiary)', color: 'var(--color-text-primary)' }}>{r.badge}</span>
+                        ))}
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             </>
@@ -1623,7 +1935,7 @@ function CompanyCard({ company, onMediaClick }) {
                     onClick={e => { e.stopPropagation(); setMobileImpactOpen(v => !v); }}
                     style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: `${bc}07`, border: `0.5px solid ${bc}22`, borderRadius: 8, padding: '7px 10px', cursor: 'pointer' }}
                   >
-                    <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>Business Impact · {allImpact.length}</span>
+                    <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>{company.impactLabel || 'Business Impact'} · {allImpact.length}</span>
                     <span style={{ fontSize: 14, color: 'var(--color-text-tertiary)', fontWeight: 600 }}>{mobileImpactOpen ? '−' : '+'}</span>
                   </button>
                   {mobileImpactOpen && (
@@ -1679,7 +1991,7 @@ function CompanyCard({ company, onMediaClick }) {
           {allImpact.length > 0 && (
             <div>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
-                Business Impact
+                {company.impactLabel || 'Business Impact'}
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
                 {allImpact.map((m, i) => {
@@ -1793,7 +2105,7 @@ function CompanyCard({ company, onMediaClick }) {
               gap: 10,
             }}>
               {company.products.length > 1 && (
-                <div className="section-label" style={{ marginBottom: 4 }}>
+                <div className="section-label" style={{ marginBottom: 4, fontSize: 12 }}>
                   Products · {company.products.length} shipped
                 </div>
               )}
@@ -1805,6 +2117,7 @@ function CompanyCard({ company, onMediaClick }) {
                   companyName={company.name}
                   brandColor={bc}
                   onMediaClick={onMediaClick}
+                  impactLabel={company.impactLabel}
                 />
               ))}
 
@@ -1823,6 +2136,37 @@ function CompanyCard({ company, onMediaClick }) {
         .cs-scroll::-webkit-scrollbar { display: none; }
         .rec-scroll { scrollbar-width: none; }
         .rec-scroll::-webkit-scrollbar { display: none; }
+
+        /* ── Product tags ── */
+        .ptag {
+          display: inline-flex;
+          align-items: center;
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          padding: 3px 10px;
+          border-radius: 5px;
+          line-height: 1.5;
+          font-family: var(--font-sans);
+          white-space: nowrap;
+          transition: var(--transition-colors);
+        }
+        /* Journey (0→1 / 1→N) — dark pill, stands out */
+        .ptag-journey { background: #1c1c2e; color: #e8e8f0; }
+        /* Market, Type, AI — unified warm-gray tint */
+        .ptag-market, .ptag-type, .ptag-ai {
+          background: #f0eff5;
+          color: #4a4560;
+          border: 0.5px solid #dddbe8;
+        }
+        [data-theme="dark"] .ptag-journey { background: #e8e8f0; color: #1c1c2e; }
+        [data-theme="dark"] .ptag-market,
+        [data-theme="dark"] .ptag-type,
+        [data-theme="dark"] .ptag-ai {
+          background: #1e1b2e;
+          color: #9d99b8;
+          border-color: #2e2b42;
+        }
       `}</style>
     </div>
   );
@@ -1831,20 +2175,14 @@ function CompanyCard({ company, onMediaClick }) {
 // ── MAIN SECTION ──────────────────────────────────────────────────────────────
 
 export default function Work() {
-  const [ref, inView] = useInView();
+  const [ref] = useInView();
   const [activeFilters, setActiveFilters] = useState(['fulltime']);
   const [lightboxItem, setLightboxItem] = useState(null);
   const [showAllFulltime, setShowAllFulltime] = useState(false);
   const workScrollRef = useRef(null);
 
   function toggleFilter(key) {
-    setActiveFilters(prev => {
-      if (prev.includes(key)) {
-        if (prev.length === 1) return prev;
-        return prev.filter(k => k !== key);
-      }
-      return [...prev, key];
-    });
+    setActiveFilters(prev => prev.length === 1 && prev[0] === key ? prev : [key]);
     setShowAllFulltime(false);
   }
 

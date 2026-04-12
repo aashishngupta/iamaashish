@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import SectionLabel from '../components/SectionLabel';
 import SwipeDots from '../components/SwipeDots';
@@ -9,41 +9,105 @@ const SKILLS = [
   {
     category: 'Product',
     items: [
-      { label: 'Product Strategy & Vision',     score: 5 },
-      { label: 'Product Management (0→1 & 1→N)', score: 5 },
-      { label: 'Roadmapping & Prioritization',   score: 5 },
+      { label: 'Product Strategy & Vision',       score: 5 },
+      { label: 'Product Management',              score: 5 },
+      { label: 'Roadmapping & Prioritization',    score: 5 },
+      { label: 'Feature Scoping & Trade-offs',    score: 5 },
       { label: 'User Research & Discovery',       score: 4 },
+      { label: 'North Star & Metrics Design',     score: 4 },
       { label: 'Product-led Growth',              score: 4 },
+      { label: 'Competitive Analysis',            score: 4 },
     ],
   },
   {
-    category: 'AI & Engineering',
+    category: 'Agentic AI Systems',
     items: [
-      { label: 'AI / ML Product Design',          score: 5 },
-      { label: 'Agentic AI & LLM Systems',         score: 5 },
-      { label: 'System Design & Architecture',     score: 4 },
-      { label: 'Vibe Coding (AI-assisted Dev)',     score: 4 },
-      { label: 'Data Engineering & Pipelines',     score: 3 },
+      { label: 'LLM Architecture & Agent Design',   score: 5 },
+      { label: 'RAG Pipelines & Vector Search',      score: 5 },
+      { label: 'Prompt Engineering',                 score: 5 },
+      { label: 'LLM Routing & Orchestration',        score: 5 },
+      { label: 'Tool Use & Function Calling',        score: 4 },
+      { label: 'Observability & Evals',              score: 4 },
+      { label: 'Governance, Safety & PII Handling',  score: 4 },
+      { label: 'Context & Memory Management',        score: 4 },
     ],
   },
   {
-    category: 'Business',
+    category: 'Engineering',
     items: [
-      { label: 'Go-to-Market (GTM)',               score: 5 },
-      { label: 'B2B / B2G Sales & Presales',       score: 5 },
-      { label: 'Business Strategy',                score: 5 },
-      { label: 'Fundraising & Investor Relations', score: 4 },
-      { label: 'P&L & Financial Modelling',        score: 3 },
+      { label: 'Vibe Coding (AI-assisted Dev)',   score: 5 },
+      { label: 'System Design & Architecture',    score: 4 },
+      { label: 'API Design & Integration',        score: 4 },
+      { label: 'Backend Development (FastAPI)',   score: 3 },
+      { label: 'Frontend (React, Next.js)',       score: 3 },
+      { label: 'Database Design (SQL, NoSQL)',    score: 3 },
+      { label: 'Data Engineering & Pipelines',   score: 3 },
+      { label: 'Cloud & Infra (AWS, Vercel)',     score: 3 },
+    ],
+  },
+  {
+    category: 'Traditional AI & ML',
+    items: [
+      { label: 'AI Product Strategy & Design',   score: 5 },
+      { label: 'AI Prototyping & POCs',           score: 5 },
+      { label: 'ML Model Evaluation & Tuning',   score: 4 },
+      { label: 'NLP & Computer Vision Apps',     score: 4 },
+      { label: 'Predictive Modelling',           score: 4 },
+      { label: 'Data Science & Analytics',       score: 4 },
+      { label: 'Feature Engineering',            score: 3 },
+      { label: 'Responsible AI & Ethics',        score: 4 },
+    ],
+  },
+  {
+    category: 'Marketing & Growth',
+    items: [
+      { label: 'Go-to-Market Strategy',          score: 5 },
+      { label: 'Performance Marketing',          score: 4 },
+      { label: 'Brand & Positioning',            score: 4 },
+      { label: 'D2C & Marketplace Growth',       score: 4 },
+      { label: 'SEO & Organic Growth',           score: 3 },
+      { label: 'Email & Retention Marketing',    score: 3 },
+      { label: 'Community Building',             score: 3 },
+      { label: 'Content & Thought Leadership',   score: 3 },
+    ],
+  },
+  {
+    category: 'Sales & Revenue',
+    items: [
+      { label: 'B2B Enterprise Sales',                  score: 5 },
+      { label: 'B2G / Government Sales',                score: 5 },
+      { label: 'Presales & Solutioning',                score: 5 },
+      { label: 'Deal Structuring & Negotiation',        score: 4 },
+      { label: 'Business Development & Partnerships',   score: 4 },
+      { label: 'Enterprise Account Management',         score: 4 },
+      { label: 'Pricing & Commercial Strategy',         score: 4 },
+      { label: 'RFP & Tender Responses',                score: 4 },
     ],
   },
   {
     category: 'Leadership',
     items: [
-      { label: 'Team Building & Mentorship',       score: 5 },
-      { label: 'Cross-functional Execution',       score: 5 },
-      { label: 'Stakeholder Management',           score: 5 },
-      { label: 'OKR & Performance Frameworks',     score: 4 },
-      { label: 'Executive Communication',          score: 4 },
+      { label: 'Team Building & Mentorship',     score: 5 },
+      { label: 'Cross-functional Execution',     score: 5 },
+      { label: 'Stakeholder Management',         score: 5 },
+      { label: 'Hiring & Talent Strategy',       score: 4 },
+      { label: 'OKR & Performance Frameworks',   score: 4 },
+      { label: 'Executive Communication',        score: 4 },
+      { label: 'Culture & Org Design',           score: 4 },
+      { label: 'Crisis & Change Management',     score: 3 },
+    ],
+  },
+  {
+    category: 'Finance & Strategy',
+    items: [
+      { label: 'Business Strategy',              score: 5 },
+      { label: 'Unit Economics & Pricing',       score: 4 },
+      { label: 'P&L Ownership',                  score: 4 },
+      { label: 'Market Sizing (TAM / SAM / SOM)', score: 4 },
+      { label: 'Fundraising & Investor Relations', score: 4 },
+      { label: 'Competitive Landscape Analysis', score: 4 },
+      { label: 'Financial Modelling',            score: 3 },
+      { label: 'Cap Table & Term Sheets',        score: 3 },
     ],
   },
 ];
@@ -151,12 +215,25 @@ const BENTO_ACCENTS = [
   { bg: '#fefce8', border: 'rgba(202,138,4,0.18)',  accent: '#ca8a04', tagBg: 'rgba(202,138,4,0.07)',  tagColor: '#a16207' },
 ];
 
+const SKILLS_PER_PAGE = 3;
+
 // ── MAIN SECTION ──────────────────────────────────────────────────────────────
 export default function Expertise() {
   const [skillsRef, skillsInView] = useInView();
   const [toolsRef, toolsInView] = useInView();
+  const [skillsPage, setSkillsPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const skillsScrollRef = useRef(null);
   const toolsScrollRef = useRef(null);
+  const totalSkillPages = Math.ceil(SKILLS.length / SKILLS_PER_PAGE);
+  const visibleSkills = SKILLS.slice(skillsPage * SKILLS_PER_PAGE, (skillsPage + 1) * SKILLS_PER_PAGE);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   return (
     <>
@@ -183,38 +260,129 @@ export default function Expertise() {
             </span>
           </div>
 
-          <div ref={skillsScrollRef} style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 32,
-          }} className="skills-grid mobile-hscroll">
-            {SKILLS.map((group, gi) => (
-              <div key={gi}>
-                <div style={{
-                  fontSize: 11, fontWeight: 700, letterSpacing: '0.08em',
-                  textTransform: 'uppercase', color: 'var(--color-accent)',
-                  marginBottom: 18, transition: 'var(--transition-colors)',
-                }}>
-                  {group.category}
-                </div>
-                {group.items.map((skill, si) => (
-                  <SkillBar
-                    key={si}
-                    label={skill.label}
-                    score={skill.score}
-                    inView={skillsInView}
-                    delay={gi * 0.05 + si * 0.07}
-                  />
+          {isMobile ? (
+            /* ── Mobile: horizontal scroll ── */
+            <>
+              <div ref={skillsScrollRef} style={{
+                display: 'flex',
+                flexDirection: 'row',
+                overflowX: 'auto',
+                scrollSnapType: 'x mandatory',
+                WebkitOverflowScrolling: 'touch',
+                scrollbarWidth: 'none',
+                gap: 16,
+                paddingBottom: 12,
+                marginLeft: -20,
+                marginRight: -20,
+                paddingLeft: 20,
+                paddingRight: 20,
+              }} className="skills-hscroll">
+                {SKILLS.map((group, gi) => (
+                  <div key={gi} style={{
+                    scrollSnapAlign: 'start',
+                    flexShrink: 0,
+                    width: 'calc(85vw)',
+                    maxWidth: 320,
+                    background: 'var(--color-background-secondary)',
+                    border: '0.5px solid var(--color-border-tertiary)',
+                    borderRadius: 'var(--border-radius-lg)',
+                    padding: '20px 22px',
+                    transition: 'var(--transition-colors)',
+                  }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: 18, transition: 'var(--transition-colors)' }}>
+                      {group.category}
+                    </div>
+                    {group.items.map((skill, si) => (
+                      <SkillBar key={si} label={skill.label} score={skill.score} inView={skillsInView} delay={gi * 0.05 + si * 0.07} />
+                    ))}
+                  </div>
                 ))}
               </div>
-            ))}
-          </div>
-          <SwipeDots scrollRef={skillsScrollRef} count={SKILLS.length} />
+              <SwipeDots scrollRef={skillsScrollRef} count={SKILLS.length} />
+            </>
+          ) : (
+            /* ── Desktop: paginated 4-up grid ── */
+            <>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={skillsPage}
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -24 }}
+                  transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                  style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}
+                >
+                  {visibleSkills.map((group, gi) => {
+                    const globalIdx = skillsPage * SKILLS_PER_PAGE + gi;
+                    return (
+                      <div key={gi} style={{
+                        background: 'var(--color-background-secondary)',
+                        border: '0.5px solid var(--color-border-tertiary)',
+                        borderRadius: 'var(--border-radius-lg)',
+                        padding: '22px 24px',
+                        transition: 'var(--transition-colors)',
+                      }}>
+                        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: 18, transition: 'var(--transition-colors)' }}>
+                          {group.category}
+                        </div>
+                        {group.items.map((skill, si) => (
+                          <SkillBar key={si} label={skill.label} score={skill.score} inView={skillsInView} delay={globalIdx * 0.05 + si * 0.06} />
+                        ))}
+                      </div>
+                    );
+                  })}
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Pagination */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginTop: 32 }}>
+                <button
+                  onClick={() => setSkillsPage(p => Math.max(0, p - 1))}
+                  disabled={skillsPage === 0}
+                  style={{
+                    width: 36, height: 36, borderRadius: '50%',
+                    border: '0.5px solid var(--color-border-tertiary)',
+                    background: 'var(--color-background-primary)',
+                    cursor: skillsPage === 0 ? 'default' : 'pointer',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 16, color: 'var(--color-text-primary)',
+                    opacity: skillsPage === 0 ? 0.3 : 1,
+                    transition: 'var(--transition-colors)',
+                  }}
+                >‹</button>
+                {Array.from({ length: totalSkillPages }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSkillsPage(i)}
+                    style={{
+                      width: skillsPage === i ? 24 : 8, height: 8, borderRadius: 4,
+                      border: 'none', cursor: 'pointer', padding: 0,
+                      background: skillsPage === i ? 'var(--color-accent)' : 'var(--color-border-tertiary)',
+                      transition: 'all 250ms ease',
+                    }}
+                  />
+                ))}
+                <button
+                  onClick={() => setSkillsPage(p => Math.min(totalSkillPages - 1, p + 1))}
+                  disabled={skillsPage === totalSkillPages - 1}
+                  style={{
+                    width: 36, height: 36, borderRadius: '50%',
+                    border: '0.5px solid var(--color-border-tertiary)',
+                    background: 'var(--color-background-primary)',
+                    cursor: skillsPage === totalSkillPages - 1 ? 'default' : 'pointer',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 16, color: 'var(--color-text-primary)',
+                    opacity: skillsPage === totalSkillPages - 1 ? 0.3 : 1,
+                    transition: 'var(--transition-colors)',
+                  }}
+                >›</button>
+              </div>
+            </>
+          )}
         </div>
 
         <style>{`
-          @media (max-width: 1024px) { .skills-grid { grid-template-columns: repeat(2, 1fr) !important; } }
-          @media (max-width: 600px)  { .skills-grid { grid-template-columns: 1fr !important; } }
+          .skills-hscroll::-webkit-scrollbar { display: none; }
         `}</style>
       </section>
 
@@ -227,68 +395,72 @@ export default function Expertise() {
         <div className="container" ref={toolsRef}>
           <SectionLabel>Toolbox</SectionLabel>
 
-          <h2 className="section-heading" style={{ marginBottom: 8 }}>
-            Tools I actually <em>live in.</em>
-          </h2>
-          <p style={{ fontSize: 13, color: 'var(--color-text-tertiary)', marginBottom: 40, transition: 'var(--transition-colors)' }}>
-            Across 13 years — the stack I reach for to get things done.
-          </p>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 40, flexWrap: 'wrap', gap: 12 }}>
+            <h2 className="section-heading" style={{ margin: 0 }}>
+              Tools I actually <em>live in.</em>
+            </h2>
+            <span style={{ fontSize: 13, color: 'var(--color-text-tertiary)', transition: 'var(--transition-colors)' }}>
+              {TOOLS.reduce((acc, g) => acc + g.items.length, 0)}+ tools across {TOOLS.length} categories
+            </span>
+          </div>
 
-          {/* Bento grid */}
           <div ref={toolsScrollRef} style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gridAutoRows: 'auto',
-            gap: 14,
-          }} className="bento-grid mobile-hscroll">
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 16,
+          }} className="tools-grid mobile-hscroll">
             {TOOLS.map((group, gi) => {
-              const a = BENTO_ACCENTS[gi % BENTO_ACCENTS.length];
-              // Make AI & first two cards span 2 cols for visual variety
-              const wide = gi === 0 || gi === 2;
+              const accent = BENTO_ACCENTS[gi % BENTO_ACCENTS.length].accent;
               return (
                 <motion.div
                   key={gi}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={toolsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: gi * 0.06 }}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={toolsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                  transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1], delay: gi * 0.05 }}
                   style={{
-                    gridColumn: wide ? 'span 2' : 'span 1',
-                    background: a.bg,
-                    border: `1px solid ${a.border}`,
-                    borderRadius: 16,
-                    padding: '20px 20px 18px',
+                    background: 'var(--color-background-primary)',
+                    border: '0.5px solid var(--color-border-tertiary)',
+                    borderTop: `2.5px solid ${accent}`,
+                    borderRadius: 'var(--border-radius-md)',
+                    padding: '20px 22px',
                     transition: 'var(--transition-colors)',
                   }}
                 >
-                  {/* Card header */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+                  {/* Header */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+                    <span style={{ fontSize: 18, lineHeight: 1 }}>{group.icon}</span>
                     <span style={{
-                      width: 32, height: 32, borderRadius: 8, fontSize: 16,
-                      background: a.tagBg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                    }}>
-                      {group.icon}
-                    </span>
-                    <span style={{
-                      fontSize: 12, fontWeight: 700, letterSpacing: '0.06em',
-                      textTransform: 'uppercase', color: a.accent,
+                      fontSize: 11, fontWeight: 700, letterSpacing: '0.07em',
+                      textTransform: 'uppercase', color: 'var(--color-text-secondary)',
+                      transition: 'var(--transition-colors)',
                     }}>
                       {group.category}
                     </span>
                   </div>
 
-                  {/* Tool tags */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {/* Tools — dot-separated for a clean look */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 0', alignItems: 'center' }}>
                     {group.items.map((tool, ti) => (
-                      <span key={ti} style={{
-                        padding: '4px 10px',
-                        borderRadius: 'var(--border-radius-pill)',
-                        background: a.tagBg,
-                        border: `0.5px solid ${a.border}`,
-                        fontSize: 12, fontWeight: 500,
-                        color: a.tagColor,
-                        whiteSpace: 'nowrap',
-                      }}>
-                        {tool}
+                      <span key={ti} style={{ display: 'flex', alignItems: 'center' }}>
+                        <span style={{
+                          fontSize: 12.5,
+                          fontWeight: 450,
+                          color: 'var(--color-text-secondary)',
+                          transition: 'var(--transition-colors)',
+                          letterSpacing: '-0.005em',
+                        }}>
+                          {tool}
+                        </span>
+                        {ti < group.items.length - 1 && (
+                          <span style={{
+                            display: 'inline-block',
+                            width: 3, height: 3,
+                            borderRadius: '50%',
+                            background: 'var(--color-border-tertiary)',
+                            margin: '0 7px',
+                            flexShrink: 0,
+                          }} />
+                        )}
                       </span>
                     ))}
                   </div>
@@ -300,8 +472,8 @@ export default function Expertise() {
         </div>
 
         <style>{`
-          @media (max-width: 1024px) { .bento-grid { grid-template-columns: repeat(2, 1fr) !important; } }
-          @media (max-width: 600px)  { .bento-grid { grid-template-columns: 1fr !important; } .bento-grid > div { grid-column: span 1 !important; } }
+          @media (max-width: 1024px) { .tools-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+          @media (max-width: 600px)  { .tools-grid { grid-template-columns: 1fr !important; } }
         `}</style>
       </section>
     </>
