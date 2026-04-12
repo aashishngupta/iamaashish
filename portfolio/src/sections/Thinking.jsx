@@ -64,9 +64,12 @@ function useMediumArticles(username) {
       .then(data => {
         if (data.status === 'ok' && data.items?.length) {
           setArticles(data.items.slice(0, 6).map(item => {
-            // Extract first <img> from content as cover if thumbnail missing
-            const imgMatch = (item.description || item.content || '').match(/<img[^>]+src=["']([^"']+)["']/);
-            const cover = (item.thumbnail && item.thumbnail !== '') ? item.thumbnail : (imgMatch ? imgMatch[1] : null);
+            // Extract first image from full HTML content (Medium puts images there)
+            const html = item.content || item.description || '';
+            const imgMatch = html.match(/<img[^>]+src=["']([^"']+)["']/);
+            const cover = (item.thumbnail && item.thumbnail !== '')
+              ? item.thumbnail
+              : (imgMatch ? imgMatch[1] : null);
             const excerpt = item.description
               ? item.description.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().slice(0, 140) + '…'
               : '';

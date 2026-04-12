@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionLabel from '../components/SectionLabel';
 import SwipeDots from '../components/SwipeDots';
@@ -118,7 +118,6 @@ function RecCard({ rec, idx }) {
       borderRadius: 'var(--border-radius-xl)',
       padding: '20px 24px 20px',
       display: 'flex', flexDirection: 'column', gap: 12,
-      height: '100%',
       boxShadow: 'var(--shadow-sm)',
       transition: 'var(--transition-colors)',
     }}>
@@ -175,9 +174,18 @@ const CARDS_PER_PAGE = 3;
 
 export default function Recommendations() {
   const [page, setPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const recScrollRef = useRef(null);
+  const mobileScrollRef = useRef(null);
   const totalPages = Math.ceil(RECS.length / CARDS_PER_PAGE);
   const visible = RECS.slice(page * CARDS_PER_PAGE, page * CARDS_PER_PAGE + CARDS_PER_PAGE);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   return (
     <section
@@ -229,83 +237,104 @@ export default function Recommendations() {
           </div>
         </div>
 
-        {/* Cards grid */}
-        <SwipeDots scrollRef={recScrollRef} count={visible.length} />
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={page}
-            ref={recScrollRef}
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -24 }}
-            transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 20,
-            }}
-            className="rec-grid mobile-hscroll"
-          >
-            {visible.map((rec, i) => (
-              <RecCard key={rec.name} rec={rec} idx={page * CARDS_PER_PAGE + i} />
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Pagination */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginTop: 36 }}>
-          <button
-            onClick={() => setPage(p => Math.max(0, p - 1))}
-            disabled={page === 0}
-            style={{
-              width: 36, height: 36, borderRadius: '50%',
-              border: '0.5px solid var(--color-border-tertiary)',
-              background: 'var(--color-background-primary)',
-              cursor: page === 0 ? 'default' : 'pointer',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 16, color: 'var(--color-text-primary)',
-              opacity: page === 0 ? 0.3 : 1,
-              transition: 'var(--transition-colors)',
-            }}
-          >‹</button>
-
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setPage(i)}
+        {/* Mobile: all cards in one horizontal scroll */}
+        {isMobile ? (
+          <>
+            <div
+              ref={mobileScrollRef}
               style={{
-                width: page === i ? 24 : 8, height: 8, borderRadius: 4,
-                border: 'none', cursor: 'pointer', padding: 0,
-                background: page === i ? 'var(--color-accent)' : 'var(--color-border-tertiary)',
-                transition: 'all 250ms ease',
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'flex-start',
+                overflowX: 'auto',
+                scrollSnapType: 'x mandatory',
+                WebkitOverflowScrolling: 'touch',
+                scrollbarWidth: 'none',
+                gap: 12,
+                marginLeft: -20,
+                marginRight: -20,
+                paddingLeft: 20,
+                paddingRight: 20,
+                paddingBottom: 4,
               }}
-            />
-          ))}
+            >
+              {RECS.map((rec, i) => (
+                <div key={rec.name} style={{ scrollSnapAlign: 'start', flexShrink: 0, width: 'calc(85vw)', maxWidth: 340 }}>
+                  <RecCard rec={rec} idx={i} />
+                </div>
+              ))}
+            </div>
+            <SwipeDots scrollRef={mobileScrollRef} count={RECS.length} />
+          </>
+        ) : (
+          <>
+            {/* Desktop: paginated grid */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={page}
+                ref={recScrollRef}
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -24 }}
+                transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}
+                className="rec-grid"
+              >
+                {visible.map((rec, i) => (
+                  <RecCard key={rec.name} rec={rec} idx={page * CARDS_PER_PAGE + i} />
+                ))}
+              </motion.div>
+            </AnimatePresence>
 
-          <button
-            onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
-            disabled={page === totalPages - 1}
-            style={{
-              width: 36, height: 36, borderRadius: '50%',
-              border: '0.5px solid var(--color-border-tertiary)',
-              background: 'var(--color-background-primary)',
-              cursor: page === totalPages - 1 ? 'default' : 'pointer',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 16, color: 'var(--color-text-primary)',
-              opacity: page === totalPages - 1 ? 0.3 : 1,
-              transition: 'var(--transition-colors)',
-            }}
-          >›</button>
-        </div>
+            {/* Pagination */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginTop: 36 }}>
+              <button
+                onClick={() => setPage(p => Math.max(0, p - 1))}
+                disabled={page === 0}
+                style={{
+                  width: 36, height: 36, borderRadius: '50%',
+                  border: '0.5px solid var(--color-border-tertiary)',
+                  background: 'var(--color-background-primary)',
+                  cursor: page === 0 ? 'default' : 'pointer',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 16, color: 'var(--color-text-primary)',
+                  opacity: page === 0 ? 0.3 : 1,
+                  transition: 'var(--transition-colors)',
+                }}
+              >‹</button>
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setPage(i)}
+                  style={{
+                    width: page === i ? 24 : 8, height: 8, borderRadius: 4,
+                    border: 'none', cursor: 'pointer', padding: 0,
+                    background: page === i ? 'var(--color-accent)' : 'var(--color-border-tertiary)',
+                    transition: 'all 250ms ease',
+                  }}
+                />
+              ))}
+              <button
+                onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+                disabled={page === totalPages - 1}
+                style={{
+                  width: 36, height: 36, borderRadius: '50%',
+                  border: '0.5px solid var(--color-border-tertiary)',
+                  background: 'var(--color-background-primary)',
+                  cursor: page === totalPages - 1 ? 'default' : 'pointer',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 16, color: 'var(--color-text-primary)',
+                  opacity: page === totalPages - 1 ? 0.3 : 1,
+                  transition: 'var(--transition-colors)',
+                }}
+              >›</button>
+            </div>
+          </>
+        )}
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
-          .rec-grid { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 580px) {
-          .rec-grid { grid-template-columns: 1fr !important; }
-        }
+        @media (max-width: 900px) { .rec-grid { grid-template-columns: 1fr 1fr !important; } }
       `}</style>
     </section>
   );

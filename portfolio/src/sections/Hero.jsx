@@ -64,7 +64,7 @@ export default function Hero() {
     >
       {/* ── Subtle background — no gradient orbs ── */}
 
-      <div className="container" style={{ paddingTop: 110, paddingBottom: 110, position: 'relative', width: '100%' }}>
+      <div className="container hero-content-pad" style={{ paddingTop: 110, paddingBottom: 110, position: 'relative', width: '100%' }}>
         <motion.div style={{ y: textY }}>
           <div
             style={{
@@ -79,7 +79,7 @@ export default function Hero() {
             <div>
               {/* Greeting pill — "Hi, I'm Aashish Gupta" */}
               <motion.div {...fadeUp(0.0)} style={{ marginBottom: 16 }}>
-                <span style={{
+                <span className="hero-greeting-pill" style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 10,
@@ -172,7 +172,9 @@ export default function Hero() {
                   transition: 'var(--transition-colors)',
                 }}
               >
-                I transform businesses by building{' '}
+                I transform businesses
+                <br />
+                by building{' '}
                 <span style={{
                   background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #2563eb 100%)',
                   WebkitBackgroundClip: 'text',
@@ -184,17 +186,17 @@ export default function Hero() {
                 <br />
                 scaling them to millions
                 <br />
-                and building teams that outlast me.
+                and crafting teams that outlast me.
               </motion.h1>
 
               {/* Award badges — horizontal row under h1 */}
-              <motion.div {...fadeUp(0.20)} style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 28 }}>
+              <motion.div {...fadeUp(0.20)} className="hero-awards-row" style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 28 }}>
                 {[
-                  { icon: '🏆', title: 'Forbes 30U30 Asia', sub: 'Enterprise Technology' },
-                  { icon: '⭐', title: 'Best Use of AI in Automation', sub: 'AICRA & MeitY' },
-                  { icon: '🥇', title: 'Global Mobility Winner', sub: 'Niti Aayog' },
+                  { icon: '🏆', title: 'Forbes 30U30 Asia', titleMobile: 'Forbes 30U30 Asia', sub: 'Enterprise Technology' },
+                  { icon: '⭐', title: 'Best Use of AI in Automation', titleMobile: 'Best Use of AI', sub: 'AICRA & MeitY' },
+                  { icon: '🥇', title: 'Global Mobility Winner', titleMobile: 'Global Mobility Winner', sub: 'Niti Aayog' },
                 ].map((b, i) => (
-                  <span key={i} style={{
+                  <span key={i} className="hero-award-badge" style={{
                     display: 'inline-flex', alignItems: 'center', gap: 7,
                     padding: '6px 12px 6px 8px',
                     borderRadius: 10,
@@ -203,10 +205,13 @@ export default function Hero() {
                     boxShadow: '0 2px 10px rgba(0,0,0,0.08)',
                     whiteSpace: 'nowrap',
                   }}>
-                    <span style={{ fontSize: 24, lineHeight: 1 }}>{b.icon}</span>
+                    <span className="award-icon" style={{ fontSize: 24, lineHeight: 1 }}>{b.icon}</span>
                     <span style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span style={{ fontSize: 13, fontWeight: 800, color: '#1d1d1f', lineHeight: 1.7, letterSpacing: '-0.01em' }}>{b.title}</span>
-                      <span style={{ fontSize: 10.5, fontWeight: 500, color: '#6e6e73', lineHeight: 1.7 }}>{b.sub}</span>
+                      <span className="award-title" style={{ fontSize: 13, fontWeight: 800, color: '#1d1d1f', lineHeight: 1.7, letterSpacing: '-0.01em' }}>
+                      <span className="award-title-full">{b.title}</span>
+                      {b.titleMobile && <span className="award-title-mobile">{b.titleMobile}</span>}
+                    </span>
+                      <span className="award-sub" style={{ fontSize: 10.5, fontWeight: 500, color: '#6e6e73', lineHeight: 1.7 }}>{b.sub}</span>
                     </span>
                   </span>
                 ))}
@@ -232,6 +237,7 @@ export default function Hero() {
               {/* CTAs */}
               <motion.div
                 {...fadeUp(0.32)}
+                className="hero-ctas"
                 style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}
               >
                 <button
@@ -248,62 +254,117 @@ export default function Hero() {
                 </button>
               </motion.div>
 
-              {/* Stat strip */}
-              <motion.div
-                {...fadeUp(0.42)}
-                className="hero-stat-strip"
-                style={{
-                  display: 'flex',
-                  gap: 36,
-                  marginTop: 64,
-                  paddingTop: 32,
-                  borderTop: '0.5px solid var(--color-border-tertiary)',
-                  flexWrap: 'wrap',
+              {/* Stat strip — two-row card */}
+              <motion.div {...fadeUp(0.42)} style={{ marginTop: 48 }}>
+                <div className="hero-stat-card" style={{
+                  borderRadius: 14,
+                  overflow: 'hidden',
+                  border: '0.5px solid var(--color-border-secondary)',
+                  boxShadow: '0 2px 20px rgba(0,0,0,0.06)',
                   transition: 'var(--transition-colors)',
-                }}
-              >
-                {[
-                  { num: '~ 13', label: 'Years of Exp' },
-                  { num: '10+', label: 'Years in AI' },
-                  { num: '8+', label: 'Years in B2B'},
-                  { num: '6+', label: 'Years in B2G'},
-                  { num: '5+', label: 'Years in B2C'},
-                  { num: '2+', label: 'Years in D2C' },
-                  { num: '200M+', label: 'Users Impacted' },
-                  { num: '2×', label: 'Founder' },
-                  { num: '$20M+', label: 'Revenues Driven' },
-                  
-                ].map((s, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.45 + i * 0.08 }}
-                  >
-                    <div style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: 26,
-                      fontWeight: 700,
-                      color: 'var(--color-text-primary)',
-                      letterSpacing: '-0.025em',
-                      lineHeight: 1,
-                      marginBottom: 5,
-                      transition: 'var(--transition-colors)',
-                    }}>
-                      {s.num}
-                    </div>
-                    <div style={{
-                      fontSize: 11,
-                      color: 'var(--color-text-tertiary)',
-                      fontWeight: 400,
-                      lineHeight: 1.4,
-                      transition: 'var(--transition-colors)',
-                    }}>
-                      {s.label}
-                    </div>
-                  </motion.div>
-                ))}
+                }}>
+
+                  {/* Row 1 — Experience */}
+                  <div className="hero-stat-row hero-stat-row-exp" style={{
+                    display: 'flex',
+                    background: 'var(--color-background-primary)',
+                    transition: 'var(--transition-colors)',
+                  }}>
+                    {[
+                      { num: '~13', label: 'Years of Exp' },
+                      { num: '10+', label: 'Years in AI' },
+                      { num: '8+',  label: 'B2B' },
+                      { num: '6+',  label: 'B2G' },
+                      { num: '5+',  label: 'B2C' },
+                      { num: '2+',  label: 'D2C' },
+                    ].map((s, i, arr) => (
+                      <motion.div
+                        key={i}
+                        className="hero-stat-cell"
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, ease: [0.25,0.1,0.25,1], delay: 0.44 + i * 0.07 }}
+                        style={{
+                          flex: 1,
+                          textAlign: 'center',
+                          padding: '18px 8px',
+                          borderRight: i < arr.length - 1 ? '0.5px solid var(--color-border-tertiary)' : 'none',
+                          transition: 'var(--transition-colors)',
+                        }}
+                      >
+                        <div style={{
+                          fontFamily: 'var(--font-display)',
+                          fontSize: 22,
+                          fontWeight: 700,
+                          color: 'var(--color-text-primary)',
+                          letterSpacing: '-0.025em',
+                          lineHeight: 1,
+                          marginBottom: 5,
+                          transition: 'var(--transition-colors)',
+                        }}>{s.num}</div>
+                        <div style={{
+                          fontSize: 10,
+                          color: 'var(--color-text-tertiary)',
+                          fontWeight: 500,
+                          lineHeight: 1.3,
+                          transition: 'var(--transition-colors)',
+                        }}>{s.label}</div>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Divider */}
+                  <div style={{ height: '0.5px', background: 'var(--color-border-secondary)', transition: 'var(--transition-colors)' }} />
+
+                  {/* Row 2 — Impact */}
+                  <div className="hero-stat-row hero-stat-row-impact" style={{
+                    display: 'flex',
+                    background: 'var(--color-background-info)',
+                    transition: 'var(--transition-colors)',
+                  }}>
+                    {[
+                      { num: '200M+', label: 'Users Impacted' },
+                      { num: '2×',    label: 'Founder' },
+                      { num: '$20M+', label: 'Revenue Driven' },
+                    ].map((s, i, arr) => (
+                      <motion.div
+                        key={i}
+                        className="hero-stat-cell"
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, ease: [0.25,0.1,0.25,1], delay: 0.72 + i * 0.08 }}
+                        style={{
+                          flex: 1,
+                          textAlign: 'center',
+                          padding: '18px 8px',
+                          borderRight: i < arr.length - 1 ? '0.5px solid rgba(29,78,216,0.14)' : 'none',
+                          transition: 'var(--transition-colors)',
+                        }}
+                      >
+                        <div style={{
+                          fontFamily: 'var(--font-display)',
+                          fontSize: 22,
+                          fontWeight: 700,
+                          color: 'var(--color-accent)',
+                          letterSpacing: '-0.025em',
+                          lineHeight: 1,
+                          marginBottom: 5,
+                          transition: 'var(--transition-colors)',
+                        }}>{s.num}</div>
+                        <div style={{
+                          fontSize: 10,
+                          color: 'var(--color-text-tertiary)',
+                          fontWeight: 500,
+                          lineHeight: 1.3,
+                          transition: 'var(--transition-colors)',
+                        }}>{s.label}</div>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                </div>
               </motion.div>
             </div>
 
@@ -362,26 +423,96 @@ export default function Hero() {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
         }
-        /* Hero h1 — fixed sizes per breakpoint, no viewport scaling */
+
+        /* ── H1 sizes ── */
         .hero-h1 { font-size: 44px; }
         @media (max-width: 1280px) { .hero-h1 { font-size: 40px; } }
         @media (max-width: 1024px) { .hero-h1 { font-size: 36px; } }
-        @media (max-width: 860px) { .hero-h1 { font-size: 32px; } }
-        @media (max-width: 480px) { .hero-h1 { font-size: 28px; } }
+        @media (max-width: 860px)  { .hero-h1 { font-size: 32px; } }
+        @media (max-width: 480px)  { .hero-h1 { font-size: 39px; line-height: 1.30 !important; letter-spacing: -0.03em !important; } }
 
+        /* ── Tablet: collapse grid ── */
         @media (max-width: 860px) {
-          .hero-grid { grid-template-columns: 1fr !important; }
-          .hero-grid > div:last-child { max-width: 360px; margin: 0 auto; }
-          .hero-photo-col { margin-top: 0 !important; }
+          .hero-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+          /* Move photo above text */
+          .hero-photo-col { order: -1 !important; margin-top: 0 !important; }
+          .hero-photo-col > div {
+            max-width: 190px !important;
+            margin: 0 auto !important;
+            border-radius: 50% !important;
+            aspect-ratio: 1 / 1 !important;
+          }
+          .hero-photo-col > div img { object-position: center 8% !important; }
+          /* Slightly tighten vertical padding */
+          .hero-content-pad { padding-top: 88px !important; padding-bottom: 72px !important; }
         }
-        @media (max-width: 768px) {
-          .hero-stat-strip { gap: 20px !important; margin-top: 40px !important; }
-          .hero-sticky-notes { right: 4px !important; top: 10px !important; }
-          .hero-sticky-notes > div { font-size: 10px !important; }
+
+        /* ── Award title toggle ── */
+        .award-title-mobile { display: none; }
+        @media (max-width: 640px) {
+          .award-title-full   { display: none; }
+          .award-title-mobile { display: inline; }
         }
+
+        /* ── Awards: horizontal scroll on mobile so all 3 fit one row ── */
+        @media (max-width: 640px) {
+          .hero-awards-row {
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            scrollbar-width: none !important;
+            padding-bottom: 4px !important;
+          }
+          .hero-awards-row::-webkit-scrollbar { display: none; }
+          .hero-award-badge { flex-shrink: 0 !important; }
+          .hero-award-badge { padding: 5px 10px 5px 7px !important; }
+          .hero-award-badge .award-icon  { font-size: 18px !important; }
+          .hero-award-badge .award-title { font-size: 11px !important; }
+          .hero-award-badge .award-sub   { font-size: 9px !important; }
+        }
+
+        /* ── Stat card: mobile collapses exp row to 3-col grid ── */
+        @media (max-width: 640px) {
+          .hero-stat-row-exp {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+          .hero-stat-row-exp .hero-stat-cell {
+            border-right: none !important;
+            border-bottom: 0.5px solid var(--color-border-tertiary) !important;
+          }
+          /* Remove bottom border from last row (cells 3,4,5) */
+          .hero-stat-row-exp .hero-stat-cell:nth-child(4),
+          .hero-stat-row-exp .hero-stat-cell:nth-child(5),
+          .hero-stat-row-exp .hero-stat-cell:nth-child(6) {
+            border-bottom: none !important;
+          }
+          /* Restore vertical dividers within each row of 3 */
+          .hero-stat-row-exp .hero-stat-cell:nth-child(1),
+          .hero-stat-row-exp .hero-stat-cell:nth-child(2),
+          .hero-stat-row-exp .hero-stat-cell:nth-child(4),
+          .hero-stat-row-exp .hero-stat-cell:nth-child(5) {
+            border-right: 0.5px solid var(--color-border-tertiary) !important;
+          }
+          .hero-stat-row-impact .hero-stat-cell { padding: 16px 8px !important; }
+          .hero-stat-card { margin-top: 28px !important; }
+        }
+
+        /* ── Mobile: full polish ── */
         @media (max-width: 480px) {
-          .hero-stat-strip { gap: 16px !important; }
+          .hero-content-pad { padding-top: 76px !important; padding-bottom: 56px !important; }
+
+          /* Greeting pill — allow wrap on tiny screens */
+          .hero-greeting-pill { max-width: 100% !important; white-space: normal !important; font-size: 13px !important; }
+
+          /* Photo — tighter circle */
+          .hero-photo-col > div { max-width: 140px !important; }
+
+          /* CTAs — full width, stacked */
+          .hero-ctas { flex-direction: column !important; gap: 10px !important; }
+          .hero-ctas .btn { width: 100% !important; text-align: center !important; justify-content: center !important; }
         }
+
         [data-theme="dark"] .hero-greeting-pill {
           background: rgba(30,21,53,0.72) !important;
         }

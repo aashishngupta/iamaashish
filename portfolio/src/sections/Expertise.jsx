@@ -183,7 +183,6 @@ export default function Expertise() {
             </span>
           </div>
 
-          <SwipeDots scrollRef={skillsScrollRef} count={SKILLS.length} />
           <div ref={skillsScrollRef} style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
@@ -210,6 +209,7 @@ export default function Expertise() {
               </div>
             ))}
           </div>
+          <SwipeDots scrollRef={skillsScrollRef} count={SKILLS.length} />
         </div>
 
         <style>{`
@@ -235,7 +235,6 @@ export default function Expertise() {
           </p>
 
           {/* Bento grid */}
-          <SwipeDots scrollRef={toolsScrollRef} count={TOOLS.length} />
           <div ref={toolsScrollRef} style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
@@ -297,6 +296,7 @@ export default function Expertise() {
               );
             })}
           </div>
+          <SwipeDots scrollRef={toolsScrollRef} count={TOOLS.length} />
         </div>
 
         <style>{`

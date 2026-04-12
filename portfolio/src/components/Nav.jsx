@@ -4,6 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 const links = ['My Story', 'Work', 'Thinking', 'Now', 'Contact'];
 
 export default function Nav({ theme, onToggleTheme }) {
+  const logoSrc = theme === 'dark'
+    ? '/aashish-logo/logo_white.svg'
+    : '/aashish-logo/logo_black.svg';
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -37,9 +40,13 @@ export default function Nav({ theme, onToggleTheme }) {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            style={{ fontSize: 36, marginLeft: 9,fontWeight:'bold', fontWeight: 500, color: 'var(--color-text-primary)', transition: 'var(--transition-colors)' }}
+            style={{ display: 'flex', alignItems: 'center', padding: 0, margin: 0, background: 'none', border: 'none', cursor: 'pointer', outline: 'none', flexShrink: 0 }}
           >
-            AG
+            <img
+              src={logoSrc}
+              alt="Aashish Kumar Gupta"
+              style={{ height: 70, width: 'auto', display: 'block', transition: 'opacity 200ms ease', marginLeft: '-6px' }}
+            />
           </button>
 
           {/* Desktop links */}

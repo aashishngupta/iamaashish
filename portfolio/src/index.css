@@ -156,7 +156,7 @@ section:not(#hero) h3 {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  margin-bottom: 14px;
+  margin-top: 14px;
 }
 .mobile-swipe-dots span {
   display: block;
@@ -251,8 +251,12 @@ section:not(#hero) h3 {
   /* Tighten company card padding on mobile */
   .company-left-col { padding: 14px 14px !important; }
 
-  /* Swipe pager dots — shown above horizontal scroll sections */
+  /* Swipe pager dots — shown below horizontal scroll sections */
   .mobile-swipe-dots { display: flex !important; }
+
+  /* Skills & tools: compact card width so they don't stretch full viewport */
+  .skills-grid.mobile-hscroll > * { width: 270px !important; max-width: 270px !important; }
+  .bento-grid.mobile-hscroll > * { width: 230px !important; max-width: 230px !important; }
 
   /* Swipe hint fade on right edge */
   .mobile-hscroll-wrap { position: relative; }

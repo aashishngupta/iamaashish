@@ -13,7 +13,10 @@ export default function Footer() {
       padding: '28px 0',
     }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-        <span style={{ fontSize: 13 }}>© 2026 Aashish Kumar Gupta</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <img src="/aashish-logo/icon_white.svg" alt="AG" style={{ height: 22, width: 'auto', opacity: 0.7 }} />
+          <span style={{ fontSize: 13 }}>© 2026 Aashish Kumar Gupta</span>
+        </div>
         <div style={{ display: 'flex', gap: 20 }}>
           {socials.map(s => (
             <a

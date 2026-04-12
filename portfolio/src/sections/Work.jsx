@@ -182,7 +182,7 @@ const COMPANIES = [
     caseStudies: [
       {
         title: 'Automation Anywhere',
-        logo: '/automation-anywhere.jpg',
+        logo: '/automation-anywhere-logo.png',
         result: 'Automation Anywhere, a global RPA leader, boosted knowledge creation by 57%, increased contributors by 37%, and cut publishing time by 46% with AI-driven content automation.',
         href: 'https://www.searchunify.com/resource-center/success-story/how-automation-anywhere-is-winning-at-user-experience-with-searchunify/',
       },
@@ -194,13 +194,13 @@ const COMPANIES = [
       },
       {
         title: 'Cornerstone OnDemand',
-        logo: null,
+        logo: '/cornerstone-logo.png',
         result: 'Cornerstone OnDemand, a global leader in talent management software, achieved 98% self-service resolution, improved CSAT by 5%, and increased same-day resolutions by 9% using AI-driven knowledge and search automation.',
         href: 'https://www.searchunify.com/resource-center/success-story/how-cornerstone-ondemand-achieved-a-98-self-service-resolution-rate-with-searchunify/',
       },
       {
         title: 'EBSCO',
-        logo: null,
+        logo: '/ebsco-logo.png',
         result: 'EBSCO, a leading provider of research and eLearning content, drove 125.8% growth in content views and improved content discoverability and user engagement through AI-powered search and content intelligence.',
         href: 'https://www.searchunify.com/resource-center/success-story/ebsco-academy-boosts-learner-engagement-by-125-8-with-searchunify/',
       }
@@ -1867,7 +1867,7 @@ export default function Work() {
       style={{ background: 'var(--color-background-secondary)', transition: 'var(--transition-colors)' }}
     >
       <div className="container">
-        <SectionLabel>Work · Products</SectionLabel>
+        <SectionLabel>Work Portfolio</SectionLabel>
         <h2 className="section-heading" style={{ marginBottom: 8 }}>
           Products I've built. <em>Results they've delivered.</em>
         </h2>
