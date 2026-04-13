@@ -202,6 +202,19 @@ export default function About() {
   )}
 </AnimatePresence>
 
+          <img
+            src="/aashish-sign.jpg"
+            alt="Aashish signature"
+            style={{
+              height: 56,
+              width: 'auto',
+              display: 'block',
+              marginBottom: 28,
+              opacity: 0.82,
+              filter: 'var(--sign-filter)',
+            }}
+          />
+
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             {socials.map(s => (
               <a

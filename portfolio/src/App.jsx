@@ -13,6 +13,7 @@ import Achievements from './sections/Achievements';
 import Recommendations from './sections/Recommendations';
 import Expertise from './sections/Expertise';
 import FeaturedBook from './components/FeaturedBook';
+import AIQuestions from './sections/AIQuestions';
 import Now from './sections/Now';
 import Contact from './sections/Contact';
 
@@ -55,6 +56,7 @@ export default function App() {
         <S><Expertise /></S>
         <S><Recommendations /></S>
         <S><Thinking /></S>
+        <S><AIQuestions /></S>
         <S><BeyondWork /></S>
         <S><QuoteBlock
           quote="I grew up in a small town in Haryana with a dream at age 3 to become a CEO. That dream hasn't changed — only the scope has."

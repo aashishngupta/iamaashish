@@ -48,6 +48,9 @@
 
   /* Accent gradient (for text highlights) */
   --gradient-accent: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+
+  /* Signature image filter */
+  --sign-filter: none;
 }
 
 [data-theme="dark"] {
@@ -68,6 +71,7 @@
   --shadow-lg: 0 20px 50px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.35);
   --nav-bg-scrolled: rgba(12, 12, 18, 0.90);
   --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  --sign-filter: invert(1) brightness(1.8);
 }
 
 /* ============================================================
