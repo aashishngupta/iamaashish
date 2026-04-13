@@ -324,9 +324,9 @@ export default function Hero() {
                     transition: 'var(--transition-colors)',
                   }}>
                     {[
-                      { num: '200M+', label: 'Users Impacted' },
+                      { num: '100M+', label: 'Users Impacted' },
                       { num: '2×',    label: 'Founder' },
-                      { num: '$20M+', label: 'Revenue Driven' },
+                      { num: '$30M+', label: 'Revenue Driven' },
                     ].map((s, i, arr) => (
                       <motion.div
                         key={i}
@@ -383,7 +383,9 @@ export default function Hero() {
               }}>
                 <img
                   src="/aashish-tedx.png"
-                  alt="Aashish Kumar Gupta"
+                  alt="Aashish Kumar Gupta speaking at TEDx — AI Product Leader and Forbes 30 Under 30 Asia"
+                  fetchpriority="high"
+                  loading="eager"
                   style={{
                     width: '100%',
                     height: '100%',

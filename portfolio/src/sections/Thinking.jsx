@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import SectionLabel from '../components/SectionLabel';
 import SwipeDots from '../components/SwipeDots';
@@ -51,47 +51,24 @@ const typeColor = {
   Medium:      { bg: '#fff3e8', color: '#b54708' },
 };
 
-function useMediumArticles(username) {
+
+// ── Load Medium articles from static JSON (generated at dev/build start) ─────
+function useMediumArticles() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!username) { setLoading(false); return; }
-    const rssUrl = `https://medium.com/feed/@${username}`;
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-    fetch(apiUrl)
-      .then(r => r.json())
-      .then(data => {
-        if (data.status === 'ok' && data.items?.length) {
-          setArticles(data.items.slice(0, 6).map(item => {
-            // Extract first image from full HTML content (Medium puts images there)
-            const html = item.content || item.description || '';
-            const imgMatch = html.match(/<img[^>]+src=["']([^"']+)["']/);
-            const cover = (item.thumbnail && item.thumbnail !== '')
-              ? item.thumbnail
-              : (imgMatch ? imgMatch[1] : null);
-            const excerpt = item.description
-              ? item.description.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().slice(0, 140) + '…'
-              : '';
-            return {
-              title: item.title,
-              body: excerpt,
-              date: new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
-              href: item.link,
-              cover,
-              categories: item.categories?.slice(0, 2) || [],
-            };
-          }));
-        }
-      })
+    fetch('/medium-articles.json')
+      .then(r => r.ok ? r.json() : [])
+      .then(data => { if (Array.isArray(data) && data.length) setArticles(data); })
       .catch(() => {})
       .finally(() => setLoading(false));
-  }, [username]);
+  }, []);
 
   return { articles, loading };
 }
 
-// ── Blog card — used for both Medium and pinned ───────────────────────────────
+// ── Blog card ─────────────────────────────────────────────────────────────────
 function BlogCard({ title, body, date, href, cover, type, categories, delay, inView }) {
   const tag = type || (categories?.[0] || 'Essay');
   const tc = typeColor[type] || { bg: '#f0f0f5', color: '#555' };
@@ -114,6 +91,7 @@ function BlogCard({ title, body, date, href, cover, type, categories, delay, inV
         textDecoration: 'none',
         transition: 'transform 200ms ease, box-shadow 200ms ease, var(--transition-colors)',
         cursor: 'pointer',
+        height: '100%',
       }}
       whileHover={{ y: -3, boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}
     >
@@ -122,7 +100,8 @@ function BlogCard({ title, body, date, href, cover, type, categories, delay, inV
         <div style={{ width: '100%', height: 160, overflow: 'hidden', flexShrink: 0, background: '#f0f0f5' }}>
           <img
             src={cover}
-            alt=""
+            alt={title ? `Cover image for article: ${title}` : 'Article cover image'}
+            loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 300ms ease' }}
             onError={e => { e.currentTarget.parentElement.style.display = 'none'; }}
           />
@@ -201,14 +180,121 @@ function SkeletonCard() {
   );
 }
 
+// ── Desktop Pager — shows 3 cards at a time with prev/next ───────────────────
+function DesktopPager({ cards, inView }) {
+  const [page, setPage] = useState(0);
+  const totalPages = Math.ceil(cards.length / 3);
+  const visible = cards.slice(page * 3, page * 3 + 3);
+
+  return (
+    <div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={page}
+          initial={{ opacity: 0, x: 18 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -18 }}
+          transition={{ duration: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, alignItems: 'stretch' }}
+        >
+          {visible.map((card, i) => (
+            <BlogCard key={`${page}-${i}`} {...card} type={card.type || 'Medium'} delay={i * 0.06} inView={inView} />
+          ))}
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Pager controls */}
+      {totalPages > 1 && (
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginTop: 24 }}>
+          {/* Prev */}
+          <button
+            onClick={() => setPage(p => Math.max(0, p - 1))}
+            disabled={page === 0}
+            style={{
+              width: 36, height: 36, borderRadius: '50%',
+              border: '0.5px solid var(--color-border-tertiary)',
+              background: 'var(--color-background-primary)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: page === 0 ? 'default' : 'pointer',
+              opacity: page === 0 ? 0.3 : 1,
+              transition: 'all 150ms ease',
+              color: 'var(--color-text-primary)',
+              fontSize: 16,
+            }}
+            onMouseEnter={e => { if (page > 0) e.currentTarget.style.borderColor = 'var(--color-accent)'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border-tertiary)'; }}
+            aria-label="Previous articles"
+          >
+            ←
+          </button>
+
+          {/* Page dots */}
+          <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setPage(i)}
+                style={{
+                  width: i === page ? 20 : 6,
+                  height: 6,
+                  borderRadius: 3,
+                  background: i === page ? 'var(--color-accent)' : 'var(--color-border-tertiary)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: 0,
+                  transition: 'all 300ms ease',
+                  opacity: i === page ? 0.85 : 1,
+                }}
+                aria-label={`Go to page ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Next */}
+          <button
+            onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+            disabled={page === totalPages - 1}
+            style={{
+              width: 36, height: 36, borderRadius: '50%',
+              border: '0.5px solid var(--color-border-tertiary)',
+              background: 'var(--color-background-primary)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: page === totalPages - 1 ? 'default' : 'pointer',
+              opacity: page === totalPages - 1 ? 0.3 : 1,
+              transition: 'all 150ms ease',
+              color: 'var(--color-text-primary)',
+              fontSize: 16,
+            }}
+            onMouseEnter={e => { if (page < totalPages - 1) e.currentTarget.style.borderColor = 'var(--color-accent)'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border-tertiary)'; }}
+            aria-label="Next articles"
+          >
+            →
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Main section ──────────────────────────────────────────────────────────────
 export default function Writing() {
   const [ref, inView] = useInView();
-  const { articles, loading } = useMediumArticles(MEDIUM_USERNAME);
+  const { articles, loading } = useMediumArticles();
   const writingScrollRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    setIsMobile(mq.matches);
+    const handler = e => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const showMedium = loading || articles.length > 0;
   const showPinned = !loading && articles.length === 0;
+  const displayCards = loading ? null : (articles.length > 0 ? articles : PINNED);
 
   return (
     <section
@@ -228,7 +314,7 @@ export default function Writing() {
             animate={inView ? fadeUp.animate : fadeUp.initial}
             transition={fadeUp.transition}
           >
-            Ideas I've put <em>on paper.</em>
+            Opinions, essays, <em>and ideas.</em>
           </motion.h2>
 
           <a
@@ -247,40 +333,45 @@ export default function Writing() {
           </a>
         </div>
 
-        {/* Medium articles — live */}
-        {showMedium && (
-          <>
-            <SwipeDots scrollRef={writingScrollRef} count={loading ? 6 : articles.length} />
-            <div ref={writingScrollRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="writing-grid mobile-hscroll">
-              {loading
-                ? [0,1,2,3,4,5].map(i => <SkeletonCard key={i} />)
-                : articles.map((a, i) => (
-                    <BlogCard
-                      key={i}
-                      {...a}
-                      type="Medium"
-                      delay={i * 0.07}
-                      inView={inView}
-                    />
-                  ))
-              }
+        {/* Loading skeletons */}
+        {loading && (
+          isMobile ? (
+            <>
+              <SwipeDots scrollRef={writingScrollRef} count={6} />
+              <div ref={writingScrollRef} className="writing-grid mobile-hscroll">
+                {[0,1,2,3,4,5].map(i => <SkeletonCard key={i} />)}
+              </div>
+            </>
+          ) : (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+              {[0,1,2].map(i => <SkeletonCard key={i} />)}
             </div>
-          </>
+          )
         )}
 
-        {/* Pinned fallback — shown only if Medium returns nothing */}
-        {showPinned && (
-          <>
-            <SwipeDots scrollRef={writingScrollRef} count={PINNED.length} />
-            <div ref={writingScrollRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="writing-grid mobile-hscroll">
-              {PINNED.map((p, i) => (
-                <BlogCard key={i} {...p} delay={i * 0.08} inView={inView} />
-              ))}
-            </div>
-          </>
+        {/* Articles */}
+        {!loading && displayCards && (
+          isMobile ? (
+            <>
+              <SwipeDots scrollRef={writingScrollRef} count={displayCards.length} />
+              <div ref={writingScrollRef} className="writing-grid mobile-hscroll">
+                {displayCards.map((card, i) => (
+                  <BlogCard
+                    key={i}
+                    {...card}
+                    type={card.type || 'Medium'}
+                    delay={i * 0.07}
+                    inView={inView}
+                  />
+                ))}
+              </div>
+            </>
+          ) : (
+            <DesktopPager cards={displayCards} inView={inView} />
+          )
         )}
 
-        {/* Instagram strip — always shown below */}
+        {/* Instagram strip */}
         <motion.a
           href="https://instagram.com/aashishngupta.ai"
           target="_blank"
@@ -317,12 +408,6 @@ export default function Writing() {
         @keyframes pulse {
           0%, 100% { opacity: 0.6; }
           50% { opacity: 0.25; }
-        }
-        @media (max-width: 1024px) {
-          .writing-grid { grid-template-columns: repeat(2, 1fr) !important; }
-        }
-        @media (max-width: 600px) {
-          .writing-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

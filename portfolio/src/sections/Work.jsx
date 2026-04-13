@@ -714,7 +714,7 @@ const COMPANIES = [
   {
     id: 'zippy',
     categories: ['shelved', 'consumer', 'founder'],
-    year: '2022',
+    year: '2023',
     active: false,
     employmentType: 'Self-Initiated',
     name: 'Zippy',
@@ -769,6 +769,56 @@ const COMPANIES = [
           { num: '10-25%', label: 'built-in margin arbitrage from offline price gap' },
         ],
         whyShelved: 'Zippy was paused at the product development stage after a deliberate strategic assessment rather than a failed execution. The model required deep operational infrastructure including logistics, fulfillment hubs, and supply chain muscle that demanded significant capital before any unit economics could be validated. Co-founder bandwidth constraints meant not all founding members were positioned to commit full-time to a high-intensity build. Simultaneously, the quick-commerce market accelerated sharply with Zepto, Blinkit, and Swiggy Instamart scaling aggressively with institutional capital, narrowing the window for a bootstrapped entrant to establish an unfair advantage. The strategic call was to pause rather than burn limited capital in a hyper-competitive, execution-heavy market without strong backing. Zippy had genuine potential and I believe it would have been a meaningful business had we been in a different place in our lives, found co-founders who were fully aligned and ready to go all in, or secured the right partners to shoulder the operational weight. The idea was never the constraint. The timing, the team configuration, and the mental bandwidth were.',
+      },
+    ],
+  },
+
+  {
+    id: 'petme',
+    categories: ['shelved', 'consumer', 'founder'],
+    year: '2022',
+    active: false,
+    employmentType: 'Self-Initiated',
+    name: 'PetMe',
+    logo: '/petme-logo.jpg',
+    brandColor: '#D32575',
+    website: '#',
+    role: 'Co-Founder',
+    description: 'A unified digital ecosystem for pet owners envisioned to combine services, commerce, and community under one platform, simplifying and enhancing the entire pet ownership journey from adoption to daily care and beyond.',
+    roleNarrative: 'Explored PetMe as a consumer-first marketplace and ecosystem play, taking full ownership of market research across urban pet ownership and spending trends, problem discovery across services, adoption, and fragmented user journeys, and the design of a multi-sided marketplace connecting pet owners, service providers, and sellers. Defined the product vision, feature flows, and platform architecture, and mapped early go-to-market through community-led engagement and retention loops. The focus was on identifying and structuring a high-emotion, high-retention consumer category with strong long-term potential.',
+    caseStudies: [],
+    ratings: [],
+    businessImpact: [],
+    products: [
+      {
+        id: 'petme-platform',
+        name: 'PetMe App',
+        businessTags: ['B2C', 'Marketplace'],
+        headline: 'All-in-one pet ecosystem bringing together adoption, verified services, commerce, community, and lifecycle tracking under a single platform for urban pet owners.',
+        tags: [
+          { label: 'B2C', cls: 'ptag-market' },
+          { label: 'Marketplace', cls: 'ptag-type' },
+        ],
+        artifacts: [
+          { type: 'link', url: 'https://www.instagram.com/petme__official', label: '@petme__official', color: '#fce7f3', icon: '📸' },
+        ],
+        businessImpact: [],
+        keyFeatures: [
+          'Pet discovery and adoption platform with structured profiles and history',
+          'Verified and rated service marketplace covering vets, grooming, and boarding',
+          'Commerce layer for food, accessories, and essentials with repeat purchase flows',
+          'Community layer for peer engagement, reviews, and trust-building',
+          'Unified pet owner dashboard with lifecycle tracking and care history',
+          'Subscription and recurring commerce model for high-frequency essentials',
+        ],
+        caseStudies: [],
+        ratings: [],
+        problem: 'The pet ecosystem in India was deeply fragmented with no single discovery layer connecting owners to services, products, and community. Trust in providers like vets, groomers, and boarding facilities was largely word-of-mouth and offline. There was no structured way to manage a pet\'s lifecycle digitally, and the overall experience across adoption, services, and commerce was disconnected, inconsistent, and opaque. The result was an inefficient and trust-deficient ownership journey for a category where emotional stakes are extremely high.',
+        decision: 'Designed PetMe around a single positioning thesis: one platform for everything your pet needs. The architecture brought together four interlocking layers. First, adoption and discovery to solve the unstructured and trust-deficient entry point into pet ownership. Second, a verified service marketplace to replace word-of-mouth with rated, accountable providers. Third, a commerce layer to capture the high-frequency repeat spend that makes pet households economically valuable. Fourth, a community and engagement layer to drive organic retention and build the kind of trust moat that transactional platforms cannot replicate.',
+        learnings: 'Emotional consumer categories demand a level of empathy and conviction from the founder that goes beyond market sizing. Marketplace success in trust-sensitive verticals depends more on supply quality and vetting than on demand acquisition. Community is not a feature in a category like this. It is the primary growth and retention engine. Consumer platforms with high emotional stakes require patient capital and long-term conviction, and the founder\'s personal relationship with the problem space is as important as the opportunity itself.',
+        lastStatus: 'Shelved at concept stage.',
+        outcomes: [],
+        whyShelved: 'The decision to step back from PetMe came from an early and honest self-assessment. I was not a pet owner or a pet lover, and I could not personally relate to the daily emotional realities of the user I was building for. The idea initially came together around a market opportunity and two co-founders who were genuinely connected to the pet space. But when you are working with co-founders who are 30 plus in age, getting the full-time commitment, the conviction, and the raw hustle that a 0 to 1 consumer build demands is a very different challenge. That energy and intensity is not something you can manufacture. The co-founders were drawn to the space but not at a stage in their lives where they could throw everything at it. Without that founding alignment and without the personal founder-problem fit that a high-emotion category like this demands, building would have meant compromising on the very things that make consumer platforms succeed. The market was real and the opportunity remains. But this needed the right team with the right personal connection to the problem, and that combination was not there.',
       },
     ],
   },
@@ -1160,56 +1210,6 @@ const COMPANIES = [
           { num: '~50%', label: 'pre-CAC contribution margin' },
           { num: '~5%', label: 'return rate' },
         ],
-      },
-    ],
-  },
-
-  {
-    id: 'petme',
-    categories: ['shelved', 'consumer', 'founder'],
-    year: '2023',
-    active: false,
-    employmentType: 'Self-Initiated',
-    name: 'PetMe',
-    logo: '/petme-logo.jpg',
-    brandColor: '#D32575',
-    website: '#',
-    role: 'Founder',
-    description: 'A unified digital ecosystem for pet owners envisioned to combine services, commerce, and community under one platform, simplifying and enhancing the entire pet ownership journey from adoption to daily care and beyond.',
-    roleNarrative: 'Explored PetMe as a consumer-first marketplace and ecosystem play, taking full ownership of market research across urban pet ownership and spending trends, problem discovery across services, adoption, and fragmented user journeys, and the design of a multi-sided marketplace connecting pet owners, service providers, and sellers. Defined the product vision, feature flows, and platform architecture, and mapped early go-to-market through community-led engagement and retention loops. The focus was on identifying and structuring a high-emotion, high-retention consumer category with strong long-term potential.',
-    caseStudies: [],
-    ratings: [],
-    businessImpact: [],
-    products: [
-      {
-        id: 'petme-platform',
-        name: 'PetMe App',
-        businessTags: ['B2C', 'Marketplace'],
-        headline: 'All-in-one pet ecosystem bringing together adoption, verified services, commerce, community, and lifecycle tracking under a single platform for urban pet owners.',
-        tags: [
-          { label: 'B2C', cls: 'ptag-market' },
-          { label: 'Marketplace', cls: 'ptag-type' },
-        ],
-        artifacts: [
-          { type: 'link', url: 'https://www.instagram.com/petme__official', label: '@petme__official', color: '#fce7f3', icon: '📸' },
-        ],
-        businessImpact: [],
-        keyFeatures: [
-          'Pet discovery and adoption platform with structured profiles and history',
-          'Verified and rated service marketplace covering vets, grooming, and boarding',
-          'Commerce layer for food, accessories, and essentials with repeat purchase flows',
-          'Community layer for peer engagement, reviews, and trust-building',
-          'Unified pet owner dashboard with lifecycle tracking and care history',
-          'Subscription and recurring commerce model for high-frequency essentials',
-        ],
-        caseStudies: [],
-        ratings: [],
-        problem: 'The pet ecosystem in India was deeply fragmented with no single discovery layer connecting owners to services, products, and community. Trust in providers like vets, groomers, and boarding facilities was largely word-of-mouth and offline. There was no structured way to manage a pet\'s lifecycle digitally, and the overall experience across adoption, services, and commerce was disconnected, inconsistent, and opaque. The result was an inefficient and trust-deficient ownership journey for a category where emotional stakes are extremely high.',
-        decision: 'Designed PetMe around a single positioning thesis: one platform for everything your pet needs. The architecture brought together four interlocking layers. First, adoption and discovery to solve the unstructured and trust-deficient entry point into pet ownership. Second, a verified service marketplace to replace word-of-mouth with rated, accountable providers. Third, a commerce layer to capture the high-frequency repeat spend that makes pet households economically valuable. Fourth, a community and engagement layer to drive organic retention and build the kind of trust moat that transactional platforms cannot replicate.',
-        learnings: 'Emotional consumer categories demand a level of empathy and conviction from the founder that goes beyond market sizing. Marketplace success in trust-sensitive verticals depends more on supply quality and vetting than on demand acquisition. Community is not a feature in a category like this. It is the primary growth and retention engine. Consumer platforms with high emotional stakes require patient capital and long-term conviction, and the founder\'s personal relationship with the problem space is as important as the opportunity itself.',
-        lastStatus: 'Shelved at concept stage.',
-        outcomes: [],
-        whyShelved: 'The decision to step back from PetMe came from an early and honest self-assessment. I was not a pet owner or a pet lover, and I could not personally relate to the daily emotional realities of the user I was building for. The idea initially came together around a market opportunity and two co-founders who were genuinely connected to the pet space. But when you are working with co-founders who are 30 plus in age, getting the full-time commitment, the conviction, and the raw hustle that a 0 to 1 consumer build demands is a very different challenge. That energy and intensity is not something you can manufacture. The co-founders were drawn to the space but not at a stage in their lives where they could throw everything at it. Without that founding alignment and without the personal founder-problem fit that a high-emotion category like this demands, building would have meant compromising on the very things that make consumer platforms succeed. The market was real and the opportunity remains. But this needed the right team with the right personal connection to the problem, and that combination was not there.',
       },
     ],
   },
@@ -1714,6 +1714,19 @@ function CompanyCard({ company, onMediaClick }) {
                 }}>
                   {company.employmentType}
                 </span>
+                {company.categories?.includes('shelved') && (
+                  <span style={{
+                    fontSize: 11, fontWeight: 600,
+                    padding: '2px 9px',
+                    borderRadius: 'var(--border-radius-pill)',
+                    background: '#faeeda',
+                    border: '0.5px solid #f5c686',
+                    color: '#633806',
+                    whiteSpace: 'nowrap',
+                  }}>
+                    Shelved Idea
+                  </span>
+                )}
               </div>
 
               {/* Company description — desktop inline truncate / mobile collapsible */}
@@ -2023,7 +2036,7 @@ function CompanyCard({ company, onMediaClick }) {
                 <div style={{ background: 'var(--color-background-secondary)', borderRadius: 'var(--border-radius-md)', padding: '12px 14px', border: `0.5px solid ${bc}40`, transition: 'var(--transition-colors)', overflow: 'hidden', minWidth: 0 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
                     {cs.logo
-                      ? <img src={cs.logo} alt="" title={cs.title} onError={e => { e.currentTarget.style.display = 'none'; }} style={{ height: 20, maxWidth: 130, objectFit: 'contain', objectPosition: 'left center', display: 'block' }} />
+                      ? <img src={cs.logo} alt={cs.title || 'Case study client logo'} title={cs.title} onError={e => { e.currentTarget.style.display = 'none'; }} style={{ height: 20, maxWidth: 130, objectFit: 'contain', objectPosition: 'left center', display: 'block' }} />
                       : <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)', transition: 'var(--transition-colors)' }}>{cs.title}</span>
                     }
                     {total > 1 && (

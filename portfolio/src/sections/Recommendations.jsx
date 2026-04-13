@@ -92,7 +92,8 @@ function Avatar({ name, photo, idx }) {
     return (
       <img
         src={photo}
-        alt={name}
+        alt={`${name} — LinkedIn recommendation for Aashish Kumar Gupta`}
+        loading="lazy"
         style={{ width: 48, height: 48, borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '2px solid rgba(124,58,237,0.15)' }}
       />
     );

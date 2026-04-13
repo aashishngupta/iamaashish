@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const BOOK_IMAGES = ['/book-image.jpg', '/book-aashish3.jpg'];
 
 const BOOK = {
   image: '/book-image.jpg',
@@ -13,10 +15,17 @@ const LIMIT = 320;
 
 export default function FeaturedBook() {
   const [expanded, setExpanded] = useState(false);
+  const [imgIdx, setImgIdx] = useState(0);
   const needsTrunc = BOOK.description.length > LIMIT;
   const displayText = !expanded && needsTrunc
     ? BOOK.description.slice(0, LIMIT) + '… '
     : BOOK.description + ' ';
+
+  // Auto-switch every 3 seconds
+  useEffect(() => {
+    const t = setInterval(() => setImgIdx(i => (i + 1) % BOOK_IMAGES.length), 3000);
+    return () => clearInterval(t);
+  }, []);
 
   return (
     <section className="section-pad" style={{ background: 'var(--color-background-secondary)', transition: 'var(--transition-colors)' }}>
@@ -51,16 +60,37 @@ export default function FeaturedBook() {
               width: '100%',
               aspectRatio: '2/3',
               background: 'linear-gradient(160deg, #1e3a5f 0%, #0a1628 100%)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
               position: 'relative',
             }}>
-              <img
-                src={BOOK.image}
-                alt={BOOK.title}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }}
-                onError={e => { e.currentTarget.style.display = 'none'; }}
-              />
-              {/* Fallback: invisible, image covers this */}
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={imgIdx}
+                  src={BOOK_IMAGES[imgIdx]}
+                  alt={BOOK.title}
+                  loading="lazy"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6, ease: 'easeInOut' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }}
+                  onError={e => { e.currentTarget.style.display = 'none'; }}
+                />
+              </AnimatePresence>
+              {/* Dots */}
+              <div style={{ position: 'absolute', bottom: 8, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 5 }}>
+                {BOOK_IMAGES.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setImgIdx(i)}
+                    style={{
+                      width: i === imgIdx ? 16 : 5, height: 5, borderRadius: 3, border: 'none', padding: 0,
+                      background: i === imgIdx ? '#ffffff' : 'rgba(255,255,255,0.4)',
+                      cursor: 'pointer', transition: 'all 300ms ease',
+                    }}
+                    aria-label={`Book image ${i + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import SectionLabel from '../components/SectionLabel';
 import SwipeDots from '../components/SwipeDots';
+import { Zap, Bot, Network, ClipboardList, BarChart2, PenTool, FileText, Megaphone, Code2, MessageSquare } from 'lucide-react';
 
 // ── SKILLS ────────────────────────────────────────────────────────────────────
 const SKILLS = [
@@ -115,44 +116,54 @@ const SKILLS = [
 // ── TOOLS ─────────────────────────────────────────────────────────────────────
 const TOOLS = [
   {
-    category: 'AI & Vibe Coding',
-    icon: '🤖',
-    items: ['Claude', 'ChatGPT', 'Cursor', 'GitHub Copilot', 'Bolt.new', 'Lovable', 'Replit', 'Perplexity', 'Midjourney', 'ElevenLabs'],
+    category: 'Vibe Coding',
+    Icon: Zap,
+    items: ['Claude Code', 'Codex', 'Cursor', 'GitHub Copilot', 'Lovable', 'v0'],
+  },
+  {
+    category: 'Gen AI Tools',
+    Icon: Bot,
+    items: ['ChatGPT', 'Claude', 'ElevenLabs', 'HeyGen', 'Pop AI', 'Gamma', 'Runway', 'Sora'],
+  },
+  {
+    category: 'Agentic AI Stack',
+    Icon: Network,
+    items: ['LangChain', 'Ragas', 'Weights & Biases', 'Pinecone', 'ChromaDB', 'LlamaIndex', 'OpenAI Evals'],
   },
   {
     category: 'Product Management',
-    icon: '📋',
-    items: ['Jira', 'Linear', 'Notion', 'Confluence', 'Productboard', 'Aha!', 'Trello', 'Asana', 'Monday.com'],
+    Icon: ClipboardList,
+    items: ['Jira', 'Notion', 'Confluence', 'Asana', 'Monday.com'],
   },
   {
     category: 'Analytics & Data',
-    icon: '📊',
-    items: ['Mixpanel', 'Amplitude', 'Google Analytics', 'Metabase', 'Tableau', 'Looker', 'Hotjar', 'FullStory', 'Segment'],
+    Icon: BarChart2,
+    items: ['Mixpanel', 'Amplitude', 'Google Analytics', 'Looker'],
   },
   {
     category: 'Design & Prototyping',
-    icon: '🎨',
-    items: ['Figma', 'Miro', 'Whimsical', 'FigJam', 'Canva', 'Framer', 'Balsamiq'],
+    Icon: PenTool,
+    items: ['Figma', 'Miro', 'Whimsical', 'Canva', 'Framer'],
   },
   {
     category: 'Presentation & Docs',
-    icon: '📑',
-    items: ['Google Slides', 'PowerPoint', 'Pitch', 'Tome', 'Notion', 'Coda', 'Gamma'],
+    Icon: FileText,
+    items: ['Google Slides', 'PowerPoint', 'Tome', 'Notion', 'Gamma'],
   },
   {
     category: 'Growth & Marketing',
-    icon: '📣',
-    items: ['HubSpot', 'Mailchimp', 'Apollo', 'Clay', 'Clearbit', 'Google Ads', 'LinkedIn Ads', 'Webflow'],
+    Icon: Megaphone,
+    items: ['HubSpot', 'Mailchimp', 'Apollo', 'Clearbit', 'Google Ads', 'LinkedIn Ads', 'Webflow'],
   },
   {
     category: 'Engineering & Dev',
-    icon: '⚙️',
-    items: ['GitHub', 'VS Code', 'Postman', 'Vercel', 'AWS', 'Docker', 'Supabase', 'Firebase', 'FastAPI'],
+    Icon: Code2,
+    items: ['GitHub', 'VS Code', 'Postman', 'Vercel', 'AWS', 'Docker', 'Firebase', 'FastAPI'],
   },
   {
     category: 'Communication',
-    icon: '💬',
-    items: ['Slack', 'Loom', 'Zoom', 'Google Meet', 'Calendly', 'Intercom', 'Zendesk'],
+    Icon: MessageSquare,
+    items: ['Slack', 'Zoom', 'Google Meet', 'Calendly', 'Zendesk'],
   },
 ];
 
@@ -428,7 +439,7 @@ export default function Expertise() {
                 >
                   {/* Header */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-                    <span style={{ fontSize: 18, lineHeight: 1 }}>{group.icon}</span>
+                    <group.Icon size={16} strokeWidth={1.75} color={accent} style={{ flexShrink: 0 }} />
                     <span style={{
                       fontSize: 11, fontWeight: 700, letterSpacing: '0.07em',
                       textTransform: 'uppercase', color: 'var(--color-text-secondary)',

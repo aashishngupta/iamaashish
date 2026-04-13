@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import SectionLabel from '../components/SectionLabel';
+import { Plane, Dumbbell, Coffee, Users, Wine, Car, Sunrise, Search, Mic, Rocket } from 'lucide-react';
 
 const fadeUp = { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] } };
 
@@ -12,10 +13,10 @@ const fadeUp = { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, 
 const interests = [
   {
     id: 'travel',
-    icon: '✈️',
+    Icon: Plane,
     label: 'Travel',
-    line1: '13+ countries, all solo',
-    line2: 'Exploring 5 more in 2026',
+    line1: '13+ countries. Every trip, alone.',
+    line2: 'Solo travel made the world feel conquerable. And raised the bar on everything else.',
     tall: true,
     gradient: 'linear-gradient(160deg, #0f2027 0%, #203a43 50%, #2c5364 100%)',
     images: [
@@ -25,70 +26,90 @@ const interests = [
   },
   {
     id: 'fitness',
-    icon: '🏋️',
+    Icon: Dumbbell,
     label: 'Fitness',
-    line1: 'Training since 2012',
-    line2: '5 days a week',
+    line1: 'In the gym since 2012. Five days a week.',
+    line2: 'The only place where feedback is instant and there are no shortcuts.',
     tall: false,
     gradient: 'linear-gradient(160deg, #c94b4b 0%, #4b134f 100%)',
     images: [],
   },
   {
-    id: 'yoga',
-    icon: '🧘',
-    label: 'Yoga',
-    line1: 'Daily morning practice',
-    line2: 'Ashtanga & Vinyasa',
+    id: 'coffee',
+    Icon: Coffee,
+    label: 'Coffee Connoisseur',
+    line1: 'Black. No sugar. No exceptions.',
+    line2: 'Not about the caffeine. The 10 minutes of forced stillness before the day begins.',
     tall: false,
-    gradient: 'linear-gradient(160deg, #667eea 0%, #764ba2 100%)',
+    gradient: 'linear-gradient(160deg, #2c1a0e 0%, #7c4a1e 100%)',
     images: [],
   },
   {
-    id: 'cycling',
-    icon: '🚴',
-    label: 'Cycling',
-    line1: 'Weekend rides',
-    line2: 'Planning a cross-state ride',
+    id: 'networking',
+    Icon: Users,
+    label: 'Networking',
+    line1: 'Intentional about every room I enter',
+    line2: 'One honest conversation has changed more for me than months of strategy docs.',
     tall: false,
-    gradient: 'linear-gradient(160deg, #134e5e 0%, #71b280 100%)',
-    images: [],
-  },
-  {
-    id: 'salsa',
-    icon: '💃',
-    label: 'Salsa',
-    line1: 'Dancing since 2018',
-    line2: 'LA style & Cuban',
-    tall: true,
-    gradient: 'linear-gradient(160deg, #b91c1c 0%, #f59e0b 100%)',
+    gradient: 'linear-gradient(160deg, #0d2137 0%, #1a4a6e 100%)',
     images: [],
   },
   {
     id: 'whisky',
-    icon: '🥃',
+    Icon: Wine,
     label: 'Whisky Tasting',
-    line1: '50+ single malts tried',
-    line2: 'Islay is home',
+    line1: '50+ single malts and counting',
+    line2: 'Peaty, complex, and completely unapologetic. The good ones always are.',
     tall: false,
     gradient: 'linear-gradient(160deg, #431407 0%, #9a3412 100%)',
     images: [],
   },
   {
     id: 'drives',
-    icon: '🚗',
+    Icon: Car,
     label: 'Long Drives',
-    line1: 'Solo highway therapy',
-    line2: 'Music, podcasts & silence',
+    line1: 'No destination. Just miles ahead.',
+    line2: 'My clearest thinking happens at 100kmph with nothing but road and a good playlist.',
     tall: false,
     gradient: 'linear-gradient(160deg, #0f0c29 0%, #302b63 100%)',
     images: [],
   },
   {
+    id: 'spirituality',
+    Icon: Sunrise,
+    label: 'Spirituality',
+    line1: 'Going inward is not optional for me',
+    line2: 'Staying calm when everything is moving fast was not a gift. It was built, daily.',
+    tall: true,
+    gradient: 'linear-gradient(160deg, #1a0533 0%, #3b1f6e 50%, #0d1a3a 100%)',
+    images: [],
+  },
+  {
+    id: 'decoding',
+    Icon: Search,
+    label: 'Decoding Businesses',
+    line1: 'I cannot enter a business without breaking it down',
+    line2: 'Every store, every product. I am always asking what the real game is.',
+    tall: false,
+    gradient: 'linear-gradient(160deg, #052e16 0%, #065f46 100%)',
+    images: [],
+  },
+  {
+    id: 'podcasts',
+    Icon: Mic,
+    label: 'Podcasts',
+    line1: 'My most used app. Every single day.',
+    line2: 'I grew up without easy access to mentors. Podcasts became how I found them.',
+    tall: false,
+    gradient: 'linear-gradient(160deg, #1e0a3c 0%, #5b21b6 100%)',
+    images: [],
+  },
+  {
     id: 'scifi',
-    icon: '🚀',
+    Icon: Rocket,
     label: 'Sci-fi Shows',
-    line1: 'Dark · Severance · Westworld',
-    line2: 'Always watching something',
+    line1: 'Dark. Severance. Westworld.',
+    line2: 'Shows that make you question everything are the only kind worth finishing.',
     tall: false,
     gradient: 'linear-gradient(160deg, #0a0a2e 0%, #4a0e8f 100%)',
     images: [],
@@ -131,7 +152,8 @@ function PinterestTile({ item, delay, inView }) {
         <img
           key={imgIdx}
           src={item.images[imgIdx]}
-          alt={item.label}
+          alt={`Aashish Kumar Gupta — ${item.label}`}
+          loading="lazy"
           style={{
             position: 'absolute', inset: 0,
             width: '100%', height: '100%',
@@ -146,10 +168,10 @@ function PinterestTile({ item, delay, inView }) {
         <div style={{
           position: 'absolute', inset: 0,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: 48, opacity: 0.22,
+          opacity: 0.22,
           userSelect: 'none',
         }}>
-          {item.icon}
+          <item.Icon size={44} strokeWidth={1.25} color="#ffffff" />
         </div>
       )}
 

@@ -204,7 +204,8 @@ export default function About() {
 
           <img
             src="/aashish-sign.jpg"
-            alt="Aashish signature"
+            alt="Aashish Kumar Gupta's signature"
+            loading="lazy"
             style={{
               height: 56,
               width: 'auto',

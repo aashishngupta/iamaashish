@@ -1,0 +1,21 @@
+{
+  "name": "Aashish Kumar Gupta",
+  "short_name": "Aashish",
+  "description": "AI Product Leader, Forbes 30U30 Asia, 2× Founder",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d4ed8",
+  "icons": [
+    {
+      "src": "/aashish-logo/icon_white.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/aashish-logo/icon_white.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
