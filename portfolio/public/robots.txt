@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://iamaashish.com/sitemap.xml
+Sitemap: https://www.iamaashish.com/sitemap.xml
