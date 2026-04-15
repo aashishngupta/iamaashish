@@ -18,7 +18,7 @@ const COMPANIES = [
     employmentType: 'Consulting',
     name: 'pmGPT',
     logo: '/pmgpt-logo.png',
-    brandColor: '#7c3aed',
+    brandColor: '#1F71F7',
     website: 'https://pmgpt.ai',
     role: 'Passion Project',
     description: 'An AI-native operating system for product teams, orchestrating the entire lifecycle from research and PRDs to sprint execution through agentic workflows. It leverages integrations, RAG, and MCPs to turn fragmented tools and data into a unified, intelligent execution layer.',
@@ -28,7 +28,7 @@ const COMPANIES = [
     products: [
       {
         id: 'pmgpt-platform',
-        name: 'pmGPT Platform',
+        name: 'pmGPT - Agentic AI OS for Product Teams',
         businessTags: ['B2B', 'SaaS'],
         headline: 'Six-agent architecture with three-tier LLM routing — privacy-first from day one.',
         tags: [
@@ -90,7 +90,7 @@ const COMPANIES = [
     products: [
       {
         id: 'retailabs-platform',
-        name: 'Retailabs Platform',
+        name: 'Retailabs - Agentic AI OS for Retail Decisioning',
         businessTags: ['B2B', 'SaaS'],
         headline: 'Agent-based retail decisioning platform — converts signals → insights → decisions → execution across merchandising, pricing, campaigns, and store operations.',
         tags: [
@@ -139,7 +139,7 @@ const COMPANIES = [
     brandColor: '#7c3aed',
     website: 'https://phot.ai',
     role: 'Product Consultant',
-    description: 'A GenAI-powered creative automation platform that enables brands to generate, test, and scale high-performing marketing and catalog creatives through intelligent workflows, combining product data, market signals, and AI-driven design.',
+    description: 'An agentic AI creative and performance marketing platform that eliminates guesswork from creative production — generating signal-driven ad angles, testing hundreds of variations in parallel, and publishing marketplace-ready listings at scale across Meta, Google, TikTok, Amazon, Shopify, and Flipkart.',
     roleNarrative: 'My role was to drive product thinking and execution across the platform, shaping it from a creative tool into a performance-driven system. I worked on translating real customer and market problems into scalable workflows, while actively contributing to sales through demos, client conversations, and positioning the product to drive adoption and business outcomes. A key contribution was reframing the product narrative by shifting the conversation from creative quality to measurable performance outcomes like ROAS and CPA, which proved decisive in enterprise deals. I also helped define the roadmap for AngleLab and ListingLab, working directly with customers to validate use cases and move the platform toward a full performance marketing intelligence layer.',
     caseStudies: [{
         title: 'GreenGainz',
@@ -165,9 +165,9 @@ const COMPANIES = [
     products: [
       {
         id: 'photai-platform',
-        name: 'Phot.AI Platform',
+        name: 'Phot.AI - AI Creative & Performance Studio',
         businessTags: ['B2B', 'B2C', 'SaaS'],
-        headline: '30+ AI tools for instant content creation and high-quality product visuals — built for creators and D2C brands.',
+        headline: 'An agentic AI creative and performance marketing platform — AngleLab generates 8+ signal-driven ad angles in 60 seconds, ListingLab ships marketplace-ready listings at scale, and VideoLab produces video ads on demand. Built to eliminate creative guesswork and systematically lift ROAS and cut CPA for D2C brands and performance marketing teams across Meta, Google, TikTok, Amazon, and Shopify.',
         tags: [
           { label: '1→N', cls: 'ptag-journey' },
           { label: 'B2B · B2C', cls: 'ptag-market' },
@@ -177,16 +177,18 @@ const COMPANIES = [
         artifacts: [],
         businessImpact: [],
         keyFeatures: [
-          '30+ AI-powered tools for content creation',
-          'High-quality product visuals for D2C brands',
-          'GenAI-powered image generation and editing workflows',
-          'Instant content creation without design expertise',
-          'SaaS platform scalable for creators and enterprise brands',
+          'AngleLab — 8+ signal-driven ad angles generated in under 60 seconds across Meta, Google, TikTok, and YouTube',
+          'ListingLab — 8 marketplace-ready product images in ~12 minutes for Amazon, Shopify, Walmart, and Flipkart',
+          'VideoLab — video ads and creative content produced at scale',
+          '7 signal sources — brand intelligence, product data, performance metrics, and competitive gaps drive every creative',
+          'Parallel angle testing — tests messaging, hooks, and creative execution simultaneously across segments',
+          'Hybrid SaaS + managed execution — self-serve platform or fully managed creative production',
+          '100K+ SKUs optimized and 2M+ product images generated across the platform',
         ],
         caseStudies: [],
         ratings: [],
-        problem: 'Creators and D2C brands needed affordable, fast, high-quality AI-powered visual content tools without requiring design expertise or large production budgets.',
-        decision: 'Built and scaled a GenAI-powered SaaS platform with 30+ AI tools covering instant content creation and product visual generation, purpose-built for creators and D2C brands.',
+        problem: 'Performance marketing teams lose ROAS to creative fatigue — 87% of ad angles fail without systematic testing, CTR drops 47% after two weeks, and manual listing creation takes 5+ hours per SKU. The root cause is guesswork: creatives are built on intuition rather than signals, making it impossible to identify and scale what actually converts before budget is burned.',
+        decision: 'Built AngleLab and ListingLab as signal-driven, agentic creative systems. AngleLab uses 7 data sources — brand intelligence, product data, competitor gaps, and live performance signals — to generate and test 8+ ad variations in under 60 seconds, replacing slow sequential testing with parallel angle discovery. ListingLab automates end-to-end marketplace listing creation from a single image to fully compliant, SEO-optimized, multi-marketplace listings in minutes. My core contribution was repositioning the platform from a creative tool into a performance marketing engine — shifting the conversation from creative quality to measurable ROAS and CPA, which proved decisive in enterprise deals.',
         learnings: 'Positioning a creative AI tool as a performance marketing engine — not just a design tool — dramatically changes the buyer conversation. ROI metrics like ROAS and CPA beat aesthetic quality claims in every sales conversation. The D2C segment moves fast; iteration speed matters more than feature depth early on.',
         lastStatus: 'Consulting engagement ended · Product continues to scale at Phot.AI with a growing customer base.',
         outcomes: [
@@ -281,7 +283,7 @@ const COMPANIES = [
     products: [
       {
         id: 'su-agentsuite',
-        name: 'Agentic Suite',
+        name: 'Agentic Suite - Enterprise AI Agent Platform',
         businessTags: ['B2B', 'PaaS', 'Enterprise'],
         headline: 'Agentic Suite is an agentic AI platform that combines LLMs, workflows, and enterprise integrations to build and scale autonomous, goal-driven agents.',
         tags: [
@@ -320,7 +322,7 @@ const COMPANIES = [
       },
       {
         id: 'su-agentbuilder',
-        name: 'SUVA',
+        name: 'SUVA - AI Support Agent',
         businessTags: ['B2B', 'SaaS', 'Enterprise'],
         headline: 'SUVA is an enterprise AI assistant that delivers hyper-personalized, context-aware self-service experiences across channels.',
         tags: [
@@ -355,7 +357,7 @@ const COMPANIES = [
       },
       {
         id: 'su-rag',
-        name: 'Agent Helper',
+        name: 'Agent Helper - Real-Time AI Co-Pilot for Support Agents',
         businessTags: ['B2B', 'SaaS'],
         headline: "Agent Helper is an AI-powered support co-pilot that provides real-time context, automated responses, and intelligent recommendations to help agents resolve cases faster.",
         tags: [
@@ -418,7 +420,7 @@ const COMPANIES = [
     products: [
       {
         id: 'reverie-voiceplatform',
-        name: 'Cuberoot',
+        name: 'Cuberoot - Conversational Voice Agent Platform',
         website: 'https://reverieinc.com/products/cuberoot/',
         businessTags: ['B2B', 'SaaS'],
         headline: 'Cuberoot is an AI-powered voice agent platform that enables enterprises to build, deploy, and scale human-like, multilingual voice interactions across lead generation, collections, customer support and more across 22+ indic languages',
@@ -478,7 +480,7 @@ const COMPANIES = [
     employmentType: 'Consulting',
     name: 'OfficeBanao (Backed by Lightspeed VC)',
    logo: '/officebanao-logo.png',
-    brandColor: '#1565c0',
+    brandColor: '#121942',
     website: '#',
     role: 'Founding Member',
     description: 'A tech-enabled SaaS platform that streamlines the end-to-end office creation lifecycle, from design and procurement to execution, bringing transparency, efficiency, and scalability to a traditionally fragmented interiors ecosystem.',
@@ -497,7 +499,7 @@ const COMPANIES = [
     products: [
       {
         id: 'ob-procurement-crm',
-        name: 'OB Procurement CRM',
+        name: 'OB Procurement - AI-Powered Supply Risk CRM',
         businessTags: ['B2B', 'SaaS'],
         headline: 'AI-based procurement platform for office interior projects that replaces WhatsApp threads and spreadsheets with intelligent material sourcing, automated RFQs, and real-time order visibility.',
         tags: [
@@ -530,7 +532,7 @@ const COMPANIES = [
       },
       {
         id: 'ob-project-planning',
-        name: 'OB Project Planning',
+        name: 'OB Planner - AI Cost & Timeline Estimator',
         businessTags: ['B2B', 'SaaS'],
         headline: 'AI-based project planning tool that generates accurate cost estimates, auto-schedules material procurement, and surfaces budget and timeline risks before a single rupee is spent on site.',
         tags: [
@@ -561,7 +563,7 @@ const COMPANIES = [
       },
       {
         id: 'ob-qa-app',
-        name: 'OB QA App',
+        name: 'OB QA - Mobile Site Quality Tracker',
         businessTags: ['B2B', 'Mobile'],
         headline: 'Mobile-first quality assurance app for on-ground site teams that replaces informal checklists with standardized SOPs, milestone sign-offs, and real-time KPI visibility across all active projects.',
         tags: [
@@ -591,7 +593,7 @@ const COMPANIES = [
       },
       {
         id: 'ob-store',
-        name: 'OB Store',
+        name: 'OB Store - B2B Office Materials Marketplace',
         businessTags: ['B2B', 'eCommerce'],
         headline: 'B2B eCommerce marketplace for office fit-out materials that brings catalog transparency, standardized pricing, and bulk procurement to a historically fragmented and opaque supplier ecosystem.',
         tags: [
@@ -630,7 +632,7 @@ const COMPANIES = [
     employmentType: 'Consulting',
     name: 'inGen Dynamics Inc.',
     logo: '/ingen-dynamics-logo.jpeg',
-    brandColor: '#00838f',
+    brandColor: '#5C5D5F',
     website: '#',
     role: 'Interim Head of Product',
     description: 'An AI robotics and IoT startup focused on building intelligent systems for home automation and healthcare, leveraging machine learning, robotics, and computer vision, backed by 1,500+ Indiegogo backers and US investors.',
@@ -644,7 +646,7 @@ const COMPANIES = [
     products: [
       {
         id: 'ingen-kaiserhaus',
-        name: 'Kaiser Haus',
+        name: 'Kaiser Haus - AI Smart Home & Surveillance',
         businessTags: ['B2C', 'IoT', 'Smart Home'],
         headline: 'Automated smart home with IoT automation — surveillance, security, and home intelligence for modern living.',
         tags: [
@@ -676,7 +678,7 @@ const COMPANIES = [
       },
       {
         id: 'ingen-aido',
-        name: 'Aido Robot',
+        name: 'Aido - AI Robot for Home & Healthcare',
         businessTags: ['B2B', 'B2C', 'Robotics', 'AI'],
         headline: 'An AI robotics and IoT startup focused on building intelligent systems for home automation and healthcare, leveraging machine learning, robotics, and computer vision, backed by 1,500+ Indiegogo backers and US investors.',
         tags: [
@@ -719,7 +721,7 @@ const COMPANIES = [
     employmentType: 'Self-Initiated',
     name: 'Zippy',
     logo: '/zippy.png',
-    brandColor: '#f59e0b',
+    brandColor: '#48B5BE',
     website: '#',
     role: 'Co-Founder and CEO',
     description: 'A hyperlocal quick-commerce platform designed to enable 60-minute delivery with real-time price discovery and live bargaining, connecting offline retailers to online demand through an AI-powered O2O marketplace. Built around a core thesis of bridging the massive gap between offline supply and online demand in India.',
@@ -736,7 +738,7 @@ const COMPANIES = [
     products: [
       {
         id: 'zippy-platform',
-        name: 'Zippy App',
+        name: 'Zippy App - 60-Min Delivery & Live Bargaining',
         businessTags: ['B2C', 'Marketplace'],
         headline: 'Hyperlocal O2O commerce platform with 60-minute delivery, a live bargaining engine, and AI-powered inventory cataloging built to unlock the offline-to-online shift in Indian retail.',
         tags: [
@@ -792,7 +794,7 @@ const COMPANIES = [
     products: [
       {
         id: 'petme-platform',
-        name: 'PetMe App',
+        name: 'PetMe App - All-in-One Pet Ecosystem',
         businessTags: ['B2C', 'Marketplace'],
         headline: 'All-in-one pet ecosystem bringing together adoption, verified services, commerce, community, and lifecycle tracking under a single platform for urban pet owners.',
         tags: [
@@ -852,7 +854,7 @@ const COMPANIES = [
     products: [
       {
         id: 'discovr-netra',
-        name: 'Netra — Computer Vision Engine',
+        name: 'Netra - Computer Vision Engine',
         businessTags: ['B2B', 'B2G'],
         headline: 'Computer vision engine powering real-time surveillance, anomaly detection, and visual intelligence across industries. Deployed across government, defence, manufacturing, and oil and gas.',
         tags: [
@@ -891,7 +893,7 @@ const COMPANIES = [
       },
       {
         id: 'discovr-caravan',
-        name: 'Caravan — Document Intelligence',
+        name: 'Caravan - Document Intelligence',
         businessTags: ['B2B', 'B2G'],
         headline: 'End to end document intelligence platform digitizing large volumes of unstructured enterprise documents and building a searchable intelligence layer on top. Deployed across energy, manufacturing, and government sectors.',
         tags: [
@@ -932,7 +934,7 @@ const COMPANIES = [
       },
       {
         id: 'discovr-moksha',
-        name: 'Moksha — Predictive Intelligence',
+        name: 'Moksha - Predictive Intelligence',
         businessTags: ['B2B', 'B2G'],
         headline: 'AI engine for predictive maintenance and industrial intelligence using time-series and sensor data. Built for manufacturing, oil and gas, and heavy industry deployments.',
         tags: [
@@ -971,7 +973,7 @@ const COMPANIES = [
       },
       {
         id: 'discovr-nirvana',
-        name: 'Nirvana — Decision Intelligence',
+        name: 'Nirvana - Decision Intelligence',
         businessTags: ['B2B', 'B2G'],
         headline: 'Central intelligence layer integrating multiple AI systems to deliver actionable insights and unified decision support across enterprise operations.',
         tags: [
@@ -1054,7 +1056,7 @@ const COMPANIES = [
     products: [
       {
         id: 'onelabs-foodbox',
-        name: 'FoodBox - All-in-one Food App',
+        name: 'FoodBox - All-in-One Food App with Best Deals & Coupons',
         businessTags: ['B2C', 'eCommerce'],
         headline: 'an all-in-one food app designed for price-sensitive users, transforming the journey from dish-driven discovery to coupon-driven choices of the day. It enables users to discover the best deals, decide what to eat, and book orders natively on the platform without needing to download multiple apps.',
         tags: [
@@ -1085,7 +1087,7 @@ const COMPANIES = [
       },
       {
         id: 'onelabs-foodbox',
-        name: 'inOne - Super App',
+        name: 'inOne - Super App for Everything',
         businessTags: ['B2C', 'eCommerce'],
         headline: 'Food aggregator and productivity super-app — 50+ vendor integrations.',
         tags: [
@@ -1118,7 +1120,7 @@ const COMPANIES = [
       },
       {
         id: 'onelabs-yana',
-        name: 'Yana - A Virtual Assistant',
+        name: 'Yana - India\'s Vernacular Voice Assistant',
         businessTags: ['B2C', 'Consumer App'],
         headline: "a vernacular AI assistant designed as India's answer to Siri and Alexa, going beyond conversational and in-built mobile actions to enable real-world transactions like groceries, cabs, and services through voice and native integrations, powered by in-house ML-based intent recognition and classification engines.",
         tags: [
@@ -1174,7 +1176,7 @@ const COMPANIES = [
     products: [
       {
         id: 'khuraq-com',
-        name: 'Khuraq.com',
+        name: 'Khuraq - Premium D2C Nutraceutical Brand',
         businessTags: ['D2C'],
         headline: 'Modern vegetarian gummy supplements for everyday Indian wellness. ACV, Biotin, and Melatonin built for habit and convenience.',
         tags: [
@@ -1337,11 +1339,11 @@ function ProductCard({ product, companyName, onMediaClick, brandColor, productIn
             {product.website ? (
               <a href={product.website} target="_blank" rel="noopener noreferrer"
                 onClick={e => e.stopPropagation()}
-                style={{ fontSize: 16, fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', textDecoration: 'none', transition: 'var(--transition-colors)' }}>
+                style={{ fontSize: 16, fontFamily: 'var(--font-display)', fontWeight: 800, color: bc, letterSpacing: '-0.02em', textDecoration: 'none', transition: 'var(--transition-colors)' }}>
                 {product.name}
               </a>
             ) : (
-              <span style={{ fontSize: 16, fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', transition: 'var(--transition-colors)' }}>
+              <span style={{ fontSize: 16, fontFamily: 'var(--font-display)', fontWeight: 800, color: bc, letterSpacing: '-0.02em', transition: 'var(--transition-colors)' }}>
                 {product.name}
               </span>
             )}
