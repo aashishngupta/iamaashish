@@ -357,7 +357,7 @@ const COMPANIES = [
       },
       {
         id: 'su-rag',
-        name: 'Agent Helper - Real-Time AI Co-Pilot for Support Agents',
+        name: 'Agent Helper - AI Co-Pilot for Support Agents',
         businessTags: ['B2B', 'SaaS'],
         headline: "Agent Helper is an AI-powered support co-pilot that provides real-time context, automated responses, and intelligent recommendations to help agents resolve cases faster.",
         tags: [
@@ -1056,7 +1056,7 @@ const COMPANIES = [
     products: [
       {
         id: 'onelabs-foodbox',
-        name: 'FoodBox - All-in-One Food App with Best Deals & Coupons',
+        name: 'FoodBox - All-in-One Food App',
         businessTags: ['B2C', 'eCommerce'],
         headline: 'an all-in-one food app designed for price-sensitive users, transforming the journey from dish-driven discovery to coupon-driven choices of the day. It enables users to discover the best deals, decide what to eat, and book orders natively on the platform without needing to download multiple apps.',
         tags: [
@@ -1087,7 +1087,7 @@ const COMPANIES = [
       },
       {
         id: 'onelabs-foodbox',
-        name: 'inOne - Super App for Everything',
+        name: 'inOne - Super App',
         businessTags: ['B2C', 'eCommerce'],
         headline: 'Food aggregator and productivity super-app — 50+ vendor integrations.',
         tags: [
@@ -1120,9 +1120,9 @@ const COMPANIES = [
       },
       {
         id: 'onelabs-yana',
-        name: 'Yana - India\'s Vernacular Voice Assistant',
+        name: 'Yana - India\'s Voice AI Assistant',
         businessTags: ['B2C', 'Consumer App'],
-        headline: "a vernacular AI assistant designed as India's answer to Siri and Alexa, going beyond conversational and in-built mobile actions to enable real-world transactions like groceries, cabs, and services through voice and native integrations, powered by in-house ML-based intent recognition and classification engines.",
+        headline: "A vernacular AI assistant designed as India's answer to Siri and Alexa, going beyond conversational and in-built mobile actions to enable real-world transactions like groceries, cabs, and services through voice and native integrations, powered by in-house ML-based intent recognition and classification engines.",
         tags: [
           { label: '0→1', cls: 'ptag-journey' },
           { label: 'B2C', cls: 'ptag-market' },
@@ -1176,7 +1176,7 @@ const COMPANIES = [
     products: [
       {
         id: 'khuraq-com',
-        name: 'Khuraq - Premium D2C Nutraceutical Brand',
+        name: 'Khuraq - Daily Essential Herbs',
         businessTags: ['D2C'],
         headline: 'Modern vegetarian gummy supplements for everyday Indian wellness. ACV, Biotin, and Melatonin built for habit and convenience.',
         tags: [
