@@ -19,7 +19,7 @@ const COMPANIES = [
     name: 'pmGPT',
     logo: '/pmgpt-logo.png',
     brandColor: '#1F71F7',
-    website: 'https://pmgpt.ai',
+    website: 'https://pmgpt.vercel.app/',
     role: 'Passion Project',
     description: 'An AI-native operating system for product teams, orchestrating the entire lifecycle from research and PRDs to sprint execution through agentic workflows. It leverages integrations, RAG, and MCPs to turn fragmented tools and data into a unified, intelligent execution layer.',
     roleNarrative: 'I\'m building this end to end as a passion project, initially to explore vibe coding with Claude Code on real product problems I was facing as a product leader. What started as an experiment evolved into a well-structured system where I independently own everything from product design and agent definition to system architecture and hands-on development. The architectural choices I\'ve made, including the six-agent structure, three-tier LLM routing, and a privacy-first governance layer, were deliberate decisions to ensure the system is enterprise-ready from day one and not just functional. Building across the full stack has sharpened my instincts for where AI-native product design diverges from traditional software thinking, particularly around context management, agentic state persistence, and user trust in autonomous systems.',
@@ -29,6 +29,7 @@ const COMPANIES = [
       {
         id: 'pmgpt-platform',
         name: 'pmGPT - Agentic AI OS for Product Teams',
+        website: 'https://pmgpt.vercel.app/',
         businessTags: ['B2B', 'SaaS'],
         headline: 'Six-agent architecture with three-tier LLM routing — privacy-first from day one.',
         tags: [
@@ -1339,8 +1340,9 @@ function ProductCard({ product, companyName, onMediaClick, brandColor, productIn
             {product.website ? (
               <a href={product.website} target="_blank" rel="noopener noreferrer"
                 onClick={e => e.stopPropagation()}
-                style={{ fontSize: 16, fontFamily: 'var(--font-display)', fontWeight: 800, color: bc, letterSpacing: '-0.02em', textDecoration: 'none', transition: 'var(--transition-colors)' }}>
+                style={{ fontSize: 16, fontFamily: 'var(--font-display)', fontWeight: 800, color: bc, letterSpacing: '-0.02em', textDecoration: 'none', transition: 'var(--transition-colors)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                 {product.name}
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, opacity: 0.6, marginBottom: 1 }}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               </a>
             ) : (
               <span style={{ fontSize: 16, fontFamily: 'var(--font-display)', fontWeight: 800, color: bc, letterSpacing: '-0.02em', transition: 'var(--transition-colors)' }}>
@@ -1687,10 +1689,11 @@ function CompanyCard({ company, onMediaClick }) {
                 {company.website && company.website !== '#' ? (
                   <a href={company.website} target="_blank" rel="noopener noreferrer"
                     onClick={e => e.stopPropagation()}
-                    style={{ fontSize: 20, fontWeight: 800, fontFamily: 'var(--font-display)', color: company.brandColor || 'var(--color-text-primary)', letterSpacing: '-0.02em', textDecoration: 'none', transition: 'color 300ms ease, opacity 300ms ease' }}
+                    style={{ fontSize: 20, fontWeight: 800, fontFamily: 'var(--font-display)', color: company.brandColor || 'var(--color-text-primary)', letterSpacing: '-0.02em', textDecoration: 'none', transition: 'color 300ms ease, opacity 300ms ease', display: 'inline-flex', alignItems: 'center', gap: 4 }}
                     onMouseEnter={e => e.currentTarget.style.opacity = '0.78'}
                     onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
                     {company.name}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, opacity: 0.6, marginBottom: 1 }}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                   </a>
                 ) : (
                   <span style={{ fontSize: 20, fontWeight: 800, fontFamily: 'var(--font-display)', color: company.brandColor || 'var(--color-text-primary)', letterSpacing: '-0.02em', transition: 'var(--transition-colors)' }}>
