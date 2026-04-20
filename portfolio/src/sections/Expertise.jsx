@@ -27,6 +27,7 @@ const SKILLS = [
       { label: 'RAG Pipelines & Vector Search',      score: 5 },
       { label: 'Prompt Engineering',                 score: 5 },
       { label: 'LLM Routing & Orchestration',        score: 5 },
+      { label: 'GPT / OpenAI Models',                score: 4 },
       { label: 'Tool Use & Function Calling',        score: 4 },
       { label: 'Observability & Evals',              score: 4 },
       { label: 'Governance, Safety & PII Handling',  score: 4 },
@@ -53,9 +54,9 @@ const SKILLS = [
       { label: 'AI Prototyping & POCs',           score: 5 },
       { label: 'ML Model Evaluation & Tuning',   score: 4 },
       { label: 'NLP & Computer Vision Apps',     score: 4 },
-      { label: 'Predictive Modelling',           score: 4 },
+      { label: 'Predictive Modelling',           score: 3 },
       { label: 'Data Science & Analytics',       score: 4 },
-      { label: 'Feature Engineering',            score: 3 },
+      { label: 'Feature Engineering',            score: 4 },
       { label: 'Responsible AI & Ethics',        score: 4 },
     ],
   },
@@ -63,11 +64,11 @@ const SKILLS = [
     category: 'Marketing & Growth',
     items: [
       { label: 'Go-to-Market Strategy',          score: 5 },
-      { label: 'Performance Marketing',          score: 4 },
+      { label: 'Performance Marketing',          score: 3 },
       { label: 'Brand & Positioning',            score: 4 },
-      { label: 'D2C & Marketplace Growth',       score: 4 },
+      { label: 'D2C & Marketplace Growth',       score: 3 },
       { label: 'SEO & Organic Growth',           score: 3 },
-      { label: 'Email & Retention Marketing',    score: 3 },
+      { label: 'Email & Retention Marketing',    score: 4 },
       { label: 'Community Building',             score: 3 },
       { label: 'Content & Thought Leadership',   score: 3 },
     ],
@@ -75,14 +76,14 @@ const SKILLS = [
   {
     category: 'Sales & Revenue',
     items: [
-      { label: 'B2B Enterprise Sales',                  score: 5 },
-      { label: 'B2G / Government Sales',                score: 5 },
-      { label: 'Presales & Solutioning',                score: 5 },
-      { label: 'Deal Structuring & Negotiation',        score: 4 },
+      { label: 'B2B Enterprise Sales',                  score: 4 },
+      { label: 'B2G / Government Sales',                score: 3.5 },
+      { label: 'Presales & Solutioning',                score: 4 },
+      { label: 'Deal Structuring & Negotiation',        score: 3 },
       { label: 'Business Development & Partnerships',   score: 4 },
       { label: 'Enterprise Account Management',         score: 4 },
       { label: 'Pricing & Commercial Strategy',         score: 4 },
-      { label: 'RFP & Tender Responses',                score: 4 },
+      { label: 'RFP & Tender Responses',                score: 3 },
     ],
   },
   {
@@ -171,9 +172,9 @@ const TOOLS = [
 function SkillBar({ label, score, inView, delay }) {
   const pct = (score / 5) * 100;
   const color =
-    score === 5 ? '#7c3aed' :
-    score === 4 ? '#6366f1' :
-    score === 3 ? '#a78bfa' : '#c4b5fd';
+    score >= 5   ? '#7c3aed' :
+    score >= 4   ? '#6366f1' :
+    score >= 3   ? '#a78bfa' : '#c4b5fd';
 
   return (
     <div style={{ marginBottom: 14 }}>
@@ -182,19 +183,24 @@ function SkillBar({ label, score, inView, delay }) {
           {label}
         </span>
         <div style={{ display: 'flex', gap: 4 }}>
-          {[1, 2, 3, 4, 5].map(n => (
-            <motion.div
-              key={n}
-              initial={{ scale: 0.4, opacity: 0 }}
-              animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.4, opacity: 0 }}
-              transition={{ duration: 0.3, delay: delay + n * 0.04 }}
-              style={{
-                width: 8, height: 8, borderRadius: '50%',
-                background: n <= score ? color : 'var(--color-border-tertiary)',
-                transition: 'background 300ms ease',
-              }}
-            />
-          ))}
+          {[1, 2, 3, 4, 5].map(n => {
+            const filled = n <= Math.floor(score);
+            const half = !filled && score % 1 !== 0 && n === Math.ceil(score);
+            return (
+              <motion.div
+                key={n}
+                initial={{ scale: 0.4, opacity: 0 }}
+                animate={inView ? { scale: 1, opacity: filled || half ? 1 : 0.25 } : { scale: 0.4, opacity: 0 }}
+                transition={{ duration: 0.3, delay: delay + n * 0.04 }}
+                style={{
+                  width: 8, height: 8, borderRadius: '50%',
+                  background: filled || half ? color : 'var(--color-border-tertiary)',
+                  opacity: half ? 0.45 : 1,
+                  transition: 'background 300ms ease',
+                }}
+              />
+            );
+          })}
         </div>
       </div>
       <div style={{
@@ -259,7 +265,7 @@ export default function Expertise() {
 
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 40, flexWrap: 'wrap', gap: 12 }}>
             <h2 className="section-heading" style={{ margin: 0 }}>
-              Where I'm <em>genuinely dangerous.</em>
+              Where I create <em>outsized impact.</em>
             </h2>
             <span style={{ fontSize: 12, color: 'var(--color-text-tertiary)', display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
               <span style={{ display: 'flex', gap: 4, alignItems: 'center' }}>

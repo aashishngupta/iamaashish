@@ -15,23 +15,24 @@ const COMPANIES = [
     categories: ['enterprise', 'building', 'founder'],
     year: '2025–',
     active: true,
-    employmentType: 'Consulting',
+    employmentType: 'Passion Project',
     name: 'pmGPT',
     logo: '/pmgpt-logo.png',
     brandColor: '#1F71F7',
     website: 'https://pmgpt.vercel.app/',
-    role: 'Passion Project',
-    description: 'An AI-native operating system for product teams, orchestrating the entire lifecycle from research and PRDs to sprint execution through agentic workflows. It leverages integrations, RAG, and MCPs to turn fragmented tools and data into a unified, intelligent execution layer.',
-    roleNarrative: 'I\'m building this end to end as a passion project, initially to explore vibe coding with Claude Code on real product problems I was facing as a product leader. What started as an experiment evolved into a well-structured system where I independently own everything from product design and agent definition to system architecture and hands-on development. The architectural choices I\'ve made, including the six-agent structure, three-tier LLM routing, and a privacy-first governance layer, were deliberate decisions to ensure the system is enterprise-ready from day one and not just functional. Building across the full stack has sharpened my instincts for where AI-native product design diverges from traditional software thinking, particularly around context management, agentic state persistence, and user trust in autonomous systems.',
+    role: 'Founder, Designer & Builder',
+    description: 'pmGPT is an agentic AI operating system for product teams. It replaces the fragmented, context-free AI assistants bolted onto every SaaS tool with a single unified intelligence layer that owns the complete product lifecycle. Six specialist agents handle research, PRD writing, roadmapping, stakeholder communications, retrospectives, and discovery, all sharing persistent organizational memory and routing tasks intelligently across Claude, GPT-4o, and Gemini based on cost and capability. Built privacy-first with a PII anonymization layer, RBAC-gated retrieval, and on-prem deployment support from day one.',
+    roleNarrative: 'What started as a personal frustration project became something I genuinely could not stop building. Thirteen years of leading product across enterprise SaaS, AI platforms, consumer apps, and multiple 0-to-1 ventures gave me an uncomfortable clarity on where product teams actually lose time, quality, and strategic edge. I built the first version on Claude Code entirely to validate the thesis on myself before claiming it as a real problem. The experiment worked faster than expected. I then made the deliberate choice to remain a single-player builder across the full stack, owning product design, agent architecture, system engineering, and infrastructure end-to-end. That constraint is by design. It keeps the feedback loop between product intuition and implementation tight, and it forces architectural decisions that scale rather than shortcuts that merely ship.',
     caseStudies: [],
     ratings: [],
+    impactLabel: 'Expected Impact',
     products: [
       {
         id: 'pmgpt-platform',
-        name: 'pmGPT - Agentic AI OS for Product Teams',
+        name: 'pmGPT: Agentic AI Operating System for Product Teams',
         website: 'https://pmgpt.vercel.app/',
         businessTags: ['B2B', 'SaaS'],
-        headline: 'Six-agent architecture with three-tier LLM routing — privacy-first from day one.',
+        headline: 'One unified AI layer for the full product lifecycle. Not another point solution added to an already fragmented stack.',
         tags: [
           { label: '0→1', cls: 'ptag-journey' },
           { label: 'B2B', cls: 'ptag-market' },
@@ -39,26 +40,32 @@ const COMPANIES = [
           { label: 'Agentic AI', cls: 'ptag-ai' },
         ],
         artifacts: [],
-        businessImpact: [],
+        businessImpact: [
+          { num: '60-70%', label: 'of PM time recoverable from coordination and documentation overhead', level: 'up' },
+          { num: '3x', label: 'faster PRD and roadmap turnaround with shared agent context', level: 'up' },
+          { num: '40-60%', label: 'reduction in cross-tool context switching per sprint cycle', level: 'down' },
+          { num: 'Zero PII', label: 'exposure to any LLM, meeting enterprise procurement requirements', level: 'up' },
+        ],
         keyFeatures: [
-          'Six specialist agents — Research, PRD, Roadmap, Stakeholder Comms, Retrospective, Discovery',
-          'Three-tier LLM routing — routes tasks to Claude, GPT-4o, or Gemini by cost and capability',
-          'Governance & anonymization layer — strips PII before any LLM call',
-          'RAG with RBAC — context-aware retrieval gated by user role',
-          'Connector plugin system — Jira, Notion, Confluence, Slack out of the box',
-          'Privacy-first — on-prem and air-gapped deployment options',
+          'Six specialist agents covering Research, PRD, Roadmap, Stakeholder Comms, Retrospective, and Discovery, each operating with full shared lifecycle context',
+          'Three-tier LLM routing that automatically selects Claude, GPT-4o, or Gemini based on task complexity, cost sensitivity, and latency requirements',
+          'Persistent organizational memory so product decisions, research, and context compound over time rather than getting lost across disconnected tools',
+          'Governance and PII anonymization layer that strips sensitive data before every LLM call, meeting enterprise security and compliance requirements',
+          'RBAC-gated RAG with context-aware retrieval scoped strictly by user role, ensuring confidential roadmap data never leaks across teams',
+          'Connector plugin system with native integrations for Jira, Notion, Confluence, and Slack, and full MCP support for custom enterprise tool connections',
+          'On-prem and air-gapped deployment support for enterprises that cannot route proprietary product intelligence through third-party clouds',
         ],
         caseStudies: [],
         ratings: [],
-        problem: '~2M PM practitioners spend 60%+ of their time on coordination and documentation rather than strategic product thinking.',
-        decision: 'Six-agent architecture with three-tier LLM routing, a governance/anonymization layer, RAG with RBAC, and a connector plugin system. Privacy-first from day one — designed for enterprise procurement.',
-        learnings: 'Vibe coding with Claude Code is genuinely productive for complex system architecture. Maintaining context across long agentic sessions is the real engineering challenge. AI-native product design requires rethinking every user interaction from first principles — existing UX patterns do not map cleanly.',
-        lastStatus: 'Active · Building and iterating solo. Seeking early design partners and pilot customers.',
+        problem: 'There are over 3 million product managers globally, and research consistently shows that 60 to 70 percent of their working time goes to coordination, documentation, and context switching rather than strategic product thinking. The AI wave was supposed to fix this. Instead it made it worse. Every major tool now ships its own AI assistant. Jira has Atlassian Intelligence. Notion has Notion AI. Confluence, Linear, Slack, and Miro all have their own. But each one is stateless, siloed, and context-free. A PRD written in Notion has zero awareness of the research sitting in Confluence. The roadmap in Jira knows nothing about what the retrospective surfaced last sprint. IDC estimates knowledge workers already lose 2.5 hours per day searching for information across disconnected systems. For product teams this cost compounds directly into slower release cycles, misaligned stakeholders, and strategic decisions made on incomplete context. The PM software market sits at $7.9B today and is projected to reach $15.7B by 2030, yet the fundamental productivity problem has only fragmented further as every tool raced to add AI independently.',
+        decision: 'Build a unified agentic operating system, not another point solution or chatbot wrapper. pmGPT owns the entire product lifecycle as a single context-aware intelligence layer. Six specialist agents share memory and hand off context to each other so information captured during discovery automatically informs the PRD, which informs the roadmap, which informs stakeholder communications. A three-tier LLM router matches model capability and cost to the specific task type so teams get GPT-4o quality where it matters and Gemini efficiency where it does not. A governance layer anonymizes PII before any data leaves the environment, which is the non-negotiable gate for enterprise procurement in regulated industries. RBAC-gated retrieval ensures confidential roadmap data respects organizational boundaries. An open connector system means pmGPT meets teams in the tools they already use rather than asking them to abandon a stack they have spent years building.',
+        learnings: 'The most important insight from building pmGPT: the reason every PM tool\'s AI feels shallow has nothing to do with the underlying model. The models are extraordinarily capable. The problem is the complete absence of persistent, structured organizational context. Give an LLM the right memory and it behaves like the most informed colleague in the room. The real engineering challenge is not the agents themselves but designing a context graph that survives sessions, respects role-based permissions, and degrades gracefully when integrations are partial. Enterprise buyers care far more about data governance than feature completeness. The privacy-first architecture opened procurement conversations that a cloud-only product with twice the features would have closed immediately. Gartner estimates data governance concerns block over 60 percent of enterprise AI adoption decisions. That trust, built in from day one, is not a compliance checkbox but a genuine competitive moat. And building solo across the full stack with Claude Code confirmed something I now hold with conviction: product-native founders who can implement their own systems will build the next generation of B2B infrastructure, because the feedback loop between product intuition and working code is finally short enough to matter.',
+        lastStatus: 'Active. Building and iterating solo. Live at pmgpt.vercel.app. Seeking early design partners and pilot enterprise customers.',
         outcomes: [
-          { num: '~2M', label: 'target PM practitioners' },
-          { num: '6', label: 'specialist agents' },
-          { num: '3-tier', label: 'LLM routing' },
-          { num: 'Privacy', label: 'first by design' },
+          { num: '$15.7B', label: 'PM software market by 2030' },
+          { num: '3M+', label: 'product managers in the addressable market' },
+          { num: '60-70%', label: 'of PM time lost to non-product work today' },
+          { num: 'Zero PII', label: 'ever reaches an LLM' },
         ],
       },
     ],
@@ -72,8 +79,8 @@ const COMPANIES = [
     employmentType: 'Consulting',
     name: 'Retailabs.AI',
     logo: '/retailabs-logo.avif',
-    brandColor: '#0ea5e9',
-    website: '#',
+    brandColor: '#0F205F',
+    website: 'https://www.retailabs.ai/',
     role: 'Co-Founder & CPO',
     description: 'An AI-native retail intelligence platform enabling enterprises to automate decision-making across merchandising, pricing, campaigns, and store operations using agent-based systems. Converts raw retail signals into insights, decisions, and autonomous execution — replacing passive dashboards with action.',
     roleNarrative: 'Built Retailabs from ground zero as a hands-on product and AI operator. Own end-to-end platform architecture, product strategy, and enterprise problem discovery with FMCG and retail clients. Designed and developed AI agents across retail workflows, wrote agent logic and decision systems, and drove 0 to MVP to early PMF through rapid iteration loops. Pure 0 to 1 builder with direct ownership of product, technology, and business outcomes.',
@@ -828,7 +835,7 @@ const COMPANIES = [
 
   {
     id: 'discovr',
-    categories: ['enterprise', 'fulltime', 'founder'],
+    categories: ['enterprise', 'fulltime', 'founder', 'exited'],
     year: '2017–22',
     active: false,
     employmentType: 'Full-time',
@@ -1016,7 +1023,7 @@ const COMPANIES = [
 
   {
     id: 'onelabs',
-    categories: ['consumer', 'fulltime', 'founder'],
+    categories: ['consumer', 'fulltime', 'founder', 'closed'],
     year: '2015–21',
     active: false,
     employmentType: 'Full-time',
@@ -1296,6 +1303,7 @@ const EMPLOYMENT_COLORS = {
   'Self-Initiated': { bg: 'rgba(52,199,89,0.08)', color: '#1a7f37', border: 'rgba(52,199,89,0.2)' },
   'Consulting': { bg: 'rgba(255,149,0,0.08)', color: '#b36200', border: 'rgba(255,149,0,0.2)' },
   'Education': { bg: 'rgba(13,71,161,0.08)', color: '#1565c0', border: 'rgba(13,71,161,0.2)' },
+  'Passion Project': { bg: 'rgba(31,113,247,0.08)', color: '#1F71F7', border: 'rgba(31,113,247,0.25)' },
 };
 
 // ── PRODUCT CARD ──────────────────────────────────────────────────────────────
@@ -1335,7 +1343,7 @@ function ProductCard({ product, companyName, onMediaClick, brandColor, productIn
           {/* Product name + business tags inline */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 5 }}>
             {productIndex && (
-              <span style={{ fontSize: 12, fontWeight: 700, color: bc, fontFamily: 'var(--font-display)', opacity: 0.7, flexShrink: 0 }}>{productIndex}.</span>
+              <span style={{ fontSize: 18, fontWeight: 700, color: bc, fontFamily: 'var(--font-display)', opacity: 0.7, flexShrink: 0 }}>{productIndex}.</span>
             )}
             {product.website ? (
               <a href={product.website} target="_blank" rel="noopener noreferrer"
@@ -1730,6 +1738,32 @@ function CompanyCard({ company, onMediaClick }) {
                     whiteSpace: 'nowrap',
                   }}>
                     Shelved Idea
+                  </span>
+                )}
+                {company.categories?.includes('exited') && (
+                  <span style={{
+                    fontSize: 11, fontWeight: 600,
+                    padding: '2px 9px',
+                    borderRadius: 'var(--border-radius-pill)',
+                    background: '#e6f4ee',
+                    border: '0.5px solid #6dbfa0',
+                    color: '#1a6645',
+                    whiteSpace: 'nowrap',
+                  }}>
+                    Exited
+                  </span>
+                )}
+                {company.categories?.includes('closed') && (
+                  <span style={{
+                    fontSize: 11, fontWeight: 600,
+                    padding: '2px 9px',
+                    borderRadius: 'var(--border-radius-pill)',
+                    background: '#f5e8e8',
+                    border: '0.5px solid #c08080',
+                    color: '#7a1a1a',
+                    whiteSpace: 'nowrap',
+                  }}>
+                    Closed
                   </span>
                 )}
               </div>
