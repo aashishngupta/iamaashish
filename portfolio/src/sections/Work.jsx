@@ -76,7 +76,7 @@ const COMPANIES = [
     categories: ['building', 'founder'],
     year: '2025–',
     active: true,
-    employmentType: 'Consulting',
+    employmentType: 'Full-time',
     name: 'Retailabs.AI',
     logo: '/retailabs-logo.avif',
     brandColor: '#0F205F',
