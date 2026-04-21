@@ -73,7 +73,7 @@ const COMPANIES = [
 
   {
     id: 'retailabs',
-    categories: ['building', 'founder'],
+    categories: ['building', 'founder', 'fulltime'],
     year: '2025–',
     active: true,
     employmentType: 'Full-time',
@@ -2229,7 +2229,7 @@ function CompanyCard({ company, onMediaClick }) {
 
 export default function Work() {
   const [ref] = useInView();
-  const [activeFilters, setActiveFilters] = useState(['fulltime']);
+  const [activeFilters, setActiveFilters] = useState(['building']);
   const [lightboxItem, setLightboxItem] = useState(null);
   const [showAllFulltime, setShowAllFulltime] = useState(false);
   const workScrollRef = useRef(null);
