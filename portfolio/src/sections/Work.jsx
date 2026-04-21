@@ -2229,7 +2229,7 @@ function CompanyCard({ company, onMediaClick }) {
 
 export default function Work() {
   const [ref] = useInView();
-  const [activeFilters, setActiveFilters] = useState(['building']);
+  const [activeFilters, setActiveFilters] = useState(['fulltime']);
   const [lightboxItem, setLightboxItem] = useState(null);
   const [showAllFulltime, setShowAllFulltime] = useState(false);
   const workScrollRef = useRef(null);
