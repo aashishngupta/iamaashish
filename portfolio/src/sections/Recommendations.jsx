@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SectionLabel from '../components/SectionLabel';
 import SwipeDots from '../components/SwipeDots';
 
-const LINKEDIN_URL = 'https://www.linkedin.com/in/aashishkumargupta/';
+const LINKEDIN_URL = 'https://www.linkedin.com/in/aashish-kr-gupta/';
 
 // Avatar gradient pairs — each person gets a unique one
 const AVATAR_GRADIENTS = [
