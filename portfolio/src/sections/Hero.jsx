@@ -273,10 +273,10 @@ export default function Hero() {
                     {[
                       { num: '~13', label: 'Years of Exp' },
                       { num: '10+', label: 'Years in AI' },
-                      { num: '11+', label: 'Yrs B2B SaaS' },
-                      { num: '8+',  label: 'Yrs B2G' },
-                      { num: '6+',  label: 'Yrs B2C' },
-                      { num: '2+',  label: 'D2C' },
+                      { num: '11+', label: 'Years in B2B SaaS' },
+                      { num: '8+',  label: 'Years in B2G' },
+                      { num: '6+',  label: 'Years in B2C' },
+                      { num: '2+',  label: 'Years in D2C' },
                     ].map((s, i, arr) => (
                       <motion.div
                         key={i}
