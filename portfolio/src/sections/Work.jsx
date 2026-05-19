@@ -2383,20 +2383,16 @@ export default function Work() {
       {isOnlyFulltime && hiddenCount > 0 && (
         <div className="container view-prev-exp" style={{ paddingTop: 0, paddingBottom: 0 }}>
           <button
+            className="view-prev-btn"
             onClick={() => setShowAllFulltime(v => !v)}
             style={{
               marginLeft: 64,
               padding: '10px 22px',
               borderRadius: 'var(--border-radius-pill)',
-              border: '1.5px solid var(--color-border-tertiary)',
-              background: 'transparent',
               fontSize: 13, fontWeight: 600,
-              color: 'var(--color-text-secondary)',
               cursor: 'pointer',
               transition: 'all 200ms ease',
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--color-accent)'; e.currentTarget.style.color = 'var(--color-accent)'; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border-tertiary)'; e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
           >
             {showAllFulltime
               ? 'Collapse previous experiences ↑'
@@ -2406,6 +2402,22 @@ export default function Work() {
       )}
 
       <style>{`
+        @keyframes btn-shimmer {
+          0%   { background-position: -200% center; }
+          100% { background-position:  200% center; }
+        }
+        .view-prev-btn {
+          color: var(--color-accent);
+          border: 1.5px solid rgba(59,130,246,0.3);
+          background: linear-gradient(90deg, transparent 0%, rgba(59,130,246,0.08) 50%, transparent 100%);
+          background-size: 200% auto;
+          animation: btn-shimmer 2.4s ease-in-out infinite;
+        }
+        .view-prev-btn:hover {
+          border-color: var(--color-accent) !important;
+          background: rgba(59,130,246,0.1) !important;
+          animation-play-state: paused;
+        }
         .year-mobile { display: none; }
         @media (max-width: 768px) {
           .feat-grid { grid-template-columns: 1fr !important; }
