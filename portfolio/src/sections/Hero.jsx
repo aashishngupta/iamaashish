@@ -326,7 +326,7 @@ export default function Hero() {
                     {[
                       { num: '100M+', label: 'Users Impacted' },
                       { num: '2×',    label: 'Founder' },
-                      { num: '$30M+', label: 'Revenue Driven' },
+                      { num: '$50M+', label: 'Revenue Driven' },
                     ].map((s, i, arr) => (
                       <motion.div
                         key={i}
