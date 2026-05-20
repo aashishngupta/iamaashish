@@ -2247,8 +2247,8 @@ export default function Work() {
   // On mobile this is ignored — all are shown in horizontal scroll
   const isOnlyFulltime = activeFilters.length === 1 && activeFilters[0] === 'fulltime';
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-  const visible = (isOnlyFulltime && !showAllFulltime && !isMobile) ? allVisible.slice(0, 1) : allVisible;
-  const hiddenCount = (isOnlyFulltime && !showAllFulltime && !isMobile) ? allVisible.length - 1 : 0;
+  const visible = (isOnlyFulltime && !showAllFulltime && !isMobile) ? allVisible.slice(0, 2) : allVisible;
+  const hiddenCount = (isOnlyFulltime && !showAllFulltime && !isMobile) ? allVisible.length - 2 : 0;
 
   return (
     <section
