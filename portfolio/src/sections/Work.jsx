@@ -75,7 +75,7 @@ const COMPANIES = [
     id: 'retailabs',
     categories: ['building', 'founder', 'fulltime'],
     year: '2025–2026',
-    active: true,
+    active: false,
     employmentType: 'Full-time',
     name: 'Retailabs.AI',
     logo: '/retailabs-logo.avif',
